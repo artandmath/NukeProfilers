@@ -4,4 +4,6 @@ This folder contains files in markdown format that can be used in your VFX studi
 
 [So I heard you like Stamps? - Part 1](So%20I%20heard%20you%20like%20Stamps%20-%20Part%201.md)
 
+ALT GRAPHIC:
+
 ![Header](assets/Header_Stonks.png)
