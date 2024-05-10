@@ -14,12 +14,13 @@ To use the "LaProfiler" and "SpiralProfiler" example scripts. Do the following:
 cd /path/to/LaProfiler/shellscripts
 ./profilers.sh
 ```
-- The profilers will run and generate results in the corresponding log directory
+- The profilers will iterate throuh the variants and generate results in the corresponding log directory
 > [!NOTE]
 > The shellscripts are hardcoded to specific versions of nuke. Modify as required. $PATH may have to be set correctly for your version of Nuke.
 
 Alternatively:
 
-- Modify the scrits to work in your pipeline.
-- Test the scritps by sending the write nodes to your renderfarm.
+- Modify the scripts to work in your comp pipeline.
+- Test the scripts by sending the write nodes to your renderfarm.
+- Gather the analytics.
 
