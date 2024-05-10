@@ -58,7 +58,7 @@ What follows are some some profiling examples designed to verify whether these c
 
 ## The LaProfiler
 
-The "LaProfiler" series of tests will involve some sprites sourced from Shia LaBeouf’s infamous “Just Do it!” monologue in #INTRODUCTIONS (2015). It's a 1280x720px video, source: https://vimeo.com/125095515.
+The "LaProfiler" series of tests will involve some sprites sourced from Shia LaBeouf’s infamous “Just Do it!” monologue in #INTRODUCTIONS (2015). The video resoultion is 1280x720 pixels — source: https://vimeo.com/125095515.
 
 ![A lineup of LeBeouf sprites](/wiki/assets/SpriteLineupSingleLine.png)
 
@@ -70,7 +70,7 @@ The DOD/BBox is an instruction to the compositing software to look only within t
 
 To put it another way, if we didn’t provide a DOD/BBox, whilst the black pixels may compress down to near zero when they are stored on disk, when they’re read back into RAM, the CPU and RAM requirements on the black pixels are no different to those of the coloured pixels. Hence why we define a DOD/BBox— to help reduce the load on the computing resources.
 
-In this case, each sprite has a DOD/BBox that encompasses Shia’s person only and tells the compositing software to ignore all other pixel data within each sprite’s original 1280x720px frame.
+In this case, each sprite has a DOD/BBox that encompasses Shia’s person only and tells the compositing software to ignore all other pixel data within each sprite’s original 1280x720 pixel frame.
 
 ## LaProfiler
 
