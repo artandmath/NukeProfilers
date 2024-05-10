@@ -4,7 +4,7 @@ This repository is an accompianment to a LinkedIn article titled ["So I heard yo
 
 The folder "wiki" is a copy of the article in markdown language that can be used for your VFX studio's internal wiki.
 
-All I ask is that you keep the attribution to the original author of the text (myself - Daniel Harkness).
+All I ask is that you keep the attribution to the original author of the text (Daniel Harkness).
 
 ## Usage
 
@@ -28,4 +28,3 @@ cd /path/to/LaProfiler/shellscripts
 - Modify the scripts to work in your comp pipeline.
 - Test the scripts by sending the write nodes to your renderfarm.
 - Gather the analytics.
-
