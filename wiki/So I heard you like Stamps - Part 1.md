@@ -75,9 +75,9 @@ In this case, each sprite has a DOD/BBox that encompasses Shia’s person only a
 
 The tests will run across 3 Nuke scripts. Each script produces the same result. There are 24 Shia’s for each of the 9 types of sprite, LaBeouf, LaRed, LaNoir, etc. A total of 216 Shia’s are computed on each frame.
 
-There are a few transforms to position Shia into various X-offsets in screen space. Everything is merged together (Shake-style, like a tree, over a colorwheel). The composite is very much I/O bound and light on CPU operations.
+There are a few transforms to position Shia into various X-axis offsets in screen space. Everything is merged together (Shake-style, like a tree, over a colorwheel). The composite is designed to be I/O bound and light on CPU operations.
 
-The only difference in the 3 scripts is that the instances of Shia in the script are sourced from:
+The only difference with the 3 scripts is that the instances of Shia in the script are sourced from:
 - __Instances__ — a single Read node of Shia for each type of sprite. 9 read nodes total.
 - __Stamps__ — an anchor for each read node. 9 read nodes, 9 anchors, 216 stamps.
 - __Duplicates__ — an individual read node for each Shia. 216 read nodes.
