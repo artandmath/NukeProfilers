@@ -131,9 +131,9 @@ What is interesting to note is that what was the most RAM performant script prev
 
 By the time we've created a script of even moderate complexity, it appears there is no major difference as to whether we use Stamps or not, or whether we duplicate our assets or not.
 
-## Nuke version, topdown & classic rendering
-
 ## Back to the DOD
+
+## Nuke version, topdown & classic rendering
 
 ## SpiralProfiler
 
