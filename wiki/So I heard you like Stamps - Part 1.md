@@ -110,7 +110,7 @@ Now we see next to no difference in render time when using a single source for e
 
 ## LaProfiler-Filtered
 
-What happens when we up the CPU load and throw some filters into the script? Let’s remove the TimeOffsets and add a unique filter after each instance of Shia. For the higher CPU load tests, the frame range is reduced from 100 frames (1001-1100) to 10 fraes (1001-1010)
+What happens when we up the CPU load and throw some filters into the script? Let’s remove the TimeOffsets and add a unique filter after each instance of Shia. For the higher CPU load tests, the framerange is reduced from 100 frames to 10 frames (1001-1010)
 
 ![Screenshot of LaProfiler Nukescript](/wiki/assets/Screenshot_LaProfiler-Filtered_Nukescript.png)
 
