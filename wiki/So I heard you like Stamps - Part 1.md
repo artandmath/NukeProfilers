@@ -145,7 +145,7 @@ The test scripts contains 500 nodes of the organizational type (Dot or NoOp), an
 
 The scripts follow the mythical “spiral” compositing script pattern— also known as a “toilet bowl” script.
 
-![Screenshot of SpiralProfiler Node Graph](/wiki/assets/Screenshot_SpiralProfiler-NoOps-NodeGraph.png)
+![Screenshot of SpiralProfiler Node Graph](/wiki/assets/Screenshot_SpiralProfiler-NoOps_NodeGraph.png)
 
 ![LaProfiler results chart](/wiki/assets/charts-72dpi/SpiralProfiler_Nuke13-2.png)
 
