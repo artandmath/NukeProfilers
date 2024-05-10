@@ -2,7 +2,7 @@
 
 This repository is an accompaniment to a LinkedIn article titled ["So I heard you like Stamps?"](http://link.to.article)
 
-The folder "wiki" is a copy of the article in markdown language that can be used to accompany any Stamps documentation in your VFX studio's internal wiki.
+The folder "wiki" is a copy of the article in markdown language that can be used in your VFX studio's internal wiki.
 
 All I ask is that you keep the attribution to the original author of the text (Daniel Harkness).
 
