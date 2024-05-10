@@ -122,8 +122,8 @@ Stamps and duplicates are using far more RAM than single instances. Render times
 
 Finally, combining the filters and time offsets.
 
-![Screenshot of LaProfiler Nukescript](/wiki/assets/Screenshot_LaProfiler-TimeOffset-Filtered_Nukescript.png)
+![Screenshot of LaProfiler Nukescript](/wiki/assets/Screenshot_LaProfiler-Filtered-TimeOffset_Nukescript.png)
 
-![Screenshot of LaProfiler Nukescript](/wiki/assets/charts-72dpi/LaProfiler-TimeOffset-Filtered_Nuke13-2.png)
+![Screenshot of LaProfiler Nukescript](/wiki/assets/charts-72dpi/LaProfiler-Filtered-TimeOffset_Nuke13-2.png)
 
 What is interesting to note is that the previously most memory performant script (Instances) is now the most memory heavy script and takes slightly longer to render than the other two tests. The Duplicates and Stamps scripts are pretty much on par with each other in terms of render time and CPU requirements, with the Duplicates script requiring 1% more memory than Stamps (or 4% relative to each other).
