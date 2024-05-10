@@ -40,8 +40,8 @@ With the help of Shia LaBeouf, I’d like to take you on an investigative journe
 	- LaProfiler-Filtered
 	- LaProfiler-Filtered-TimeOffset
 	- LaProfiler-TimeOffset-Filtered
-- Nuke version, topdown & classic rendering
 - Back to the DOD
+- Nuke version, topdown & classic rendering
 - Size on disk
 - SpiralProfiler
 - Conclusions
