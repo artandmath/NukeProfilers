@@ -11,7 +11,7 @@ All I ask is that you keep the attribution to the original author of the text (D
 To use the "LaProfiler" and "SpiralProfiler" example scripts. Do the following:
 
 - Download the repository.
-- Download the original [#INTRODUCTIONS](https://vimeo.com/125095515) clip from Vimeo.
+- Download the original [#INTRODUCTIONS](https://vimeo.com/125095515) clip from Vimeo https://vimeo.com/125095515.
 - Open the nukescript /nukescripts/GenerateSprites.nk
 - At the top of the NodeGraph, re-link the file *"#introductions_(2015) (Original).mp4"* from Vimeo.
 - Render all write nodes, observing the render order.
