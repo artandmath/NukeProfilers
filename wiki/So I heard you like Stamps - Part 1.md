@@ -1,5 +1,5 @@
 
-An investigation into the Stamps tool for Nuke, by Daniel Harkness
+An investigation into the Stamps tool for Nuke, by Daniel Harkness, 10 May 2024
 
 # So I heard you like Stamps?
 
