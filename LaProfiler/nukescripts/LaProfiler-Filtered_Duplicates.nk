@@ -1,0 +1,7005 @@
+#! /usr/local/Nuke13.2v9/libnuke-13.2.9.so -nx
+#write_info Write2 file:"../output/LaProfiler.%04d.exr" format:"1280 720 1" chans:":rgba.red:rgba.green:rgba.blue:" framerange:"1001 1200" fps:"0" colorspace:"default (scene_linear)" datatype:"16 bit half" transfer:"unknown" views:"main" colorManagement:"OCIO"
+version 13.2 v9
+define_window_layout_xml {<?xml version="1.0" encoding="UTF-8"?>
+<layout version="1.0">
+    <window x="0" y="27" w="2715" h="1182" maximized="1" screen="0">
+        <splitter orientation="1">
+            <split size="40"/>
+            <dock id="" hideTitles="1" activePageId="Toolbar.1">
+                <page id="Toolbar.1"/>
+            </dock>
+            <split size="2052" stretch="1"/>
+            <splitter orientation="2">
+                <split size="669"/>
+                <dock id="" activePageId="Viewer.1">
+                    <page id="Viewer.1"/>
+                </dock>
+                <split size="470"/>
+                <dock id="" activePageId="DAG.1" focus="true">
+                    <page id="DAG.1"/>
+                    <page id="Curve Editor.1"/>
+                    <page id="DopeSheet.1"/>
+                </dock>
+            </splitter>
+            <split size="615"/>
+            <dock id="" activePageId="Properties.1">
+                <page id="Properties.1"/>
+                <page id="uk.co.thefoundry.backgroundrenderview.1"/>
+                <page id="uk.co.thefoundry.scripteditor.2"/>
+            </dock>
+        </splitter>
+    </window>
+</layout>
+}
+Root {
+ inputs 0
+ name /mnt/render/nukescripts/LaProfiler-Filtered_Duplicates.nk
+ project_directory "\[python \{nuke.script_directory()\}]"
+ frame 1100
+ first_frame 1001
+ last_frame 1200
+ lock_range true
+ format "1280 720 0 0 1280 720 1 HD_720"
+ proxy_type scale
+ proxy_format "1024 778 0 0 1024 778 1 1K_Super_35(full-ap)"
+ colorManagement OCIO
+ OCIO_config aces_1.2
+ defaultViewerLUT "OCIO LUTs"
+ workingSpaceLUT scene_linear
+ monitorLut ACES/sRGB
+ monitorOutLUT "sRGB (ACES)"
+ int8Lut matte_paint
+ int16Lut texture_paint
+ logLut compositing_log
+ floatLut scene_linear
+}
+BackdropNode {
+ inputs 0
+ name BackdropNode1
+ tile_color 0x388e8e00
+ label Output
+ note_font_size 42
+ xpos 21743
+ ypos 11458
+ bdwidth 735
+ bdheight 364
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01sprite/mp01sprite.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read2
+ xpos -3780
+ ypos 1233
+}
+Blur {
+ size 25
+ name Blur1
+ xpos -3780
+ ypos 1358
+}
+Dot {
+ name Dot4
+ xpos -3746
+ ypos 1578
+}
+set N156c02e0 [stack 0]
+Viewer {
+ frame 1100
+ frame_range 1001-1200
+ viewerProcess "sRGB (ACES)"
+ name Viewer1
+ xpos 22510
+ ypos 11654
+}
+Laplacian {
+ inputs 0
+ size 35
+ name Laplacian15
+ tile_color 0xff0000ff
+ xpos 8870
+ ypos 11246
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01sprite/mp01sprite.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ version 1
+ name Read13
+ xpos 620
+ ypos 1233
+}
+Sharpen {
+ size 68
+ name Sharpen2
+ xpos 620
+ ypos 1358
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform12
+ xpos 620
+ ypos 1550
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01sprite/mp01sprite.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ version 1
+ name Read14
+ xpos 400
+ ypos 1233
+}
+Glow2 {
+ name Glow2
+ xpos 400
+ ypos 1358
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform13
+ xpos 400
+ ypos 1550
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01sprite/mp01sprite.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ version 1
+ name Read15
+ xpos 180
+ ypos 1233
+}
+EdgeDetectWrapper {
+ output rgba.red
+ name EdgeDetect2
+ xpos 180
+ ypos 1358
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform14
+ xpos 180
+ ypos 1550
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01sprite/mp01sprite.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read16
+ xpos -480
+ ypos 1233
+}
+Blur {
+ size 25
+ name Blur2
+ xpos -480
+ ypos 1358
+}
+Dot {
+ name Dot2
+ xpos -446
+ ypos 1554
+}
+push 0
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01sprite/mp01sprite.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ version 1
+ name Read17
+ xpos -40
+ ypos 1233
+}
+DirBlurWrapper {
+ BlurType radial
+ BlurLength 20
+ name DirBlurWrapper2
+ xpos -40
+ ypos 1358
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform15
+ xpos -40
+ ypos 1550
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01sprite/mp01sprite.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read18
+ xpos -260
+ ypos 1233
+}
+Median {
+ size 9
+ ignore_top_line false
+ name Median3
+ xpos -260
+ ypos 1358
+}
+Transform {
+ translate {-300 0}
+ center {640 360}
+ name Transform16
+ xpos -260
+ ypos 1550
+}
+Merge2 {
+ inputs 6+1
+ name Merge5
+ xpos -40
+ ypos 1958
+}
+Reformat {
+ type scale
+ flop true
+ name Reformat1
+ xpos -40
+ ypos 2054
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01sprite/mp01sprite.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ version 1
+ name Read19
+ xpos 2270
+ ypos 1233
+}
+Emboss {
+ optype effect
+ Angle 184
+ Width 10
+ name Emboss2
+ tile_color 0xff0000ff
+ xpos 2270
+ ypos 1358
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform17
+ xpos 2270
+ ypos 1550
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01sprite/mp01sprite.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ version 1
+ name Read20
+ xpos 2050
+ ypos 1233
+}
+Median {
+ size 10
+ ignore_top_line false
+ name Median4
+ tile_color 0xff0000ff
+ xpos 2050
+ ypos 1358
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform18
+ xpos 2050
+ ypos 1550
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01sprite/mp01sprite.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ version 1
+ name Read21
+ xpos 1830
+ ypos 1233
+}
+EdgeExtend {
+ useGPUIfAvailable false
+ erode 11
+ name EdgeExtend2
+ tile_color 0xff0000ff
+ xpos 1830
+ ypos 1358
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform19
+ xpos 1830
+ ypos 1550
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01sprite/mp01sprite.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read22
+ xpos 1170
+ ypos 1233
+}
+Soften {
+ amount 0.735
+ size 45.5
+ name Soften2
+ tile_color 0xff0000ff
+ xpos 1170
+ ypos 1358
+}
+Dot {
+ name Dot1
+ xpos 1204
+ ypos 1554
+}
+push 0
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01sprite/mp01sprite.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ version 1
+ name Read23
+ xpos 1610
+ ypos 1233
+}
+Laplacian {
+ size 35
+ name Laplacian2
+ tile_color 0xff0000ff
+ xpos 1610
+ ypos 1358
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform20
+ xpos 1610
+ ypos 1550
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01sprite/mp01sprite.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read24
+ xpos 1390
+ ypos 1233
+}
+Blocky {
+ name Blocky2
+ tile_color 0xff0000ff
+ xpos 1390
+ ypos 1358
+}
+Transform {
+ translate {-300 0}
+ center {640 360}
+ name Transform21
+ xpos 1390
+ ypos 1550
+}
+Merge2 {
+ inputs 6+1
+ name Merge6
+ xpos 1610
+ ypos 1958
+}
+Reformat {
+ type scale
+ flop true
+ name Reformat2
+ xpos 1610
+ ypos 2054
+}
+Merge2 {
+ inputs 2
+ name Merge7
+ xpos 840
+ ypos 2630
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01sprite/mp01sprite.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ version 1
+ name Read6
+ xpos -2680
+ ypos 1233
+}
+Sharpen {
+ size 68
+ name Sharpen1
+ xpos -2680
+ ypos 1358
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform5
+ xpos -2680
+ ypos 1574
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01sprite/mp01sprite.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ version 1
+ name Read5
+ xpos -2900
+ ypos 1233
+}
+Glow2 {
+ name Glow1
+ xpos -2900
+ ypos 1358
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform4
+ xpos -2900
+ ypos 1574
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01sprite/mp01sprite.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ version 1
+ name Read4
+ xpos -3120
+ ypos 1233
+}
+EdgeDetectWrapper {
+ output rgba.red
+ name EdgeDetect1
+ xpos -3120
+ ypos 1358
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform3
+ xpos -3120
+ ypos 1574
+}
+push $N156c02e0
+push 0
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01sprite/mp01sprite.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ version 1
+ name Read3
+ xpos -3340
+ ypos 1233
+}
+DirBlurWrapper {
+ BlurType radial
+ BlurLength 20
+ name DirBlurWrapper1
+ xpos -3340
+ ypos 1358
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform2
+ xpos -3340
+ ypos 1574
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01sprite/mp01sprite.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read1
+ xpos -3560
+ ypos 1233
+}
+Median {
+ size 9
+ ignore_top_line false
+ name Median1
+ xpos -3560
+ ypos 1358
+}
+Transform {
+ translate {-300 0}
+ center {640 360}
+ name Transform1
+ xpos -3560
+ ypos 1574
+}
+Merge2 {
+ inputs 6+1
+ name Merge1
+ xpos -3230
+ ypos 1934
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01sprite/mp01sprite.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ version 1
+ name Read7
+ xpos -1030
+ ypos 1233
+}
+Emboss {
+ optype effect
+ Angle 184
+ Width 10
+ name Emboss1
+ tile_color 0xff0000ff
+ xpos -1030
+ ypos 1358
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform6
+ xpos -1030
+ ypos 1550
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01sprite/mp01sprite.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ version 1
+ name Read8
+ xpos -1250
+ ypos 1233
+}
+Median {
+ size 10
+ ignore_top_line false
+ name Median2
+ tile_color 0xff0000ff
+ xpos -1250
+ ypos 1358
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform7
+ xpos -1250
+ ypos 1550
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01sprite/mp01sprite.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ version 1
+ name Read9
+ xpos -1470
+ ypos 1233
+}
+EdgeExtend {
+ useGPUIfAvailable false
+ erode 11
+ name EdgeExtend1
+ tile_color 0xff0000ff
+ xpos -1470
+ ypos 1358
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform8
+ xpos -1470
+ ypos 1550
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01sprite/mp01sprite.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read10
+ xpos -2130
+ ypos 1233
+}
+Soften {
+ amount 0.735
+ size 45.5
+ name Soften1
+ tile_color 0xff0000ff
+ xpos -2130
+ ypos 1358
+}
+Dot {
+ name Dot3
+ xpos -2096
+ ypos 1554
+}
+push 0
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01sprite/mp01sprite.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ version 1
+ name Read11
+ xpos -1690
+ ypos 1233
+}
+Laplacian {
+ size 35
+ name Laplacian1
+ tile_color 0xff0000ff
+ xpos -1690
+ ypos 1358
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform9
+ xpos -1690
+ ypos 1550
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01sprite/mp01sprite.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read12
+ xpos -1910
+ ypos 1233
+}
+Blocky {
+ name Blocky1
+ tile_color 0xff0000ff
+ xpos -1910
+ ypos 1358
+}
+Transform {
+ translate {-300 0}
+ center {640 360}
+ name Transform10
+ xpos -1910
+ ypos 1550
+}
+Merge2 {
+ inputs 6+1
+ name Merge2
+ xpos -1580
+ ypos 1934
+}
+Merge2 {
+ inputs 2
+ name Merge3
+ xpos -2350
+ ypos 2462
+}
+Merge2 {
+ inputs 2
+ name Merge8
+ xpos -810
+ ypos 3710
+}
+ColorWheel {
+ inputs 0
+ format "1280 720 0 0 1280 720 1 HD_720"
+ gamma 0.45
+ name ColorWheel1
+ xpos 1610
+ ypos 3687
+}
+Transform {
+ scale 1.5
+ center {640 360}
+ name Transform11
+ xpos 1610
+ ypos 3806
+}
+Crop {
+ box {0 0 1280 720}
+ name Crop1
+ xpos 1610
+ ypos 3878
+}
+Grade {
+ white 0.8
+ gamma 0.62
+ name Grade1
+ xpos 1610
+ ypos 3950
+}
+Merge2 {
+ inputs 2
+ bbox B
+ name Merge4
+ xpos 400
+ ypos 4670
+}
+Crop {
+ box {{width/9*slice} 0 {width/9*(slice+1)} 720}
+ name Crop10
+ xpos 18660
+ ypos 5774
+ addUserKnob {20 User}
+ addUserKnob {3 slice}
+ slice 4
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteGreen/mp01spriteGreen.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read48
+ xpos 7660
+ ypos 1209
+}
+Sharpen {
+ size 68
+ name Sharpen4
+ xpos 7660
+ ypos 1334
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform22
+ xpos 7660
+ ypos 1526
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteGreen/mp01spriteGreen.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read44
+ xpos 7440
+ ypos 1209
+}
+Glow2 {
+ name Glow4
+ xpos 7440
+ ypos 1334
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform23
+ xpos 7440
+ ypos 1526
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteGreen/mp01spriteGreen.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read45
+ xpos 7220
+ ypos 1209
+}
+EdgeDetectWrapper {
+ output rgba.red
+ name EdgeDetect4
+ xpos 7220
+ ypos 1334
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform24
+ xpos 7220
+ ypos 1526
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteGreen/mp01spriteGreen.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read43
+ xpos 6560
+ ypos 1209
+}
+Blur {
+ size 25
+ name Blur4
+ xpos 6560
+ ypos 1334
+}
+Dot {
+ name Dot5
+ xpos 6594
+ ypos 1530
+}
+push 0
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteGreen/mp01spriteGreen.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read46
+ xpos 7000
+ ypos 1209
+}
+DirBlurWrapper {
+ BlurType radial
+ BlurLength 20
+ name DirBlurWrapper4
+ xpos 7000
+ ypos 1334
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform25
+ xpos 7000
+ ypos 1526
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteGreen/mp01spriteGreen.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read47
+ xpos 6780
+ ypos 1209
+}
+Median {
+ size 9
+ ignore_top_line false
+ name Median7
+ xpos 6780
+ ypos 1334
+}
+Transform {
+ translate {-300 0}
+ center {640 360}
+ name Transform26
+ xpos 6780
+ ypos 1526
+}
+Merge2 {
+ inputs 6+1
+ name Merge9
+ xpos 7000
+ ypos 1934
+}
+Reformat {
+ type scale
+ flop true
+ name Reformat3
+ xpos 7000
+ ypos 2030
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteGreen/mp01spriteGreen.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read30
+ xpos 9310
+ ypos 1209
+}
+Emboss {
+ optype effect
+ Angle 184
+ Width 10
+ name Emboss4
+ tile_color 0xff0000ff
+ xpos 9310
+ ypos 1334
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform27
+ xpos 9310
+ ypos 1526
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteGreen/mp01spriteGreen.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read26
+ xpos 9090
+ ypos 1209
+}
+Median {
+ size 10
+ ignore_top_line false
+ name Median8
+ tile_color 0xff0000ff
+ xpos 9090
+ ypos 1334
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform28
+ xpos 9090
+ ypos 1526
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteGreen/mp01spriteGreen.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read27
+ xpos 8870
+ ypos 1209
+}
+EdgeExtend {
+ useGPUIfAvailable false
+ erode 11
+ name EdgeExtend4
+ tile_color 0xff0000ff
+ xpos 8870
+ ypos 1334
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform29
+ xpos 8870
+ ypos 1526
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteGreen/mp01spriteGreen.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read25
+ xpos 8210
+ ypos 1209
+}
+Soften {
+ amount 0.735
+ size 45.5
+ name Soften4
+ tile_color 0xff0000ff
+ xpos 8210
+ ypos 1334
+}
+Dot {
+ name Dot6
+ xpos 8244
+ ypos 1530
+}
+push 0
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteGreen/mp01spriteGreen.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read28
+ xpos 8650
+ ypos 1209
+}
+Laplacian {
+ size 35
+ name Laplacian4
+ tile_color 0xff0000ff
+ xpos 8650
+ ypos 1334
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform30
+ xpos 8650
+ ypos 1526
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteGreen/mp01spriteGreen.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read29
+ xpos 8430
+ ypos 1209
+}
+Blocky {
+ name Blocky4
+ tile_color 0xff0000ff
+ xpos 8430
+ ypos 1334
+}
+Transform {
+ translate {-300 0}
+ center {640 360}
+ name Transform31
+ xpos 8430
+ ypos 1526
+}
+Merge2 {
+ inputs 6+1
+ name Merge10
+ xpos 8650
+ ypos 1934
+}
+Reformat {
+ type scale
+ flop true
+ name Reformat4
+ xpos 8650
+ ypos 2030
+}
+Merge2 {
+ inputs 2
+ name Merge11
+ xpos 7880
+ ypos 2606
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteGreen/mp01spriteGreen.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read38
+ xpos 4360
+ ypos 1209
+}
+Sharpen {
+ size 68
+ name Sharpen3
+ xpos 4360
+ ypos 1334
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform32
+ xpos 4360
+ ypos 1550
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteGreen/mp01spriteGreen.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read220
+ xpos 4140
+ ypos 1209
+}
+Glow2 {
+ name Glow3
+ xpos 4140
+ ypos 1334
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform33
+ xpos 4140
+ ypos 1550
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteGreen/mp01spriteGreen.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read219
+ xpos 3920
+ ypos 1209
+}
+EdgeDetectWrapper {
+ output rgba.red
+ name EdgeDetect3
+ xpos 3920
+ ypos 1334
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform34
+ xpos 3920
+ ypos 1550
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteGreen/mp01spriteGreen.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read217
+ xpos 3260
+ ypos 1209
+}
+Blur {
+ size 25
+ name Blur3
+ xpos 3260
+ ypos 1334
+}
+Dot {
+ name Dot7
+ xpos 3294
+ ypos 1554
+}
+push 0
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteGreen/mp01spriteGreen.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read218
+ xpos 3700
+ ypos 1209
+}
+DirBlurWrapper {
+ BlurType radial
+ BlurLength 20
+ name DirBlurWrapper3
+ xpos 3700
+ ypos 1334
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform35
+ xpos 3700
+ ypos 1550
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteGreen/mp01spriteGreen.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read40
+ xpos 3480
+ ypos 1209
+}
+Median {
+ size 9
+ ignore_top_line false
+ name Median5
+ xpos 3480
+ ypos 1334
+}
+Transform {
+ translate {-300 0}
+ center {640 360}
+ name Transform36
+ xpos 3480
+ ypos 1550
+}
+Merge2 {
+ inputs 6+1
+ name Merge12
+ xpos 3810
+ ypos 1910
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteGreen/mp01spriteGreen.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read222
+ xpos 6010
+ ypos 1209
+}
+Emboss {
+ optype effect
+ Angle 184
+ Width 10
+ name Emboss3
+ tile_color 0xff0000ff
+ xpos 6010
+ ypos 1334
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform37
+ xpos 6010
+ ypos 1526
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteGreen/mp01spriteGreen.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read39
+ xpos 5790
+ ypos 1209
+}
+Median {
+ size 10
+ ignore_top_line false
+ name Median6
+ tile_color 0xff0000ff
+ xpos 5790
+ ypos 1334
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform38
+ xpos 5790
+ ypos 1526
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteGreen/mp01spriteGreen.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read41
+ xpos 5570
+ ypos 1209
+}
+EdgeExtend {
+ useGPUIfAvailable false
+ erode 11
+ name EdgeExtend3
+ tile_color 0xff0000ff
+ xpos 5570
+ ypos 1334
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform39
+ xpos 5570
+ ypos 1526
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteGreen/mp01spriteGreen.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read37
+ xpos 4910
+ ypos 1209
+}
+Soften {
+ amount 0.735
+ size 45.5
+ name Soften3
+ tile_color 0xff0000ff
+ xpos 4910
+ ypos 1334
+}
+Dot {
+ name Dot8
+ xpos 4944
+ ypos 1530
+}
+push 0
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteGreen/mp01spriteGreen.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read42
+ xpos 5350
+ ypos 1209
+}
+Laplacian {
+ size 35
+ name Laplacian3
+ tile_color 0xff0000ff
+ xpos 5350
+ ypos 1334
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform40
+ xpos 5350
+ ypos 1526
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteGreen/mp01spriteGreen.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read221
+ xpos 5130
+ ypos 1209
+}
+Blocky {
+ name Blocky3
+ tile_color 0xff0000ff
+ xpos 5130
+ ypos 1334
+}
+Transform {
+ translate {-300 0}
+ center {640 360}
+ name Transform41
+ xpos 5130
+ ypos 1526
+}
+Merge2 {
+ inputs 6+1
+ name Merge13
+ xpos 5460
+ ypos 1910
+}
+Merge2 {
+ inputs 2
+ name Merge14
+ xpos 4690
+ ypos 2438
+}
+Merge2 {
+ inputs 2
+ name Merge15
+ xpos 6340
+ ypos 3638
+}
+ColorWheel {
+ inputs 0
+ format "1280 720 0 0 1280 720 1 HD_720"
+ gamma 0.45
+ name ColorWheel2
+ xpos 8760
+ ypos 3615
+}
+Transform {
+ scale 1.5
+ center {640 360}
+ name Transform42
+ xpos 8760
+ ypos 3734
+}
+Crop {
+ box {0 0 1280 720}
+ name Crop2
+ xpos 8760
+ ypos 3806
+}
+Grade {
+ white 0.8
+ gamma 0.62
+ name Grade2
+ xpos 8760
+ ypos 3878
+}
+Merge2 {
+ inputs 2
+ bbox B
+ name Merge16
+ xpos 7550
+ ypos 4598
+}
+Crop {
+ box {{width/9*slice} 0 {width/9*(slice+1)} 720}
+ name Crop11
+ xpos 19430
+ ypos 5774
+ addUserKnob {20 User}
+ addUserKnob {3 slice}
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteRed/mp01spriteRed.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read31
+ xpos 14920
+ ypos 1185
+}
+Sharpen {
+ size 68
+ name Sharpen6
+ xpos 14920
+ ypos 1310
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform43
+ xpos 14920
+ ypos 1502
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteRed/mp01spriteRed.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read32
+ xpos 14700
+ ypos 1185
+}
+Glow2 {
+ name Glow6
+ xpos 14700
+ ypos 1310
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform44
+ xpos 14700
+ ypos 1502
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteRed/mp01spriteRed.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read33
+ xpos 14480
+ ypos 1185
+}
+EdgeDetectWrapper {
+ output rgba.red
+ name EdgeDetect6
+ xpos 14480
+ ypos 1310
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform45
+ xpos 14480
+ ypos 1502
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteRed/mp01spriteRed.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read34
+ xpos 13820
+ ypos 1185
+}
+Blur {
+ size 25
+ name Blur5
+ xpos 13820
+ ypos 1310
+}
+Dot {
+ name Dot9
+ xpos 13854
+ ypos 1506
+}
+push 0
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteRed/mp01spriteRed.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read35
+ xpos 14260
+ ypos 1185
+}
+DirBlurWrapper {
+ BlurType radial
+ BlurLength 20
+ name DirBlurWrapper6
+ xpos 14260
+ ypos 1310
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform46
+ xpos 14260
+ ypos 1502
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteRed/mp01spriteRed.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read36
+ xpos 14040
+ ypos 1185
+}
+Median {
+ size 9
+ ignore_top_line false
+ name Median11
+ xpos 14040
+ ypos 1310
+}
+Transform {
+ translate {-300 0}
+ center {640 360}
+ name Transform47
+ xpos 14040
+ ypos 1502
+}
+Merge2 {
+ inputs 6+1
+ name Merge17
+ xpos 14260
+ ypos 1910
+}
+Reformat {
+ type scale
+ flop true
+ name Reformat5
+ xpos 14260
+ ypos 2006
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteRed/mp01spriteRed.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read49
+ xpos 16570
+ ypos 1185
+}
+Emboss {
+ optype effect
+ Angle 184
+ Width 10
+ name Emboss6
+ tile_color 0xff0000ff
+ xpos 16570
+ ypos 1310
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform48
+ xpos 16570
+ ypos 1502
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteRed/mp01spriteRed.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read50
+ xpos 16350
+ ypos 1185
+}
+Median {
+ size 10
+ ignore_top_line false
+ name Median12
+ tile_color 0xff0000ff
+ xpos 16350
+ ypos 1310
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform49
+ xpos 16350
+ ypos 1502
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteRed/mp01spriteRed.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read51
+ xpos 16130
+ ypos 1185
+}
+EdgeExtend {
+ useGPUIfAvailable false
+ erode 11
+ name EdgeExtend6
+ tile_color 0xff0000ff
+ xpos 16130
+ ypos 1310
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform50
+ xpos 16130
+ ypos 1502
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteRed/mp01spriteRed.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read52
+ xpos 15470
+ ypos 1185
+}
+Soften {
+ amount 0.735
+ size 45.5
+ name Soften6
+ tile_color 0xff0000ff
+ xpos 15470
+ ypos 1310
+}
+Dot {
+ name Dot10
+ xpos 15504
+ ypos 1506
+}
+push 0
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteRed/mp01spriteRed.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read53
+ xpos 15910
+ ypos 1185
+}
+Laplacian {
+ size 35
+ name Laplacian6
+ tile_color 0xff0000ff
+ xpos 15910
+ ypos 1310
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform51
+ xpos 15910
+ ypos 1502
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteRed/mp01spriteRed.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read54
+ xpos 15690
+ ypos 1185
+}
+Blocky {
+ name Blocky6
+ tile_color 0xff0000ff
+ xpos 15690
+ ypos 1310
+}
+Transform {
+ translate {-300 0}
+ center {640 360}
+ name Transform52
+ xpos 15690
+ ypos 1502
+}
+Merge2 {
+ inputs 6+1
+ name Merge18
+ xpos 15910
+ ypos 1910
+}
+Reformat {
+ type scale
+ flop true
+ name Reformat6
+ xpos 15910
+ ypos 2006
+}
+Merge2 {
+ inputs 2
+ name Merge19
+ xpos 15140
+ ypos 2582
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteRed/mp01spriteRed.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read55
+ xpos 11620
+ ypos 1185
+}
+Sharpen {
+ size 68
+ name Sharpen5
+ xpos 11620
+ ypos 1334
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform53
+ xpos 11620
+ ypos 1526
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteRed/mp01spriteRed.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read56
+ xpos 11400
+ ypos 1185
+}
+Glow2 {
+ name Glow5
+ xpos 11400
+ ypos 1334
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform54
+ xpos 11400
+ ypos 1526
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteRed/mp01spriteRed.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read57
+ xpos 11180
+ ypos 1185
+}
+EdgeDetectWrapper {
+ output rgba.red
+ name EdgeDetect5
+ xpos 11180
+ ypos 1334
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform55
+ xpos 11180
+ ypos 1526
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteRed/mp01spriteRed.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read58
+ xpos 10520
+ ypos 1185
+}
+Blur {
+ size 25
+ name Blur6
+ xpos 10520
+ ypos 1334
+}
+Dot {
+ name Dot11
+ xpos 10554
+ ypos 1530
+}
+push 0
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteRed/mp01spriteRed.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read59
+ xpos 10960
+ ypos 1185
+}
+DirBlurWrapper {
+ BlurType radial
+ BlurLength 20
+ name DirBlurWrapper5
+ xpos 10960
+ ypos 1334
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform56
+ xpos 10960
+ ypos 1526
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteRed/mp01spriteRed.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read60
+ xpos 10740
+ ypos 1185
+}
+Median {
+ size 9
+ ignore_top_line false
+ name Median9
+ xpos 10740
+ ypos 1334
+}
+Transform {
+ translate {-300 0}
+ center {640 360}
+ name Transform57
+ xpos 10740
+ ypos 1526
+}
+Merge2 {
+ inputs 6+1
+ name Merge20
+ xpos 11070
+ ypos 1886
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteRed/mp01spriteRed.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read61
+ xpos 13270
+ ypos 1185
+}
+Emboss {
+ optype effect
+ Angle 184
+ Width 10
+ name Emboss5
+ tile_color 0xff0000ff
+ xpos 13270
+ ypos 1334
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform58
+ xpos 13270
+ ypos 1502
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteRed/mp01spriteRed.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read62
+ xpos 13050
+ ypos 1185
+}
+Median {
+ size 10
+ ignore_top_line false
+ name Median10
+ tile_color 0xff0000ff
+ xpos 13050
+ ypos 1334
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform59
+ xpos 13050
+ ypos 1502
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteRed/mp01spriteRed.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read63
+ xpos 12830
+ ypos 1185
+}
+EdgeExtend {
+ useGPUIfAvailable false
+ erode 11
+ name EdgeExtend5
+ tile_color 0xff0000ff
+ xpos 12830
+ ypos 1310
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform60
+ xpos 12830
+ ypos 1502
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteRed/mp01spriteRed.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read64
+ xpos 12170
+ ypos 1185
+}
+Soften {
+ amount 0.735
+ size 45.5
+ name Soften5
+ tile_color 0xff0000ff
+ xpos 12170
+ ypos 1310
+}
+Dot {
+ name Dot12
+ xpos 12204
+ ypos 1506
+}
+push 0
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteRed/mp01spriteRed.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read65
+ xpos 12610
+ ypos 1185
+}
+Laplacian {
+ size 35
+ name Laplacian5
+ tile_color 0xff0000ff
+ xpos 12610
+ ypos 1310
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform61
+ xpos 12610
+ ypos 1502
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteRed/mp01spriteRed.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read66
+ xpos 12390
+ ypos 1185
+}
+Blocky {
+ name Blocky5
+ tile_color 0xff0000ff
+ xpos 12390
+ ypos 1310
+}
+Transform {
+ translate {-300 0}
+ center {640 360}
+ name Transform62
+ xpos 12390
+ ypos 1502
+}
+Merge2 {
+ inputs 6+1
+ name Merge21
+ xpos 12720
+ ypos 1886
+}
+Merge2 {
+ inputs 2
+ name Merge22
+ xpos 11950
+ ypos 2414
+}
+Merge2 {
+ inputs 2
+ name Merge23
+ xpos 13600
+ ypos 3614
+}
+ColorWheel {
+ inputs 0
+ format "1280 720 0 0 1280 720 1 HD_720"
+ gamma 0.45
+ name ColorWheel3
+ xpos 16020
+ ypos 3591
+}
+Transform {
+ scale 1.5
+ center {640 360}
+ name Transform63
+ xpos 16020
+ ypos 3710
+}
+Crop {
+ box {0 0 1280 720}
+ name Crop3
+ xpos 16020
+ ypos 3782
+}
+Grade {
+ white 0.8
+ gamma 0.62
+ name Grade3
+ xpos 16020
+ ypos 3854
+}
+Merge2 {
+ inputs 2
+ bbox B
+ name Merge24
+ xpos 14810
+ ypos 4574
+}
+Crop {
+ box {{width/9*slice} 0 {width/9*(slice+1)} 720}
+ name Crop12
+ xpos 20090
+ ypos 5774
+ addUserKnob {20 User}
+ addUserKnob {3 slice}
+ slice 1
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteWarhol01/mp01spriteWarhol01.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read91
+ xpos 7660
+ ypos 6249
+}
+Sharpen {
+ size 68
+ name Sharpen9
+ xpos 7660
+ ypos 6374
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform85
+ xpos 7660
+ ypos 6566
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteWarhol01/mp01spriteWarhol01.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read92
+ xpos 7440
+ ypos 6249
+}
+Glow2 {
+ name Glow9
+ xpos 7440
+ ypos 6374
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform86
+ xpos 7440
+ ypos 6566
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteWarhol01/mp01spriteWarhol01.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read93
+ xpos 7220
+ ypos 6249
+}
+EdgeDetectWrapper {
+ output rgba.red
+ name EdgeDetect9
+ xpos 7220
+ ypos 6374
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform87
+ xpos 7220
+ ypos 6566
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteWarhol01/mp01spriteWarhol01.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read94
+ xpos 6560
+ ypos 6249
+}
+Blur {
+ size 25
+ name Blur9
+ xpos 6560
+ ypos 6374
+}
+Dot {
+ name Dot17
+ xpos 6594
+ ypos 6570
+}
+push 0
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteWarhol01/mp01spriteWarhol01.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read95
+ xpos 7000
+ ypos 6249
+}
+DirBlurWrapper {
+ BlurType radial
+ BlurLength 20
+ name DirBlurWrapper9
+ xpos 7000
+ ypos 6374
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform88
+ xpos 7000
+ ypos 6566
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteWarhol01/mp01spriteWarhol01.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read96
+ xpos 6780
+ ypos 6249
+}
+Median {
+ size 9
+ ignore_top_line false
+ name Median17
+ xpos 6780
+ ypos 6374
+}
+Transform {
+ translate {-300 0}
+ center {640 360}
+ name Transform89
+ xpos 6780
+ ypos 6566
+}
+Merge2 {
+ inputs 6+1
+ name Merge33
+ xpos 7000
+ ypos 6974
+}
+Reformat {
+ type scale
+ flop true
+ name Reformat9
+ xpos 7000
+ ypos 7070
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteWarhol01/mp01spriteWarhol01.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read97
+ xpos 9310
+ ypos 6249
+}
+Emboss {
+ optype effect
+ Angle 184
+ Width 10
+ name Emboss9
+ tile_color 0xff0000ff
+ xpos 9310
+ ypos 6398
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform90
+ xpos 9310
+ ypos 6566
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteWarhol01/mp01spriteWarhol01.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read98
+ xpos 9090
+ ypos 6249
+}
+Median {
+ size 10
+ ignore_top_line false
+ name Median18
+ tile_color 0xff0000ff
+ xpos 9090
+ ypos 6398
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform91
+ xpos 9090
+ ypos 6566
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteWarhol01/mp01spriteWarhol01.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read99
+ xpos 8870
+ ypos 6249
+}
+EdgeExtend {
+ useGPUIfAvailable false
+ erode 11
+ name EdgeExtend9
+ tile_color 0xff0000ff
+ xpos 8870
+ ypos 6398
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform92
+ xpos 8870
+ ypos 6566
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteWarhol01/mp01spriteWarhol01.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read100
+ xpos 8210
+ ypos 6249
+}
+Soften {
+ amount 0.735
+ size 45.5
+ name Soften9
+ tile_color 0xff0000ff
+ xpos 8210
+ ypos 6398
+}
+Dot {
+ name Dot18
+ xpos 8244
+ ypos 6570
+}
+push 0
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteWarhol01/mp01spriteWarhol01.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read101
+ xpos 8650
+ ypos 6249
+}
+Laplacian {
+ size 35
+ name Laplacian9
+ tile_color 0xff0000ff
+ xpos 8650
+ ypos 6398
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform93
+ xpos 8650
+ ypos 6566
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteWarhol01/mp01spriteWarhol01.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read102
+ xpos 8430
+ ypos 6249
+}
+Blocky {
+ name Blocky9
+ tile_color 0xff0000ff
+ xpos 8430
+ ypos 6398
+}
+Transform {
+ translate {-300 0}
+ center {640 360}
+ name Transform94
+ xpos 8430
+ ypos 6566
+}
+Merge2 {
+ inputs 6+1
+ name Merge34
+ xpos 8650
+ ypos 6974
+}
+Reformat {
+ type scale
+ flop true
+ name Reformat10
+ xpos 8650
+ ypos 7070
+}
+Merge2 {
+ inputs 2
+ name Merge35
+ xpos 7880
+ ypos 7646
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteWarhol01/mp01spriteWarhol01.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read103
+ xpos 4360
+ ypos 6249
+}
+Sharpen {
+ size 68
+ name Sharpen10
+ xpos 4360
+ ypos 6374
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform95
+ xpos 4360
+ ypos 6590
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteWarhol01/mp01spriteWarhol01.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read104
+ xpos 4140
+ ypos 6249
+}
+Glow2 {
+ name Glow10
+ xpos 4140
+ ypos 6374
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform96
+ xpos 4140
+ ypos 6590
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteWarhol01/mp01spriteWarhol01.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read105
+ xpos 3920
+ ypos 6249
+}
+EdgeDetectWrapper {
+ output rgba.red
+ name EdgeDetect10
+ xpos 3920
+ ypos 6374
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform97
+ xpos 3920
+ ypos 6590
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteWarhol01/mp01spriteWarhol01.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read106
+ xpos 3260
+ ypos 6249
+}
+Blur {
+ size 25
+ name Blur10
+ xpos 3260
+ ypos 6374
+}
+Dot {
+ name Dot19
+ xpos 3294
+ ypos 6594
+}
+push 0
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteWarhol01/mp01spriteWarhol01.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read107
+ xpos 3700
+ ypos 6249
+}
+DirBlurWrapper {
+ BlurType radial
+ BlurLength 20
+ name DirBlurWrapper10
+ xpos 3700
+ ypos 6374
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform98
+ xpos 3700
+ ypos 6590
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteWarhol01/mp01spriteWarhol01.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read108
+ xpos 3480
+ ypos 6249
+}
+Median {
+ size 9
+ ignore_top_line false
+ name Median19
+ xpos 3480
+ ypos 6374
+}
+Transform {
+ translate {-300 0}
+ center {640 360}
+ name Transform99
+ xpos 3480
+ ypos 6590
+}
+Merge2 {
+ inputs 6+1
+ name Merge36
+ xpos 3810
+ ypos 6950
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteWarhol01/mp01spriteWarhol01.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read109
+ xpos 6010
+ ypos 6249
+}
+Emboss {
+ optype effect
+ Angle 184
+ Width 10
+ name Emboss10
+ tile_color 0xff0000ff
+ xpos 6010
+ ypos 6374
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform100
+ xpos 6010
+ ypos 6566
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteWarhol01/mp01spriteWarhol01.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read110
+ xpos 5790
+ ypos 6249
+}
+Median {
+ size 10
+ ignore_top_line false
+ name Median20
+ tile_color 0xff0000ff
+ xpos 5790
+ ypos 6374
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform101
+ xpos 5790
+ ypos 6566
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteWarhol01/mp01spriteWarhol01.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read111
+ xpos 5570
+ ypos 6249
+}
+EdgeExtend {
+ useGPUIfAvailable false
+ erode 11
+ name EdgeExtend10
+ tile_color 0xff0000ff
+ xpos 5570
+ ypos 6374
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform102
+ xpos 5570
+ ypos 6566
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteWarhol01/mp01spriteWarhol01.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read112
+ xpos 4910
+ ypos 6249
+}
+Soften {
+ amount 0.735
+ size 45.5
+ name Soften10
+ tile_color 0xff0000ff
+ xpos 4910
+ ypos 6374
+}
+Dot {
+ name Dot20
+ xpos 4944
+ ypos 6570
+}
+push 0
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteWarhol01/mp01spriteWarhol01.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read113
+ xpos 5350
+ ypos 6249
+}
+Laplacian {
+ size 35
+ name Laplacian10
+ tile_color 0xff0000ff
+ xpos 5350
+ ypos 6374
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform103
+ xpos 5350
+ ypos 6566
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteWarhol01/mp01spriteWarhol01.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read114
+ xpos 5130
+ ypos 6249
+}
+Blocky {
+ name Blocky10
+ tile_color 0xff0000ff
+ xpos 5130
+ ypos 6374
+}
+Transform {
+ translate {-300 0}
+ center {640 360}
+ name Transform104
+ xpos 5130
+ ypos 6566
+}
+Merge2 {
+ inputs 6+1
+ name Merge37
+ xpos 5460
+ ypos 6950
+}
+Merge2 {
+ inputs 2
+ name Merge38
+ xpos 4690
+ ypos 7478
+}
+Merge2 {
+ inputs 2
+ name Merge39
+ xpos 6340
+ ypos 8678
+}
+ColorWheel {
+ inputs 0
+ format "1280 720 0 0 1280 720 1 HD_720"
+ gamma 0.45
+ name ColorWheel5
+ xpos 8760
+ ypos 8655
+}
+Transform {
+ scale 1.5
+ center {640 360}
+ name Transform105
+ xpos 8760
+ ypos 8774
+}
+Crop {
+ box {0 0 1280 720}
+ name Crop5
+ xpos 8760
+ ypos 8846
+}
+Grade {
+ white 0.8
+ gamma 0.62
+ name Grade5
+ xpos 8760
+ ypos 8918
+}
+Merge2 {
+ inputs 2
+ bbox B
+ name Merge40
+ xpos 7550
+ ypos 9638
+}
+Crop {
+ box {{width/9*slice} 0 {width/9*(slice+1)} 720}
+ name Crop14
+ xpos 19540
+ ypos 10382
+ addUserKnob {20 User}
+ addUserKnob {3 slice}
+ slice 3
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteWarhol02/mp01spriteWarhol02.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read115
+ xpos 14920
+ ypos 6249
+}
+Sharpen {
+ size 68
+ name Sharpen12
+ xpos 14920
+ ypos 6398
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform106
+ xpos 14920
+ ypos 6566
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteWarhol02/mp01spriteWarhol02.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read116
+ xpos 14700
+ ypos 6249
+}
+Glow2 {
+ name Glow12
+ xpos 14700
+ ypos 6398
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform107
+ xpos 14700
+ ypos 6566
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteWarhol02/mp01spriteWarhol02.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read117
+ xpos 14480
+ ypos 6249
+}
+EdgeDetectWrapper {
+ output rgba.red
+ name EdgeDetect12
+ xpos 14480
+ ypos 6398
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform108
+ xpos 14480
+ ypos 6566
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteWarhol02/mp01spriteWarhol02.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read118
+ xpos 13820
+ ypos 6249
+}
+Blur {
+ size 25
+ name Blur12
+ xpos 13820
+ ypos 6398
+}
+Dot {
+ name Dot21
+ xpos 13854
+ ypos 6570
+}
+push 0
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteWarhol02/mp01spriteWarhol02.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read119
+ xpos 14260
+ ypos 6249
+}
+DirBlurWrapper {
+ BlurType radial
+ BlurLength 20
+ name DirBlurWrapper12
+ xpos 14260
+ ypos 6398
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform109
+ xpos 14260
+ ypos 6566
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteWarhol02/mp01spriteWarhol02.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read120
+ xpos 14040
+ ypos 6249
+}
+Median {
+ size 9
+ ignore_top_line false
+ name Median23
+ xpos 14040
+ ypos 6398
+}
+Transform {
+ translate {-300 0}
+ center {640 360}
+ name Transform110
+ xpos 14040
+ ypos 6566
+}
+Merge2 {
+ inputs 6+1
+ name Merge41
+ xpos 14260
+ ypos 6974
+}
+Reformat {
+ type scale
+ flop true
+ name Reformat11
+ xpos 14260
+ ypos 7070
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteWarhol02/mp01spriteWarhol02.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read121
+ xpos 16570
+ ypos 6249
+}
+Emboss {
+ optype effect
+ Angle 184
+ Width 10
+ name Emboss12
+ tile_color 0xff0000ff
+ xpos 16570
+ ypos 6398
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform111
+ xpos 16570
+ ypos 6566
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteWarhol02/mp01spriteWarhol02.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read122
+ xpos 16350
+ ypos 6249
+}
+Median {
+ size 10
+ ignore_top_line false
+ name Median24
+ tile_color 0xff0000ff
+ xpos 16350
+ ypos 6398
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform112
+ xpos 16350
+ ypos 6566
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteWarhol02/mp01spriteWarhol02.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read123
+ xpos 16130
+ ypos 6249
+}
+EdgeExtend {
+ useGPUIfAvailable false
+ erode 11
+ name EdgeExtend12
+ tile_color 0xff0000ff
+ xpos 16130
+ ypos 6398
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform113
+ xpos 16130
+ ypos 6566
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteWarhol02/mp01spriteWarhol02.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read124
+ xpos 15470
+ ypos 6249
+}
+Soften {
+ amount 0.735
+ size 45.5
+ name Soften12
+ tile_color 0xff0000ff
+ xpos 15470
+ ypos 6398
+}
+Dot {
+ name Dot22
+ xpos 15504
+ ypos 6570
+}
+push 0
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteWarhol02/mp01spriteWarhol02.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read125
+ xpos 15910
+ ypos 6249
+}
+Laplacian {
+ size 35
+ name Laplacian12
+ tile_color 0xff0000ff
+ xpos 15910
+ ypos 6398
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform114
+ xpos 15910
+ ypos 6566
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteWarhol02/mp01spriteWarhol02.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read126
+ xpos 15690
+ ypos 6249
+}
+Blocky {
+ name Blocky12
+ tile_color 0xff0000ff
+ xpos 15690
+ ypos 6398
+}
+Transform {
+ translate {-300 0}
+ center {640 360}
+ name Transform115
+ xpos 15690
+ ypos 6566
+}
+Merge2 {
+ inputs 6+1
+ name Merge42
+ xpos 15910
+ ypos 6974
+}
+Reformat {
+ type scale
+ flop true
+ name Reformat12
+ xpos 15910
+ ypos 7070
+}
+Merge2 {
+ inputs 2
+ name Merge43
+ xpos 15140
+ ypos 7646
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteWarhol02/mp01spriteWarhol02.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read127
+ xpos 11620
+ ypos 6249
+}
+Sharpen {
+ size 68
+ name Sharpen11
+ xpos 11620
+ ypos 6398
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform116
+ xpos 11620
+ ypos 6590
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteWarhol02/mp01spriteWarhol02.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read128
+ xpos 11400
+ ypos 6249
+}
+Glow2 {
+ name Glow11
+ xpos 11400
+ ypos 6398
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform117
+ xpos 11400
+ ypos 6590
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteWarhol02/mp01spriteWarhol02.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read129
+ xpos 11180
+ ypos 6249
+}
+EdgeDetectWrapper {
+ output rgba.red
+ name EdgeDetect11
+ xpos 11180
+ ypos 6398
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform118
+ xpos 11180
+ ypos 6590
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteWarhol02/mp01spriteWarhol02.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read130
+ xpos 10520
+ ypos 6249
+}
+Blur {
+ size 25
+ name Blur11
+ xpos 10520
+ ypos 6398
+}
+Dot {
+ name Dot23
+ xpos 10554
+ ypos 6594
+}
+push 0
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteWarhol02/mp01spriteWarhol02.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read131
+ xpos 10960
+ ypos 6249
+}
+DirBlurWrapper {
+ BlurType radial
+ BlurLength 20
+ name DirBlurWrapper11
+ xpos 10960
+ ypos 6398
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform119
+ xpos 10960
+ ypos 6590
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteWarhol02/mp01spriteWarhol02.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read132
+ xpos 10740
+ ypos 6249
+}
+Median {
+ size 9
+ ignore_top_line false
+ name Median21
+ xpos 10740
+ ypos 6398
+}
+Transform {
+ translate {-300 0}
+ center {640 360}
+ name Transform120
+ xpos 10740
+ ypos 6590
+}
+Merge2 {
+ inputs 6+1
+ name Merge44
+ xpos 11070
+ ypos 6950
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteWarhol02/mp01spriteWarhol02.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read133
+ xpos 13270
+ ypos 6249
+}
+Emboss {
+ optype effect
+ Angle 184
+ Width 10
+ name Emboss11
+ tile_color 0xff0000ff
+ xpos 13270
+ ypos 6398
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform121
+ xpos 13270
+ ypos 6566
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteWarhol02/mp01spriteWarhol02.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read134
+ xpos 13050
+ ypos 6249
+}
+Median {
+ size 10
+ ignore_top_line false
+ name Median22
+ tile_color 0xff0000ff
+ xpos 13050
+ ypos 6398
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform122
+ xpos 13050
+ ypos 6566
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteWarhol02/mp01spriteWarhol02.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read135
+ xpos 12830
+ ypos 6249
+}
+EdgeExtend {
+ useGPUIfAvailable false
+ erode 11
+ name EdgeExtend11
+ tile_color 0xff0000ff
+ xpos 12830
+ ypos 6398
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform123
+ xpos 12830
+ ypos 6566
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteWarhol02/mp01spriteWarhol02.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read136
+ xpos 12170
+ ypos 6249
+}
+Soften {
+ amount 0.735
+ size 45.5
+ name Soften11
+ tile_color 0xff0000ff
+ xpos 12170
+ ypos 6398
+}
+Dot {
+ name Dot24
+ xpos 12204
+ ypos 6570
+}
+push 0
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteWarhol02/mp01spriteWarhol02.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read137
+ xpos 12610
+ ypos 6249
+}
+Laplacian {
+ size 35
+ name Laplacian11
+ tile_color 0xff0000ff
+ xpos 12610
+ ypos 6398
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform124
+ xpos 12610
+ ypos 6566
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteWarhol02/mp01spriteWarhol02.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read138
+ xpos 12390
+ ypos 6249
+}
+Blocky {
+ name Blocky11
+ tile_color 0xff0000ff
+ xpos 12390
+ ypos 6398
+}
+Transform {
+ translate {-300 0}
+ center {640 360}
+ name Transform125
+ xpos 12390
+ ypos 6566
+}
+Merge2 {
+ inputs 6+1
+ name Merge45
+ xpos 12720
+ ypos 6950
+}
+Merge2 {
+ inputs 2
+ name Merge46
+ xpos 11950
+ ypos 7478
+}
+Merge2 {
+ inputs 2
+ name Merge47
+ xpos 13600
+ ypos 8678
+}
+ColorWheel {
+ inputs 0
+ format "1280 720 0 0 1280 720 1 HD_720"
+ gamma 0.45
+ name ColorWheel6
+ xpos 16020
+ ypos 8655
+}
+Transform {
+ scale 1.5
+ center {640 360}
+ name Transform126
+ xpos 16020
+ ypos 8774
+}
+Crop {
+ box {0 0 1280 720}
+ name Crop6
+ xpos 16020
+ ypos 8846
+}
+Grade {
+ white 0.8
+ gamma 0.62
+ name Grade6
+ xpos 16020
+ ypos 8918
+}
+Merge2 {
+ inputs 2
+ bbox B
+ name Merge48
+ xpos 14810
+ ypos 9638
+}
+Crop {
+ box {{width/9*slice} 0 {width/9*(slice+1)} 720}
+ name Crop15
+ xpos 20200
+ ypos 10382
+ addUserKnob {20 User}
+ addUserKnob {3 slice}
+ slice 5
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spritePurple/mp01spritePurple.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read67
+ xpos 620
+ ypos 6225
+}
+Sharpen {
+ size 68
+ name Sharpen7
+ xpos 620
+ ypos 6350
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform64
+ xpos 620
+ ypos 6542
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spritePurple/mp01spritePurple.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read68
+ xpos 400
+ ypos 6225
+}
+Glow2 {
+ name Glow7
+ xpos 400
+ ypos 6350
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform65
+ xpos 400
+ ypos 6542
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spritePurple/mp01spritePurple.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read69
+ xpos 180
+ ypos 6225
+}
+EdgeDetectWrapper {
+ output rgba.red
+ name EdgeDetect7
+ xpos 180
+ ypos 6350
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform66
+ xpos 180
+ ypos 6542
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spritePurple/mp01spritePurple.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read70
+ xpos -480
+ ypos 6225
+}
+Blur {
+ size 25
+ name Blur7
+ xpos -480
+ ypos 6350
+}
+Dot {
+ name Dot13
+ xpos -446
+ ypos 6546
+}
+push 0
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spritePurple/mp01spritePurple.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read71
+ xpos -40
+ ypos 6225
+}
+DirBlurWrapper {
+ BlurType radial
+ BlurLength 20
+ name DirBlurWrapper7
+ xpos -40
+ ypos 6350
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform67
+ xpos -40
+ ypos 6542
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spritePurple/mp01spritePurple.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read72
+ xpos -260
+ ypos 6225
+}
+Median {
+ size 9
+ ignore_top_line false
+ name Median13
+ xpos -260
+ ypos 6350
+}
+Transform {
+ translate {-300 0}
+ center {640 360}
+ name Transform68
+ xpos -260
+ ypos 6542
+}
+Merge2 {
+ inputs 6+1
+ name Merge25
+ xpos -40
+ ypos 6950
+}
+Reformat {
+ type scale
+ flop true
+ name Reformat7
+ xpos -40
+ ypos 7046
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spritePurple/mp01spritePurple.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read73
+ xpos 2270
+ ypos 6225
+}
+Emboss {
+ optype effect
+ Angle 184
+ Width 10
+ name Emboss7
+ tile_color 0xff0000ff
+ xpos 2270
+ ypos 6350
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform69
+ xpos 2270
+ ypos 6542
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spritePurple/mp01spritePurple.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read74
+ xpos 2050
+ ypos 6225
+}
+Median {
+ size 10
+ ignore_top_line false
+ name Median14
+ tile_color 0xff0000ff
+ xpos 2050
+ ypos 6350
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform70
+ xpos 2050
+ ypos 6542
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spritePurple/mp01spritePurple.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read75
+ xpos 1830
+ ypos 6225
+}
+EdgeExtend {
+ useGPUIfAvailable false
+ erode 11
+ name EdgeExtend7
+ tile_color 0xff0000ff
+ xpos 1830
+ ypos 6350
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform71
+ xpos 1830
+ ypos 6542
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spritePurple/mp01spritePurple.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read76
+ xpos 1170
+ ypos 6225
+}
+Soften {
+ amount 0.735
+ size 45.5
+ name Soften7
+ tile_color 0xff0000ff
+ xpos 1170
+ ypos 6350
+}
+Dot {
+ name Dot14
+ xpos 1204
+ ypos 6546
+}
+push 0
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spritePurple/mp01spritePurple.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read77
+ xpos 1610
+ ypos 6225
+}
+Laplacian {
+ size 35
+ name Laplacian7
+ tile_color 0xff0000ff
+ xpos 1610
+ ypos 6350
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform72
+ xpos 1610
+ ypos 6542
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spritePurple/mp01spritePurple.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read78
+ xpos 1390
+ ypos 6225
+}
+Blocky {
+ name Blocky7
+ tile_color 0xff0000ff
+ xpos 1390
+ ypos 6350
+}
+Transform {
+ translate {-300 0}
+ center {640 360}
+ name Transform73
+ xpos 1390
+ ypos 6542
+}
+Merge2 {
+ inputs 6+1
+ name Merge26
+ xpos 1610
+ ypos 6950
+}
+Reformat {
+ type scale
+ flop true
+ name Reformat8
+ xpos 1610
+ ypos 7046
+}
+Merge2 {
+ inputs 2
+ name Merge27
+ xpos 840
+ ypos 7622
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spritePurple/mp01spritePurple.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read79
+ xpos -2680
+ ypos 6225
+}
+Sharpen {
+ size 68
+ name Sharpen8
+ xpos -2680
+ ypos 6350
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform74
+ xpos -2680
+ ypos 6566
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spritePurple/mp01spritePurple.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read80
+ xpos -2900
+ ypos 6225
+}
+Glow2 {
+ name Glow8
+ xpos -2900
+ ypos 6350
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform75
+ xpos -2900
+ ypos 6566
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spritePurple/mp01spritePurple.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read81
+ xpos -3120
+ ypos 6225
+}
+EdgeDetectWrapper {
+ output rgba.red
+ name EdgeDetect8
+ xpos -3120
+ ypos 6350
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform76
+ xpos -3120
+ ypos 6566
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spritePurple/mp01spritePurple.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read82
+ xpos -3780
+ ypos 6225
+}
+Blur {
+ size 25
+ name Blur8
+ xpos -3780
+ ypos 6350
+}
+Dot {
+ name Dot15
+ xpos -3746
+ ypos 6570
+}
+push 0
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spritePurple/mp01spritePurple.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read83
+ xpos -3340
+ ypos 6225
+}
+DirBlurWrapper {
+ BlurType radial
+ BlurLength 20
+ name DirBlurWrapper8
+ xpos -3340
+ ypos 6350
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform77
+ xpos -3340
+ ypos 6566
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spritePurple/mp01spritePurple.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read84
+ xpos -3560
+ ypos 6225
+}
+Median {
+ size 9
+ ignore_top_line false
+ name Median15
+ xpos -3560
+ ypos 6350
+}
+Transform {
+ translate {-300 0}
+ center {640 360}
+ name Transform78
+ xpos -3560
+ ypos 6566
+}
+Merge2 {
+ inputs 6+1
+ name Merge28
+ xpos -3230
+ ypos 6926
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spritePurple/mp01spritePurple.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read85
+ xpos -1030
+ ypos 6225
+}
+Emboss {
+ optype effect
+ Angle 184
+ Width 10
+ name Emboss8
+ tile_color 0xff0000ff
+ xpos -1030
+ ypos 6350
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform79
+ xpos -1030
+ ypos 6542
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spritePurple/mp01spritePurple.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read86
+ xpos -1250
+ ypos 6225
+}
+Median {
+ size 10
+ ignore_top_line false
+ name Median16
+ tile_color 0xff0000ff
+ xpos -1250
+ ypos 6350
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform80
+ xpos -1250
+ ypos 6542
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spritePurple/mp01spritePurple.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read87
+ xpos -1470
+ ypos 6225
+}
+EdgeExtend {
+ useGPUIfAvailable false
+ erode 11
+ name EdgeExtend8
+ tile_color 0xff0000ff
+ xpos -1470
+ ypos 6350
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform81
+ xpos -1470
+ ypos 6542
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spritePurple/mp01spritePurple.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read88
+ xpos -2130
+ ypos 6225
+}
+Soften {
+ amount 0.735
+ size 45.5
+ name Soften8
+ tile_color 0xff0000ff
+ xpos -2130
+ ypos 6350
+}
+Dot {
+ name Dot16
+ xpos -2096
+ ypos 6546
+}
+push 0
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spritePurple/mp01spritePurple.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read89
+ xpos -1690
+ ypos 6225
+}
+Laplacian {
+ size 35
+ name Laplacian8
+ tile_color 0xff0000ff
+ xpos -1690
+ ypos 6350
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform82
+ xpos -1690
+ ypos 6542
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spritePurple/mp01spritePurple.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read90
+ xpos -1910
+ ypos 6225
+}
+Blocky {
+ name Blocky8
+ tile_color 0xff0000ff
+ xpos -1910
+ ypos 6350
+}
+Transform {
+ translate {-300 0}
+ center {640 360}
+ name Transform83
+ xpos -1910
+ ypos 6542
+}
+Merge2 {
+ inputs 6+1
+ name Merge29
+ xpos -1580
+ ypos 6926
+}
+Merge2 {
+ inputs 2
+ name Merge30
+ xpos -2350
+ ypos 7454
+}
+Merge2 {
+ inputs 2
+ name Merge31
+ xpos -700
+ ypos 8654
+}
+ColorWheel {
+ inputs 0
+ format "1280 720 0 0 1280 720 1 HD_720"
+ gamma 0.45
+ name ColorWheel4
+ xpos 1720
+ ypos 8631
+}
+Transform {
+ scale 1.5
+ center {640 360}
+ name Transform84
+ xpos 1720
+ ypos 8750
+}
+Crop {
+ box {0 0 1280 720}
+ name Crop4
+ xpos 1720
+ ypos 8822
+}
+Grade {
+ white 0.8
+ gamma 0.62
+ name Grade4
+ xpos 1720
+ ypos 8894
+}
+Merge2 {
+ inputs 2
+ bbox B
+ name Merge32
+ xpos 510
+ ypos 9614
+}
+Crop {
+ box {{width/9*slice} 0 {width/9*(slice+1)} 720}
+ name Crop13
+ xpos 18770
+ ypos 10406
+ addUserKnob {20 User}
+ addUserKnob {3 slice}
+ slice 2
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteNoir/mp01spriteNoir.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read187
+ xpos 15030
+ ypos 11097
+}
+Sharpen {
+ size 68
+ name Sharpen18
+ xpos 15030
+ ypos 11219
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform169
+ xpos 15030
+ ypos 11414
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteNoir/mp01spriteNoir.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read188
+ xpos 14810
+ ypos 11097
+}
+Glow2 {
+ name Glow18
+ xpos 14813
+ ypos 11223
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform170
+ xpos 14810
+ ypos 11414
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteNoir/mp01spriteNoir.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read189
+ xpos 14590
+ ypos 11097
+}
+EdgeDetectWrapper {
+ output rgba.red
+ name EdgeDetect18
+ xpos 14598
+ ypos 11227
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform171
+ xpos 14590
+ ypos 11414
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteNoir/mp01spriteNoir.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read190
+ xpos 13930
+ ypos 11097
+}
+Blur {
+ size 25
+ name Blur18
+ xpos 13934
+ ypos 11221
+}
+Dot {
+ name Dot33
+ xpos 13964
+ ypos 11418
+}
+push 0
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteNoir/mp01spriteNoir.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read191
+ xpos 14370
+ ypos 11097
+}
+DirBlurWrapper {
+ BlurType radial
+ BlurLength 20
+ name DirBlurWrapper18
+ xpos 14362
+ ypos 11220
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform172
+ xpos 14370
+ ypos 11414
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteNoir/mp01spriteNoir.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read192
+ xpos 14150
+ ypos 11097
+}
+Median {
+ size 9
+ ignore_top_line false
+ name Median35
+ xpos 14154
+ ypos 11220
+}
+Transform {
+ translate {-300 0}
+ center {640 360}
+ name Transform173
+ xpos 14150
+ ypos 11414
+}
+Merge2 {
+ inputs 6+1
+ name Merge65
+ xpos 14370
+ ypos 11822
+}
+Reformat {
+ type scale
+ flop true
+ name Reformat17
+ xpos 14370
+ ypos 11918
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteNoir/mp01spriteNoir.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read193
+ xpos 16680
+ ypos 11097
+}
+Emboss {
+ optype effect
+ Angle 184
+ Width 10
+ name Emboss18
+ tile_color 0xff0000ff
+ xpos 16683
+ ypos 11229
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform174
+ xpos 16680
+ ypos 11414
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteNoir/mp01spriteNoir.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read194
+ xpos 16460
+ ypos 11097
+}
+Median {
+ size 10
+ ignore_top_line false
+ name Median36
+ tile_color 0xff0000ff
+ xpos 16458
+ ypos 11233
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform175
+ xpos 16460
+ ypos 11414
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteNoir/mp01spriteNoir.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read195
+ xpos 16240
+ ypos 11097
+}
+EdgeExtend {
+ useGPUIfAvailable false
+ erode 11
+ name EdgeExtend18
+ tile_color 0xff0000ff
+ xpos 16240
+ ypos 11230
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform176
+ xpos 16240
+ ypos 11414
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteNoir/mp01spriteNoir.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read196
+ xpos 15580
+ ypos 11097
+}
+Soften {
+ amount 0.735
+ size 45.5
+ name Soften18
+ tile_color 0xff0000ff
+ xpos 15576
+ ypos 11232
+}
+Dot {
+ name Dot34
+ xpos 15614
+ ypos 11418
+}
+push 0
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteNoir/mp01spriteNoir.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read197
+ xpos 16020
+ ypos 11097
+}
+Laplacian {
+ size 35
+ name Laplacian18
+ tile_color 0xff0000ff
+ xpos 16009
+ ypos 11231
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform177
+ xpos 16020
+ ypos 11414
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteNoir/mp01spriteNoir.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read198
+ xpos 15800
+ ypos 11097
+}
+Blocky {
+ name Blocky18
+ tile_color 0xff0000ff
+ xpos 15796
+ ypos 11230
+}
+Transform {
+ translate {-300 0}
+ center {640 360}
+ name Transform178
+ xpos 15800
+ ypos 11414
+}
+Merge2 {
+ inputs 6+1
+ name Merge66
+ xpos 16020
+ ypos 11822
+}
+Reformat {
+ type scale
+ flop true
+ name Reformat18
+ xpos 16020
+ ypos 11918
+}
+Merge2 {
+ inputs 2
+ name Merge67
+ xpos 15250
+ ypos 12494
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteNoir/mp01spriteNoir.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read229
+ xpos 11730
+ ypos 11097
+}
+Sharpen {
+ size 68
+ name Sharpen17
+ xpos 11730
+ ypos 11222
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform179
+ xpos 11730
+ ypos 11438
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteNoir/mp01spriteNoir.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read230
+ xpos 11510
+ ypos 11097
+}
+Glow2 {
+ name Glow17
+ xpos 11510
+ ypos 11222
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform180
+ xpos 11510
+ ypos 11438
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteNoir/mp01spriteNoir.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read231
+ xpos 11290
+ ypos 11097
+}
+EdgeDetectWrapper {
+ output rgba.red
+ name EdgeDetect17
+ xpos 11290
+ ypos 11222
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform181
+ xpos 11290
+ ypos 11438
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteNoir/mp01spriteNoir.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read232
+ xpos 10630
+ ypos 11097
+}
+Blur {
+ size 25
+ name Blur17
+ xpos 10630
+ ypos 11222
+}
+Dot {
+ name Dot35
+ xpos 10664
+ ypos 11442
+}
+push 0
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteNoir/mp01spriteNoir.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read240
+ xpos 11070
+ ypos 11097
+}
+DirBlurWrapper {
+ BlurType radial
+ BlurLength 20
+ name DirBlurWrapper17
+ xpos 11070
+ ypos 11222
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform182
+ xpos 11070
+ ypos 11438
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteNoir/mp01spriteNoir.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read233
+ xpos 10850
+ ypos 11097
+}
+Median {
+ size 9
+ ignore_top_line false
+ name Median33
+ xpos 10850
+ ypos 11222
+}
+Transform {
+ translate {-300 0}
+ center {640 360}
+ name Transform183
+ xpos 10850
+ ypos 11438
+}
+Merge2 {
+ inputs 6+1
+ name Merge68
+ xpos 11180
+ ypos 11798
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteNoir/mp01spriteNoir.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read205
+ xpos 13380
+ ypos 11097
+}
+Emboss {
+ optype effect
+ Angle 184
+ Width 10
+ name Emboss17
+ tile_color 0xff0000ff
+ xpos 13380
+ ypos 11222
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform184
+ xpos 13380
+ ypos 11414
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteNoir/mp01spriteNoir.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read206
+ xpos 13160
+ ypos 11097
+}
+Median {
+ size 10
+ ignore_top_line false
+ name Median34
+ tile_color 0xff0000ff
+ xpos 13160
+ ypos 11222
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform185
+ xpos 13160
+ ypos 11414
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteNoir/mp01spriteNoir.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read207
+ xpos 12940
+ ypos 11097
+}
+EdgeExtend {
+ useGPUIfAvailable false
+ erode 11
+ name EdgeExtend17
+ tile_color 0xff0000ff
+ xpos 12940
+ ypos 11223
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform186
+ xpos 12940
+ ypos 11414
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteNoir/mp01spriteNoir.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read237
+ xpos 12280
+ ypos 11097
+}
+Soften {
+ amount 0.735
+ size 45.5
+ name Soften17
+ tile_color 0xff0000ff
+ xpos 12280
+ ypos 11223
+}
+Dot {
+ name Dot36
+ xpos 12314
+ ypos 11418
+}
+push 0
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteNoir/mp01spriteNoir.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read209
+ xpos 12720
+ ypos 11097
+}
+Laplacian {
+ size 35
+ name Laplacian17
+ tile_color 0xff0000ff
+ xpos 12720
+ ypos 11223
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform187
+ xpos 12720
+ ypos 11414
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteNoir/mp01spriteNoir.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read210
+ xpos 12500
+ ypos 11097
+}
+Blocky {
+ name Blocky17
+ tile_color 0xff0000ff
+ xpos 12500
+ ypos 11223
+}
+Transform {
+ translate {-300 0}
+ center {640 360}
+ name Transform188
+ xpos 12500
+ ypos 11414
+}
+Merge2 {
+ inputs 6+1
+ name Merge69
+ xpos 12830
+ ypos 11798
+}
+Merge2 {
+ inputs 2
+ name Merge70
+ xpos 12060
+ ypos 12326
+}
+Merge2 {
+ inputs 2
+ name Merge71
+ xpos 13710
+ ypos 13526
+}
+ColorWheel {
+ inputs 0
+ format "1280 720 0 0 1280 720 1 HD_720"
+ gamma 0.45
+ name ColorWheel9
+ xpos 16130
+ ypos 13503
+}
+Transform {
+ scale 1.5
+ center {640 360}
+ name Transform189
+ xpos 16130
+ ypos 13622
+}
+Crop {
+ box {0 0 1280 720}
+ name Crop9
+ xpos 16130
+ ypos 13694
+}
+Grade {
+ white 0.8
+ gamma 0.62
+ name Grade9
+ xpos 16130
+ ypos 13766
+}
+Merge2 {
+ inputs 2
+ bbox B
+ name Merge72
+ xpos 14920
+ ypos 14486
+}
+Crop {
+ box {{width/9*slice} 0 {width/9*(slice+1)} 720}
+ name Crop18
+ xpos 20200
+ ypos 15302
+ addUserKnob {20 User}
+ addUserKnob {3 slice}
+ slice 8
+}
+push 0
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spritePsychadelic01/mp01spritePsychadelic01.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read288
+ xpos 7880
+ ypos 11121
+}
+Sharpen {
+ size 68
+ name Sharpen15
+ xpos 7880
+ ypos 11246
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform148
+ xpos 7880
+ ypos 11438
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spritePsychadelic01/mp01spritePsychadelic01.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read265
+ xpos 7660
+ ypos 11121
+}
+Glow2 {
+ name Glow15
+ xpos 7660
+ ypos 11246
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform149
+ xpos 7660
+ ypos 11438
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spritePsychadelic01/mp01spritePsychadelic01.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read266
+ xpos 7440
+ ypos 11121
+}
+EdgeDetectWrapper {
+ output rgba.red
+ name EdgeDetect15
+ xpos 7440
+ ypos 11246
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform150
+ xpos 7440
+ ypos 11438
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spritePsychadelic01/mp01spritePsychadelic01.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read267
+ xpos 6780
+ ypos 11121
+}
+Blur {
+ size 25
+ name Blur15
+ xpos 6780
+ ypos 11246
+}
+Dot {
+ name Dot29
+ xpos 6814
+ ypos 11442
+}
+push 0
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spritePsychadelic01/mp01spritePsychadelic01.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read268
+ xpos 7220
+ ypos 11121
+}
+DirBlurWrapper {
+ BlurType radial
+ BlurLength 20
+ name DirBlurWrapper15
+ xpos 7220
+ ypos 11246
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform151
+ xpos 7220
+ ypos 11438
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spritePsychadelic01/mp01spritePsychadelic01.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read269
+ xpos 7000
+ ypos 11121
+}
+Median {
+ size 9
+ ignore_top_line false
+ name Median29
+ xpos 7000
+ ypos 11246
+}
+Transform {
+ translate {-300 0}
+ center {640 360}
+ name Transform152
+ xpos 7000
+ ypos 11438
+}
+Merge2 {
+ inputs 6+1
+ name Merge57
+ xpos 7220
+ ypos 11846
+}
+Reformat {
+ type scale
+ flop true
+ name Reformat15
+ xpos 7220
+ ypos 11942
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spritePsychadelic01/mp01spritePsychadelic01.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read270
+ xpos 9530
+ ypos 11121
+}
+Emboss {
+ optype effect
+ Angle 184
+ Width 10
+ name Emboss15
+ tile_color 0xff0000ff
+ xpos 9530
+ ypos 11246
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform153
+ xpos 9530
+ ypos 11438
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spritePsychadelic01/mp01spritePsychadelic01.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read271
+ xpos 9310
+ ypos 11121
+}
+Median {
+ size 10
+ ignore_top_line false
+ name Median30
+ tile_color 0xff0000ff
+ xpos 9310
+ ypos 11246
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform154
+ xpos 9310
+ ypos 11438
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spritePsychadelic01/mp01spritePsychadelic01.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read272
+ xpos 9090
+ ypos 11121
+}
+EdgeExtend {
+ useGPUIfAvailable false
+ erode 11
+ name EdgeExtend15
+ tile_color 0xff0000ff
+ xpos 9090
+ ypos 11246
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform155
+ xpos 9090
+ ypos 11438
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spritePsychadelic01/mp01spritePsychadelic01.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read273
+ xpos 8430
+ ypos 11121
+}
+Soften {
+ amount 0.735
+ size 45.5
+ name Soften15
+ tile_color 0xff0000ff
+ xpos 8430
+ ypos 11246
+}
+Dot {
+ name Dot30
+ xpos 8464
+ ypos 11442
+}
+push 0
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spritePsychadelic01/mp01spritePsychadelic01.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read274
+ xpos 8870
+ ypos 11121
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform156
+ xpos 8870
+ ypos 11438
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spritePsychadelic01/mp01spritePsychadelic01.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read275
+ xpos 8650
+ ypos 11121
+}
+Blocky {
+ name Blocky15
+ tile_color 0xff0000ff
+ xpos 8650
+ ypos 11246
+}
+Transform {
+ translate {-300 0}
+ center {640 360}
+ name Transform157
+ xpos 8650
+ ypos 11438
+}
+Merge2 {
+ inputs 6+1
+ name Merge58
+ xpos 8870
+ ypos 11846
+}
+Reformat {
+ type scale
+ flop true
+ name Reformat16
+ xpos 8870
+ ypos 11942
+}
+Merge2 {
+ inputs 2
+ name Merge59
+ xpos 8100
+ ypos 12518
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spritePsychadelic01/mp01spritePsychadelic01.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read276
+ xpos 4580
+ ypos 11121
+}
+Sharpen {
+ size 68
+ name Sharpen16
+ xpos 4580
+ ypos 11246
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform158
+ xpos 4580
+ ypos 11462
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spritePsychadelic01/mp01spritePsychadelic01.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read277
+ xpos 4360
+ ypos 11121
+}
+Glow2 {
+ name Glow16
+ xpos 4360
+ ypos 11246
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform159
+ xpos 4360
+ ypos 11462
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spritePsychadelic01/mp01spritePsychadelic01.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read278
+ xpos 4140
+ ypos 11121
+}
+EdgeDetectWrapper {
+ output rgba.red
+ name EdgeDetect16
+ xpos 4140
+ ypos 11246
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform160
+ xpos 4140
+ ypos 11462
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spritePsychadelic01/mp01spritePsychadelic01.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read279
+ xpos 3480
+ ypos 11121
+}
+Blur {
+ size 25
+ name Blur16
+ xpos 3480
+ ypos 11246
+}
+Dot {
+ name Dot31
+ xpos 3514
+ ypos 11466
+}
+push 0
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spritePsychadelic01/mp01spritePsychadelic01.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read280
+ xpos 3920
+ ypos 11121
+}
+DirBlurWrapper {
+ BlurType radial
+ BlurLength 20
+ name DirBlurWrapper16
+ xpos 3920
+ ypos 11246
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform161
+ xpos 3920
+ ypos 11462
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spritePsychadelic01/mp01spritePsychadelic01.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read281
+ xpos 3700
+ ypos 11121
+}
+Median {
+ size 9
+ ignore_top_line false
+ name Median31
+ xpos 3700
+ ypos 11246
+}
+Transform {
+ translate {-300 0}
+ center {640 360}
+ name Transform162
+ xpos 3700
+ ypos 11462
+}
+Merge2 {
+ inputs 6+1
+ name Merge60
+ xpos 4030
+ ypos 11822
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spritePsychadelic01/mp01spritePsychadelic01.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read282
+ xpos 6230
+ ypos 11121
+}
+Emboss {
+ optype effect
+ Angle 184
+ Width 10
+ name Emboss16
+ tile_color 0xff0000ff
+ xpos 6230
+ ypos 11246
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform163
+ xpos 6230
+ ypos 11438
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spritePsychadelic01/mp01spritePsychadelic01.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read283
+ xpos 6010
+ ypos 11121
+}
+Median {
+ size 10
+ ignore_top_line false
+ name Median32
+ tile_color 0xff0000ff
+ xpos 6010
+ ypos 11270
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform164
+ xpos 6010
+ ypos 11438
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spritePsychadelic01/mp01spritePsychadelic01.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read284
+ xpos 5790
+ ypos 11121
+}
+EdgeExtend {
+ useGPUIfAvailable false
+ erode 11
+ name EdgeExtend16
+ tile_color 0xff0000ff
+ xpos 5790
+ ypos 11246
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform165
+ xpos 5790
+ ypos 11438
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spritePsychadelic01/mp01spritePsychadelic01.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read285
+ xpos 5130
+ ypos 11121
+}
+Soften {
+ amount 0.735
+ size 45.5
+ name Soften16
+ tile_color 0xff0000ff
+ xpos 5130
+ ypos 11270
+}
+Dot {
+ name Dot32
+ xpos 5164
+ ypos 11442
+}
+push 0
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spritePsychadelic01/mp01spritePsychadelic01.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read286
+ xpos 5570
+ ypos 11121
+}
+Laplacian {
+ size 35
+ name Laplacian16
+ tile_color 0xff0000ff
+ xpos 5570
+ ypos 11270
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform166
+ xpos 5570
+ ypos 11438
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spritePsychadelic01/mp01spritePsychadelic01.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read287
+ xpos 5350
+ ypos 11121
+}
+Blocky {
+ name Blocky16
+ tile_color 0xff0000ff
+ xpos 5350
+ ypos 11270
+}
+Transform {
+ translate {-300 0}
+ center {640 360}
+ name Transform167
+ xpos 5350
+ ypos 11438
+}
+Merge2 {
+ inputs 6+1
+ name Merge61
+ xpos 5680
+ ypos 11822
+}
+Merge2 {
+ inputs 2
+ name Merge62
+ xpos 4910
+ ypos 12350
+}
+Merge2 {
+ inputs 2
+ name Merge63
+ xpos 6560
+ ypos 13550
+}
+ColorWheel {
+ inputs 0
+ format "1280 720 0 0 1280 720 1 HD_720"
+ gamma 0.45
+ name ColorWheel8
+ xpos 8980
+ ypos 13527
+}
+Transform {
+ scale 1.5
+ center {640 360}
+ name Transform168
+ xpos 8980
+ ypos 13646
+}
+Crop {
+ box {0 0 1280 720}
+ name Crop8
+ xpos 8980
+ ypos 13718
+}
+Grade {
+ white 0.8
+ gamma 0.62
+ name Grade8
+ xpos 8980
+ ypos 13790
+}
+Merge2 {
+ inputs 2
+ bbox B
+ name Merge64
+ xpos 7770
+ ypos 14510
+}
+Crop {
+ box {{width/9*slice} 0 {width/9*(slice+1)} 720}
+ name Crop17
+ xpos 19430
+ ypos 15302
+ addUserKnob {20 User}
+ addUserKnob {3 slice}
+ slice 7
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spritePsychadelic02/mp01spritePsychadelic02.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read241
+ xpos 730
+ ypos 11121
+}
+Sharpen {
+ size 68
+ name Sharpen13
+ xpos 730
+ ypos 11246
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform127
+ xpos 730
+ ypos 11438
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spritePsychadelic02/mp01spritePsychadelic02.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read242
+ xpos 510
+ ypos 11121
+}
+Glow2 {
+ name Glow13
+ xpos 510
+ ypos 11246
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform128
+ xpos 510
+ ypos 11438
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spritePsychadelic02/mp01spritePsychadelic02.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read243
+ xpos 290
+ ypos 11121
+}
+EdgeDetectWrapper {
+ output rgba.red
+ name EdgeDetect13
+ xpos 290
+ ypos 11246
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform129
+ xpos 290
+ ypos 11438
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spritePsychadelic02/mp01spritePsychadelic02.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read244
+ xpos -370
+ ypos 11121
+}
+Blur {
+ size 25
+ name Blur13
+ xpos -370
+ ypos 11246
+}
+Dot {
+ name Dot25
+ xpos -336
+ ypos 11442
+}
+push 0
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spritePsychadelic02/mp01spritePsychadelic02.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read245
+ xpos 70
+ ypos 11121
+}
+DirBlurWrapper {
+ BlurType radial
+ BlurLength 20
+ name DirBlurWrapper13
+ xpos 70
+ ypos 11246
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform130
+ xpos 70
+ ypos 11438
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spritePsychadelic02/mp01spritePsychadelic02.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read246
+ xpos -150
+ ypos 11121
+}
+Median {
+ size 9
+ ignore_top_line false
+ name Median25
+ xpos -150
+ ypos 11246
+}
+Transform {
+ translate {-300 0}
+ center {640 360}
+ name Transform131
+ xpos -150
+ ypos 11438
+}
+Merge2 {
+ inputs 6+1
+ name Merge49
+ xpos 70
+ ypos 11846
+}
+Reformat {
+ type scale
+ flop true
+ name Reformat13
+ xpos 70
+ ypos 11942
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spritePsychadelic02/mp01spritePsychadelic02.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read247
+ xpos 2380
+ ypos 11121
+}
+Emboss {
+ optype effect
+ Angle 184
+ Width 10
+ name Emboss13
+ tile_color 0xff0000ff
+ xpos 2380
+ ypos 11246
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform132
+ xpos 2380
+ ypos 11438
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spritePsychadelic02/mp01spritePsychadelic02.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read248
+ xpos 2160
+ ypos 11121
+}
+Median {
+ size 10
+ ignore_top_line false
+ name Median26
+ tile_color 0xff0000ff
+ xpos 2160
+ ypos 11246
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform133
+ xpos 2160
+ ypos 11438
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spritePsychadelic02/mp01spritePsychadelic02.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read249
+ xpos 1940
+ ypos 11121
+}
+EdgeExtend {
+ useGPUIfAvailable false
+ erode 11
+ name EdgeExtend13
+ tile_color 0xff0000ff
+ xpos 1940
+ ypos 11246
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform134
+ xpos 1940
+ ypos 11438
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spritePsychadelic02/mp01spritePsychadelic02.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read250
+ xpos 1280
+ ypos 11121
+}
+Soften {
+ amount 0.735
+ size 45.5
+ name Soften13
+ tile_color 0xff0000ff
+ xpos 1280
+ ypos 11246
+}
+Dot {
+ name Dot26
+ xpos 1314
+ ypos 11442
+}
+push 0
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spritePsychadelic02/mp01spritePsychadelic02.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read251
+ xpos 1720
+ ypos 11121
+}
+Laplacian {
+ size 35
+ name Laplacian13
+ tile_color 0xff0000ff
+ xpos 1720
+ ypos 11246
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform135
+ xpos 1720
+ ypos 11438
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spritePsychadelic02/mp01spritePsychadelic02.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read252
+ xpos 1500
+ ypos 11121
+}
+Blocky {
+ name Blocky13
+ tile_color 0xff0000ff
+ xpos 1500
+ ypos 11246
+}
+Transform {
+ translate {-300 0}
+ center {640 360}
+ name Transform136
+ xpos 1500
+ ypos 11438
+}
+Merge2 {
+ inputs 6+1
+ name Merge50
+ xpos 1720
+ ypos 11846
+}
+Reformat {
+ type scale
+ flop true
+ name Reformat14
+ xpos 1720
+ ypos 11942
+}
+Merge2 {
+ inputs 2
+ name Merge51
+ xpos 950
+ ypos 12518
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spritePsychadelic02/mp01spritePsychadelic02.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read253
+ xpos -2570
+ ypos 11121
+}
+Sharpen {
+ size 68
+ name Sharpen14
+ xpos -2570
+ ypos 11246
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform137
+ xpos -2570
+ ypos 11462
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spritePsychadelic02/mp01spritePsychadelic02.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read254
+ xpos -2790
+ ypos 11121
+}
+Glow2 {
+ name Glow14
+ xpos -2790
+ ypos 11246
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform138
+ xpos -2790
+ ypos 11462
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spritePsychadelic02/mp01spritePsychadelic02.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read255
+ xpos -3010
+ ypos 11121
+}
+EdgeDetectWrapper {
+ output rgba.red
+ name EdgeDetect14
+ xpos -3010
+ ypos 11246
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform139
+ xpos -3010
+ ypos 11462
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spritePsychadelic02/mp01spritePsychadelic02.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read256
+ xpos -3670
+ ypos 11121
+}
+Blur {
+ size 25
+ name Blur14
+ xpos -3670
+ ypos 11246
+}
+Dot {
+ name Dot27
+ xpos -3636
+ ypos 11466
+}
+push 0
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spritePsychadelic02/mp01spritePsychadelic02.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read257
+ xpos -3230
+ ypos 11121
+}
+DirBlurWrapper {
+ BlurType radial
+ BlurLength 20
+ name DirBlurWrapper14
+ xpos -3230
+ ypos 11246
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform140
+ xpos -3230
+ ypos 11462
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spritePsychadelic02/mp01spritePsychadelic02.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read258
+ xpos -3450
+ ypos 11121
+}
+Median {
+ size 9
+ ignore_top_line false
+ name Median27
+ xpos -3450
+ ypos 11246
+}
+Transform {
+ translate {-300 0}
+ center {640 360}
+ name Transform141
+ xpos -3450
+ ypos 11462
+}
+Merge2 {
+ inputs 6+1
+ name Merge52
+ xpos -3120
+ ypos 11822
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spritePsychadelic02/mp01spritePsychadelic02.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read264
+ xpos -920
+ ypos 11121
+}
+Emboss {
+ optype effect
+ Angle 184
+ Width 10
+ name Emboss14
+ tile_color 0xff0000ff
+ xpos -920
+ ypos 11246
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform142
+ xpos -920
+ ypos 11438
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spritePsychadelic02/mp01spritePsychadelic02.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read259
+ xpos -1140
+ ypos 11121
+}
+Median {
+ size 10
+ ignore_top_line false
+ name Median28
+ tile_color 0xff0000ff
+ xpos -1140
+ ypos 11246
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform143
+ xpos -1140
+ ypos 11438
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spritePsychadelic02/mp01spritePsychadelic02.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read260
+ xpos -1360
+ ypos 11121
+}
+EdgeExtend {
+ useGPUIfAvailable false
+ erode 11
+ name EdgeExtend14
+ tile_color 0xff0000ff
+ xpos -1360
+ ypos 11246
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform144
+ xpos -1360
+ ypos 11438
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spritePsychadelic02/mp01spritePsychadelic02.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read261
+ xpos -2020
+ ypos 11121
+}
+Soften {
+ amount 0.735
+ size 45.5
+ name Soften14
+ tile_color 0xff0000ff
+ xpos -2020
+ ypos 11246
+}
+Dot {
+ name Dot28
+ xpos -1986
+ ypos 11442
+}
+push 0
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spritePsychadelic02/mp01spritePsychadelic02.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read262
+ xpos -1580
+ ypos 11121
+}
+Laplacian {
+ size 35
+ name Laplacian14
+ tile_color 0xff0000ff
+ xpos -1580
+ ypos 11246
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform145
+ xpos -1580
+ ypos 11438
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spritePsychadelic02/mp01spritePsychadelic02.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read263
+ xpos -1800
+ ypos 11121
+}
+Blocky {
+ name Blocky14
+ tile_color 0xff0000ff
+ xpos -1800
+ ypos 11246
+}
+Transform {
+ translate {-300 0}
+ center {640 360}
+ name Transform146
+ xpos -1800
+ ypos 11438
+}
+Merge2 {
+ inputs 6+1
+ name Merge53
+ xpos -1470
+ ypos 11822
+}
+Merge2 {
+ inputs 2
+ name Merge54
+ xpos -2240
+ ypos 12350
+}
+Merge2 {
+ inputs 2
+ name Merge55
+ xpos -590
+ ypos 13550
+}
+ColorWheel {
+ inputs 0
+ format "1280 720 0 0 1280 720 1 HD_720"
+ gamma 0.45
+ name ColorWheel7
+ xpos 1830
+ ypos 13527
+}
+Transform {
+ scale 1.5
+ center {640 360}
+ name Transform147
+ xpos 1830
+ ypos 13646
+}
+Crop {
+ box {0 0 1280 720}
+ name Crop7
+ xpos 1830
+ ypos 13718
+}
+Grade {
+ white 0.8
+ gamma 0.62
+ name Grade7
+ xpos 1830
+ ypos 13790
+}
+Merge2 {
+ inputs 2
+ bbox B
+ name Merge56
+ xpos 620
+ ypos 14510
+}
+Crop {
+ box {{width/9*slice} 0 {width/9*(slice+1)} 720}
+ name Crop16
+ xpos 18660
+ ypos 15302
+ addUserKnob {20 User}
+ addUserKnob {3 slice}
+ slice 6
+}
+Merge2 {
+ inputs 9+1
+ name Merge73
+ xpos 21850
+ ypos 11654
+}
+Write {
+ file ../output/LaProfiler.####.exr
+ file_type exr
+ first_part rgba
+ version 1
+ beforeRender "file = open(nuke.script_directory()+'/../output/CurrentNukescript.txt','w+')\nfile.write(nuke.root().name())\nfile.close()"
+ name Write2
+ label "\nAll versions of The LaProfilers render to the same location on disk.\nbeforeRender callback outputs the currently rendering nukscript."
+ xpos 22177
+ ypos 11630
+}

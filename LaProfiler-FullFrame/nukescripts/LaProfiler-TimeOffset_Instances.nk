@@ -1,0 +1,4429 @@
+#! /usr/local/Nuke13.2v9/libnuke-13.2.9.so -nx
+#write_info Write1 file:"../output/LaProfiler.%04d.exr" format:"1280 720 1" chans:":rgba.red:rgba.green:rgba.blue:" framerange:"1001 1200" fps:"0" colorspace:"default (scene_linear)" datatype:"16 bit half" transfer:"unknown" views:"main" colorManagement:"OCIO"
+version 13.2 v9
+define_window_layout_xml {<?xml version="1.0" encoding="UTF-8"?>
+<layout version="1.0">
+    <window x="0" y="27" w="2715" h="1182" maximized="1" screen="0">
+        <splitter orientation="1">
+            <split size="40"/>
+            <dock id="" hideTitles="1" activePageId="Toolbar.1">
+                <page id="Toolbar.1"/>
+            </dock>
+            <split size="2052" stretch="1"/>
+            <splitter orientation="2">
+                <split size="669"/>
+                <dock id="" activePageId="Viewer.1">
+                    <page id="Viewer.1"/>
+                </dock>
+                <split size="470"/>
+                <dock id="" activePageId="DAG.1" focus="true">
+                    <page id="DAG.1"/>
+                    <page id="Curve Editor.1"/>
+                    <page id="DopeSheet.1"/>
+                </dock>
+            </splitter>
+            <split size="615"/>
+            <dock id="" activePageId="Properties.1">
+                <page id="Properties.1"/>
+                <page id="uk.co.thefoundry.backgroundrenderview.1"/>
+                <page id="uk.co.thefoundry.scripteditor.2"/>
+            </dock>
+        </splitter>
+    </window>
+</layout>
+}
+Root {
+ inputs 0
+ name /mnt/render/nukescripts/LaProfiler-TimeOffset_Instances.nk
+ project_directory "\[python \{nuke.script_directory()\}]"
+ frame 1027
+ first_frame 1001
+ last_frame 1200
+ lock_range true
+ format "1280 720 0 0 1280 720 1 HD_720"
+ proxy_type scale
+ proxy_format "1024 778 0 0 1024 778 1 1K_Super_35(full-ap)"
+ colorManagement OCIO
+ OCIO_config aces_1.2
+ defaultViewerLUT "OCIO LUTs"
+ workingSpaceLUT scene_linear
+ monitorLut ACES/sRGB
+ monitorOutLUT "sRGB (ACES)"
+ int8Lut matte_paint
+ int16Lut texture_paint
+ logLut compositing_log
+ floatLut scene_linear
+}
+BackdropNode {
+ inputs 0
+ name BackdropNode1
+ tile_color 0x388e8e00
+ label Output
+ note_font_size 42
+ xpos 23163
+ ypos 10570
+ bdwidth 735
+ bdheight 364
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01sprite/mp01sprite.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read25
+ xpos -1346
+ ypos -1458
+}
+set Nd615040 [stack 0]
+TimeOffset {
+ time_offset -500
+ time ""
+ name TimeOffset13
+ xpos 60
+ ypos -562
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform12
+ xpos 60
+ ypos -466
+}
+push $Nd615040
+TimeOffset {
+ time_offset -400
+ time ""
+ name TimeOffset14
+ xpos -160
+ ypos -562
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform13
+ xpos -160
+ ypos -466
+}
+push $Nd615040
+TimeOffset {
+ time_offset -300
+ time ""
+ name TimeOffset15
+ xpos -380
+ ypos -562
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform14
+ xpos -380
+ ypos -466
+}
+push $Nd615040
+TimeOffset {
+ time ""
+ name TimeOffset16
+ xpos -1040
+ ypos -562
+}
+Dot {
+ name Dot2
+ xpos -1006
+ ypos -462
+}
+push 0
+push $Nd615040
+TimeOffset {
+ time_offset -200
+ time ""
+ name TimeOffset17
+ xpos -600
+ ypos -562
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform15
+ xpos -600
+ ypos -466
+}
+push $Nd615040
+TimeOffset {
+ time_offset -100
+ time ""
+ name TimeOffset18
+ xpos -820
+ ypos -562
+}
+Transform {
+ translate {-300 0}
+ center {640 360}
+ name Transform16
+ xpos -820
+ ypos -466
+}
+Merge2 {
+ inputs 6+1
+ name Merge5
+ xpos -600
+ ypos -58
+}
+Reformat {
+ type scale
+ flop true
+ name Reformat1
+ xpos -600
+ ypos 38
+}
+TimeOffset {
+ time_offset -5
+ time ""
+ name TimeOffset25
+ xpos -600
+ ypos 110
+}
+push $Nd615040
+TimeOffset {
+ time_offset -1000
+ time ""
+ name TimeOffset19
+ xpos 1710
+ ypos -562
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform17
+ xpos 1710
+ ypos -466
+}
+push $Nd615040
+TimeOffset {
+ time_offset -1050
+ time ""
+ name TimeOffset20
+ xpos 1490
+ ypos -562
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform18
+ xpos 1490
+ ypos -466
+}
+push $Nd615040
+TimeOffset {
+ time_offset -1100
+ time ""
+ name TimeOffset21
+ xpos 1270
+ ypos -562
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform19
+ xpos 1270
+ ypos -466
+}
+push $Nd615040
+TimeOffset {
+ time_offset -1250
+ time ""
+ name TimeOffset22
+ xpos 610
+ ypos -562
+}
+Dot {
+ name Dot1
+ xpos 644
+ ypos -462
+}
+push 0
+push $Nd615040
+TimeOffset {
+ time_offset -1150
+ time ""
+ name TimeOffset23
+ xpos 1050
+ ypos -562
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform20
+ xpos 1050
+ ypos -466
+}
+push $Nd615040
+TimeOffset {
+ time_offset -1200
+ time ""
+ name TimeOffset24
+ xpos 830
+ ypos -562
+}
+Transform {
+ translate {-300 0}
+ center {640 360}
+ name Transform21
+ xpos 830
+ ypos -466
+}
+Merge2 {
+ inputs 6+1
+ name Merge6
+ xpos 1050
+ ypos -58
+}
+Reformat {
+ type scale
+ flop true
+ name Reformat2
+ xpos 1050
+ ypos 38
+}
+TimeOffset {
+ time_offset -5
+ time ""
+ name TimeOffset26
+ xpos 1050
+ ypos 134
+}
+Merge2 {
+ inputs 2
+ name Merge7
+ xpos 280
+ ypos 614
+}
+push $Nd615040
+TimeOffset {
+ time_offset -500
+ time ""
+ name TimeOffset6
+ xpos -3240
+ ypos -562
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform5
+ xpos -3240
+ ypos -442
+}
+push $Nd615040
+TimeOffset {
+ time_offset -400
+ time ""
+ name TimeOffset5
+ xpos -3460
+ ypos -562
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform4
+ xpos -3460
+ ypos -442
+}
+push $Nd615040
+TimeOffset {
+ time_offset -300
+ time ""
+ name TimeOffset4
+ xpos -3680
+ ypos -565
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform3
+ xpos -3680
+ ypos -442
+}
+push $Nd615040
+TimeOffset {
+ time ""
+ name TimeOffset3
+ xpos -4340
+ ypos -562
+}
+Dot {
+ name Dot4
+ xpos -4306
+ ypos -438
+}
+push 0
+push $Nd615040
+TimeOffset {
+ time_offset -200
+ time ""
+ name TimeOffset1
+ xpos -3900
+ ypos -565
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform2
+ xpos -3900
+ ypos -442
+}
+push $Nd615040
+TimeOffset {
+ time_offset -100
+ time ""
+ name TimeOffset2
+ xpos -4120
+ ypos -562
+}
+Transform {
+ translate {-300 0}
+ center {640 360}
+ name Transform1
+ xpos -4120
+ ypos -442
+}
+Merge2 {
+ inputs 6+1
+ name Merge1
+ xpos -3790
+ ypos -82
+}
+push $Nd615040
+TimeOffset {
+ time_offset -1000
+ time ""
+ name TimeOffset10
+ xpos -1590
+ ypos -562
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform6
+ xpos -1590
+ ypos -466
+}
+push $Nd615040
+TimeOffset {
+ time_offset -1050
+ time ""
+ name TimeOffset12
+ xpos -1810
+ ypos -562
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform7
+ xpos -1810
+ ypos -466
+}
+push $Nd615040
+TimeOffset {
+ time_offset -1100
+ time ""
+ name TimeOffset11
+ xpos -2030
+ ypos -562
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform8
+ xpos -2030
+ ypos -466
+}
+push $Nd615040
+TimeOffset {
+ time_offset -1250
+ time ""
+ name TimeOffset7
+ xpos -2690
+ ypos -562
+}
+Dot {
+ name Dot3
+ xpos -2656
+ ypos -462
+}
+push 0
+push $Nd615040
+TimeOffset {
+ time_offset -1150
+ time ""
+ name TimeOffset9
+ xpos -2250
+ ypos -562
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform9
+ xpos -2250
+ ypos -466
+}
+push $Nd615040
+TimeOffset {
+ time_offset -1200
+ time ""
+ name TimeOffset8
+ xpos -2470
+ ypos -562
+}
+Transform {
+ translate {-300 0}
+ center {640 360}
+ name Transform10
+ xpos -2470
+ ypos -466
+}
+Merge2 {
+ inputs 6+1
+ name Merge2
+ xpos -2140
+ ypos -82
+}
+Merge2 {
+ inputs 2
+ name Merge3
+ xpos -2910
+ ypos 446
+}
+Merge2 {
+ inputs 2
+ name Merge8
+ xpos -1370
+ ypos 1694
+}
+ColorWheel {
+ inputs 0
+ format "1280 720 0 0 1280 720 1 HD_720"
+ gamma 0.45
+ name ColorWheel1
+ xpos 1050
+ ypos 1671
+}
+Transform {
+ scale 1.5
+ center {640 360}
+ name Transform11
+ xpos 1050
+ ypos 1790
+}
+Crop {
+ box {0 0 1280 720}
+ name Crop1
+ xpos 1050
+ ypos 1862
+}
+Grade {
+ white 0.8
+ gamma 0.62
+ name Grade1
+ xpos 1050
+ ypos 1934
+}
+Merge2 {
+ inputs 2
+ bbox B
+ name Merge4
+ xpos -160
+ ypos 2894
+}
+Crop {
+ box {{width/9*slice} 0 {width/9*(slice+1)} 720}
+ name Crop10
+ xpos 18693
+ ypos 3937
+ addUserKnob {20 User}
+ addUserKnob {3 slice}
+ slice 4
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteGreen/mp01spriteGreen.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read40
+ xpos 5906
+ ypos -1450
+}
+set N14dc55b0 [stack 0]
+TimeOffset {
+ time_offset -500
+ time ""
+ name TimeOffset27
+ xpos 7210
+ ypos -586
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform22
+ xpos 7210
+ ypos -490
+}
+push $N14dc55b0
+TimeOffset {
+ time_offset -400
+ time ""
+ name TimeOffset28
+ xpos 6990
+ ypos -586
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform23
+ xpos 6990
+ ypos -490
+}
+push $N14dc55b0
+TimeOffset {
+ time_offset -300
+ time ""
+ name TimeOffset29
+ xpos 6770
+ ypos -586
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform24
+ xpos 6770
+ ypos -490
+}
+push $N14dc55b0
+TimeOffset {
+ time ""
+ name TimeOffset30
+ xpos 6110
+ ypos -586
+}
+Dot {
+ name Dot5
+ xpos 6144
+ ypos -486
+}
+push 0
+push $N14dc55b0
+TimeOffset {
+ time_offset -200
+ time ""
+ name TimeOffset31
+ xpos 6550
+ ypos -586
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform25
+ xpos 6550
+ ypos -490
+}
+push $N14dc55b0
+TimeOffset {
+ time_offset -100
+ time ""
+ name TimeOffset32
+ xpos 6330
+ ypos -586
+}
+Transform {
+ translate {-300 0}
+ center {640 360}
+ name Transform26
+ xpos 6330
+ ypos -490
+}
+Merge2 {
+ inputs 6+1
+ name Merge9
+ xpos 6550
+ ypos -82
+}
+Reformat {
+ type scale
+ flop true
+ name Reformat3
+ xpos 6550
+ ypos 14
+}
+TimeOffset {
+ time_offset -5
+ time ""
+ name TimeOffset33
+ xpos 6550
+ ypos 86
+}
+push $N14dc55b0
+TimeOffset {
+ time_offset -1000
+ time ""
+ name TimeOffset34
+ xpos 8860
+ ypos -586
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform27
+ xpos 8860
+ ypos -490
+}
+push $N14dc55b0
+TimeOffset {
+ time_offset -1050
+ time ""
+ name TimeOffset35
+ xpos 8640
+ ypos -586
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform28
+ xpos 8640
+ ypos -490
+}
+push $N14dc55b0
+TimeOffset {
+ time_offset -1100
+ time ""
+ name TimeOffset36
+ xpos 8420
+ ypos -586
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform29
+ xpos 8420
+ ypos -490
+}
+push $N14dc55b0
+TimeOffset {
+ time_offset -1250
+ time ""
+ name TimeOffset37
+ xpos 7760
+ ypos -586
+}
+Dot {
+ name Dot6
+ xpos 7794
+ ypos -486
+}
+push 0
+push $N14dc55b0
+TimeOffset {
+ time_offset -1150
+ time ""
+ name TimeOffset38
+ xpos 8200
+ ypos -586
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform30
+ xpos 8200
+ ypos -490
+}
+push $N14dc55b0
+TimeOffset {
+ time_offset -1200
+ time ""
+ name TimeOffset39
+ xpos 7980
+ ypos -586
+}
+Transform {
+ translate {-300 0}
+ center {640 360}
+ name Transform31
+ xpos 7980
+ ypos -490
+}
+Merge2 {
+ inputs 6+1
+ name Merge10
+ xpos 8200
+ ypos -82
+}
+Reformat {
+ type scale
+ flop true
+ name Reformat4
+ xpos 8200
+ ypos 14
+}
+TimeOffset {
+ time_offset -5
+ time ""
+ name TimeOffset40
+ xpos 8200
+ ypos 110
+}
+Merge2 {
+ inputs 2
+ name Merge11
+ xpos 7430
+ ypos 590
+}
+push $N14dc55b0
+TimeOffset {
+ time_offset -500
+ time ""
+ name TimeOffset41
+ xpos 3910
+ ypos -586
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform32
+ xpos 3910
+ ypos -466
+}
+push $N14dc55b0
+TimeOffset {
+ time_offset -400
+ time ""
+ name TimeOffset42
+ xpos 3690
+ ypos -586
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform33
+ xpos 3690
+ ypos -466
+}
+push $N14dc55b0
+TimeOffset {
+ time_offset -300
+ time ""
+ name TimeOffset43
+ xpos 3470
+ ypos -585
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform34
+ xpos 3470
+ ypos -466
+}
+push $N14dc55b0
+TimeOffset {
+ time ""
+ name TimeOffset44
+ xpos 2810
+ ypos -586
+}
+Dot {
+ name Dot7
+ xpos 2844
+ ypos -462
+}
+push 0
+push $N14dc55b0
+TimeOffset {
+ time_offset -200
+ time ""
+ name TimeOffset45
+ xpos 3250
+ ypos -585
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform35
+ xpos 3250
+ ypos -466
+}
+push $N14dc55b0
+TimeOffset {
+ time_offset -100
+ time ""
+ name TimeOffset46
+ xpos 3030
+ ypos -586
+}
+Transform {
+ translate {-300 0}
+ center {640 360}
+ name Transform36
+ xpos 3030
+ ypos -466
+}
+Merge2 {
+ inputs 6+1
+ name Merge12
+ xpos 3360
+ ypos -106
+}
+push $N14dc55b0
+TimeOffset {
+ time_offset -1000
+ time ""
+ name TimeOffset47
+ xpos 5560
+ ypos -586
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform37
+ xpos 5560
+ ypos -490
+}
+push $N14dc55b0
+TimeOffset {
+ time_offset -1050
+ time ""
+ name TimeOffset48
+ xpos 5340
+ ypos -586
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform38
+ xpos 5340
+ ypos -490
+}
+push $N14dc55b0
+TimeOffset {
+ time_offset -1100
+ time ""
+ name TimeOffset49
+ xpos 5120
+ ypos -586
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform39
+ xpos 5120
+ ypos -490
+}
+push $N14dc55b0
+TimeOffset {
+ time_offset -1250
+ time ""
+ name TimeOffset50
+ xpos 4460
+ ypos -586
+}
+Dot {
+ name Dot8
+ xpos 4494
+ ypos -486
+}
+push 0
+push $N14dc55b0
+TimeOffset {
+ time_offset -1150
+ time ""
+ name TimeOffset51
+ xpos 4900
+ ypos -586
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform40
+ xpos 4900
+ ypos -490
+}
+push $N14dc55b0
+TimeOffset {
+ time_offset -1200
+ time ""
+ name TimeOffset52
+ xpos 4680
+ ypos -586
+}
+Transform {
+ translate {-300 0}
+ center {640 360}
+ name Transform41
+ xpos 4680
+ ypos -490
+}
+Merge2 {
+ inputs 6+1
+ name Merge13
+ xpos 5010
+ ypos -106
+}
+Merge2 {
+ inputs 2
+ name Merge14
+ xpos 4240
+ ypos 422
+}
+Merge2 {
+ inputs 2
+ name Merge15
+ xpos 5780
+ ypos 1670
+}
+ColorWheel {
+ inputs 0
+ format "1280 720 0 0 1280 720 1 HD_720"
+ gamma 0.45
+ name ColorWheel2
+ xpos 8200
+ ypos 1647
+}
+Transform {
+ scale 1.5
+ center {640 360}
+ name Transform42
+ xpos 8200
+ ypos 1766
+}
+Crop {
+ box {0 0 1280 720}
+ name Crop2
+ xpos 8200
+ ypos 1838
+}
+Grade {
+ white 0.8
+ gamma 0.62
+ name Grade2
+ xpos 8200
+ ypos 1910
+}
+Merge2 {
+ inputs 2
+ bbox B
+ name Merge16
+ xpos 6990
+ ypos 2870
+}
+Crop {
+ box {{width/9*slice} 0 {width/9*(slice+1)} 720}
+ name Crop11
+ xpos 19463
+ ypos 3937
+ addUserKnob {20 User}
+ addUserKnob {3 slice}
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteRed/mp01spriteRed.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read59
+ xpos 13389
+ ypos -1543
+}
+set Naa79f20 [stack 0]
+TimeOffset {
+ time_offset -500
+ time ""
+ name TimeOffset53
+ xpos 14690
+ ypos -634
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform43
+ xpos 14690
+ ypos -538
+}
+push $Naa79f20
+TimeOffset {
+ time_offset -400
+ time ""
+ name TimeOffset54
+ xpos 14470
+ ypos -634
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform44
+ xpos 14470
+ ypos -538
+}
+push $Naa79f20
+TimeOffset {
+ time_offset -300
+ time ""
+ name TimeOffset55
+ xpos 14250
+ ypos -634
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform45
+ xpos 14250
+ ypos -538
+}
+push $Naa79f20
+TimeOffset {
+ time ""
+ name TimeOffset56
+ xpos 13590
+ ypos -634
+}
+Dot {
+ name Dot9
+ xpos 13624
+ ypos -534
+}
+push 0
+push $Naa79f20
+TimeOffset {
+ time_offset -200
+ time ""
+ name TimeOffset57
+ xpos 14030
+ ypos -634
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform46
+ xpos 14030
+ ypos -538
+}
+push $Naa79f20
+TimeOffset {
+ time_offset -100
+ time ""
+ name TimeOffset58
+ xpos 13810
+ ypos -634
+}
+Transform {
+ translate {-300 0}
+ center {640 360}
+ name Transform47
+ xpos 13810
+ ypos -538
+}
+Merge2 {
+ inputs 6+1
+ name Merge17
+ xpos 14030
+ ypos -130
+}
+Reformat {
+ type scale
+ flop true
+ name Reformat5
+ xpos 14030
+ ypos -34
+}
+TimeOffset {
+ time_offset -5
+ time ""
+ name TimeOffset59
+ xpos 14030
+ ypos 38
+}
+push $Naa79f20
+TimeOffset {
+ time_offset -1000
+ time ""
+ name TimeOffset60
+ xpos 16340
+ ypos -634
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform48
+ xpos 16340
+ ypos -538
+}
+push $Naa79f20
+TimeOffset {
+ time_offset -1050
+ time ""
+ name TimeOffset61
+ xpos 16120
+ ypos -634
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform49
+ xpos 16120
+ ypos -538
+}
+push $Naa79f20
+TimeOffset {
+ time_offset -1100
+ time ""
+ name TimeOffset62
+ xpos 15900
+ ypos -634
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform50
+ xpos 15900
+ ypos -538
+}
+push $Naa79f20
+TimeOffset {
+ time_offset -1250
+ time ""
+ name TimeOffset63
+ xpos 15240
+ ypos -634
+}
+Dot {
+ name Dot10
+ xpos 15274
+ ypos -534
+}
+push 0
+push $Naa79f20
+TimeOffset {
+ time_offset -1150
+ time ""
+ name TimeOffset64
+ xpos 15680
+ ypos -634
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform51
+ xpos 15680
+ ypos -538
+}
+push $Naa79f20
+TimeOffset {
+ time_offset -1200
+ time ""
+ name TimeOffset65
+ xpos 15460
+ ypos -634
+}
+Transform {
+ translate {-300 0}
+ center {640 360}
+ name Transform52
+ xpos 15460
+ ypos -538
+}
+Merge2 {
+ inputs 6+1
+ name Merge18
+ xpos 15680
+ ypos -130
+}
+Reformat {
+ type scale
+ flop true
+ name Reformat6
+ xpos 15680
+ ypos -34
+}
+TimeOffset {
+ time_offset -5
+ time ""
+ name TimeOffset66
+ xpos 15680
+ ypos 62
+}
+Merge2 {
+ inputs 2
+ name Merge19
+ xpos 14910
+ ypos 542
+}
+push $Naa79f20
+TimeOffset {
+ time_offset -500
+ time ""
+ name TimeOffset67
+ xpos 11390
+ ypos -634
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform53
+ xpos 11390
+ ypos -514
+}
+push $Naa79f20
+TimeOffset {
+ time_offset -400
+ time ""
+ name TimeOffset68
+ xpos 11170
+ ypos -634
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform54
+ xpos 11170
+ ypos -514
+}
+push $Naa79f20
+TimeOffset {
+ time_offset -300
+ time ""
+ name TimeOffset69
+ xpos 10950
+ ypos -626
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform55
+ xpos 10950
+ ypos -514
+}
+push $Naa79f20
+TimeOffset {
+ time ""
+ name TimeOffset70
+ xpos 10290
+ ypos -634
+}
+Dot {
+ name Dot11
+ xpos 10324
+ ypos -510
+}
+push 0
+push $Naa79f20
+TimeOffset {
+ time_offset -200
+ time ""
+ name TimeOffset71
+ xpos 10730
+ ypos -626
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform56
+ xpos 10730
+ ypos -514
+}
+push $Naa79f20
+TimeOffset {
+ time_offset -100
+ time ""
+ name TimeOffset72
+ xpos 10510
+ ypos -634
+}
+Transform {
+ translate {-300 0}
+ center {640 360}
+ name Transform57
+ xpos 10510
+ ypos -514
+}
+Merge2 {
+ inputs 6+1
+ name Merge20
+ xpos 10840
+ ypos -154
+}
+push $Naa79f20
+TimeOffset {
+ time_offset -1000
+ time ""
+ name TimeOffset73
+ xpos 13040
+ ypos -634
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform58
+ xpos 13040
+ ypos -538
+}
+push $Naa79f20
+TimeOffset {
+ time_offset -1050
+ time ""
+ name TimeOffset74
+ xpos 12820
+ ypos -634
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform59
+ xpos 12820
+ ypos -538
+}
+push $Naa79f20
+TimeOffset {
+ time_offset -1100
+ time ""
+ name TimeOffset75
+ xpos 12600
+ ypos -634
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform60
+ xpos 12600
+ ypos -538
+}
+push $Naa79f20
+TimeOffset {
+ time_offset -1250
+ time ""
+ name TimeOffset76
+ xpos 11940
+ ypos -634
+}
+Dot {
+ name Dot12
+ xpos 11974
+ ypos -534
+}
+push 0
+push $Naa79f20
+TimeOffset {
+ time_offset -1150
+ time ""
+ name TimeOffset77
+ xpos 12380
+ ypos -634
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform61
+ xpos 12380
+ ypos -538
+}
+push $Naa79f20
+TimeOffset {
+ time_offset -1200
+ time ""
+ name TimeOffset78
+ xpos 12160
+ ypos -634
+}
+Transform {
+ translate {-300 0}
+ center {640 360}
+ name Transform62
+ xpos 12160
+ ypos -538
+}
+Merge2 {
+ inputs 6+1
+ name Merge21
+ xpos 12490
+ ypos -154
+}
+Merge2 {
+ inputs 2
+ name Merge22
+ xpos 11720
+ ypos 374
+}
+Merge2 {
+ inputs 2
+ name Merge23
+ xpos 13260
+ ypos 1622
+}
+ColorWheel {
+ inputs 0
+ format "1280 720 0 0 1280 720 1 HD_720"
+ gamma 0.45
+ name ColorWheel3
+ xpos 15680
+ ypos 1599
+}
+Transform {
+ scale 1.5
+ center {640 360}
+ name Transform63
+ xpos 15680
+ ypos 1718
+}
+Crop {
+ box {0 0 1280 720}
+ name Crop3
+ xpos 15680
+ ypos 1790
+}
+Grade {
+ white 0.8
+ gamma 0.62
+ name Grade3
+ xpos 15680
+ ypos 1862
+}
+Merge2 {
+ inputs 2
+ bbox B
+ name Merge24
+ xpos 14470
+ ypos 2822
+}
+Crop {
+ box {{width/9*slice} 0 {width/9*(slice+1)} 720}
+ name Crop12
+ xpos 20123
+ ypos 3961
+ addUserKnob {20 User}
+ addUserKnob {3 slice}
+ slice 1
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteWarhol01/mp01spriteWarhol01.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read103
+ xpos 6476
+ ypos 4341
+}
+set Nda332b0 [stack 0]
+TimeOffset {
+ time_offset -500
+ time ""
+ name TimeOffset105
+ xpos 7870
+ ypos 5150
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform85
+ xpos 7870
+ ypos 5246
+}
+push $Nda332b0
+TimeOffset {
+ time_offset -400
+ time ""
+ name TimeOffset106
+ xpos 7650
+ ypos 5150
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform86
+ xpos 7650
+ ypos 5246
+}
+push $Nda332b0
+TimeOffset {
+ time_offset -300
+ time ""
+ name TimeOffset107
+ xpos 7430
+ ypos 5150
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform87
+ xpos 7430
+ ypos 5246
+}
+push $Nda332b0
+TimeOffset {
+ time ""
+ name TimeOffset108
+ xpos 6770
+ ypos 5150
+}
+Dot {
+ name Dot17
+ xpos 6804
+ ypos 5250
+}
+push 0
+push $Nda332b0
+TimeOffset {
+ time_offset -200
+ time ""
+ name TimeOffset109
+ xpos 7210
+ ypos 5150
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform88
+ xpos 7210
+ ypos 5246
+}
+push $Nda332b0
+TimeOffset {
+ time_offset -100
+ time ""
+ name TimeOffset110
+ xpos 6990
+ ypos 5150
+}
+Transform {
+ translate {-300 0}
+ center {640 360}
+ name Transform89
+ xpos 6990
+ ypos 5246
+}
+Merge2 {
+ inputs 6+1
+ name Merge33
+ xpos 7210
+ ypos 5654
+}
+Reformat {
+ type scale
+ flop true
+ name Reformat9
+ xpos 7210
+ ypos 5750
+}
+TimeOffset {
+ time_offset -5
+ time ""
+ name TimeOffset111
+ xpos 7210
+ ypos 5822
+}
+push $Nda332b0
+TimeOffset {
+ time_offset -1000
+ time ""
+ name TimeOffset112
+ xpos 9520
+ ypos 5150
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform90
+ xpos 9520
+ ypos 5246
+}
+push $Nda332b0
+TimeOffset {
+ time_offset -1050
+ time ""
+ name TimeOffset113
+ xpos 9300
+ ypos 5150
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform91
+ xpos 9300
+ ypos 5246
+}
+push $Nda332b0
+TimeOffset {
+ time_offset -1100
+ time ""
+ name TimeOffset114
+ xpos 9080
+ ypos 5150
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform92
+ xpos 9080
+ ypos 5246
+}
+push $Nda332b0
+TimeOffset {
+ time_offset -1250
+ time ""
+ name TimeOffset115
+ xpos 8420
+ ypos 5150
+}
+Dot {
+ name Dot18
+ xpos 8454
+ ypos 5250
+}
+push 0
+push $Nda332b0
+TimeOffset {
+ time_offset -1150
+ time ""
+ name TimeOffset116
+ xpos 8860
+ ypos 5150
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform93
+ xpos 8860
+ ypos 5246
+}
+push $Nda332b0
+TimeOffset {
+ time_offset -1200
+ time ""
+ name TimeOffset117
+ xpos 8640
+ ypos 5150
+}
+Transform {
+ translate {-300 0}
+ center {640 360}
+ name Transform94
+ xpos 8640
+ ypos 5246
+}
+Merge2 {
+ inputs 6+1
+ name Merge34
+ xpos 8860
+ ypos 5654
+}
+Reformat {
+ type scale
+ flop true
+ name Reformat10
+ xpos 8860
+ ypos 5750
+}
+TimeOffset {
+ time_offset -5
+ time ""
+ name TimeOffset118
+ xpos 8860
+ ypos 5846
+}
+Merge2 {
+ inputs 2
+ name Merge35
+ xpos 8090
+ ypos 6326
+}
+push $Nda332b0
+TimeOffset {
+ time_offset -500
+ time ""
+ name TimeOffset119
+ xpos 4570
+ ypos 5150
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform95
+ xpos 4570
+ ypos 5270
+}
+push $Nda332b0
+TimeOffset {
+ time_offset -400
+ time ""
+ name TimeOffset120
+ xpos 4350
+ ypos 5150
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform96
+ xpos 4350
+ ypos 5270
+}
+push $Nda332b0
+TimeOffset {
+ time_offset -300
+ time ""
+ name TimeOffset121
+ xpos 4130
+ ypos 5142
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform97
+ xpos 4130
+ ypos 5270
+}
+push $Nda332b0
+TimeOffset {
+ time ""
+ name TimeOffset122
+ xpos 3470
+ ypos 5150
+}
+Dot {
+ name Dot19
+ xpos 3504
+ ypos 5274
+}
+push 0
+push $Nda332b0
+TimeOffset {
+ time_offset -200
+ time ""
+ name TimeOffset123
+ xpos 3910
+ ypos 5142
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform98
+ xpos 3910
+ ypos 5270
+}
+push $Nda332b0
+TimeOffset {
+ time_offset -100
+ time ""
+ name TimeOffset124
+ xpos 3690
+ ypos 5150
+}
+Transform {
+ translate {-300 0}
+ center {640 360}
+ name Transform99
+ xpos 3690
+ ypos 5270
+}
+Merge2 {
+ inputs 6+1
+ name Merge36
+ xpos 4020
+ ypos 5630
+}
+push $Nda332b0
+TimeOffset {
+ time_offset -1000
+ time ""
+ name TimeOffset125
+ xpos 6220
+ ypos 5150
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform100
+ xpos 6220
+ ypos 5246
+}
+push $Nda332b0
+TimeOffset {
+ time_offset -1050
+ time ""
+ name TimeOffset126
+ xpos 6000
+ ypos 5150
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform101
+ xpos 6000
+ ypos 5246
+}
+push $Nda332b0
+TimeOffset {
+ time_offset -1100
+ time ""
+ name TimeOffset127
+ xpos 5780
+ ypos 5150
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform102
+ xpos 5780
+ ypos 5246
+}
+push $Nda332b0
+TimeOffset {
+ time_offset -1250
+ time ""
+ name TimeOffset128
+ xpos 5120
+ ypos 5150
+}
+Dot {
+ name Dot20
+ xpos 5154
+ ypos 5250
+}
+push 0
+push $Nda332b0
+TimeOffset {
+ time_offset -1150
+ time ""
+ name TimeOffset129
+ xpos 5560
+ ypos 5150
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform103
+ xpos 5560
+ ypos 5246
+}
+push $Nda332b0
+TimeOffset {
+ time_offset -1200
+ time ""
+ name TimeOffset130
+ xpos 5340
+ ypos 5150
+}
+Transform {
+ translate {-300 0}
+ center {640 360}
+ name Transform104
+ xpos 5340
+ ypos 5246
+}
+Merge2 {
+ inputs 6+1
+ name Merge37
+ xpos 5670
+ ypos 5630
+}
+Merge2 {
+ inputs 2
+ name Merge38
+ xpos 4900
+ ypos 6158
+}
+Merge2 {
+ inputs 2
+ name Merge39
+ xpos 6440
+ ypos 7406
+}
+ColorWheel {
+ inputs 0
+ format "1280 720 0 0 1280 720 1 HD_720"
+ gamma 0.45
+ name ColorWheel5
+ xpos 8860
+ ypos 7383
+}
+Transform {
+ scale 1.5
+ center {640 360}
+ name Transform105
+ xpos 8860
+ ypos 7502
+}
+Crop {
+ box {0 0 1280 720}
+ name Crop5
+ xpos 8860
+ ypos 7574
+}
+Grade {
+ white 0.8
+ gamma 0.62
+ name Grade5
+ xpos 8860
+ ypos 7646
+}
+Merge2 {
+ inputs 2
+ bbox B
+ name Merge40
+ xpos 7760
+ ypos 8630
+}
+Crop {
+ box {{width/9*slice} 0 {width/9*(slice+1)} 720}
+ name Crop14
+ xpos 19640
+ ypos 9902
+ addUserKnob {20 User}
+ addUserKnob {3 slice}
+ slice 3
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteWarhol02/mp01spriteWarhol02.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read127
+ xpos 14337
+ ypos 4309
+}
+set N9d3c580 [stack 0]
+TimeOffset {
+ time_offset -500
+ time ""
+ name TimeOffset131
+ xpos 15680
+ ypos 5102
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform106
+ xpos 15680
+ ypos 5198
+}
+push $N9d3c580
+TimeOffset {
+ time_offset -400
+ time ""
+ name TimeOffset132
+ xpos 15460
+ ypos 5102
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform107
+ xpos 15460
+ ypos 5198
+}
+push $N9d3c580
+TimeOffset {
+ time_offset -300
+ time ""
+ name TimeOffset133
+ xpos 15240
+ ypos 5102
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform108
+ xpos 15240
+ ypos 5198
+}
+push $N9d3c580
+TimeOffset {
+ time ""
+ name TimeOffset134
+ xpos 14580
+ ypos 5102
+}
+Dot {
+ name Dot21
+ xpos 14614
+ ypos 5202
+}
+push 0
+push $N9d3c580
+TimeOffset {
+ time_offset -200
+ time ""
+ name TimeOffset135
+ xpos 15020
+ ypos 5102
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform109
+ xpos 15020
+ ypos 5198
+}
+push $N9d3c580
+TimeOffset {
+ time_offset -100
+ time ""
+ name TimeOffset136
+ xpos 14800
+ ypos 5102
+}
+Transform {
+ translate {-300 0}
+ center {640 360}
+ name Transform110
+ xpos 14800
+ ypos 5198
+}
+Merge2 {
+ inputs 6+1
+ name Merge41
+ xpos 15020
+ ypos 5606
+}
+Reformat {
+ type scale
+ flop true
+ name Reformat11
+ xpos 15020
+ ypos 5702
+}
+TimeOffset {
+ time_offset -5
+ time ""
+ name TimeOffset137
+ xpos 15020
+ ypos 5774
+}
+push $N9d3c580
+TimeOffset {
+ time_offset -1000
+ time ""
+ name TimeOffset138
+ xpos 17330
+ ypos 5102
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform111
+ xpos 17330
+ ypos 5198
+}
+push $N9d3c580
+TimeOffset {
+ time_offset -1050
+ time ""
+ name TimeOffset139
+ xpos 17110
+ ypos 5102
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform112
+ xpos 17110
+ ypos 5198
+}
+push $N9d3c580
+TimeOffset {
+ time_offset -1100
+ time ""
+ name TimeOffset140
+ xpos 16890
+ ypos 5102
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform113
+ xpos 16890
+ ypos 5198
+}
+push $N9d3c580
+TimeOffset {
+ time_offset -1250
+ time ""
+ name TimeOffset141
+ xpos 16230
+ ypos 5102
+}
+Dot {
+ name Dot22
+ xpos 16264
+ ypos 5202
+}
+push 0
+push $N9d3c580
+TimeOffset {
+ time_offset -1150
+ time ""
+ name TimeOffset142
+ xpos 16670
+ ypos 5102
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform114
+ xpos 16670
+ ypos 5198
+}
+push $N9d3c580
+TimeOffset {
+ time_offset -1200
+ time ""
+ name TimeOffset143
+ xpos 16450
+ ypos 5102
+}
+Transform {
+ translate {-300 0}
+ center {640 360}
+ name Transform115
+ xpos 16450
+ ypos 5198
+}
+Merge2 {
+ inputs 6+1
+ name Merge42
+ xpos 16670
+ ypos 5606
+}
+Reformat {
+ type scale
+ flop true
+ name Reformat12
+ xpos 16670
+ ypos 5702
+}
+TimeOffset {
+ time_offset -5
+ time ""
+ name TimeOffset144
+ xpos 16670
+ ypos 5798
+}
+Merge2 {
+ inputs 2
+ name Merge43
+ xpos 15900
+ ypos 6278
+}
+push $N9d3c580
+TimeOffset {
+ time_offset -500
+ time ""
+ name TimeOffset145
+ xpos 12380
+ ypos 5102
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform116
+ xpos 12380
+ ypos 5222
+}
+push $N9d3c580
+TimeOffset {
+ time_offset -400
+ time ""
+ name TimeOffset146
+ xpos 12160
+ ypos 5102
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform117
+ xpos 12160
+ ypos 5222
+}
+push $N9d3c580
+TimeOffset {
+ time_offset -300
+ time ""
+ name TimeOffset147
+ xpos 11940
+ ypos 5098
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform118
+ xpos 11940
+ ypos 5222
+}
+push $N9d3c580
+TimeOffset {
+ time ""
+ name TimeOffset148
+ xpos 11280
+ ypos 5102
+}
+Dot {
+ name Dot23
+ xpos 11314
+ ypos 5226
+}
+push 0
+push $N9d3c580
+TimeOffset {
+ time_offset -200
+ time ""
+ name TimeOffset149
+ xpos 11720
+ ypos 5098
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform119
+ xpos 11720
+ ypos 5222
+}
+push $N9d3c580
+TimeOffset {
+ time_offset -100
+ time ""
+ name TimeOffset150
+ xpos 11500
+ ypos 5102
+}
+Transform {
+ translate {-300 0}
+ center {640 360}
+ name Transform120
+ xpos 11500
+ ypos 5222
+}
+Merge2 {
+ inputs 6+1
+ name Merge44
+ xpos 11830
+ ypos 5582
+}
+push $N9d3c580
+TimeOffset {
+ time_offset -1000
+ time ""
+ name TimeOffset151
+ xpos 14030
+ ypos 5102
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform121
+ xpos 14030
+ ypos 5198
+}
+push $N9d3c580
+TimeOffset {
+ time_offset -1050
+ time ""
+ name TimeOffset152
+ xpos 13810
+ ypos 5102
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform122
+ xpos 13810
+ ypos 5198
+}
+push $N9d3c580
+TimeOffset {
+ time_offset -1100
+ time ""
+ name TimeOffset153
+ xpos 13590
+ ypos 5102
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform123
+ xpos 13590
+ ypos 5198
+}
+push $N9d3c580
+TimeOffset {
+ time_offset -1250
+ time ""
+ name TimeOffset154
+ xpos 12930
+ ypos 5102
+}
+Dot {
+ name Dot24
+ xpos 12964
+ ypos 5202
+}
+push 0
+push $N9d3c580
+TimeOffset {
+ time_offset -1150
+ time ""
+ name TimeOffset155
+ xpos 13370
+ ypos 5102
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform124
+ xpos 13370
+ ypos 5198
+}
+push $N9d3c580
+TimeOffset {
+ time_offset -1200
+ time ""
+ name TimeOffset156
+ xpos 13150
+ ypos 5102
+}
+Transform {
+ translate {-300 0}
+ center {640 360}
+ name Transform125
+ xpos 13150
+ ypos 5198
+}
+Merge2 {
+ inputs 6+1
+ name Merge45
+ xpos 13480
+ ypos 5582
+}
+Merge2 {
+ inputs 2
+ name Merge46
+ xpos 12710
+ ypos 6110
+}
+Merge2 {
+ inputs 2
+ name Merge47
+ xpos 14250
+ ypos 7358
+}
+ColorWheel {
+ inputs 0
+ format "1280 720 0 0 1280 720 1 HD_720"
+ gamma 0.45
+ name ColorWheel6
+ xpos 16670
+ ypos 7335
+}
+Transform {
+ scale 1.5
+ center {640 360}
+ name Transform126
+ xpos 16670
+ ypos 7454
+}
+Crop {
+ box {0 0 1280 720}
+ name Crop6
+ xpos 16670
+ ypos 7526
+}
+Grade {
+ white 0.8
+ gamma 0.62
+ name Grade6
+ xpos 16670
+ ypos 7598
+}
+Merge2 {
+ inputs 2
+ bbox B
+ name Merge48
+ xpos 15460
+ ypos 8582
+}
+Crop {
+ box {{width/9*slice} 0 {width/9*(slice+1)} 720}
+ name Crop15
+ xpos 20300
+ ypos 9926
+ addUserKnob {20 User}
+ addUserKnob {3 slice}
+ slice 5
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spritePurple/mp01spritePurple.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read82
+ xpos -1342
+ ypos 4342
+}
+set N1487ee60 [stack 0]
+TimeOffset {
+ time_offset -500
+ time ""
+ name TimeOffset79
+ xpos 60
+ ypos 5150
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform64
+ xpos 60
+ ypos 5246
+}
+push $N1487ee60
+TimeOffset {
+ time_offset -400
+ time ""
+ name TimeOffset80
+ xpos -160
+ ypos 5150
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform65
+ xpos -160
+ ypos 5246
+}
+push $N1487ee60
+TimeOffset {
+ time_offset -300
+ time ""
+ name TimeOffset81
+ xpos -380
+ ypos 5150
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform66
+ xpos -380
+ ypos 5246
+}
+push $N1487ee60
+TimeOffset {
+ time ""
+ name TimeOffset82
+ xpos -1040
+ ypos 5150
+}
+Dot {
+ name Dot13
+ xpos -1006
+ ypos 5250
+}
+push 0
+push $N1487ee60
+TimeOffset {
+ time_offset -200
+ time ""
+ name TimeOffset83
+ xpos -600
+ ypos 5150
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform67
+ xpos -600
+ ypos 5246
+}
+push $N1487ee60
+TimeOffset {
+ time_offset -100
+ time ""
+ name TimeOffset84
+ xpos -820
+ ypos 5150
+}
+Transform {
+ translate {-300 0}
+ center {640 360}
+ name Transform68
+ xpos -820
+ ypos 5246
+}
+Merge2 {
+ inputs 6+1
+ name Merge25
+ xpos -600
+ ypos 5654
+}
+Reformat {
+ type scale
+ flop true
+ name Reformat7
+ xpos -600
+ ypos 5750
+}
+TimeOffset {
+ time_offset -5
+ time ""
+ name TimeOffset85
+ xpos -600
+ ypos 5822
+}
+push $N1487ee60
+TimeOffset {
+ time_offset -1000
+ time ""
+ name TimeOffset86
+ xpos 1710
+ ypos 5150
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform69
+ xpos 1710
+ ypos 5246
+}
+push $N1487ee60
+TimeOffset {
+ time_offset -1050
+ time ""
+ name TimeOffset87
+ xpos 1490
+ ypos 5150
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform70
+ xpos 1490
+ ypos 5246
+}
+push $N1487ee60
+TimeOffset {
+ time_offset -1100
+ time ""
+ name TimeOffset88
+ xpos 1270
+ ypos 5150
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform71
+ xpos 1270
+ ypos 5246
+}
+push $N1487ee60
+TimeOffset {
+ time_offset -1250
+ time ""
+ name TimeOffset89
+ xpos 610
+ ypos 5150
+}
+Dot {
+ name Dot14
+ xpos 644
+ ypos 5250
+}
+push 0
+push $N1487ee60
+TimeOffset {
+ time_offset -1150
+ time ""
+ name TimeOffset90
+ xpos 1050
+ ypos 5150
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform72
+ xpos 1050
+ ypos 5246
+}
+push $N1487ee60
+TimeOffset {
+ time_offset -1200
+ time ""
+ name TimeOffset91
+ xpos 830
+ ypos 5150
+}
+Transform {
+ translate {-300 0}
+ center {640 360}
+ name Transform73
+ xpos 830
+ ypos 5246
+}
+Merge2 {
+ inputs 6+1
+ name Merge26
+ xpos 1050
+ ypos 5654
+}
+Reformat {
+ type scale
+ flop true
+ name Reformat8
+ xpos 1050
+ ypos 5750
+}
+TimeOffset {
+ time_offset -5
+ time ""
+ name TimeOffset92
+ xpos 1050
+ ypos 5846
+}
+Merge2 {
+ inputs 2
+ name Merge27
+ xpos 280
+ ypos 6326
+}
+push $N1487ee60
+TimeOffset {
+ time_offset -500
+ time ""
+ name TimeOffset93
+ xpos -3240
+ ypos 5150
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform74
+ xpos -3240
+ ypos 5270
+}
+push $N1487ee60
+TimeOffset {
+ time_offset -400
+ time ""
+ name TimeOffset94
+ xpos -3460
+ ypos 5150
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform75
+ xpos -3460
+ ypos 5270
+}
+push $N1487ee60
+TimeOffset {
+ time_offset -300
+ time ""
+ name TimeOffset95
+ xpos -3680
+ ypos 5154
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform76
+ xpos -3680
+ ypos 5270
+}
+push $N1487ee60
+TimeOffset {
+ time ""
+ name TimeOffset96
+ xpos -4340
+ ypos 5150
+}
+Dot {
+ name Dot15
+ xpos -4306
+ ypos 5274
+}
+push 0
+push $N1487ee60
+TimeOffset {
+ time_offset -200
+ time ""
+ name TimeOffset97
+ xpos -3900
+ ypos 5154
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform77
+ xpos -3900
+ ypos 5270
+}
+push $N1487ee60
+TimeOffset {
+ time_offset -100
+ time ""
+ name TimeOffset98
+ xpos -4120
+ ypos 5150
+}
+Transform {
+ translate {-300 0}
+ center {640 360}
+ name Transform78
+ xpos -4120
+ ypos 5270
+}
+Merge2 {
+ inputs 6+1
+ name Merge28
+ xpos -3790
+ ypos 5630
+}
+push $N1487ee60
+TimeOffset {
+ time_offset -1000
+ time ""
+ name TimeOffset99
+ xpos -1590
+ ypos 5150
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform79
+ xpos -1590
+ ypos 5246
+}
+push $N1487ee60
+TimeOffset {
+ time_offset -1050
+ time ""
+ name TimeOffset100
+ xpos -1810
+ ypos 5150
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform80
+ xpos -1810
+ ypos 5246
+}
+push $N1487ee60
+TimeOffset {
+ time_offset -1100
+ time ""
+ name TimeOffset101
+ xpos -2030
+ ypos 5150
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform81
+ xpos -2030
+ ypos 5246
+}
+push $N1487ee60
+TimeOffset {
+ time_offset -1250
+ time ""
+ name TimeOffset102
+ xpos -2690
+ ypos 5150
+}
+Dot {
+ name Dot16
+ xpos -2656
+ ypos 5250
+}
+push 0
+push $N1487ee60
+TimeOffset {
+ time_offset -1150
+ time ""
+ name TimeOffset103
+ xpos -2250
+ ypos 5150
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform82
+ xpos -2250
+ ypos 5246
+}
+push $N1487ee60
+TimeOffset {
+ time_offset -1200
+ time ""
+ name TimeOffset104
+ xpos -2470
+ ypos 5150
+}
+Transform {
+ translate {-300 0}
+ center {640 360}
+ name Transform83
+ xpos -2470
+ ypos 5246
+}
+Merge2 {
+ inputs 6+1
+ name Merge29
+ xpos -2140
+ ypos 5630
+}
+Merge2 {
+ inputs 2
+ name Merge30
+ xpos -2910
+ ypos 6158
+}
+Merge2 {
+ inputs 2
+ name Merge31
+ xpos -1370
+ ypos 7406
+}
+ColorWheel {
+ inputs 0
+ format "1280 720 0 0 1280 720 1 HD_720"
+ gamma 0.45
+ name ColorWheel4
+ xpos 1050
+ ypos 7383
+}
+Transform {
+ scale 1.5
+ center {640 360}
+ name Transform84
+ xpos 1050
+ ypos 7502
+}
+Crop {
+ box {0 0 1280 720}
+ name Crop4
+ xpos 1050
+ ypos 7574
+}
+Grade {
+ white 0.8
+ gamma 0.62
+ name Grade4
+ xpos 1050
+ ypos 7646
+}
+Merge2 {
+ inputs 2
+ bbox B
+ name Merge32
+ xpos -160
+ ypos 8630
+}
+Crop {
+ box {{width/9*slice} 0 {width/9*(slice+1)} 720}
+ name Crop13
+ xpos 18870
+ ypos 9926
+ addUserKnob {20 User}
+ addUserKnob {3 slice}
+ slice 2
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spriteNoir/mp01spriteNoir.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read203
+ xpos 14433
+ ypos 10004
+}
+set Na302fb0 [stack 0]
+TimeOffset {
+ time_offset -500
+ time ""
+ name TimeOffset157
+ xpos 15790
+ ypos 11006
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform127
+ xpos 15790
+ ypos 11102
+}
+push $Na302fb0
+TimeOffset {
+ time_offset -400
+ time ""
+ name TimeOffset158
+ xpos 15570
+ ypos 11006
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform128
+ xpos 15570
+ ypos 11102
+}
+push $Na302fb0
+TimeOffset {
+ time_offset -300
+ time ""
+ name TimeOffset159
+ xpos 15350
+ ypos 11006
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform129
+ xpos 15350
+ ypos 11102
+}
+push $Na302fb0
+TimeOffset {
+ time ""
+ name TimeOffset160
+ xpos 14690
+ ypos 11006
+}
+Dot {
+ name Dot25
+ xpos 14724
+ ypos 11106
+}
+push 0
+push $Na302fb0
+TimeOffset {
+ time_offset -200
+ time ""
+ name TimeOffset161
+ xpos 15130
+ ypos 11006
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform130
+ xpos 15130
+ ypos 11102
+}
+push $Na302fb0
+TimeOffset {
+ time_offset -100
+ time ""
+ name TimeOffset162
+ xpos 14910
+ ypos 11006
+}
+Transform {
+ translate {-300 0}
+ center {640 360}
+ name Transform131
+ xpos 14910
+ ypos 11102
+}
+Merge2 {
+ inputs 6+1
+ name Merge49
+ xpos 15130
+ ypos 11510
+}
+Reformat {
+ type scale
+ flop true
+ name Reformat13
+ xpos 15130
+ ypos 11606
+}
+TimeOffset {
+ time_offset -5
+ time ""
+ name TimeOffset163
+ xpos 15130
+ ypos 11678
+}
+push $Na302fb0
+TimeOffset {
+ time_offset -1000
+ time ""
+ name TimeOffset164
+ xpos 17440
+ ypos 11006
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform132
+ xpos 17440
+ ypos 11102
+}
+push $Na302fb0
+TimeOffset {
+ time_offset -1050
+ time ""
+ name TimeOffset165
+ xpos 17220
+ ypos 11006
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform133
+ xpos 17220
+ ypos 11102
+}
+push $Na302fb0
+TimeOffset {
+ time_offset -1100
+ time ""
+ name TimeOffset166
+ xpos 17000
+ ypos 11006
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform134
+ xpos 17000
+ ypos 11102
+}
+push $Na302fb0
+TimeOffset {
+ time_offset -1250
+ time ""
+ name TimeOffset167
+ xpos 16340
+ ypos 11006
+}
+Dot {
+ name Dot26
+ xpos 16374
+ ypos 11106
+}
+push 0
+push $Na302fb0
+TimeOffset {
+ time_offset -1150
+ time ""
+ name TimeOffset168
+ xpos 16780
+ ypos 11006
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform135
+ xpos 16780
+ ypos 11102
+}
+push $Na302fb0
+TimeOffset {
+ time_offset -1200
+ time ""
+ name TimeOffset169
+ xpos 16560
+ ypos 11006
+}
+Transform {
+ translate {-300 0}
+ center {640 360}
+ name Transform136
+ xpos 16560
+ ypos 11102
+}
+Merge2 {
+ inputs 6+1
+ name Merge50
+ xpos 16780
+ ypos 11510
+}
+Reformat {
+ type scale
+ flop true
+ name Reformat14
+ xpos 16780
+ ypos 11606
+}
+TimeOffset {
+ time_offset -5
+ time ""
+ name TimeOffset170
+ xpos 16780
+ ypos 11702
+}
+Merge2 {
+ inputs 2
+ name Merge51
+ xpos 16010
+ ypos 12182
+}
+push $Na302fb0
+TimeOffset {
+ time_offset -500
+ time ""
+ name TimeOffset171
+ xpos 12490
+ ypos 11006
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform137
+ xpos 12490
+ ypos 11126
+}
+push $Na302fb0
+TimeOffset {
+ time_offset -400
+ time ""
+ name TimeOffset172
+ xpos 12270
+ ypos 11006
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform138
+ xpos 12270
+ ypos 11126
+}
+push $Na302fb0
+TimeOffset {
+ time_offset -300
+ time ""
+ name TimeOffset173
+ xpos 12050
+ ypos 11015
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform139
+ xpos 12050
+ ypos 11126
+}
+push $Na302fb0
+TimeOffset {
+ time ""
+ name TimeOffset174
+ xpos 11390
+ ypos 11006
+}
+Dot {
+ name Dot27
+ xpos 11424
+ ypos 11130
+}
+push 0
+push $Na302fb0
+TimeOffset {
+ time_offset -200
+ time ""
+ name TimeOffset175
+ xpos 11830
+ ypos 11015
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform140
+ xpos 11830
+ ypos 11126
+}
+push $Na302fb0
+TimeOffset {
+ time_offset -100
+ time ""
+ name TimeOffset176
+ xpos 11610
+ ypos 11006
+}
+Transform {
+ translate {-300 0}
+ center {640 360}
+ name Transform141
+ xpos 11610
+ ypos 11126
+}
+Merge2 {
+ inputs 6+1
+ name Merge52
+ xpos 11940
+ ypos 11486
+}
+push $Na302fb0
+TimeOffset {
+ time_offset -1000
+ time ""
+ name TimeOffset177
+ xpos 14140
+ ypos 11006
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform142
+ xpos 14140
+ ypos 11102
+}
+push $Na302fb0
+TimeOffset {
+ time_offset -1050
+ time ""
+ name TimeOffset178
+ xpos 13920
+ ypos 11006
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform143
+ xpos 13920
+ ypos 11102
+}
+push $Na302fb0
+TimeOffset {
+ time_offset -1100
+ time ""
+ name TimeOffset179
+ xpos 13700
+ ypos 11006
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform144
+ xpos 13700
+ ypos 11102
+}
+push $Na302fb0
+TimeOffset {
+ time_offset -1250
+ time ""
+ name TimeOffset180
+ xpos 13040
+ ypos 11006
+}
+Dot {
+ name Dot28
+ xpos 13074
+ ypos 11106
+}
+push 0
+push $Na302fb0
+TimeOffset {
+ time_offset -1150
+ time ""
+ name TimeOffset181
+ xpos 13480
+ ypos 11006
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform145
+ xpos 13480
+ ypos 11102
+}
+push $Na302fb0
+TimeOffset {
+ time_offset -1200
+ time ""
+ name TimeOffset182
+ xpos 13260
+ ypos 11006
+}
+Transform {
+ translate {-300 0}
+ center {640 360}
+ name Transform146
+ xpos 13260
+ ypos 11102
+}
+Merge2 {
+ inputs 6+1
+ name Merge53
+ xpos 13590
+ ypos 11486
+}
+Merge2 {
+ inputs 2
+ name Merge54
+ xpos 12820
+ ypos 12014
+}
+Merge2 {
+ inputs 2
+ name Merge55
+ xpos 14360
+ ypos 13262
+}
+ColorWheel {
+ inputs 0
+ format "1280 720 0 0 1280 720 1 HD_720"
+ gamma 0.45
+ name ColorWheel7
+ xpos 16780
+ ypos 13239
+}
+Transform {
+ scale 1.5
+ center {640 360}
+ name Transform147
+ xpos 16780
+ ypos 13358
+}
+Crop {
+ box {0 0 1280 720}
+ name Crop7
+ xpos 16780
+ ypos 13430
+}
+Grade {
+ white 0.8
+ gamma 0.62
+ name Grade7
+ xpos 16780
+ ypos 13502
+}
+Merge2 {
+ inputs 2
+ bbox B
+ name Merge56
+ xpos 15680
+ ypos 14486
+}
+Crop {
+ box {{width/9*slice} 0 {width/9*(slice+1)} 720}
+ name Crop18
+ xpos 20300
+ ypos 15230
+ addUserKnob {20 User}
+ addUserKnob {3 slice}
+ slice 8
+}
+push 0
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spritePsychadelic01/mp01spritePsychadelic01.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read139
+ xpos 6670
+ ypos 10040
+}
+set Naf4c390 [stack 0]
+TimeOffset {
+ time_offset -500
+ time ""
+ name TimeOffset183
+ xpos 8090
+ ypos 11030
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform148
+ xpos 8090
+ ypos 11126
+}
+push $Naf4c390
+TimeOffset {
+ time_offset -400
+ time ""
+ name TimeOffset184
+ xpos 7870
+ ypos 11030
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform149
+ xpos 7870
+ ypos 11126
+}
+push $Naf4c390
+TimeOffset {
+ time_offset -300
+ time ""
+ name TimeOffset185
+ xpos 7650
+ ypos 11030
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform150
+ xpos 7650
+ ypos 11126
+}
+push $Naf4c390
+TimeOffset {
+ time ""
+ name TimeOffset186
+ xpos 6990
+ ypos 11030
+}
+Dot {
+ name Dot29
+ xpos 7024
+ ypos 11130
+}
+push 0
+push $Naf4c390
+TimeOffset {
+ time_offset -200
+ time ""
+ name TimeOffset187
+ xpos 7430
+ ypos 11030
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform151
+ xpos 7430
+ ypos 11126
+}
+push $Naf4c390
+TimeOffset {
+ time_offset -100
+ time ""
+ name TimeOffset188
+ xpos 7210
+ ypos 11030
+}
+Transform {
+ translate {-300 0}
+ center {640 360}
+ name Transform152
+ xpos 7210
+ ypos 11126
+}
+Merge2 {
+ inputs 6+1
+ name Merge57
+ xpos 7430
+ ypos 11534
+}
+Reformat {
+ type scale
+ flop true
+ name Reformat15
+ xpos 7430
+ ypos 11630
+}
+TimeOffset {
+ time_offset -5
+ time ""
+ name TimeOffset189
+ xpos 7430
+ ypos 11702
+}
+push $Naf4c390
+TimeOffset {
+ time_offset -1000
+ time ""
+ name TimeOffset190
+ xpos 9740
+ ypos 11030
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform153
+ xpos 9740
+ ypos 11126
+}
+push $Naf4c390
+TimeOffset {
+ time_offset -1050
+ time ""
+ name TimeOffset191
+ xpos 9520
+ ypos 11030
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform154
+ xpos 9520
+ ypos 11126
+}
+push $Naf4c390
+TimeOffset {
+ time_offset -1100
+ time ""
+ name TimeOffset192
+ xpos 9300
+ ypos 11030
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform155
+ xpos 9300
+ ypos 11126
+}
+push $Naf4c390
+TimeOffset {
+ time_offset -1250
+ time ""
+ name TimeOffset193
+ xpos 8640
+ ypos 11030
+}
+Dot {
+ name Dot30
+ xpos 8674
+ ypos 11130
+}
+push 0
+push $Naf4c390
+TimeOffset {
+ time_offset -1150
+ time ""
+ name TimeOffset194
+ xpos 9080
+ ypos 11030
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform156
+ xpos 9080
+ ypos 11126
+}
+push $Naf4c390
+TimeOffset {
+ time_offset -1200
+ time ""
+ name TimeOffset195
+ xpos 8860
+ ypos 11030
+}
+Transform {
+ translate {-300 0}
+ center {640 360}
+ name Transform157
+ xpos 8860
+ ypos 11126
+}
+Merge2 {
+ inputs 6+1
+ name Merge58
+ xpos 9080
+ ypos 11534
+}
+Reformat {
+ type scale
+ flop true
+ name Reformat16
+ xpos 9080
+ ypos 11630
+}
+TimeOffset {
+ time_offset -5
+ time ""
+ name TimeOffset196
+ xpos 9080
+ ypos 11726
+}
+Merge2 {
+ inputs 2
+ name Merge59
+ xpos 8310
+ ypos 12206
+}
+push $Naf4c390
+TimeOffset {
+ time_offset -500
+ time ""
+ name TimeOffset197
+ xpos 4790
+ ypos 11030
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform158
+ xpos 4790
+ ypos 11150
+}
+push $Naf4c390
+TimeOffset {
+ time_offset -400
+ time ""
+ name TimeOffset198
+ xpos 4570
+ ypos 11030
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform159
+ xpos 4570
+ ypos 11150
+}
+push $Naf4c390
+TimeOffset {
+ time_offset -300
+ time ""
+ name TimeOffset199
+ xpos 4350
+ ypos 11025
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform160
+ xpos 4350
+ ypos 11150
+}
+push $Naf4c390
+TimeOffset {
+ time ""
+ name TimeOffset200
+ xpos 3690
+ ypos 11030
+}
+Dot {
+ name Dot31
+ xpos 3724
+ ypos 11154
+}
+push 0
+push $Naf4c390
+TimeOffset {
+ time_offset -200
+ time ""
+ name TimeOffset201
+ xpos 4130
+ ypos 11025
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform161
+ xpos 4130
+ ypos 11150
+}
+push $Naf4c390
+TimeOffset {
+ time_offset -100
+ time ""
+ name TimeOffset202
+ xpos 3910
+ ypos 11030
+}
+Transform {
+ translate {-300 0}
+ center {640 360}
+ name Transform162
+ xpos 3910
+ ypos 11150
+}
+Merge2 {
+ inputs 6+1
+ name Merge60
+ xpos 4240
+ ypos 11510
+}
+push $Naf4c390
+TimeOffset {
+ time_offset -1000
+ time ""
+ name TimeOffset203
+ xpos 6440
+ ypos 11030
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform163
+ xpos 6440
+ ypos 11126
+}
+push $Naf4c390
+TimeOffset {
+ time_offset -1050
+ time ""
+ name TimeOffset204
+ xpos 6220
+ ypos 11030
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform164
+ xpos 6220
+ ypos 11126
+}
+push $Naf4c390
+TimeOffset {
+ time_offset -1100
+ time ""
+ name TimeOffset205
+ xpos 6000
+ ypos 11030
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform165
+ xpos 6000
+ ypos 11126
+}
+push $Naf4c390
+TimeOffset {
+ time_offset -1250
+ time ""
+ name TimeOffset206
+ xpos 5340
+ ypos 11030
+}
+Dot {
+ name Dot32
+ xpos 5374
+ ypos 11130
+}
+push 0
+push $Naf4c390
+TimeOffset {
+ time_offset -1150
+ time ""
+ name TimeOffset207
+ xpos 5780
+ ypos 11030
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform166
+ xpos 5780
+ ypos 11126
+}
+push $Naf4c390
+TimeOffset {
+ time_offset -1200
+ time ""
+ name TimeOffset208
+ xpos 5560
+ ypos 11030
+}
+Transform {
+ translate {-300 0}
+ center {640 360}
+ name Transform167
+ xpos 5560
+ ypos 11126
+}
+Merge2 {
+ inputs 6+1
+ name Merge61
+ xpos 5890
+ ypos 11510
+}
+Merge2 {
+ inputs 2
+ name Merge62
+ xpos 5120
+ ypos 12038
+}
+Merge2 {
+ inputs 2
+ name Merge63
+ xpos 6660
+ ypos 13286
+}
+ColorWheel {
+ inputs 0
+ format "1280 720 0 0 1280 720 1 HD_720"
+ gamma 0.45
+ name ColorWheel8
+ xpos 9080
+ ypos 13263
+}
+Transform {
+ scale 1.5
+ center {640 360}
+ name Transform168
+ xpos 9080
+ ypos 13382
+}
+Crop {
+ box {0 0 1280 720}
+ name Crop8
+ xpos 9080
+ ypos 13454
+}
+Grade {
+ white 0.8
+ gamma 0.62
+ name Grade8
+ xpos 9080
+ ypos 13526
+}
+Merge2 {
+ inputs 2
+ bbox B
+ name Merge64
+ xpos 7980
+ ypos 14510
+}
+Crop {
+ box {{width/9*slice} 0 {width/9*(slice+1)} 720}
+ name Crop17
+ xpos 19530
+ ypos 15230
+ addUserKnob {20 User}
+ addUserKnob {3 slice}
+ slice 7
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../elements/mp01spritePsychadelic02/mp01spritePsychadelic02.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read181
+ xpos -940
+ ypos 9996
+}
+set Nc93c6b0 [stack 0]
+TimeOffset {
+ time_offset -500
+ time ""
+ name TimeOffset209
+ xpos 500
+ ypos 10994
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform169
+ xpos 500
+ ypos 11126
+}
+push $Nc93c6b0
+TimeOffset {
+ time_offset -400
+ time ""
+ name TimeOffset210
+ xpos 280
+ ypos 10994
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform170
+ xpos 280
+ ypos 11126
+}
+push $Nc93c6b0
+TimeOffset {
+ time_offset -300
+ time ""
+ name TimeOffset211
+ xpos 60
+ ypos 10994
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform171
+ xpos 60
+ ypos 11126
+}
+push $Nc93c6b0
+TimeOffset {
+ time ""
+ name TimeOffset212
+ xpos -600
+ ypos 10994
+}
+Dot {
+ name Dot33
+ xpos -566
+ ypos 11130
+}
+push 0
+push $Nc93c6b0
+TimeOffset {
+ time_offset -200
+ time ""
+ name TimeOffset213
+ xpos -160
+ ypos 10994
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform172
+ xpos -160
+ ypos 11126
+}
+push $Nc93c6b0
+TimeOffset {
+ time_offset -100
+ time ""
+ name TimeOffset214
+ xpos -380
+ ypos 10994
+}
+Transform {
+ translate {-300 0}
+ center {640 360}
+ name Transform173
+ xpos -380
+ ypos 11126
+}
+Merge2 {
+ inputs 6+1
+ name Merge65
+ xpos -160
+ ypos 11534
+}
+Reformat {
+ type scale
+ flop true
+ name Reformat17
+ xpos -160
+ ypos 11630
+}
+TimeOffset {
+ time_offset -5
+ time ""
+ name TimeOffset215
+ xpos -160
+ ypos 11702
+}
+push $Nc93c6b0
+TimeOffset {
+ time_offset -1000
+ time ""
+ name TimeOffset216
+ xpos 2150
+ ypos 10994
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform174
+ xpos 2150
+ ypos 11126
+}
+push $Nc93c6b0
+TimeOffset {
+ time_offset -1050
+ time ""
+ name TimeOffset217
+ xpos 1930
+ ypos 10994
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform175
+ xpos 1930
+ ypos 11126
+}
+push $Nc93c6b0
+TimeOffset {
+ time_offset -1100
+ time ""
+ name TimeOffset218
+ xpos 1710
+ ypos 10994
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform176
+ xpos 1710
+ ypos 11126
+}
+push $Nc93c6b0
+TimeOffset {
+ time_offset -1250
+ time ""
+ name TimeOffset219
+ xpos 1050
+ ypos 10994
+}
+Dot {
+ name Dot34
+ xpos 1084
+ ypos 11130
+}
+push 0
+push $Nc93c6b0
+TimeOffset {
+ time_offset -1150
+ time ""
+ name TimeOffset220
+ xpos 1490
+ ypos 10994
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform177
+ xpos 1490
+ ypos 11126
+}
+push $Nc93c6b0
+TimeOffset {
+ time_offset -1200
+ time ""
+ name TimeOffset221
+ xpos 1270
+ ypos 10994
+}
+Transform {
+ translate {-300 0}
+ center {640 360}
+ name Transform178
+ xpos 1270
+ ypos 11126
+}
+Merge2 {
+ inputs 6+1
+ name Merge66
+ xpos 1490
+ ypos 11534
+}
+Reformat {
+ type scale
+ flop true
+ name Reformat18
+ xpos 1490
+ ypos 11630
+}
+TimeOffset {
+ time_offset -5
+ time ""
+ name TimeOffset222
+ xpos 1490
+ ypos 11726
+}
+Merge2 {
+ inputs 2
+ name Merge67
+ xpos 720
+ ypos 12206
+}
+push $Nc93c6b0
+TimeOffset {
+ time_offset -500
+ time ""
+ name TimeOffset223
+ xpos -2800
+ ypos 10994
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform179
+ xpos -2800
+ ypos 11150
+}
+push $Nc93c6b0
+TimeOffset {
+ time_offset -400
+ time ""
+ name TimeOffset224
+ xpos -3020
+ ypos 10994
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform180
+ xpos -3020
+ ypos 11150
+}
+push $Nc93c6b0
+TimeOffset {
+ time_offset -300
+ time ""
+ name TimeOffset225
+ xpos -3240
+ ypos 11004
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform181
+ xpos -3240
+ ypos 11150
+}
+push $Nc93c6b0
+TimeOffset {
+ time ""
+ name TimeOffset226
+ xpos -3900
+ ypos 10994
+}
+Dot {
+ name Dot35
+ xpos -3866
+ ypos 11154
+}
+push 0
+push $Nc93c6b0
+TimeOffset {
+ time_offset -200
+ time ""
+ name TimeOffset227
+ xpos -3460
+ ypos 11004
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform182
+ xpos -3460
+ ypos 11150
+}
+push $Nc93c6b0
+TimeOffset {
+ time_offset -100
+ time ""
+ name TimeOffset228
+ xpos -3680
+ ypos 10994
+}
+Transform {
+ translate {-300 0}
+ center {640 360}
+ name Transform183
+ xpos -3680
+ ypos 11150
+}
+Merge2 {
+ inputs 6+1
+ name Merge68
+ xpos -3350
+ ypos 11510
+}
+push $Nc93c6b0
+TimeOffset {
+ time_offset -1000
+ time ""
+ name TimeOffset229
+ xpos -1150
+ ypos 10994
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform184
+ xpos -1150
+ ypos 11126
+}
+push $Nc93c6b0
+TimeOffset {
+ time_offset -1050
+ time ""
+ name TimeOffset230
+ xpos -1370
+ ypos 10994
+}
+Transform {
+ translate {400 0}
+ center {640 360}
+ name Transform185
+ xpos -1370
+ ypos 11126
+}
+push $Nc93c6b0
+TimeOffset {
+ time_offset -1100
+ time ""
+ name TimeOffset231
+ xpos -1590
+ ypos 10994
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform186
+ xpos -1590
+ ypos 11126
+}
+push $Nc93c6b0
+TimeOffset {
+ time_offset -1250
+ time ""
+ name TimeOffset232
+ xpos -2250
+ ypos 10994
+}
+Dot {
+ name Dot36
+ xpos -2216
+ ypos 11130
+}
+push 0
+push $Nc93c6b0
+TimeOffset {
+ time_offset -1150
+ time ""
+ name TimeOffset233
+ xpos -1810
+ ypos 10994
+}
+Transform {
+ translate {-600 0}
+ center {640 360}
+ name Transform187
+ xpos -1810
+ ypos 11126
+}
+push $Nc93c6b0
+TimeOffset {
+ time_offset -1200
+ time ""
+ name TimeOffset234
+ xpos -2030
+ ypos 10994
+}
+Transform {
+ translate {-300 0}
+ center {640 360}
+ name Transform188
+ xpos -2030
+ ypos 11126
+}
+Merge2 {
+ inputs 6+1
+ name Merge69
+ xpos -1700
+ ypos 11510
+}
+Merge2 {
+ inputs 2
+ name Merge70
+ xpos -2470
+ ypos 12038
+}
+Merge2 {
+ inputs 2
+ name Merge71
+ xpos -930
+ ypos 13286
+}
+ColorWheel {
+ inputs 0
+ format "1280 720 0 0 1280 720 1 HD_720"
+ gamma 0.45
+ name ColorWheel9
+ xpos 1490
+ ypos 13263
+}
+Transform {
+ scale 1.5
+ center {640 360}
+ name Transform189
+ xpos 1490
+ ypos 13382
+}
+Crop {
+ box {0 0 1280 720}
+ name Crop9
+ xpos 1490
+ ypos 13454
+}
+Grade {
+ white 0.8
+ gamma 0.62
+ name Grade9
+ xpos 1490
+ ypos 13526
+}
+Merge2 {
+ inputs 2
+ bbox B
+ name Merge72
+ xpos 280
+ ypos 14510
+}
+Crop {
+ box {{width/9*slice} 0 {width/9*(slice+1)} 720}
+ name Crop16
+ xpos 18760
+ ypos 15230
+ addUserKnob {20 User}
+ addUserKnob {3 slice}
+ slice 6
+}
+Merge2 {
+ inputs 9+1
+ name Merge73
+ xpos 23270
+ ypos 10766
+}
+Write {
+ file ../output/LaProfiler.####.exr
+ file_type exr
+ first_part rgba
+ version 1
+ beforeRender "file = open(nuke.script_directory()+'/../output/CurrentNukescript.txt','w+')\nfile.write(nuke.root().name())\nfile.close()"
+ name Write1
+ label "\nAll versions of The LaProfilers render to the same location on disk.\nbeforeRender callback outputs the currently rendering nukscript."
+ xpos 23594
+ ypos 10742
+}
+Viewer {
+ frame_range 1001-1200
+ viewerProcess "sRGB (ACES)"
+ name Viewer1
+ xpos 24023
+ ypos 10772
+}
