@@ -32,7 +32,7 @@ With the help of Shia LaBeouf, I’d like to take you on an investigative journe
 
 - Fact or fiction? Stamps reduce system overhead
 - The LaProfiler
-  - LaProfiler
+	- LaProfiler
 	- LaProfiler-TimeOffset
 	- LaProfiler-Filtered
 	- LaProfiler-Filtered-TimeOffset
