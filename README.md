@@ -18,7 +18,7 @@ To use the "LaProfiler" and "SpiralProfiler" example scripts. Do the following:
 ```
 #local machine profiling example
 cd /path/to/LaProfiler/shellscripts
-./profilers.sh
+./LaProfilers.sh
 ```
 > [!NOTE]
 > The shellscripts are hardcoded to specific versions of Nuke, modify shellscripts as required.
