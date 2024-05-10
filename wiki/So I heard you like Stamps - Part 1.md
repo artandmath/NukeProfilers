@@ -58,7 +58,7 @@ What follows are some some profiling examples designed to verify whether these c
 
 ## The LaProfiler
 
-The "LaProfiler" series of tests will involve some sprites sourced from Shia LaBeouf’s infamous “Just Do it!” monologue in #INTRODUCTIONS (2015). The video resoultion is 1280x720 pixels — source: https://vimeo.com/125095515.
+The "LaProfiler" series of tests will involve some sprites sourced from Shia LaBeouf’s infamous “Just Do it!” monologue in #INTRODUCTIONS (2015). The video resoultion is 1280x720 pixels — source: https://vimeo.com/125095515
 
 ![A lineup of LeBeouf sprites](/wiki/assets/SpriteLineupSingleLine.png)
 
