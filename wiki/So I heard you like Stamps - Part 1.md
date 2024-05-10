@@ -147,11 +147,20 @@ The following three scripts take a look at nodes used for script organisation. D
 
 Stamps falls into the category of script organisation and I’m told has the same overhead as a dot or NoOp.
 
-The test scripts contains 500 nodes of the organizational type (Dot or NoOp), and in the case of Stamps, 250 Anchor nodes and 250 Stamps.
-
-The scripts follow the mythical “spiral” compositing script pattern— also known as a “toilet bowl” script.
+The test scripts contains 500 nodes of the organizational type (Dot or NoOp), and in the case of Stamps, 250 Anchor nodes and 250 Stamps. The scripts follow the mythical “spiral” compositing script pattern— also known as a “toilet bowl” script.
 
 ![Screenshot of SpiralProfiler Node Graph](/wiki/assets/Screenshot_SpiralProfiler-NoOps_NodeGraph.png)
+
+Th scripts are organised as follows:
+- 1024x1024px checkerboard
+- Transform operation with rotation=time and filtering of type Impluse (nearest neighbour, aliased pixel filtering)
+- The chain of 500 organizational nodes
+- Transform operation with rotation=time and filtering of type cubic (an anti-aliased filtering operation).
+- The two transforms will concatenate (concatenate meaning that the two transforms are combined into one operation).
+- Grade node to break further concatenation
+- As this is a CPU test, the final result is scaled to 32x32 pixels to keep IO load low and the resulting frames saved over the network.
+
+The scripts are run on 1000 frames, 5 times, with the Nuke profiler disabled, and the CPU and memory usage results logged. 
 
 ![LaProfiler results chart](/wiki/assets/charts-72dpi/SpiralProfiler_Nuke13-2.png)
 
