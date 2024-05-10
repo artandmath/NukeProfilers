@@ -131,6 +131,12 @@ What is interesting to note is that what was the most RAM performant script in a
 
 By the time we've created a script of even moderate complexity, it appears there is no major difference as to whether we use Stamps or not, or whether or not we create duplicates of the Read node assets.
 
+## LaProfiler-TimeOffset-Filtered
+
+And just for safe measure, let's flip the order of operations between the Filter and TimeOffset operations.
+
+Again, by the time we've created a script of even moderate complexity, it appears there is no major difference as to whether we use Stamps or not, or whether or not we create duplicates of the Read node assets.
+
 ## Back to the DOD
 
 ## Size on disk
