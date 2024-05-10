@@ -102,9 +102,9 @@ Or is it ...
 
 Let’s push the I/O load for the script— TimeOffset nodes are added to each occurrence of Shia in the scripts. In theory we should only be pulling in more data for each frame and not really affecting CPU load.
 
-![Screenshot of LaProfiler Nukescript](/wiki/assets/Screenshot_LaProfiler-Filtered_Nukescript.png)
+![Screenshot of LaProfiler Nukescript](/wiki/assets/Screenshot_LaProfiler-TimeOffset_Nukescript.png)
 
-![Screenshot of LaProfiler Nukescript](/wiki/assets/charts-72dpi/LaProfiler-Filtered_Nuke13-2.png)
+![Screenshot of LaProfiler Nukescript](/wiki/assets/charts-72dpi/LaProfiler-TimeOffset_Nuke13-2.png)
 
 Now we see next to no difference in render time when using a single source for each type of Shia sprite (Stamps and Instances) or when using a unique read node for each instance of Shia (Duplicates). There is however a 16-25% increase in memory overhead for 9 read nodes (Stamps and Instances) versus 216 read nodes (Duplicates).
 
@@ -112,9 +112,9 @@ Now we see next to no difference in render time when using a single source for e
 
 What happens when we up the CPU load and throw some filters into the script? Let’s remove the TimeOffsets and add a unique filter after each instance of Shia.
 
-![Screenshot of LaProfiler Nukescript](/wiki/assets/Screenshot_LaProfiler-TimeOffset_Nukescript.png)
+![Screenshot of LaProfiler Nukescript](/wiki/assets/Screenshot_LaProfiler-Filtered_Nukescript.png)
 
-![Screenshot of LaProfiler Nukescript](/wiki/assets/charts-72dpi/LaProfiler-TimeOffset_Nuke13-2.png)
+![Screenshot of LaProfiler Nukescript](/wiki/assets/charts-72dpi/LaProfiler-Filtered_Nuke13-2.png)
 
 Stamps and duplicates are using far more RAM than single instances. Render times for duplicates are the longest, taking 6-7% longer than Instances and Stamps.
 
