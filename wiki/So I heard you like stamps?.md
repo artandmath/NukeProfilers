@@ -1,3 +1,3 @@
-#  <#Title#>
+# So I heard you like Stamps?
 
-![Lineup.png](../assets/Lineup.png)
+![A lineup of LeBeouf sprites](../assets/SpriteLineupSingleLine.png)
