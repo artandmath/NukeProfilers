@@ -1,4 +1,4 @@
-![Header](assets/Header_SoIHeardYouLikeStamps.gif)
+![Header](assets/Header_Stonks.gif)
 
 This folder contains files in markdown format that can be used for your VFX studio's wiki.
 
