@@ -27,5 +27,5 @@ cd /path/to/LaProfiler/shellscripts
 
 ## Alternatively 
 - Modify the Nukescripts to work in your comp pipeline.
-- Sending the Nukescripts to your renderfarm.
+- Send the Nukescripts to your renderfarm.
 - Gather analytics from the renderfarm.
