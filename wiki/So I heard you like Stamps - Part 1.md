@@ -71,6 +71,8 @@ To put it another way, if we didn’t provide a DOD/BBox, whilst the black pixel
 
 In this case, each sprite has a DOD/BBox that encompasses Shia’s person and tells the compositing software to ignore all other pixel data within each sprite’s original 1280x720 pixel frame.
 
+## LaProfiler
+
 The tests will run across 3 Nuke scripts. Each script produces the same result. There are 24 Shia’s for each of the 9 types of sprite, LaBeouf, LaRed, LaNoir, etc. A total of 216 Shia’s are computed on each frame.
 
 There are a few transforms to position Shia into various X-offsets in screen space. Everything is merged together (Shake-style, like a tree, over a colorwheel). The composite is very much I/O bound and light on CPU operations.
@@ -94,4 +96,34 @@ They’re not entirely the results I was expecting, having run similar tests at 
 
 However for vanilla Nuke, the results speak for themselves. Clearly, using Stamps is more efficient than using duplicate assets in a script and we should all start using _“hidden inputs that reconnect themselves when needed”._
 
-Or is it ….
+Or is it ...
+
+## LaProfiler-TimeOffset
+
+Let’s push the I/O load for the script— TimeOffset nodes are added to each occurrence of Shia in the scripts. In theory we should only be pulling in more data for each frame and not really affecting CPU load.
+
+![Screenshot of LaProfiler Nukescript](/wiki/assets/Screenshot_LaProfiler-Filtered_Nukescript.png)
+
+![Screenshot of LaProfiler Nukescript](/wiki/assets/charts-72dpi/LaProfiler-Filtered_Nuke13-2.png)
+
+Now we see next to no difference in render time when using a single source for each type of Shia sprite (Stamps and Instances) or when using a unique read node for each instance of Shia (Duplicates). There is however a 16-25% increase in memory overhead for 9 read nodes (Stamps and Instances) versus 216 read nodes (Duplicates).
+
+## LaProfiler-Filtered
+
+What happens when we up the CPU load and throw some filters into the script? Let’s remove the TimeOffsets and add a unique filter after each instance of Shia.
+
+![Screenshot of LaProfiler Nukescript](/wiki/assets/Screenshot_LaProfiler-TimeOffset_Nukescript.png)
+
+![Screenshot of LaProfiler Nukescript](/wiki/assets/charts-72dpi/LaProfiler-TimeOffset_Nuke13-2.png)
+
+Stamps and duplicates are using far more RAM than single instances. Render times for duplicates are the longest, taking 6-7% longer than Instances and Stamps.
+
+## LaProfiler-Filtered-TimeOffset
+
+Finally, combining the filters and time offsets.
+
+![Screenshot of LaProfiler Nukescript](/wiki/assets/Screenshot_LaProfiler-TimeOffset-Filtered_Nukescript.png)
+
+![Screenshot of LaProfiler Nukescript](/wiki/assets/charts-72dpi/LaProfiler-TimeOffset-Filtered_Nuke13-2.png)
+
+What is interesting to note is that the previously most memory performant script (Instances) is now the most memory heavy script and takes slightly longer to render than the other two tests. The Duplicates and Stamps scripts are pretty much on par with each other in terms of render time and CPU requirements, with the Duplicates script requiring 1% more memory than Stamps (or 4% relative to each other).
