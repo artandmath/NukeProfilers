@@ -29,7 +29,7 @@ Like all “good” internet posts, this series is written to be divisive. Divis
 
 You’re either in the Stamps camp, or you have the scars and wisdom learned from opening thousands of other people’s Nuke scripts, and you’re not. And just to make it clear up front, I am not in the Stamps camp. 
 
-With the help of Shia LaBeouf, I’d like to take you on an investigative journey into the Stamps tool. Teh journye will be technical, so if your eyes glaze over at the first sight of a spreadsheet or chart, just jump straight to the conclusions.
+With the help of Shia LaBeouf, I’d like to take you on an investigative journey into the Stamps tool. The journey will be technical, so if your eyes glaze over at the first sight of a spreadsheet or chart, just jump straight to the conclusions.
 
 ## Contents
 
