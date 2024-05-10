@@ -127,3 +127,14 @@ Finally, combining the filters and time offsets.
 ![Screenshot of LaProfiler Nukescript](/wiki/assets/charts-72dpi/LaProfiler-Filtered-TimeOffset_Nuke13-2.png)
 
 What is interesting to note is that the previously most memory performant script (Instances) is now the most memory heavy script and takes slightly longer to render than the other two tests. The Duplicates and Stamps scripts are pretty much on par with each other in terms of render time and CPU requirements, with the Duplicates script requiring 1% more memory than Stamps (or 4% relative to each other).
+
+By the time we've created a script of even moderate complexity, there is no real difference as to whether we use Stamps or not, or whether we duplicate our assets or not.
+
+## Nuke version, topdown & classic rendering
+
+## Back to the DOD
+
+## SpiralProfiler
+
+## Conclusions
+
