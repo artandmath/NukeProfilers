@@ -21,7 +21,7 @@ They look pretty slick! They come with a well written manual, video tutorials, a
 
 If you were to ask some compositors, Stamps are the greatest thing since sliced bread. 
 
-And isn’t sliced bread just fabulous? A loaf of Wonder White™ touts itself as “Full of Goodness” and boasts a 4.5 health star rating. There is also of course the convenience of not needing to own a bread knife.
+And isn’t sliced bread just fabulous? A loaf of Wonder White™ touts itself as “Full of Goodness” and boasts a 4.5 health star rating. There is also of course the convenience of not ever needing to own, or know how to use, a bread knife.
 
 But is sliced white bread really that good for you? Or has the marketing department twisted the numbers to make it appear so?
 
