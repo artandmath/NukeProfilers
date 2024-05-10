@@ -127,7 +127,7 @@ Finally, combining the filters and time offsets.
 
 ![LaProfiler results chart](/wiki/assets/charts-72dpi/LaProfiler-Filtered-TimeOffset_Nuke13-2.png)
 
-What is interesting to note is that what was the most RAM performant script previously (Instances) is now the most RAM heavy script and takes slightly longer to render than the other two tests. The Duplicates and Stamps scripts are pretty much on par with each other in terms of render time and CPU requirements, with the Duplicates script requiring 1% more memory than Stamps (or 4% relative to each other).
+What is interesting to note is that what was the most RAM performant script in all previous cases (Instances) is now the most RAM heavy script and takes slightly longer to render than the other two tests. The Duplicates and Stamps scripts are pretty much on par with each other in terms of render time and CPU requirements, with the Duplicates script requiring 1% more memory than Stamps (or 4% relative to each other).
 
 By the time we've created a script of even moderate complexity, it appears there is no major difference as to whether we use Stamps or not, or whether or not we create duplicates of the Read node assets.
 
