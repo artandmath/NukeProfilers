@@ -1,6 +1,6 @@
 # NukeProfilers
 
-This repository is an accompianment to a LinkedIn article titled ["So I heard you like Stamps?"](http://link.to.article)
+This repository is an accompaniment to a LinkedIn article titled ["So I heard you like Stamps?"](http://link.to.article)
 
 The folder "wiki" is a copy of the article in markdown language that can be used for your VFX studio's internal wiki.
 
