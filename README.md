@@ -21,11 +21,11 @@ cd /path/to/LaProfiler/shellscripts
 ./profilers.sh
 ```
 > [!NOTE]
-> The shellscripts are hardcoded to specific versions of Nuke. Modify as required.
+> The shellscripts are hardcoded to specific versions of Nuke, modify shellscripts as required.
 > 
 > $PATH may have to be set correctly for your version of Nuke.
 
 ## Alternatively 
-- Modify the scripts to work in your comp pipeline.
-- Test the scripts by sending the write nodes to your renderfarm.
+- Modify the Nukescripts to work in your comp pipeline.
+- Test the Nukescripts by sending the write nodes to your renderfarm.
 - Gather the analytics.
