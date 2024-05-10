@@ -1,3 +1,6 @@
+
+An investigation into the Stamps tool for Nuke, by Daniel Harkness
+
 # So I heard you like Stamps?
 
 Before we start. For who is this write up on Stamps intended?
