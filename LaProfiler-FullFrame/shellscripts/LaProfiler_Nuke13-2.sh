@@ -4,7 +4,7 @@ NUKE="Nuke13.2"
 LOGS="../logs"
 NUKESCRIPTS="../nukescripts"
 CACHE="/var/tmp/nuke-u1000"
-CYCLES=5
+CYCLES=2
 VARIANTS=("Duplicates" "Instances" "Stamps")
 
 
@@ -27,7 +27,7 @@ do
 			killall $NUKE 
 			rm -R $CACHE
 
-			$NUKE -c 4G -F $RANGE -m 4 -V -x "${NUKESCRIPTS}/${NUKESCRIPT}" > "${LOGS}/${LOG}_stdout.txt" 2>&1 &
+			$NUKE -c 5G -F $RANGE -m 4 -V -x "${NUKESCRIPTS}/${NUKESCRIPT}" > "${LOGS}/${LOG}_stdout.txt" 2>&1 &
 			sleep 1
 			./LogCpuMem.sh `pidof $NUKE` | tee "${LOGS}/${LOG}_cpumem.txt"
 		done
@@ -54,7 +54,7 @@ do
 			killall $NUKE 
 			rm -R $CACHE
 
-			$NUKE -c 4G -F $RANGE -m 4 -V -x "${NUKESCRIPTS}/${NUKESCRIPT}" > "${LOGS}/${LOG}.stdout.txt" 2>&1 &
+			$NUKE -c 5G -F $RANGE -m 4 -V -x "${NUKESCRIPTS}/${NUKESCRIPT}" > "${LOGS}/${LOG}.stdout.txt" 2>&1 &
 			sleep 1
 			./LogCpuMem.sh `pidof $NUKE` | tee "${LOGS}/${LOG}.cpumem.txt"
 		done
