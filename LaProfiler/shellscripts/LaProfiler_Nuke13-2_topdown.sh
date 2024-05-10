@@ -21,13 +21,13 @@ do
 			NOW=`date '+%F_%H-%M-%S'`
 			PROFILER="${PROFILERS[$p]}_${VARIANTS[$v]}"
 			NUKESCRIPT="${PROFILER}.nk"
-			LOG="${PROFILER}_${NUKE}_Cycle${c}_Frames${RANGE}"
+			LOG="${PROFILER}_${NUKE}--topdown_Cycle${c}_Frames${RANGE}"
 			echo $NOW "Profiling ${PROFILER} - Cycle ${c}"
 			
 			killall $NUKE 
 			rm -R $CACHE
 
-			$NUKE --topdown -c 4G -F $RANGE -m 4 -V -x "${NUKESCRIPTS}/${NUKESCRIPT}" > "${LOGS}/${LOG}_stdout.txt" 2>&1 &
+			$NUKE --topdown -c 5G -F $RANGE -m 4 -V -x "${NUKESCRIPTS}/${NUKESCRIPT}" > "${LOGS}/${LOG}_stdout.txt" 2>&1 &
 			sleep 1
 			./LogCpuMem.sh `pidof $NUKE` | tee "${LOGS}/${LOG}_cpumem.txt"
 		done
@@ -48,13 +48,13 @@ do
 			NOW=`date '+%F_%H-%M-%S'`
 			PROFILER="${PROFILERS[$p]}_${VARIANTS[$v]}"
 			NUKESCRIPT="${PROFILER}.nk"
-			LOG="${PROFILER}_${NUKE}_Cycle${c}_Frames${RANGE}"
+			LOG="${PROFILER}_${NUKE}--topdown_Cycle${c}_Frames${RANGE}"
 			echo $NOW "Profiling $PROFILER - Cycle" $c
 			
 			killall $NUKE 
 			rm -R $CACHE
 
-			$NUKE --topdown -c 4G -F $RANGE -m 4 -V -x "${NUKESCRIPTS}/${NUKESCRIPT}" > "${LOGS}/${LOG}.stdout.txt" 2>&1 &
+			$NUKE --topdown -c 5G -F $RANGE -m 4 -V -x "${NUKESCRIPTS}/${NUKESCRIPT}" > "${LOGS}/${LOG}.stdout.txt" 2>&1 &
 			sleep 1
 			./LogCpuMem.sh `pidof $NUKE` | tee "${LOGS}/${LOG}.cpumem.txt"
 		done
