@@ -117,7 +117,7 @@ What happens when we up the CPU load and throw some filters into the script? Let
 
 ![Screenshot of LaProfiler Nukescript](/wiki/assets/charts-72dpi/LaProfiler-Filtered_Nuke13-2.png)
 
-Stamps and duplicates are using far more RAM than single instances. Render times for duplicates are the longest, taking 6-7% longer than Instances and Stamps.
+Stamps and Duplicates are using far more RAM than single instances. Render times for duplicates are the longest, taking 6-7% longer than Instances and Stamps.
 
 ## LaProfiler-Filtered-TimeOffset
 
