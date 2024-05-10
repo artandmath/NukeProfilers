@@ -1,3 +1,4 @@
+![Header](assets/Header_SoIHeardYouLikeStamps.gif)
 
 An investigation into the Stamps tool for Nuke, by Daniel Harkness, 12 May 2024
 
@@ -80,8 +81,8 @@ There are a few transforms to position Shia into various X-axis offsets in scree
 
 The only difference with the 3 scripts is that the instances of Shia in the script are sourced from:
 - __Instances__ — a single Read node of Shia for each type of sprite. 9 read nodes total.
-- __Stamps__ — an anchor for each read node. 9 read nodes, 9 anchors, 216 stamps.
 - __Duplicates__ — an individual read node for each Shia. 216 read nodes.
+- __Stamps__ — an anchor for each read node. 9 read nodes, 9 anchors, 216 stamps.
 
 ![Screenshot of LaProfiler Node Graph](/wiki/assets/Screenshot_LaProfiler_NodeGraph.png)
 
