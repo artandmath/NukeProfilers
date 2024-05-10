@@ -1,10 +1,10 @@
 # So I heard you like Stamps?
 
-Before we start. Who is this series on Stamps intended?
+Before we start. For who is this write up on Stamps intended?
 
 It’s for anyone who may have an interest in where compositing teams are spending their time and computing resources— from studio owners and investors through to pipeline developers, IT, production, managers, supervisors, and to any artist who touches Nuke in the visual effects pipeline.
 
-What are Stamps?
+## What are Stamps?
 
 They’re a third-party tool for Foundry’s Nuke that have become somewhat prolific in their use at vendor-side VFX studios over the past 3 or 4 years. A trip to the website describes them best:
 
