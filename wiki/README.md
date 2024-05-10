@@ -1,4 +1,4 @@
-![Header](assets/Header_Stonks.png)
+![Header](assets/Header_Stonks.png =320x240)
 
 This folder contains files in markdown format that can be used in your VFX studio's internal wiki for the compositing department.
 
