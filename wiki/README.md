@@ -1,6 +1,6 @@
 ![Header](assets/Header_SoIHeardYouLikeStamps.gif)
 
-Markdown that can be used for your VFX studio's wiki.
+This folder contains files in markdown format that can be used for your VFX studio's wiki.
 
 [CC-BY-4.0 license](../LICENSE)
 
