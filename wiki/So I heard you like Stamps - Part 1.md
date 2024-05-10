@@ -97,7 +97,7 @@ They’re not entirely the results I was expecting, having run similar tests at 
 
 However for vanilla Nuke, the results speak for themselves. Clearly, using Stamps is more efficient than using duplicate assets in a script and we should all start using _“hidden inputs that reconnect themselves when needed”._
 
-Or is it ...
+Or should we ...
 
 ## LaProfiler-TimeOffset
 
