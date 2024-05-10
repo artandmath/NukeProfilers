@@ -12,7 +12,7 @@ To use the "LaProfiler" and "SpiralProfiler" example scripts. Do the following:
 
 - Download the repository.
 - Download the original [#INTRODUCTIONS](https://vimeo.com/125095515) clip from Vimeo.
-- Open the nukescript /nukescripts/GenerateSprites.nk, re-link the .mp4 from Vimeo at the top of the NodeGraph and render all write nodes, observing the render order.
+- Open the nukescript /nukescripts/GenerateSprites.nk, re-link the file *"#introductions_(2015) (Original).mp4"* from Vimeo at the top of the NodeGraph and render all write nodes, observing the render order.
 - Run the profilers on a local machine.
 - The profilers will iterate through the variants and generate results in the corresponding log directory.
 ```
