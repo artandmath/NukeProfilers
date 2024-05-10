@@ -9,7 +9,7 @@ It’s for anyone who may have an interest in where compositing teams are spendi
 
 ### What are Stamps?
 
-Stamps are a third-party tool for Foundry’s Nuke that have become somewhat prolific in their use at vendor-side VFX studios over the past 3 or 4 years. A trip to the website describes them best:
+Stamps are a third-party tool for Foundry’s Nuke that have become somewhat prolific in their use at vendor-side VFX studios over the past 4 years. A trip to the website describes them best:
 
 > Stamps v1.1 -- Smart node connection system for Nuke
 > 
