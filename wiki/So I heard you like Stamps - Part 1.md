@@ -25,7 +25,7 @@ And isn’t sliced bread just fabulous? A loaf of Wonder White™ touts itself a
 
 But is sliced white bread really that good for you? Or has the marketing department twisted the numbers to make it appear so?
 
-Like all “good” internet posts, this series is written to be divisive. Division not for the purpose of engagement, but to spark rational, analytical thought and encourage healthy debate around the way a compositing script is built.
+Like all “good” internet posts, this was written to be divisive. Division not for the purpose of engagement, but to spark rational, analytical thought and encourage healthy debate around the way a compositing script is built.
 
 You’re either in the Stamps camp, or you have the scars and wisdom learned from opening thousands of other people’s Nuke scripts, and you’re not. And just to make it clear up front, I am not in the Stamps camp. 
 
