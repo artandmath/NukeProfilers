@@ -21,7 +21,8 @@ cd /path/to/LaProfiler/shellscripts
 ./profilers.sh
 ```
 > [!NOTE]
-> The shellscripts are hardcoded to specific versions of nuke. Modify as required.
+> The shellscripts are hardcoded to specific versions of Nuke. Modify as required.
+> 
 > $PATH may have to be set correctly for your version of Nuke.
 
 ## Alternatively 
