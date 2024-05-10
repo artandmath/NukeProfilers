@@ -9,7 +9,9 @@ It’s for anyone who may have an interest in where compositing teams are spendi
 Stamps are a third-party tool for Foundry’s Nuke that have become somewhat prolific in their use at vendor-side VFX studios over the past 3 or 4 years. A trip to the website describes them best:
 
 > Stamps v1.1 -- Smart node connection system for Nuke
+> 
 > Stamps is a free and production-ready node connection system for Nuke, that enables placing the main assets in a single place on the Node Graph, through distinct nodes with hidden inputs that reconnect themselves when needed
+> 
 > https://adrianpueyo.com/stamps/
 
 They look pretty slick! They come with a well written manual, video tutorials, and they work exactly as described: _“hidden inputs that reconnect themselves when needed.”_
