@@ -5,7 +5,7 @@ An investigation into the Stamps tool for Nuke, by Daniel Harkness, 12 May 2024
 
 Before we start. For who is this write up on Stamps intended?
 
-It’s for anyone who may have an interest in where compositing teams are spending their time and computing resources— from studio owners and investors through to pipeline developers, IT, production, managers, supervisors, and to any artist who touches Nuke in the visual effects pipeline.
+It’s for anyone who may have an interest in how and where compositing teams are spending their time and computing resources— from studio owners and investors through to pipeline developers, IT, production, managers, supervisors, and to any artist who touches Nuke in the visual effects pipeline.
 
 ### What are Stamps?
 
