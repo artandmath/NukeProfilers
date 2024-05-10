@@ -4,9 +4,9 @@ Before we start. For who is this write up on Stamps intended?
 
 It’s for anyone who may have an interest in where compositing teams are spending their time and computing resources— from studio owners and investors through to pipeline developers, IT, production, managers, supervisors, and to any artist who touches Nuke in the visual effects pipeline.
 
-## What are Stamps?
+### What are Stamps?
 
-They’re a third-party tool for Foundry’s Nuke that have become somewhat prolific in their use at vendor-side VFX studios over the past 3 or 4 years. A trip to the website describes them best:
+Stamps are a third-party tool for Foundry’s Nuke that have become somewhat prolific in their use at vendor-side VFX studios over the past 3 or 4 years. A trip to the website describes them best:
 
 > Stamps v1.1 -- Smart node connection system for Nuke
 
@@ -14,7 +14,7 @@ They’re a third-party tool for Foundry’s Nuke that have become somewhat prol
 
 > https://adrianpueyo.com/stamps/
 
-They look pretty slick! They come with a well written manual, video tutorials, and they work exactly as described: “hidden inputs that reconnect themselves when needed.”
+They look pretty slick! They come with a well written manual, video tutorials, and they work exactly as described: _“hidden inputs that reconnect themselves when needed.”_
 
 If you were to ask some compositors, Stamps are the greatest thing since sliced bread. 
 
@@ -28,5 +28,18 @@ You’re either in the Stamps camp, or you have the scars and wisdom learned fro
 
 With the help of Shia LaBeouf, I’d like to take you on an investigative journey into the Stamps tool.
 
+## Contents
+
+- Fact or fiction? Stamps reduce system overhead
+- The LaProfiler
+  - LaProfiler
+	- LaProfiler-TimeOffset
+	- LaProfiler-Filtered
+	- LaProfiler-Filtered-TimeOffset
+	- LaProfiler-TimeOffset-Filtered
+- Nuke version, topdown & classic rendering
+- Back to the DOD
+- SpiralProfiler
+- Conclusions
 
 ![A lineup of LeBeouf sprites](/wiki/assets/SpriteLineupSingleLine.png)
