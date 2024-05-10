@@ -10,16 +10,14 @@ To use the "LaProfiler" and "SpiralProfiler" example scripts. Do the following:
 
 - Download the repository.
 - Download the original [#INTRODUCTIONS](https://vimeo.com/125095515) clip from Vimeo.
-- Open the nukescript /nukescripts/GgenerateSprites.nk and render the write nodes.
+- Open the nukescript /nukescripts/GenerateSprites.nk and render the write nodes.
 - Run the profilers on a local machine.
-- The profilers will iterate throuh the variants and generate results in the corresponding log directory
-
+- The profilers will iterate through the variants and generate results in the corresponding log directory.
 ```
-#Example:
+#local machine profiling example
 cd /path/to/LaProfiler/shellscripts
 ./profilers.sh
 ```
-  
 > [!NOTE]
 > The shellscripts are hardcoded to specific versions of nuke. Modify as required.
 > $PATH may have to be set correctly for your version of Nuke.
