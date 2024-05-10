@@ -1,6 +1,6 @@
 ![Header](assets/Header_Stonks.png)
 
-An investigation into the Stamps tool for Nuke, by Daniel Harkness, 12 May 2024
+An investigation into the Stamps tool for Nuke, by Daniel Harkness.
 
 This folder contains files in markdown format that can be used for your VFX studio's compositing wiki.
 
