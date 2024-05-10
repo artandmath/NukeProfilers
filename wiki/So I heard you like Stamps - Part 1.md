@@ -53,7 +53,7 @@ When discussing the use of Stamps with colleagues, one of the claims put forward
 
 I’m told that because Stamps source assets from single nodes in a Nuke script, they minimize CPU, RAM and network usage, as well as reducing node count for cleaner, more optimal scripts.
 
-Conversely, I’m also told that by creating multiples of an asset in a Nuke script, system overheads are also multiplied.
+Conversely, I’m also told that by creating multiples of a Read node asset in a Nuke script, system overheads are also multiplied.
 
 What follows are some some profiling examples designed to verify whether these claims are true.
 
