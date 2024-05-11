@@ -191,7 +191,7 @@ As an organisational tool, Stamps add compute overhead when compared to Dots and
 
 ![Stamps break concatenation](/wiki/assets/Screenshot_SpiralProfiler_StampsBreakConcatenation.gif)
 
-Why should it matter that Stamps break concatentation? Aren't they a tool that _" enables placing the main assets in a single place on the Node Graph"?_
+Why should it matter that Stamps break concatentation? Aren't they a tool that _"enables placing the main assets in a single place on the Node Graph"?_
 
 Should they not exist at the asset level where concatenation won't matter? In Part 2 we'll see why it does matter, because of all the weird, wonderful and confusing things that happen when you give _"hidden inputs that reconnect themselves when needed”_ to your compositing team.
 
