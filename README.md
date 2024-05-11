@@ -23,8 +23,7 @@ cd /path/to/LaProfiler/shellscripts
 ./LaProfilers.sh
 ```
 > [!NOTE]
-> The shellscripts are hardcoded to specific versions of Nuke, modify shellscripts as required.
-> $PATH may have to be set correctly for your version of Nuke or operating system.
+> $PATH may have to be set correctly for your version of Nuke or operating system. The shellscripts are hardcoded to specific versions of Nuke, modify shellscripts as required.
 
 ## Alternatively 
 - Modify the Nukescripts to work whithin your comp pipeline.
