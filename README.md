@@ -2,7 +2,7 @@
 
 This repository is an accompaniment to a LinkedIn article titled ["So I heard you like Stamps?"](http://link.to.article)
 
-The "wiki" folder contains a copy of the article in markdown format that can be used in your studio's internal wiki for the compositing department.
+The "wiki" folder contains a copy of the article in markdown format that can be used in your studio's compositing department wiki.
 
 [CC-BY-4.0 license](../LICENSE)
 
