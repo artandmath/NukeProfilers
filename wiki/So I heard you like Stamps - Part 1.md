@@ -152,7 +152,9 @@ Let's run the tests again with each sprite's DOD/BBox set to use the full 1280x7
 
 When it comes to computing resources, referencing single instances of a Read node asset in a script by using Stamps has less of an impact on CPU and RAM than telling Nuke when and where it should performing its calculations. In some instances the full frame Nukescripts casued Nuke to crash due to hitting a RAM ceiling. Where Nuke didn't crash we see a X to X increase in render times and X to X increase in memory requirements.
 
-These tests are simple comps, running on old hardware in a restricted 4GB to 5GB RAM environment. We might think it's irrelevant and we can just throw more computing power at a compositing problem and not worry about something so trivial as the DOD/BBox. But the impact of the DOD is just as relevant in a modern Nuke session referencing 4K plates and multi-part EXRs on a workstation with 96 CPU cores and 256GB of RAM. Not taking the care to manage the size of the DOD/BBox on complex compositing work is going to bring even the best workstation to its knees or, at the very least, make for a slower artist.
+These tests are simple comps, running on old hardware in a restricted 4GB to 5GB RAM environment. We might think it's irrelevant and we can just throw more computing power at a compositing problem and not worry about something so trivial as the DOD/BBox. But the impact of the DOD is just as relevant in a modern Nuke session referencing 4K plates and multi-part EXRs on a workstation with 96 CPU cores and 256GB of RAM.
+
+Not taking the care to manage the size of the DOD/BBox on complex compositing work is going to bring even the best workstation to its knees or, at the very least, make for a slower artist.
 
 ## Size on disk
 
@@ -205,7 +207,7 @@ The above tests were all performed using Nuke13.2v9 and the classic render mode.
 
 > https://www.foundry.com/nuke-newsletter/top-down-rendering
 
-The LaProfiler and SpiralProfiler test scripts were run in Nuke 12.2, Nuke 13.2 Classic and Nuke 13.2 Topdown. Whilst there were in some instances improvements in speed between Nuke 12.2 Classic mode and Nuke 13.2 Topdown mode, Nuke 13.2 Topdown mode was generally slower (in some cases more than half as slowe) and consumed far more RAM (is some cases more than double the RAM usage) than Nuke 13.2 Classic mode. Topdown mode also seemed to exhibit potential signs of memory leaks.
+The LaProfiler and SpiralProfiler test scripts were run in Nuke 12.2, Nuke 13.2 Classic and Nuke 13.2 Topdown. Whilst there were in some instances improvements in speed between Nuke 12.2 Classic mode and Nuke 13.2 Topdown mode, Nuke 13.2 Topdown mode was generally slower (in some cases Topdown was more than half as slow) and consumed far more RAM (is some cases Topdown used more than double the RAM) than Nuke 13.2 Classic mode. Topdown mode also seemed to exhibit potential signs of memory leaks.
 
 It will be interesting to investigate to see if Topdown rendering has improved in Nuke 14 & 15. The decrease in Topdown performance rather than the proposed performance increase may well be a case of these tests being run on ancient hardware.
 
