@@ -201,7 +201,7 @@ Should they not exist at the asset level where concatenation won't matter? In Pa
 
 ## Nuke version, topdown & classic rendering
 
-The above tests were all performed using Nuke13.2v9 and the classic render mode. Nuke 13.2 introduced a new way for Nuke to render the NodeGraph called Topdown rendering. From the Foundry's newsletter:
+The above tests were all performed using Nuke13.2v9 and the classic render mode. Nuke 13.2 introduced a new way for Nuke to render the NodeGraph called Top-down rendering. From the Foundry's newsletter:
 
 > In Nuke 13.2, we introduced a new way for Nuke to render its node graph called Top-down rendering. This new rendering method allows Nuke to render its node graph from the top of the graph down, rather than scanline-by-scanline on-demand, allowing Nuke to cache its data more efficiently, reducing thread synchronization issues and results in overall faster rendering.
 
@@ -209,9 +209,9 @@ The above tests were all performed using Nuke13.2v9 and the classic render mode.
 
 > https://www.foundry.com/nuke-newsletter/top-down-rendering
 
-The LaProfiler and SpiralProfiler test scripts were run in Nuke 12.2, Nuke 13.2 Classic and Nuke 13.2 Topdown. Whilst there were in some instances improvements in speed between Nuke 12.2 Classic mode and Nuke 13.2 Topdown mode, Nuke 13.2 Topdown mode was generally slower (in some cases Topdown was more than half as slow) and consumed far more RAM (is some cases Topdown used more than double the RAM) than Nuke 13.2 Classic mode. Topdown mode also seemed to exhibit potential signs of memory leaks.
+The LaProfiler and SpiralProfiler test scripts were run in Nuke 12.2, Nuke 13.2 Classic and Nuke 13.2 Top-down. Whilst there were in some instances improvements in speed between Nuke 12.2 Classic mode and Nuke 13.2 Top-down mode, Nuke 13.2 Top-down mode was generally slower (in some cases Top-down was more than half as slow) and consumed far more RAM than Nuke 13.2 Classic mode (in some cases Top-down used more than double the RAM). Top-down mode may exhibit potential signs of memory leaks.
 
-It will be interesting to investigate to see if Topdown rendering has improved in Nuke 14 & 15. The decrease in Topdown performance rather than the proposed performance increase may well be a case of these tests being run on ancient hardware.
+It will be interesting to investigate to see if Top-down rendering has improved in Nuke 14 & 15. The decrease in Top-down performance rather than the proposed performance increase may well be a case of these tests being run on ancient hardware.
 
 The full set of results are available here: https://github.com/artandmath/NukeProfilers/tree/main/wiki/assets/charts-pdf
 
