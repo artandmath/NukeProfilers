@@ -203,6 +203,6 @@ The initial tests of showed us that using Stamps in our Nukescripts might be a g
 
 However, as script compexity grew, those advantages were reduced to the point of not being relevant. Stamps added to script bloat and broke concatenation.
 
-What turns out to be more important than reducing Read node count is managing what data is being processed by Nuke. By mananging the bounding box, render times were brought down X percent. All Stamps give us are some hidden inputs and the appearance of organization.
+What turns out to be more important than reducing Read node count is managing what data is being processed by Nuke. By mananging the bounding box, render times were brought down X percent. Stamps didn't reduce system overheads, but it did give us some hidden inputs and the appearance of organization.
 
 See you in Part 2, when we take a look at what happens when Stamps are put into production and why the appearance of organization is not organization. Until then, let's take another look at that Stamps spiral....
