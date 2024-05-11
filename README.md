@@ -12,7 +12,7 @@ The "wiki" directory contains a copy of the LinkedIn piece in markdown format th
 
 To use the "LaProfiler" and "SpiralProfiler" example scripts, do the following:
 - Download the repository.
-- Download the original #INTRODUCTIONS clip from Vimeo https://vimeo.com/125095515 [^1]
+- Download the original **#INTRODUCTIONS** clip from Vimeo https://vimeo.com/125095515 [^1]
 - Open the nukescript /nukescripts/GenerateSprites.nk
 - At the top of the node graph, re-link the file **#introductions_(2015) (Original).mp4** downloaded from Vimeo.
 - Check for 20GB of free storage space for renders.
