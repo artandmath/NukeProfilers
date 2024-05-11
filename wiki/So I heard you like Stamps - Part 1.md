@@ -152,6 +152,8 @@ Let's run the tests again with each sprite's DOD/BBox set to use the full 1280 x
 
 When it comes to computing resources, referencing single instances of a Read node asset in a script by using Stamps has less of an impact on CPU and RAM than telling Nuke when and where it should performing its calculations. In some instances the nukescripts crashed due to hitting a RAM ceiling, but when it didn't crash we see a X to X increase in render times and X to X increase in memory requirements.
 
+These tests are simple comps, running on old hardware in a resritctive 4GB RAM environment. We might think it's irrelevant and we can just throw more computing power at a compositing problem and not worry about something so trivial as the DOD/BBox. But the impact of the DOD is just as relevant in a modern Nuke session referencing 4K plates an multi-part EXRs on a workstation with 96 CPU cores and 256GB of RAM. Not taking the care to manage the size of the DOD/BBox will bring even the best workstation to its knees.
+
 ## Size on disk
 
 Taking a look at the file dialog box for our Nukescripts, an item to note is the size on disk of the Stamp scripts compared to the non-Stamp scripts.
@@ -196,5 +198,11 @@ Should they not exist at the asset level where concatenation won't matter? In Pa
 ## Nuke version, topdown & classic rendering
 
 ## Conclusions
+
+The initial tests of showed us that using Stamps in our Nukescripts might be a good way to organise the assets because of the potential efficiency gains to be had from not duplicating Read nodes.
+
+However, as script compexity grew, those advantages were reduced to the point of not being relevant. Stamps added to script bloat and broke concatenation.
+
+What turns out to be more important than reducing Read node count is managing what data is being processed by Nuke. By mananging the bounding box, render times were brought down X percent. All Stamps give us are some hidden inputs and the appearance of organization.
 
 See you in Part 2, when we take a look at what happens when Stamps are put into production and why the appearance of organization is not organization. Until then, let's take another look at that Stamps spiral....
