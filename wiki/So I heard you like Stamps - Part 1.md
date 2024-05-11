@@ -102,7 +102,7 @@ Or should we ...
 
 ## LaProfiler-TimeOffset
 
-Let’s ncrease I/O load for the script— TimeOffset nodes are added to each occurrence of Shia in the scripts. At each time offset, Nuke is pulling in a unique frame for Shia, for a total of 216 unique input sprite frames for each output frame. In theory we should only be pulling in more data for each output frame and not really affecting CPU load.
+Let’s increase I/O load for the script— TimeOffset nodes are added to each occurrence of Shia. At each time offset, Nuke is pulling in a unique frame off storage for Shia, for a total of 216 unique input sprites for each output frame. In theory we should only be pulling in more data for each output frame and not really affecting CPU load.
 
 ![Screenshot of LaProfiler Node Graph](/wiki/assets/Screenshot_LaProfiler-TimeOffset_NodeGraph.png)
 
