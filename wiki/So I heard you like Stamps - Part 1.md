@@ -148,7 +148,7 @@ And by changing the order of operations it appears we can shave a full 40 second
 
 If changing the order of operations gave us a 15% improvement in render times, what sort of impact does the DOD have?
 
-Let's run the tests again with each sprite's DOD/BBox set to use the full 1280 x720 pixel frame.
+Let's run the tests again with each sprite's DOD/BBox set to use the full 1280x720 pixel frame.
 
 When it comes to computing resources, referencing single instances of a Read node asset in a script by using Stamps has less of an impact on CPU and RAM than telling Nuke when and where it should performing its calculations. In some instances the nukescripts crashed due to hitting a RAM ceiling, but when it didn't crash we see a X to X increase in render times and X to X increase in memory requirements.
 
