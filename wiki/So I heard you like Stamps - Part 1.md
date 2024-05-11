@@ -197,6 +197,18 @@ Should they not exist at the asset level where concatenation won't matter? In Pa
 
 ## Nuke version, topdown & classic rendering
 
+The above tests were all performed using Nuke13.2v9 and the classic render mode. Nuke 13.2 introduced a new way for Nuke to render the NodeGraph called Topdown rendering. From the Foundry's newsletter:
+
+> In Nuke 13.2, we introduced a new way for Nuke to render its node graph called Top-down rendering. This new rendering method allows Nuke to render its node graph from the top of the graph down, rather than scanline-by-scanline on-demand, allowing Nuke to cache its data more efficiently, reducing thread synchronization issues and results in overall faster rendering.
+
+> In our internal tests, we have seen scripts render on average 20% faster and some by as much as up to 200% faster (performance gains being script-dependent).
+
+> https://www.foundry.com/nuke-newsletter/top-down-rendering
+
+The LaProfiler and SpiralProfiler test scripts were run in Nuke 12.2, Nuke 13.2 Classic and Nuke 13.2 Topdown. Whilst there were in some instances improvements in speed between Nuke 12.2 Classic mode and Nuke 13.2 Topdown mode, Topdown mode was generally slower and consumed far more RAM the Classic mode.
+
+The full set of results are available here: https://github.com/artandmath/NukeProfilers/tree/main/wiki/assets/charts-pdf
+
 ## Conclusions
 
 Initial tests show that using Stamps in Nukescripts could be a good way to organise Read node assets, because of the potential efficiency gains to be had from not having duplicate Read nodes.
