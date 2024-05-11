@@ -59,7 +59,7 @@ What follows are some profiling examples designed to verify whether these claims
 
 ## The LaProfiler
 
-The "LaProfiler" series of tests will involve some sprites sourced from Shia LaBeouf’s infamous “Just Do it!” monologue in __#INTRODUCTIONS (2015)__. The video resoultion is 1280x720 pixels — source: https://vimeo.com/125095515
+The "LaProfiler" series of tests will involve some sprites sourced from Shia LaBeouf’s infamous “Just Do it!” monologue in __#INTRODUCTIONS (2015)__. The video resolution is 1280x720 pixels — source: https://vimeo.com/125095515
 
 ![A lineup of LeBeouf sprites](/wiki/assets/SpriteLineupSingleLine.png)
 
@@ -84,15 +84,15 @@ The only difference with the 3 scripts is that the instances of Shia in the scri
 - __Duplicates__ — an individual read node for each Shia. 216 read nodes.
 - __Stamps__ — an anchor for each read node. 9 read nodes, 9 anchors, 216 stamps.
 
-![Screenshot of LaProfiler Node Graph](/wiki/assets/Screenshot_LaProfiler_NodeGraph.png)
+![Screenshot of the LaProfiler Node Graph](/wiki/assets/Screenshot_LaProfiler_NodeGraph.png)
 
 The scripts are processed on an 8 year old intel i5-8500B @ 3.00Ghz with the sprites sourced from an on-board SSD on another computer via a direct 1GBe connection. The renders are saved over the same connection to the same SSD as the sprites.
 
-The scripts are run on 100 frames, 5 times so that an average result can be obtained. The Nuke profiler is disabled, and the CPU and RAM usage logged. These are the results:
+The scripts render 100 frames, iterating the same render 5 times so that an average result can be obtained. The Nuke profiler is disabled, and the CPU and RAM usage logged. These are the results:
 
-![LaProfiler results chart](/wiki/assets/charts-72dpi/LaProfiler_Nuke13-2.png)
+![Results for LaProfiler - Nuke 13.2v9 - classic render mode](/wiki/assets/charts-72dpi/LaProfiler_Nuke13-2.png)
 
-So it’s true! Stamps do indeed use less memory resources than duplication of assets in a script. Not the 2300% overhead that I was told would be the case, but rather an a 101% increase in render time of Duplicates vs Stamps and an 18% increase in RAM overhead. Still, not insignificant numbers.
+So it’s true! Stamps do indeed use less memory resources than duplication of assets in a script. Not the 2300% overhead that I was told would be the case, but rather an a 101% increase in render time of Duplicates vs Stamps and an 18% increase in RAM overhead. Still, these are not insignificant numbers.
 
 They’re not entirely the results I was expecting, having run similar tests at large facilities and getting results that showed Duplicates using less RAM than Stamps— in these cases there may or may not have been facility specific pipeline and server-side optimizations. More complex multi-part EXRs and Deep data may have also had an impact on the results.
 
@@ -102,27 +102,27 @@ Or should we ...
 
 ## LaProfiler-TimeOffset
 
-Let’s increase I/O load for the Nukescript. TimeOffset nodes are added to each occurrence of Shia. At each time offset, Nuke is pulling in a unique frame off storage for Shia, for a total of 216 unique input sprites for each output frame. In theory we should only be pulling in more data for each output frame and not really affecting CPU load.
+Let’s increase I/O load for the Nukescript. TimeOffset nodes are added to each occurrence of Shia. At each TimeOffset, Nuke is pulling in a unique frame off storage for Shia, for a total of 216 unique input sprites for each output frame. In theory we should only be pulling in more data for each output frame and not applying much change to the CPU load compared to the previous test.
 
-![Screenshot of LaProfiler Node Graph](/wiki/assets/Screenshot_LaProfiler-TimeOffset_NodeGraph.png)
+![Screenshot of a section of the LaProfiler-TimeOffset_Duplicates NodeGraph](/wiki/assets/Screenshot_LaProfiler-TimeOffset_NodeGraph.png)
 
-![LaProfiler results chart](/wiki/assets/charts-72dpi/LaProfiler-TimeOffset_Nuke13-2.png)
+![Results for LaProfiler-TimeOffset - Nuke 13.2v9 - classic render mode](/wiki/assets/charts-72dpi/LaProfiler-TimeOffset_Nuke13-2.png)
 
 Now we see next to no difference in render time when using a single source for each type of Shia sprite (Stamps and Instances) or when using a unique read node for each instance of Shia (Duplicates). There is however a 16-25% increase in memory overhead for 216 Read nodes (Duplicates) versus 9 Read nodes (Stamps and Instances). 
 
 ## LaProfiler-Filtered
 
-What happens when we increase the CPU load by throwing some filters into the script? Let’s remove the TimeOffsets and add a unique filter after each instance of Shia. For the higher CPU load tests, the framerange is reduced from 100 frames to 10 frames (1001-1010). There is no DOD/BBox management beyond providing the initial smaller DOD/BBox for the sprites.
+What happens when we increase the CPU load by throwing some filters into the script? Let’s remove the TimeOffsets and add a unique filter after each instance of Shia. For the higher CPU load tests, the framerange is reduced from 100 frames to 10 frames (1001-1010). There is no additional DOD/BBox management beyond providing the initial smaller DOD/BBox for the sprites.
 
-![Screenshot of LaProfiler Node Graph](/wiki/assets/Screenshot_LaProfiler-Filtered_NodeGraph.png)
+![Screenshot of a section of the LaProfiler-Filtered_Stamps NodeGraph](/wiki/assets/Screenshot_LaProfiler-Filtered_NodeGraph.png)
 
-![LaProfiler results chart](/wiki/assets/charts-72dpi/LaProfiler-Filtered_Nuke13-2.png)
+![Results for LaProfiler-Filtered - Nuke 13.2v9 - classic render mode](/wiki/assets/charts-72dpi/LaProfiler-Filtered_Nuke13-2.png)
 
 Stamps and Duplicates are using far more RAM than single instances. Render times for duplicates are the longest, taking 6-7% longer than Instances and Stamps.
 
 ## LaProfiler-Filtered-TimeOffset
 
-Finally, combining the Filters and TimeOffsets.
+Finally, let us combine the Filters and TimeOffsets.
 
 ![Screenshot of LaProfiler Node Graph](/wiki/assets/Screenshot_LaProfiler-Filtered-TimeOffset_NodeGraph.png)
 
@@ -134,11 +134,11 @@ By the time we've created a script of even moderate complexity, it appears there
 
 ## LaProfiler-TimeOffset-Filtered
 
-And just for safe measure, let's run the same test but flip the order of operations between the Filter and TimeOffset operations. TimeOffsets are concatenated where possible and performed before the Filters operations.
+And just for safe measure, and because nothing in VFX is actually ever final, let's run the same test but flip the order of operations between the Filter and TimeOffset operations. TimeOffsets are concatenated where possible and performed before the Filter operations.
 
-![Screenshot of LaProfiler Node Graph](/wiki/assets/Screenshot_LaProfiler-TimeOffset-Filtered_NodeGraph.png)
+![Screenshot of a section of the LaProfiler-TimeOffset-Filtered_Duplicates NodeGraph](/wiki/assets/Screenshot_LaProfiler-TimeOffset-Filtered_NodeGraph.png)
 
-![LaProfiler results chart](/wiki/assets/charts-72dpi/LaProfiler-TimeOffset-Filtered_Nuke13-2.png)
+![Results for LaProfiler-TimeOffset-Filtered - Nuke 13.2v9 - classic render mode](/wiki/assets/charts-72dpi/LaProfiler-TimeOffset-Filtered_Nuke13-2.png)
 
 Again, by the time we've created a script of even moderate complexity, it appears there is no major difference as to whether we use Stamps or not, or whether or not we create duplicates of the Read node assets.
 
@@ -158,11 +158,11 @@ These tests are simple comps, running on old hardware in a resritctive 4GB RAM e
 
 Taking a look at the file dialog box for our Nukescripts, an item to note is the size on disk of the Stamp scripts compared to the non-Stamp scripts.
 
-![Screenshot of LaProfiler File Open Dialog](/wiki/assets/Screenshot_LaProfiler_FileDialog.png)
+![Screenshot of the File>Open dialog for the LaProfiler Nukescripts folder](/wiki/assets/Screenshot_LaProfiler_FileDialog.png)
 
-Pasting a Stamp and Anchor pair and a pair of Dot nodes shows us the space on disk take within a Nukescript.
+Pasting a Stamp and Anchor pair into a text editor will show us the space on disk they take within a Nukescript when compared to a pair of Dot nodes.
 
-![Screenshot of LaProfiler File Open Dialog](/wiki/assets/Screenshot_StampsPairInTextEditor.png)
+![Screenshot of Stamps in a text editor](/wiki/assets/Screenshot_StampsPairInTextEditor.png)
 
 ## SpiralProfiler
 
@@ -172,7 +172,7 @@ Stamps falls into the category of script organisation and I’m told they have t
 
 The SpiralProfiler scripts contains 500 nodes of the organizational type (Dot or NoOp), and in the case of Stamps, 250 Anchor nodes and 250 Stamps. The scripts follow the mythical “spiral” compositing script pattern— also known as a “toilet bowl” script.
 
-![Screenshot of SpiralProfiler Node Graph](/wiki/assets/Screenshot_SpiralProfiler-NoOps_NodeGraph.png)
+![Screenshot of SpiralProfiler Node Graphs](/wiki/assets/Screenshot_SpiralProfiler-NoOps_NodeGraph.png)
 
 The scripts are organised as follows:
 - 1024x1024px checkerboard.
@@ -183,9 +183,9 @@ The scripts are organised as follows:
 - Grade node to purposely break any further concatenation.
 - As this is a CPU test, the final result is scaled to 32x32 pixels to keep IO load low and the resulting frames saved over the network.
 
-The scripts are run on 1000 frames, 5 times, with the Nuke profiler disabled, and the CPU and memory usage results logged. 
+The scripts are run on 1000 frames, again iterating 5 times, with the Nuke profiler disabled, and the CPU and RAM usage logged. 
 
-![LaProfiler results chart](/wiki/assets/charts-72dpi/SpiralProfiler_Nuke13-2.png)
+![Results for SpiralProfiler - Nuke 13.2v9 - classic render mode](/wiki/assets/charts-72dpi/SpiralProfiler_Nuke13-2.png)
 
 As an organisational tool, Stamps add compute overhead when compared to Dots and NoOps, they create larger Nukescripts, and as seen in the next screenshot, break concatenation.
 
@@ -199,9 +199,9 @@ Should they not exist at the asset level where concatenation won't matter? In Pa
 
 ## Conclusions
 
-The initial tests showed us that using Stamps in our Nukescripts coult be a good way to organise Read node asserts in a Nukescript, because of the potential efficiency gains to be had from not duplicating Read nodes.
+The initial tests showed us that using Stamps in our Nukescripts could be a good way to organise Read node assets, because of the potential efficiency gains to be had from not having duplicate Read nodes.
 
-However, as script compexity grew, those advantages were reduced to the point of not being relevant. Stamps added to script bloat and broke concatenation.
+However, as script complexity grew, those advantages were reduced to the point of not being relevant. Stamps added to script bloat and broke concatenation.
 
 What turns out to be more important than reducing Read node count is managing what data is being processed by Nuke. By mananging the bounding box, render times were brought down X percent and memory brought down by X percent. Stamps didn't reduce system overheads, but they did give us some hidden inputs and the appearance of organization.
 
