@@ -181,7 +181,7 @@ As an organisational tool, Stamps add compute overhead, create larger scripts, a
 
 ![Stamps break concatenation](/wiki/assets/Screenshot_SpiralProfiler_StampsBreakConcatenation.gif)
 
-Why should it matter that Stamps break concatentation? Aren't they a tool that _" enables placing the main assets in a single place on the Node Graph"?_ Should they not exist at the asset level where concatenation won't matter? In Part 2 we'll see why it does matter, because of all the weird and wonderful ways that artists and leads use _"hidden inputs that reconnect themselves when needed.”_
+Why should it matter that Stamps break concatentation? Aren't they a tool that _" enables placing the main assets in a single place on the Node Graph"?_ Should they not exist at the asset level where concatenation won't matter? In Part 2 we'll see why it does matter, because of all the weird and wonderful things that happen when you give artists and leads _"hidden inputs that reconnect themselves when needed.”_
 
 ## Nuke version, topdown & classic rendering
 
