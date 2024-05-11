@@ -179,7 +179,7 @@ The scripts are organised as follows:
 - Transform operation with __rotation=time__ and filtering of type __Impluse__ (nearest neighbour, aliased pixel filtering).
 - The chain of 500 organizational nodes.
 - Transform operation with __rotation=time__ and filtering of type __Cubic__ (an anti-aliased filtering operation).
-- The two transforms will concatenate (concatenate meaning that the two transforms are combined into one operation).
+- The two transforms will concatenate (concatenate meaning that the two transforms are combined into one operation, inheriting the Cubic filtering).
 - Grade node to purposely break any further concatenation.
 - As this is a CPU test, the final result is scaled to 32x32 pixels to keep IO load low and the resulting frames saved over the network.
 
