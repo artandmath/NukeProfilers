@@ -187,3 +187,4 @@ And why should it matter that Stamps break concatentation? Aren't they a tool th
 
 ## Conclusions
 
+See you in Part 2, where we take a look at what happens when Stamps are put into production.
