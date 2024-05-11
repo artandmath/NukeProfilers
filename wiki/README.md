@@ -1,4 +1,4 @@
-This folder contains files in markdown format that can be used in your VFX studio's internal wiki for the compositing department.
+This folder contains files in markdown format that can be used in your studio's internal wiki for the compositing department.
 
 [CC-BY-4.0 license](../LICENSE)
 
