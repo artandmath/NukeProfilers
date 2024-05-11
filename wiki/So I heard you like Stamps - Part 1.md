@@ -199,10 +199,10 @@ Should they not exist at the asset level where concatenation won't matter? In Pa
 
 ## Conclusions
 
-The initial tests showed us that using Stamps in our Nukescripts could be a good way to organise Read node assets, because of the potential efficiency gains to be had from not having duplicate Read nodes.
+Initial tests show that using Stamps in Nukescripts could be a good way to organise Read node assets, because of the potential efficiency gains to be had from not having duplicate Read nodes.
 
-However, as script complexity grew, those advantages were reduced to the point of not being relevant. Stamps added to script bloat and broke concatenation.
+However, as script complexity grows, those advantages are reduced to the point of not being relevant. Stamps add to script bloat and break concatenation.
 
-What turns out to be more important than reducing Read node count is managing what data is being processed by Nuke. By mananging the bounding box, render times were brought down X percent and memory brought down by X percent. Stamps didn't reduce system overheads, but they did give us some hidden inputs and the appearance of organization.
+What turns out to be more important than reducing Read node count is managing what data is being processed by Nuke. By mananging the bounding box, render times were brought down X percent and memory brought down by X percent. Stamps don't reduce system overheads, but they do give us hidden inputs and the appearance of organization.
 
 See you in Part 2, where we will take a look at what happens when Stamps are put into production and why the appearance of organization is not organization. Until then, let's take another look at that Stamps spiral....
