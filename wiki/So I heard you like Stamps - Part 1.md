@@ -1,4 +1,4 @@
-![Header](assets/Header_SoIHeardYouLikeStamps.gif)
+<img width="898" alt="Screenshot_LaProfiler_FileDialog" src="https://github.com/artandmath/NukeProfilers/assets/5173040/da510f30-6be3-463c-8bc8-8790b2c8368b">![Header](assets/Header_SoIHeardYouLikeStamps.gif)
 
 An investigation into the Stamps tool for Nuke, by Daniel Harkness, 12 May 2024
 
@@ -156,7 +156,11 @@ When it comes to computing resources, referencing single instances of a Read nod
 
 Taking a look at the file dialog box for our Nukescripts, an item to note is the filesize on disk of the Stamp scripts compared to the non-Stamp scripts.
 
+![Screenshot of LaProfiler File Open Dialog](/wiki/assets/Screenshot_LaProfiler_FileDialog.png)
+
 Pasting a Stamp and Anchor pair and a pair of Dot nodes shows us the space on disk take within a Nukescript.
+
+![Screenshot of LaProfiler File Open Dialog](/wiki/assets/Screenshot_StampsPairInTextEditor.png)
 
 ## SpiralProfiler
 
