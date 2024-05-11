@@ -225,4 +225,4 @@ See you in Part 2, where we will take a look at what happens when Stamps are put
 
 The test scripts used this piece are available for download from https://github.com/artandmath/NukeProfilers.
 
-This piece is also available for download from the same repository— written markdown format for your VFX studio's compositing department wiki. 
+This piece is also available for download from the same repository— written in markdown format for your VFX studio's compositing department wiki.
