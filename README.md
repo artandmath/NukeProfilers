@@ -1,10 +1,10 @@
 # NukeProfilers
 
-This repository is an accompaniment to a LinkedIn article titled ["So I heard you like Stamps?"](http://link.to.article)
+This repository is an accompaniment to a LinkedIn piece titled ["So I heard you like Stamps?"](http://link.to.article)
 
-The respository contains Nukescripts that can be used for profiling various compositing node graph design patterns.
+It contains Nukescripts that can be used for profiling various compositing node graph design patterns.
 
-The "wiki" directory contains a copy of the article in markdown format that can be used in your studio's compositing department wiki.
+The "wiki" directory contains a copy of the LinkedIn piece in markdown format that can be used in your studio's compositing department wiki.
 
 [CC-BY-4.0 license](../LICENSE)
 
