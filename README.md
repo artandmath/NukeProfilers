@@ -11,7 +11,7 @@ This folder contains files in markdown format that can be used in your studio's 
 To use the "LaProfiler" and "SpiralProfiler" example scripts. Do the following:
 
 - Download the repository.
-- Download the original #INTRODUCTIONS clip from Vimeo https://vimeo.com/125095515[^1]
+- Download the original #INTRODUCTIONS clip from Vimeo https://vimeo.com/125095515 [^1]
 - Open the nukescript /nukescripts/GenerateSprites.nk
 - At the top of the NodeGraph, re-link the file *"#introductions_(2015) (Original).mp4"* downloaded from Vimeo.
 - Render all write nodes, observing the render order.
