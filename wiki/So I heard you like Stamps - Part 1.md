@@ -154,34 +154,34 @@ When it comes to computing resources, referencing single instances of a Read nod
 
 ## Size on disk
 
-Taking a look at the file dialog box for our Nukescripts, an item to note is the filesize on disk of the scripts.
+Taking a look at the file dialog box for our Nukescripts, an item to note is the filesize on disk of the Stamp scripts compared to the non-Stamp scripts.
 
-Pasting a Stamp and Anchor pair and a pair of Dot nodes we can see the space they take within a Nukescript
+Pasting a Stamp and Anchor pair and a pair of Dot nodes shows us the space on disk take within a Nukescript.
 
 ## SpiralProfiler
 
 The following three scripts take a look at nodes used for script organisation. Dots (sometimes called elbows) and NoOps (No Operation node) allow a compositor to organise their script to make it more readable for both themselves and other artists who may pick up their work.
 
-Stamps falls into the category of script organisation and I’m told has the same overhead as a dot or NoOp.
+Stamps falls into the category of script organisation and I’m told they have the same overhead as a Dot or NoOp.
 
-The test scripts contains 500 nodes of the organizational type (Dot or NoOp), and in the case of Stamps, 250 Anchor nodes and 250 Stamps. The scripts follow the mythical “spiral” compositing script pattern— also known as a “toilet bowl” script.
+The SpiralProfiler scripts contains 500 nodes of the organizational type (Dot or NoOp), and in the case of Stamps, 250 Anchor nodes and 250 Stamps. The scripts follow the mythical “spiral” compositing script pattern— also known as a “toilet bowl” script.
 
 ![Screenshot of SpiralProfiler Node Graph](/wiki/assets/Screenshot_SpiralProfiler-NoOps_NodeGraph.png)
 
 The scripts are organised as follows:
-- 1024x1024px checkerboard
-- Transform operation with rotation=time and filtering of type Impluse (nearest neighbour, aliased pixel filtering)
-- The chain of 500 organizational nodes
-- Transform operation with rotation=time and filtering of type cubic (an anti-aliased filtering operation).
+- 1024x1024px checkerboard.
+- Transform operation with __rotation=time__ and filtering of type __Impluse__ (nearest neighbour, aliased pixel filtering).
+- The chain of 500 organizational nodes.
+- Transform operation with __rotation=time__ and filtering of type __Cubic__ (an anti-aliased filtering operation).
 - The two transforms will concatenate (concatenate meaning that the two transforms are combined into one operation).
-- Grade node to purposely break any further concatenation
+- Grade node to purposely break any further concatenation.
 - As this is a CPU test, the final result is scaled to 32x32 pixels to keep IO load low and the resulting frames saved over the network.
 
 The scripts are run on 1000 frames, 5 times, with the Nuke profiler disabled, and the CPU and memory usage results logged. 
 
 ![LaProfiler results chart](/wiki/assets/charts-72dpi/SpiralProfiler_Nuke13-2.png)
 
-As an organisational tool, Stamps add compute overhead, create larger scripts, and break concatenation.
+As an organisational tool, Stamps add compute overhead when compared to Dots and NoOps, create larger scripts, and break concatenation.
 
 ![Stamps break concatenation](/wiki/assets/Screenshot_SpiralProfiler_StampsBreakConcatenation.gif)
 
