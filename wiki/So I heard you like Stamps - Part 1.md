@@ -69,13 +69,13 @@ What are those dotted rectangles around him? In the Shake days we used to call i
 
 The DOD/BBox is an instruction to the compositing software to look only within the DOD/BBox for storing pixel data on disk and RAM and to indicate when and where to perform calculations on the data. Compositing software knows no difference between the black pixels surrounding Shia and the coloured pixels he is comprised of.
 
-To put it another way, if we didn’t provide a DOD/BBox, whilst the black pixels may compress down to near zero when they are stored on disk, when they’re read back into RAM, the CPU and RAM requirements on the black pixels are no different to those of the coloured pixels. Hence why we define a DOD/BBox— to help reduce the load on the computing resources.
+To put it another way, whilst the black pixels may compress down to near zero when they are stored on disk, when they’re read back from disk, the CPU and RAM requirements of the black pixels are no different to those of the coloured pixels. Hence why we define a DOD/BBox— to help reduce the load on the computing resources.
 
 In this case, each sprite has a DOD/BBox that encompasses Shia’s person only and tells the compositing software to ignore all other pixel data within each sprite’s original 1280x720 pixel frame.
 
 ## LaProfiler
 
-The tests will run across 3 Nuke scripts. Each script produces the same result. There are 24 Shia’s for each of the 9 types of sprite: LaBeouf, LaRed, LaNoir, etc. A total of 216 Shia’s are composited on each frame.
+The tests will run across 3 Nuke scripts. Each script produces the same result. There are 24 Shia’s for each of the 9 types of sprite: LaBeouf, LaRed, LaNoir, etc. A total of 216 Shias are composited on each frame.
 
 There are a few transforms to position Shia into various X-axis offsets in screen space. Everything is merged together (Shake-style, like a tree, over a colorwheel). The composite is designed to be I/O bound and light on CPU operations.
 
@@ -86,29 +86,29 @@ The only difference with the 3 scripts is that the instances of Shia in the scri
 
 ![Screenshot of the LaProfiler Node Graph](/wiki/assets/Screenshot_LaProfiler_NodeGraph.png)
 
-The scripts are processed on an 8 year old intel i5-8500B @ 3.00Ghz with the sprites sourced from an on-board SSD on another computer via a direct 1GBe connection. The renders are saved over the same connection to the same SSD as the sprites.
+The scripts are processed on an 8 year old intel i5-8500B @ 3.00Ghz with the sprites sourced from an on-board SSD on another computer via a direct 1GBe connection. The output frames are saved over the same network connection to the same SSD containing the sprites.
 
 The scripts render 100 frames, iterating the same render 5 times so that an average result can be obtained. The Nuke profiler is disabled, and the CPU and RAM usage logged. These are the results:
 
 ![Results for LaProfiler - Nuke 13.2v9 - classic render mode](/wiki/assets/charts-72dpi/LaProfiler_Nuke13-2.png)
 
-So it’s true! Stamps do indeed use less memory resources than duplication of assets in a script. Not the 2300% overhead that I was told would be the case, but rather an a 101% increase in render time of Duplicates vs Stamps and an 18% increase in RAM overhead. Still, these are not insignificant numbers.
+So it’s true! Stamps do indeed use less memory resources than duplication of assets in a Nukescript. Not the 2300% overhead that I was told would be the case, but rather an a 101% increase in render time of Duplicates vs Stamps and an 18% increase in RAM overhead. Still, these are not insignificant numbers.
 
-They’re not entirely the results I was expecting, having run similar tests at large facilities and getting results that showed Duplicates using less RAM than Stamps— in these cases there may or may not have been facility specific pipeline and server-side optimizations. More complex multi-part EXRs and Deep data may have also had an impact on the results.
+They’re not entirely the results I was expecting, having run similar tests at large facilities and getting results that showed Duplicates using less RAM than Stamps— in those tests there may or may not have been facility specific pipeline and server-side optimizations. More complex multi-part EXRs and Deep data may have also had an impact on the results.
 
-However for vanilla Nuke, the results speak for themselves. Clearly, using Stamps is more efficient than using duplicate assets in a script and we should all start using _“hidden inputs that reconnect themselves when needed”._
+However for vanilla Nuke, the results speak for themselves. Clearly, using Stamps is more efficient than using duplicate assets in a Nukescript and we should all start using _“hidden inputs that reconnect themselves when needed”._
 
 Or should we ...
 
 ## LaProfiler-TimeOffset
 
-Let’s increase I/O load for the Nukescript. TimeOffset nodes are added to each occurrence of Shia. At each TimeOffset, Nuke is pulling in a unique frame off storage for Shia, for a total of 216 unique input sprites for each output frame. In theory we should only be pulling in more data for each output frame and not applying much change to the CPU load compared to the previous test.
+Let’s increase I/O load for the Nukescript. TimeOffset nodes are added to each occurrence of Shia in the output frame. At each TimeOffset, Nuke is pulling a unique frame from storage, for a total of 216 unique input sprite frames for each output frame. In theory we should only be pulling in more data for each output frame and not applying much change to the CPU load compared to the previous test.
 
 ![Screenshot of a section of the LaProfiler-TimeOffset_Duplicates NodeGraph](/wiki/assets/Screenshot_LaProfiler-TimeOffset_NodeGraph.png)
 
 ![Results for LaProfiler-TimeOffset - Nuke 13.2v9 - classic render mode](/wiki/assets/charts-72dpi/LaProfiler-TimeOffset_Nuke13-2.png)
 
-Now we see next to no difference in render time when using a single source for each type of Shia sprite (Stamps and Instances) or when using a unique read node for each instance of Shia (Duplicates). There is however a 16-25% increase in memory overhead for 216 Read nodes (Duplicates) versus 9 Read nodes (Stamps and Instances). 
+Now we see next to no difference in render time when using a single source for each type of Shia sprite (Stamps and Instances) or when using a unique read node for each instance of Shia (Duplicates). We see the same increase in memory overhead for 216 Read nodes (Duplicates) versus 9 Read nodes (Stamps and Instances) as the previous test. 
 
 ## LaProfiler-Filtered
 
@@ -150,9 +150,9 @@ If changing the order of operations gave us a 15% improvement in render times, w
 
 Let's run the tests again with each sprite's DOD/BBox set to use the full 1280x720 pixel frame.
 
-When it comes to computing resources, referencing single instances of a Read node asset in a script by using Stamps has less of an impact on CPU and RAM than telling Nuke when and where it should performing its calculations. In some instances the nukescripts crashed due to hitting a RAM ceiling, but when it didn't crash we see a X to X increase in render times and X to X increase in memory requirements.
+When it comes to computing resources, referencing single instances of a Read node asset in a script by using Stamps has less of an impact on CPU and RAM than telling Nuke when and where it should performing its calculations. In some instances the full frame Nukescripts casued Nuke to crash due to hitting a RAM ceiling. Where Nuke didn't crash we see a X to X increase in render times and X to X increase in memory requirements.
 
-These tests are simple comps, running on old hardware in a resritctive 4GB RAM environment. We might think it's irrelevant and we can just throw more computing power at a compositing problem and not worry about something so trivial as the DOD/BBox. But the impact of the DOD is just as relevant in a modern Nuke session referencing 4K plates and multi-part EXRs on a workstation with 96 CPU cores and 256GB of RAM. Not taking the care to manage the size of the DOD/BBox is going to bring even the best workstation to its knees.
+These tests are simple comps, running on old hardware in a resritctive 4GB RAM environment. We might think it's irrelevant and we can just throw more computing power at a compositing problem and not worry about something so trivial as the DOD/BBox. But the impact of the DOD is just as relevant in a modern Nuke session referencing 4K plates and multi-part EXRs on a workstation with 96 CPU cores and 256GB of RAM. Not taking the care to manage the size of the DOD/BBox on complex compositing work is going to bring even the best workstation to its knees.
 
 ## Size on disk
 
