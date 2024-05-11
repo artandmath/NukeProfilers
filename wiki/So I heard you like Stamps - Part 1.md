@@ -207,7 +207,7 @@ The above tests were all performed using Nuke13.2v9 and the classic render mode.
 
 The LaProfiler and SpiralProfiler test scripts were run in Nuke 12.2, Nuke 13.2 Classic and Nuke 13.2 Topdown. Whilst there were in some instances improvements in speed between Nuke 12.2 Classic mode and Nuke 13.2 Topdown mode, Nuke 13.2 Topdown mode was generally slower (in some cases more than half as slowe) and consumed far more RAM (is some cases more than double the RAM usage) than Nuke 13.2 Classic mode. Topdown mode also seemed to exhibit potential signs of memory leaks.
 
-It will be interesting to investigate to see if Topdown rendering has improved in Nuke 14 & 15. The decrease in Topdown performance rather than the proposed increase in performance may well be a case of these tests being run on ancient hardware.
+It will be interesting to investigate to see if Topdown rendering has improved in Nuke 14 & 15. The decrease in Topdown performance rather than the proposed performance increase may well be a case of these tests being run on ancient hardware.
 
 The full set of results are available here: https://github.com/artandmath/NukeProfilers/tree/main/wiki/assets/charts-pdf
 
