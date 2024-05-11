@@ -219,10 +219,12 @@ However, as script complexity grew, those advantages were reduced to the point o
 
 What turns out to be more important than reducing Read node count is managing what data is being processed by Nuke. By mananging the bounding box, render times were brought down X percent and memory brought down by X percent. What Stamps don't do is reduce system overheads, but what they do do is give us hidden inputs and the appearance of organization.
 
+Anytime someone tries to tell you that Stamps are more efficient, please point them this way.
+
 See you in Part 2, where we will take a look at what happens when Stamps are put into production and why the appearance of organization is not organization. Until then, let's take another look at that Stamps spiral....
 
 ## Downloads
 
-Don't believe everything you've read here just because I said it's so. The test scripts used in this piece are available for download so you can them run yourself. https://github.com/artandmath/NukeProfilers.
+Don't believe everything you've read here just because I said it's so! The test scripts used in this piece are available for download so you can them run yourself. https://github.com/artandmath/NukeProfilers.
 
 This piece is also available for download from the same repository— written in markdown format for your VFX studio's compositing department wiki.
