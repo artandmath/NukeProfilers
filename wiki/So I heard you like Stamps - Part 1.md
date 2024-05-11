@@ -177,7 +177,7 @@ The scripts are run on 1000 frames, 5 times, with the Nuke profiler disabled, an
 
 ![LaProfiler results chart](/wiki/assets/charts-72dpi/SpiralProfiler_Nuke13-2.png)
 
-As an organisational tool, Stamps add compute overhead, create larger scripts, and also break concatenation.
+As an organisational tool, Stamps add compute overhead, create larger scripts, and break concatenation.
 
 ![Stamps break concatenation](/wiki/assets/Screenshot_SpiralProfiler_StampsBreakConcatenation.gif)
 
