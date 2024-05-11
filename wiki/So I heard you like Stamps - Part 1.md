@@ -134,15 +134,23 @@ By the time we've created a script of even moderate complexity, it appears there
 
 ## LaProfiler-TimeOffset-Filtered
 
-And just for safe measure, let's flip the order of operations between the Filter and TimeOffset operations.
+And just for safe measure, let's flip the order of operations between the Filter and TimeOffset operations. TimeOffsets are concatennated where possible and performed before the Filters operations.
 
-![Screenshot of LaProfiler Node Graph](/wiki/assets/Screenshot_LaProfiler-Filtered-TimeOffset_NodeGraph.png)
+![Screenshot of LaProfiler Node Graph](/wiki/assets/Screenshot_LaProfiler-TimeOffset-Filtered_NodeGraph.png)
 
 ![LaProfiler results chart](/wiki/assets/charts-72dpi/LaProfiler-TimeOffset-Filtered_Nuke13-2.png)
 
 Again, by the time we've created a script of even moderate complexity, it appears there is no major difference as to whether we use Stamps or not, or whether or not we create duplicates of the Read node assets.
 
+And by changing the order of operations it appears we can shave a full 40 seconds off a 5 minute render.
+
 ## Back to the DOD
+
+If changing the order of operations gave us a 15% improvement in render times, what sort of impact does the DOD have?
+
+Let's run the tests again with each sprite's DOD/BBox set to use the full 1280 x720 px frame.
+
+When it comes to computing resources, referencing single instances of a Read node asset in a script by using Stamps has less of an impact on CPU and RAM than telling Nuke when and where it should performing its calculations.
 
 ## Size on disk
 
@@ -169,7 +177,11 @@ The scripts are run on 1000 frames, 5 times, with the Nuke profiler disabled, an
 
 ![LaProfiler results chart](/wiki/assets/charts-72dpi/SpiralProfiler_Nuke13-2.png)
 
+As an organisational tool, Stamps will add compute overhead, create larger scripts and break concatenation.
+
 ![Stamps break concatenation](/wiki/assets/Screenshot_SpiralProfiler_StampsBreakConcatenation.gif)
+
+And why should it matter that Stamps break concatentation? Aren't they a tool that _" enables placing the main assets in a single place on the Node Graph"?_ Should they not exist at the asset level where concatenation won't matter? In Part 2 we'll see why it does matter, because of all the weird and wonderful ways that leads and artists use _"hidden inputs that reconnect themselves when needed.”_
 
 ## Nuke version, topdown & classic rendering
 
