@@ -22,15 +22,15 @@ They look pretty slick! They come with a well written manual, video tutorials, a
 
 If you were to ask some compositors, Stamps are the greatest thing since sliced bread. 
 
-And isn’t sliced bread just fabulous? A loaf of Wonder White™ touts itself as “Full of Goodness” and boasts a 4.5 health star rating. There is also of course the convenience of not ever needing to own, or know how to use, a bread knife.
+And isn’t sliced bread just fabulous? A loaf of Wonder White™ touts itself as “Full of Goodness” and boasts a 4.5 health star rating. There is of course also the added convenience of not ever needing to own, or know how to use, a bread knife.
 
 But is sliced white bread really that good for you? Or has the marketing department twisted the numbers to make it appear so?
 
-Like all “good” internet posts, this was written to be divisive. Division not for the purpose of engagement, but to spark rational, analytical thought and encourage healthy debate around the way a compositing script is built.
+With the help of Shia LaBeouf, I’d like to take you on an investigative journey into the Stamps tool. The journey will be long and technical, so if you have the attention span of a goldfish or your eyes glaze over at the first sight of a spreadsheet or chart, scroll past the data and just jump straight to the conclusions.
 
 You’re either in the Stamps camp, or you have the scars and wisdom learned from opening thousands of other people’s Nuke scripts, and you’re not. And just to make it clear up front, I am not in the Stamps camp. 
 
-With the help of Shia LaBeouf, I’d like to take you on an investigative journey into the Stamps tool. The journey will be long and technical, so if you have the attention span of a goldfish or your eyes glaze over at the first sight of a spreadsheet or chart, scroll past the data and just jump straight to the conclusions.
+This internet post is written to be divisive. Division not for the purpose of engagement, but to spark rational, analytical thought and encourage healthy debate around the way a compositing script is built.
 
 ## Contents
 
@@ -49,11 +49,11 @@ With the help of Shia LaBeouf, I’d like to take you on an investigative journe
 
 ## Fact or fiction? Stamps reduce system overhead
 
-When discussing the use of Stamps with colleagues, one of the claims put forward is that Stamps will improve the performance of a Nuke script. I’m told “it has been tested and proven that Stamps reduce system overhead”.
+When discussing the use of Stamps with colleagues, one of the claims put forward is that Stamps will improve the performance of a Nukescript. I’m told “it has been tested and proven that Stamps reduce system overhead”.
 
-I’m told that because Stamps source assets from single nodes in a Nuke script, they minimize CPU, RAM and network usage, as well as reducing node count for cleaner, more optimal scripts.
+I’m told that because Stamps source assets from single nodes in a Nukescript, they minimize CPU, RAM and network usage, as well as reducing node count for cleaner, more optimal scripts.
 
-Conversely, I’m also told that by creating multiples of a Read node asset in a Nuke script, system overheads are also multiplied.
+Conversely, I’m also told that by creating multiples of a Read node asset in a Nukescript, system overheads are also multiplied.
 
 What follows are some some profiling examples designed to verify whether these claims are true.
 
@@ -75,7 +75,7 @@ In this case, each sprite has a DOD/BBox that encompasses Shia’s person only a
 
 ## LaProfiler
 
-The tests will run across 3 Nuke scripts. Each script produces the same result. There are 24 Shia’s for each of the 9 types of sprite, LaBeouf, LaRed, LaNoir, etc. A total of 216 Shia’s are computed on each frame.
+The tests will run across 3 Nuke scripts. Each script produces the same result. There are 24 Shia’s for each of the 9 types of sprite: LaBeouf, LaRed, LaNoir, etc. A total of 216 Shia’s are composited on each frame.
 
 There are a few transforms to position Shia into various X-axis offsets in screen space. Everything is merged together (Shake-style, like a tree, over a colorwheel). The composite is designed to be I/O bound and light on CPU operations.
 
@@ -88,7 +88,7 @@ The only difference with the 3 scripts is that the instances of Shia in the scri
 
 The scripts are processed on an 8 year old intel i5-8500B @ 3.00Ghz with the sprites sourced from an on-board SSD on another computer via a direct 1GBe connection. The renders are saved over the same connection to the same SSD as the sprites.
 
-The scripts are run on 100 frames, 5 times. The Nuke profiler is disabled, and the CPU and RAM usage logged. These are the results:
+The scripts are run on 100 frames, 5 times so that an average result can be obtained. The Nuke profiler is disabled, and the CPU and RAM usage logged. These are the results:
 
 ![LaProfiler results chart](/wiki/assets/charts-72dpi/LaProfiler_Nuke13-2.png)
 
@@ -102,17 +102,17 @@ Or should we ...
 
 ## LaProfiler-TimeOffset
 
-Let’s increase I/O load for the script— TimeOffset nodes are added to each occurrence of Shia. At each time offset, Nuke is pulling in a unique frame off storage for Shia, for a total of 216 unique input sprites for each output frame. In theory we should only be pulling in more data for each output frame and not really affecting CPU load.
+Let’s increase I/O load for the Nukescript. TimeOffset nodes are added to each occurrence of Shia. At each time offset, Nuke is pulling in a unique frame off storage for Shia, for a total of 216 unique input sprites for each output frame. In theory we should only be pulling in more data for each output frame and not really affecting CPU load.
 
 ![Screenshot of LaProfiler Node Graph](/wiki/assets/Screenshot_LaProfiler-TimeOffset_NodeGraph.png)
 
 ![LaProfiler results chart](/wiki/assets/charts-72dpi/LaProfiler-TimeOffset_Nuke13-2.png)
 
-Now we see next to no difference in render time when using a single source for each type of Shia sprite (Stamps and Instances) or when using a unique read node for each instance of Shia (Duplicates). There is however a 16-25% increase in memory overhead for 9 read nodes (Stamps and Instances) versus 216 read nodes (Duplicates).
+Now we see next to no difference in render time when using a single source for each type of Shia sprite (Stamps and Instances) or when using a unique read node for each instance of Shia (Duplicates). There is however a 16-25% increase in memory overhead for 216 Read nodes (Duplicates) versus 9 Read nodes (Stamps and Instances). 
 
 ## LaProfiler-Filtered
 
-What happens when we up the CPU load and throw some filters into the script? Let’s remove the TimeOffsets and add a unique filter after each instance of Shia. For the higher CPU load tests, the framerange is reduced from 100 frames to 10 frames (1001-1010). There is no DOD/BBox management beyond providing the initial smaller DOD/BBox for the sprites.
+What happens when we increase the CPU load by throwing some filters into the script? Let’s remove the TimeOffsets and add a unique filter after each instance of Shia. For the higher CPU load tests, the framerange is reduced from 100 frames to 10 frames (1001-1010). There is no DOD/BBox management beyond providing the initial smaller DOD/BBox for the sprites.
 
 ![Screenshot of LaProfiler Node Graph](/wiki/assets/Screenshot_LaProfiler-Filtered_NodeGraph.png)
 
@@ -122,7 +122,7 @@ Stamps and Duplicates are using far more RAM than single instances. Render times
 
 ## LaProfiler-Filtered-TimeOffset
 
-Finally, combining the filters and time offsets.
+Finally, combining the Filters and TimeOffsets.
 
 ![Screenshot of LaProfiler Node Graph](/wiki/assets/Screenshot_LaProfiler-Filtered-TimeOffset_NodeGraph.png)
 
@@ -134,7 +134,7 @@ By the time we've created a script of even moderate complexity, it appears there
 
 ## LaProfiler-TimeOffset-Filtered
 
-And just for safe measure, let's flip the order of operations between the Filter and TimeOffset operations. TimeOffsets are concatennated where possible and performed before the Filters operations.
+And just for safe measure, let's run the same test but flip the order of operations between the Filter and TimeOffset operations. TimeOffsets are concatenated where possible and performed before the Filters operations.
 
 ![Screenshot of LaProfiler Node Graph](/wiki/assets/Screenshot_LaProfiler-TimeOffset-Filtered_NodeGraph.png)
 
@@ -142,15 +142,15 @@ And just for safe measure, let's flip the order of operations between the Filter
 
 Again, by the time we've created a script of even moderate complexity, it appears there is no major difference as to whether we use Stamps or not, or whether or not we create duplicates of the Read node assets.
 
-And by changing the order of operations it appears we can shave a full 40 seconds off a 5 minute render.
+And by changing the order of operations it appears we can shave a full 40 seconds off a 5 minute render for a 15% improvement in render time.
 
 ## Back to the DOD
 
 If changing the order of operations gave us a 15% improvement in render times, what sort of impact does the DOD have?
 
-Let's run the tests again with each sprite's DOD/BBox set to use the full 1280 x720 px frame.
+Let's run the tests again with each sprite's DOD/BBox set to use the full 1280 x720 pixel frame.
 
-When it comes to computing resources, referencing single instances of a Read node asset in a script by using Stamps has less of an impact on CPU and RAM than telling Nuke when and where it should performing its calculations. In some instances the nukescripts crashed due to hitting a RAM ceiling, but when it did render we see a X to X increase in render times and X to X increase in memory requirements.
+When it comes to computing resources, referencing single instances of a Read node asset in a script by using Stamps has less of an impact on CPU and RAM than telling Nuke when and where it should performing its calculations. In some instances the nukescripts crashed due to hitting a RAM ceiling, but when it didn't crash we see a X to X increase in render times and X to X increase in memory requirements.
 
 ## Size on disk
 
@@ -191,7 +191,7 @@ As an organisational tool, Stamps add compute overhead when compared to Dots and
 
 Why should it matter that Stamps break concatentation? Aren't they a tool that _" enables placing the main assets in a single place on the Node Graph"?_
 
-Should they not exist at the asset level where concatenation won't matter? In Part 2 we'll see why it does matter, because of all the weird and wonderful things that happen when you give _"hidden inputs that reconnect themselves when needed”_ to your compositing team.
+Should they not exist at the asset level where concatenation won't matter? In Part 2 we'll see why it does matter, because of all the weird, wonderful and confusing things that happen when you give _"hidden inputs that reconnect themselves when needed”_ to your compositing team.
 
 ## Nuke version, topdown & classic rendering
 
