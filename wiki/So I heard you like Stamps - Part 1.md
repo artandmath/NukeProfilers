@@ -223,6 +223,6 @@ See you in Part 2, where we will take a look at what happens when Stamps are put
 
 ## Downloads
 
-Don't believe everything you read. The test scripts used this piece are available for download so you can the run yourself. https://github.com/artandmath/NukeProfilers.
+Don't believe everything you read. The test scripts used this piece are available for download so you can them run yourself. https://github.com/artandmath/NukeProfilers.
 
 This piece is also available for download from the same repository— written in markdown format for your VFX studio's compositing department wiki.
