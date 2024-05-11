@@ -150,7 +150,7 @@ If changing the order of operations gave us a 15% improvement in render times, w
 
 Let's run the tests again with each sprite's DOD/BBox set to use the full 1280 x720 px frame.
 
-When it comes to computing resources, referencing single instances of a Read node asset in a script by using Stamps has less of an impact on CPU and RAM than telling Nuke when and where it should performing its calculations. In some instances the nukescripts crashed due to hitting a RAM ceiling, but when it did render we see a X to X increase in render times and X to X increase in memory requriements.
+When it comes to computing resources, referencing single instances of a Read node asset in a script by using Stamps has less of an impact on CPU and RAM than telling Nuke when and where it should performing its calculations. In some instances the nukescripts crashed due to hitting a RAM ceiling, but when it did render we see a X to X increase in render times and X to X increase in memory requirements.
 
 ## Size on disk
 
@@ -187,7 +187,7 @@ As an organisational tool, Stamps add compute overhead when compared to Dots and
 
 Why should it matter that Stamps break concatentation? Aren't they a tool that _" enables placing the main assets in a single place on the Node Graph"?_
 
-Should they not exist at the asset level where concatenation won't matter? In Part 2 we'll see why it does matter, because of all the weird and wonderful things that happen when you give _"hidden inputs that reconnect themselves when needed”_ to your compositing teams
+Should they not exist at the asset level where concatenation won't matter? In Part 2 we'll see why it does matter, because of all the weird and wonderful things that happen when you give _"hidden inputs that reconnect themselves when needed”_ to your compositing team.
 
 ## Nuke version, topdown & classic rendering
 
