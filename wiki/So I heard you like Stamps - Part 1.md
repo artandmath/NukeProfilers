@@ -55,7 +55,7 @@ I’m told that because Stamps source assets from single nodes in a Nukescript, 
 
 Conversely, I’m also told that by creating multiples of a Read node asset in a Nukescript, system overheads are also multiplied.
 
-What follows are some some profiling examples designed to verify whether these claims are true.
+What follows are some profiling examples designed to verify whether these claims are true.
 
 ## The LaProfiler
 
