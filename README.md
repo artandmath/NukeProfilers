@@ -8,8 +8,7 @@ The "wiki" folder contains a copy of the article in markdown format that can be 
 
 ## Profilers Usage
 
-To use the "LaProfiler" and "SpiralProfiler" example scripts. Do the following:
-
+To use the "LaProfiler" and "SpiralProfiler" example scripts, do the following:
 - Download the repository.
 - Download the original #INTRODUCTIONS clip from Vimeo https://vimeo.com/125095515 [^1]
 - Open the nukescript /nukescripts/GenerateSprites.nk
