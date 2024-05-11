@@ -150,9 +150,13 @@ If changing the order of operations gave us a 15% improvement in render times, w
 
 Let's run the tests again with each sprite's DOD/BBox set to use the full 1280 x720 px frame.
 
-When it comes to computing resources, referencing single instances of a Read node asset in a script by using Stamps has less of an impact on CPU and RAM than telling Nuke when and where it should performing its calculations.
+When it comes to computing resources, referencing single instances of a Read node asset in a script by using Stamps has less of an impact on CPU and RAM than telling Nuke when and where it should performing its calculations. In some instances the nukescripts crashed due to hitting a RAM ceiling, but when it did render we see a X to X increase in render times and X to X increase in memory requriements.
 
 ## Size on disk
+
+Taking a look at the file dialog box for our Nukescripts, an item to note is the filesize on disk of the scripts.
+
+Pasting a Stamp and Anchor pair and a pair of Dot nodes we can see the space they take within a Nukescript
 
 ## SpiralProfiler
 
