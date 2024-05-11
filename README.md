@@ -2,7 +2,7 @@
 
 This repository is an accompaniment to a LinkedIn piece titled ["So I heard you like Stamps?"](http://link.to.article)
 
-It contains Nukescripts that can be used for profiling various compositing node graph design patterns.
+It contains nukescripts that can be used for profiling various compositing node graph design patterns.
 
 The "wiki" directory contains a copy of the LinkedIn piece in markdown format that can be used in your studio's compositing department wiki.
 
@@ -18,7 +18,7 @@ To use the "LaProfiler" and "SpiralProfiler" example scripts, do the following:
 - Check for 20GB of free storage space for renders.
 - Render all write nodes to the global frame range, observing the render order.
 - Run the profilers shellscript on a local machine.
-- The profilers shellscript will iterate through the Nukescript variants and generate results in the corresponding log directory.
+- The profilers shellscript will iterate through the nukescript variants and generate results in the corresponding log directory.
 ```
 #local machine profiling example
 cd /path/to/LaProfiler/shellscripts
@@ -28,8 +28,8 @@ cd /path/to/LaProfiler/shellscripts
 > $PATH may have to be set correctly for your version of Nuke or operating system. The shellscripts are hardcoded to specific versions of Nuke, modify shellscripts as required.
 
 ## Alternatively 
-- Modify the Nukescripts to work whith your comp pipeline.
-- Submit the Nukescripts to your renderfarm.
+- Modify the nukescripts to work whith your comp pipeline.
+- Submit the nukescripts to your renderfarm.
 - Gather analytics from the renderfarm.
 
 [^1]: #INTRODUCTIONS 
