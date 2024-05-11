@@ -170,18 +170,18 @@ The scripts are organised as follows:
 - The chain of 500 organizational nodes
 - Transform operation with rotation=time and filtering of type cubic (an anti-aliased filtering operation).
 - The two transforms will concatenate (concatenate meaning that the two transforms are combined into one operation).
-- Grade node to break further concatenation
+- Grade node to purposely break any further concatenation
 - As this is a CPU test, the final result is scaled to 32x32 pixels to keep IO load low and the resulting frames saved over the network.
 
 The scripts are run on 1000 frames, 5 times, with the Nuke profiler disabled, and the CPU and memory usage results logged. 
 
 ![LaProfiler results chart](/wiki/assets/charts-72dpi/SpiralProfiler_Nuke13-2.png)
 
-As an organisational tool, Stamps will add compute overhead, create larger scripts and break concatenation.
+As an organisational tool, Stamps add compute overhead, create larger scripts, and also break concatenation.
 
 ![Stamps break concatenation](/wiki/assets/Screenshot_SpiralProfiler_StampsBreakConcatenation.gif)
 
-And why should it matter that Stamps break concatentation? Aren't they a tool that _" enables placing the main assets in a single place on the Node Graph"?_ Should they not exist at the asset level where concatenation won't matter? In Part 2 we'll see why it does matter, because of all the weird and wonderful ways that leads and artists use _"hidden inputs that reconnect themselves when needed.”_
+Why should it matter that Stamps break concatentation? Aren't they a tool that _" enables placing the main assets in a single place on the Node Graph"?_ Should they not exist at the asset level where concatenation won't matter? In Part 2 we'll see why it does matter, because of all the weird and wonderful ways that leads and artists use _"hidden inputs that reconnect themselves when needed.”_
 
 ## Nuke version, topdown & classic rendering
 
