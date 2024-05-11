@@ -148,7 +148,7 @@ And by changing the order of operations it appears we can shave a full 40 second
 
 If changing the order of operations gave us a 15% improvement in render times, what sort of impact does the DOD have?
 
-Let's run the tests again with each sprite's DOD/BBox set to use the full 1280x720 pixel frame.
+Let's run the tests again, removing each sprite's managed DOD/BBox and set the DOD/BBox to use the full 1280x720 pixel frame.
 
 ![Screenshot of a managed DOD/BBox and an unmanaged DOD/BBox](/wiki/assets/Screenshot_ShiaBBoxToFullFrame.png)
 
