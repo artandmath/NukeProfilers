@@ -34,5 +34,7 @@ cd /path/to/LaProfiler/shellscripts
 
 [^1]: #INTRODUCTIONS 
   By LaBeouf, Rönkkö & Turner in collaboration with Central Saint Martins BA Fine Art 2015 students.
+
   Released under a Creative Commons Attribution Non-Commercial Share-Alike licence.
+
   https://vimeo.com/125095515
