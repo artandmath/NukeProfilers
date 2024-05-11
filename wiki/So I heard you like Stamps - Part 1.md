@@ -154,7 +154,7 @@ When it comes to computing resources, referencing single instances of a Read nod
 
 ## Size on disk
 
-Taking a look at the file dialog box for our Nukescripts, an item to note is the filesize on disk of the Stamp scripts compared to the non-Stamp scripts.
+Taking a look at the file dialog box for our Nukescripts, an item to note is the size on disk of the Stamp scripts compared to the non-Stamp scripts.
 
 ![Screenshot of LaProfiler File Open Dialog](/wiki/assets/Screenshot_LaProfiler_FileDialog.png)
 
