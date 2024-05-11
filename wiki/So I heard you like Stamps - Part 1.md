@@ -187,4 +187,4 @@ Why should it matter that Stamps break concatentation? Aren't they a tool that _
 
 ## Conclusions
 
-See you in Part 2, when we take a look at what happens when Stamps are put into production.
+See you in Part 2, when we take a look at what happens when Stamps are put into production. Until then, let's take another look at that Stamps spiral....
