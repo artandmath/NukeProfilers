@@ -1,6 +1,6 @@
 ![Header](assets/Header_SoIHeardYouLikeStamps.gif)
 
-An investigation into the Stamps tool for Nuke, by Daniel Harkness, 11 May 2024
+An investigation into the Stamps tool for Nuke, by Daniel Harkness, 10 May 2024
 
 # So I heard you like Stamps?
 
