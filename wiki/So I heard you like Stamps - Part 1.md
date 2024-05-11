@@ -152,7 +152,7 @@ The test scripts contains 500 nodes of the organizational type (Dot or NoOp), an
 
 ![Screenshot of SpiralProfiler Node Graph](/wiki/assets/Screenshot_SpiralProfiler-NoOps_NodeGraph.png)
 
-Th scripts are organised as follows:
+The scripts are organised as follows:
 - 1024x1024px checkerboard
 - Transform operation with rotation=time and filtering of type Impluse (nearest neighbour, aliased pixel filtering)
 - The chain of 500 organizational nodes
