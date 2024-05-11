@@ -170,7 +170,7 @@ The following three scripts take a look at nodes used for script organisation. D
 
 Stamps falls into the category of script organisation and I’m told they have the same overhead as a Dot or NoOp.
 
-The SpiralProfiler scripts contains 500 nodes of the organizational type (Dot or NoOp), and in the case of Stamps, 250 Anchor nodes and 250 Stamps. The scripts follow the mythical “spiral” compositing script pattern— also known as a “toilet bowl” script.
+The SpiralProfiler scripts contains 500 nodes of the organizational type (Dot or NoOp), and in the case of Stamps, 250 Anchor nodes and 250 Stamps. The scripts follow the mythical “spiral” compositing Nukescript pattern— also known as a “toilet bowl” script.
 
 ![Screenshot of SpiralProfiler Node Graphs](/wiki/assets/Screenshot_SpiralProfiler-NoOps_NodeGraph.png)
 
