@@ -199,7 +199,7 @@ Should they not exist at the asset level where concatenation won't matter? In Pa
 
 ## Conclusions
 
-The initial tests of showed us that using Stamps in our Nukescripts might be a good way to organise the assets because of the potential efficiency gains to be had from not duplicating Read nodes.
+The initial tests showed us that using Stamps in our Nukescripts coult be a good way to organise Read node asserts in a Nukescript, because of the potential efficiency gains to be had from not duplicating Read nodes.
 
 However, as script compexity grew, those advantages were reduced to the point of not being relevant. Stamps added to script bloat and broke concatenation.
 
