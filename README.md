@@ -26,7 +26,7 @@ cd /path/to/LaProfiler/shellscripts
 > $PATH may have to be set correctly for your version of Nuke or operating system. The shellscripts are hardcoded to specific versions of Nuke, modify shellscripts as required.
 
 ## Alternatively 
-- Modify the Nukescripts to work whithin your comp pipeline.
+- Modify the Nukescripts to work whith your comp pipeline.
 - Submit the Nukescripts to your renderfarm.
 - Gather analytics from the renderfarm.
 
