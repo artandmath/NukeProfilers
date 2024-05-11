@@ -207,7 +207,7 @@ The above tests were all performed using Nuke13.2v9 and the classic render mode.
 
 The LaProfiler and SpiralProfiler test scripts were run in Nuke 12.2, Nuke 13.2 Classic and Nuke 13.2 Topdown. Whilst there were in some instances improvements in speed between Nuke 12.2 Classic mode and Nuke 13.2 Topdown mode, Nuke 13.2 Topdown mode was generally slower (in some cases up to twice as slow) and consumed far more RAM (up to double the RAM usage) than Nuke 13.2 Classic mode. It also seemed to exhibit signs of memory leaks.
 
-It will be interesting to investigate to see if Topdown rendering has improved in Nuke 14 & 15. It may well also be a case of running the tests on ancient hardware.
+It will be interesting to investigate to see if Topdown rendering has improved in Nuke 14 & 15. It may well also be a case of these tests being run on ancient hardware.
 
 The full set of results are available here: https://github.com/artandmath/NukeProfilers/tree/main/wiki/assets/charts-pdf
 
@@ -220,3 +220,7 @@ However, as script complexity grows, those advantages are reduced to the point o
 What turns out to be more important than reducing Read node count is managing what data is being processed by Nuke. By mananging the bounding box, render times were brought down X percent and memory brought down by X percent. Stamps don't reduce system overheads, but they do give us hidden inputs and the appearance of organization.
 
 See you in Part 2, where we will take a look at what happens when Stamps are put into production and why the appearance of organization is not organization. Until then, let's take another look at that Stamps spiral....
+
+## Downloads
+
+The test scripts used this piece are available for download from a repository Github. This piece is also available for download from the same repository— written markdown format for your VFX studio's compositing department wiki. Get the downloads here: https://github.com/artandmath/NukeProfilers
