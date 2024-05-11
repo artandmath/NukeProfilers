@@ -223,7 +223,7 @@ What turns out to be more important than reducing Read node count is managing wh
 
 What Stamps don't do is reduce system overheads, but what they do do is give us hidden inputs and the appearance of organization.
 
-See you in Part 2, where we will take a look at what happens when Stamps are put into production, why the appearance of organization is not organization, how Stamps' convienience features slow down artists and more. Until then, let's take another look at that Stamps spiral....
+See you in Part 2, where we will take a look at what happens when Stamps are put into production, why the appearance of organization is not organization, how Stamps' convenience features slow down artists, and more. Until then, let's take another look at that Stamps spiral....
 
 ## Downloads
 
