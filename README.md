@@ -16,7 +16,7 @@ To use the "LaProfiler" and "SpiralProfiler" example scripts, do the following:
 - Check for 20GB of free storage space for renders.
 - Render all write nodes to the global frame range, observing the render order.
 - Run the profilers shellscript on a local machine.
-- The profilers shellscript will iterate through the script variants and generate results in the corresponding log directory.
+- The profilers shellscript will iterate through the Nukescript variants and generate results in the corresponding log directory.
 ```
 #local machine profiling example
 cd /path/to/LaProfiler/shellscripts
