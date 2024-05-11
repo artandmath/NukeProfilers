@@ -86,7 +86,7 @@ The only difference with the 3 scripts is that the instances of Shia in the scri
 
 ![Screenshot of LaProfiler Node Graph](/wiki/assets/Screenshot_LaProfiler_NodeGraph.png)
 
-The scripts are processed on an old intel i5-8500B @ 3.00Ghz with the sprites sourced from an on-board SSD on another computer via a direct 1GBe connection. The renders are saved over the same connection to the same SSD as the sprites.
+The scripts are processed on an 8 year old intel i5-8500B @ 3.00Ghz with the sprites sourced from an on-board SSD on another computer via a direct 1GBe connection. The renders are saved over the same connection to the same SSD as the sprites.
 
 The scripts are run on 100 frames, 5 times. The Nuke profiler is disabled, and the CPU and RAM usage logged. These are the results:
 
@@ -102,7 +102,7 @@ Or should we ...
 
 ## LaProfiler-TimeOffset
 
-Let’s push the I/O load for the script— TimeOffset nodes are added to each occurrence of Shia in the scripts. In theory we should only be pulling in more data for each frame and not really affecting CPU load.
+Let’s ncrease I/O load for the script— TimeOffset nodes are added to each occurrence of Shia in the scripts. At each time offset, Nuke is pulling in a unique frame for Shia, for a total of 216 unique input sprite frames for each output frame. In theory we should only be pulling in more data for each output frame and not really affecting CPU load.
 
 ![Screenshot of LaProfiler Node Graph](/wiki/assets/Screenshot_LaProfiler-TimeOffset_NodeGraph.png)
 
@@ -112,7 +112,7 @@ Now we see next to no difference in render time when using a single source for e
 
 ## LaProfiler-Filtered
 
-What happens when we up the CPU load and throw some filters into the script? Let’s remove the TimeOffsets and add a unique filter after each instance of Shia. For the higher CPU load tests, the framerange is reduced from 100 frames to 10 frames (1001-1010). There is no DOD/BBox management beyond providing the smaller DOD/BBox for the sprites.
+What happens when we up the CPU load and throw some filters into the script? Let’s remove the TimeOffsets and add a unique filter after each instance of Shia. For the higher CPU load tests, the framerange is reduced from 100 frames to 10 frames (1001-1010). There is no DOD/BBox management beyond providing the initial smaller DOD/BBox for the sprites.
 
 ![Screenshot of LaProfiler Node Graph](/wiki/assets/Screenshot_LaProfiler-Filtered_NodeGraph.png)
 
@@ -135,6 +135,10 @@ By the time we've created a script of even moderate complexity, it appears there
 ## LaProfiler-TimeOffset-Filtered
 
 And just for safe measure, let's flip the order of operations between the Filter and TimeOffset operations.
+
+![Screenshot of LaProfiler Node Graph](/wiki/assets/Screenshot_LaProfiler-Filtered-TimeOffset_NodeGraph.png)
+
+![LaProfiler results chart](/wiki/assets/charts-72dpi/LaProfiler-TimeOffset-Filtered_Nuke13-2.png)
 
 Again, by the time we've created a script of even moderate complexity, it appears there is no major difference as to whether we use Stamps or not, or whether or not we create duplicates of the Read node assets.
 
