@@ -46,7 +46,6 @@ This internet post is written to be divisive. Division not for the purpose of en
 - SpiralProfiler
 - Nuke version, topdown & classic rendering
 - Conclusions
-- Downloads
 
 ## Fact or fiction? Stamps reduce system overhead
 
