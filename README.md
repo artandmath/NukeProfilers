@@ -1,6 +1,6 @@
 # NukeProfilers
 
-This repository is an accompaniment to a LinkedIn piece titled ["So I heard you like Stamps?"](http://link.to.article)
+This repository is an accompaniment to a LinkedIn piece titled ["So I heard you like Stamps?"](https://www.linkedin.com/pulse/so-i-heard-you-like-stamps-part-1-daniel-harkness-xxudc)
 
 It contains nukescripts that can be used for profiling various node graph design patterns.
 
