@@ -173,15 +173,15 @@ Pasting a few Stamps and an Anchor into a text editor will show us the space the
 
 ## SpiralProfiler
 
-The following three scripts take a look at nodes used for script organisation. Dots (sometimes called elbows) and NoOps (No Operation node) allow a compositor to organise their script to make it more readable for both themselves and other artists who may pick up their work.
+The following three scripts take a look at nodes used for script organization. Dots (sometimes called elbows) and NoOps (No Operation node) allow a compositor to organize their script to make it more readable for both themselves and other artists who may pick up their work.
 
-Stamps falls into the category of script organisation and I’m told they have the same overhead as a Dot or NoOp.
+Stamps falls into the category of script organization and I’m told they have the same overhead as a Dot or NoOp.
 
 The SpiralProfiler scripts contains 500 nodes of the organizational type (Dot or NoOp), and in the case of Stamps, 250 Anchor nodes and 250 Stamps. The scripts follow the mythical “spiral” compositing script pattern— also known as a “toilet bowl” script.
 
 ![Screenshot of SpiralProfiler Node Graphs](/wiki/assets/Screenshot_SpiralProfiler_NodeGraph.png)
 
-The scripts are organised as follows:
+The scripts are organized as follows:
 - 1024x1024px checkerboard.
 - Transform operation with __rotation=time__ and filtering of type __Impluse__ (nearest neighbour, aliased pixel filtering).
 - The chain of 500 organizational nodes.
@@ -201,10 +201,6 @@ As an organisational tool, Stamps add compute overhead when compared to Dots and
 Why should it matter that Stamps break concatentation? Aren't they a tool that _"enables placing the main assets in a single place on the Node Graph"?_
 
 Should they not exist at the asset level where concatenation won't matter? In Part 2 we'll see why it does matter, because of all the weird, wonderful and confusing things that happen when you give _"hidden inputs that reconnect themselves when needed”_ to your compositing team.
-
-Before moving on, let us take another look at that beautifully organized spiral of Stamps ...
-
-![Screenshot revealing hidden inputs](/wiki/assets/Screenshot_SpiralProfiler_HiddenTreasures.gif)
 
 ## Nuke version, topdown & classic rendering
 
@@ -235,6 +231,10 @@ What turns out to be more important than reducing Read node count is managing wh
 What Stamps don't do is reduce system overheads, but what they do do is give us hidden inputs and the appearance of organization.
 
 See you in Part 2, where we will take a look at what happens when Stamps are put into production, and why the appearance of organization is not organization. 
+
+Before moving on, let's take another look at that beautifully organized spiral of Stamps ...
+
+![Screenshot revealing hidden inputs](/wiki/assets/Screenshot_SpiralProfiler_HiddenTreasures.gif)
 
 ## Downloads
 
