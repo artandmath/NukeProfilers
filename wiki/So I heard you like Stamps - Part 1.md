@@ -42,7 +42,7 @@ This internet post is written to be divisive. Division not for the purpose of en
 	- LaProfiler-Filtered-TimeOffset
 	- LaProfiler-TimeOffset-Filtered
 - Back to the DOD
-- Size on disk
+- Size in script
 - SpiralProfiler
 - Nuke version, topdown & classic rendering
 - Conclusions
@@ -158,13 +158,13 @@ These tests are simple comps, running on old hardware in a restricted 4GB to 5GB
 
 Not taking the care to manage the size of the DOD/BBox on complex compositing work is going to bring even the best workstation to its knees or, at the very least, make for a slower artist.
 
-## Size on disk
+## Size in script
 
 Taking a look at the file dialog box for our nukescripts, an item to note is the size on disk of the Stamp scripts compared to the non-Stamp scripts.
 
 ![Screenshot of the File>Open dialog for the LaProfiler nukescripts folder](/wiki/assets/Screenshot_LaProfiler_FileDialog.png)
 
-Pasting a few Stamps and an Anchor into a text editor will show us the space on disk they take within a nukescript when compared to a set of Dot nodes.
+Pasting a few Stamps and an Anchor into a text editor will show us the space they take within a nukescript when compared to a set of Dot nodes. Not really a big issue, but just something to note if you really feel the need use a hidden input.
 
 ![Screenshot of Dots and Stamps in a text editor](/wiki/assets/Screenshot_TextEditor_DotsAndStamps.gif)
 
