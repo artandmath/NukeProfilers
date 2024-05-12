@@ -4,7 +4,7 @@ This repository is an accompaniment to a LinkedIn piece titled ["So I heard you 
 
 It contains nukescripts that can be used for profiling various node graph design patterns.
 
-The "wiki" directory contains a copy of the LinkedIn piece in markdown format that can be used in your studio's compositing department wiki.
+The ["wiki"](../wiki/README.md) directory contains a copy of the LinkedIn piece in markdown format that can be used in your studio's compositing department wiki.
 
 [CC-BY-4.0 license](../LICENSE)
 
