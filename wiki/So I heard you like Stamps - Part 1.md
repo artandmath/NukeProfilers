@@ -203,7 +203,7 @@ Should they not exist at the asset level where concatenation won't matter? In Pa
 
 Before moving on, let us take another look at that beautifully organised spiral of Stamps ...
 
-![Screenshot revealing hidden inputs](/wiki/assets/Screenshot_SpiralProfiler_HiddenInputs.gif)
+![Screenshot revealing hidden inputs](/wiki/assets/Screenshot_SpiralProfiler_HiddenTreasures.gif)
 
 ## Nuke version, topdown & classic rendering
 
