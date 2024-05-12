@@ -14,7 +14,7 @@ Stamps are a third-party tool for Foundry’s Nuke that have become somewhat pro
 
 > Stamps v1.1 -- Smart node connection system for Nuke
 > 
-> Stamps is a free and production-ready node connection system for Nuke, that enables placing the main assets in a single place on the Node Graph, through distinct nodes with hidden inputs that reconnect themselves when needed
+> Stamps is a free and production-ready node connection system for Nuke, that enables placing the main assets in a single place on the Node Graph, through distinct nodes with hidden inputs that reconnect themselves when needed.
 > 
 > https://adrianpueyo.com/stamps/
 
@@ -46,6 +46,7 @@ This internet post is written to be divisive. Division not for the purpose of en
 - SpiralProfiler
 - Nuke version, topdown & classic rendering
 - Conclusions
+- Downloads
 
 ## Fact or fiction? Stamps reduce system overhead
 
@@ -126,7 +127,7 @@ Finally, let us combine the Filters and TimeOffsets.
 
 ![Screenshot of LaProfiler Node Graph](/wiki/assets/Screenshot_LaProfiler-Filtered-TimeOffset_NodeGraph.png)
 
-![LaProfiler results chart](/wiki/assets/charts-72dpi/LaProfiler-Filtered-TimeOffset_Nuke13-2.png)
+![Results for LaProfiler-Filtered-TimeOffset - Nuke 13.2v9 - classic render mode](/wiki/assets/charts-72dpi/LaProfiler-Filtered-TimeOffset_Nuke13-2.png)
 
 What is interesting to note is that what was the most RAM performant script in all previous cases (Instances) is now the most RAM heavy script and takes slightly longer to render than the other two tests. The Duplicates and Stamps scripts are pretty much on par with each other in terms of render time and CPU requirements, with the Duplicates script requiring 1% more memory than Stamps (or 4% relative to each other).
 
@@ -237,6 +238,6 @@ See you in Part 2, where we will take a look at what happens when Stamps are put
 
 ## Downloads
 
-Don't believe everything you've read here just because I said it's so! The test scripts used in this piece are available for download so you can them run yourself. https://github.com/artandmath/NukeProfilers.
+Don't believe everything you've read here just because I said it's so! The test scripts used in this piece are available for download so you can them run yourself. https://github.com/artandmath/NukeProfilers
 
 This piece is also available for download from the same repository— written in markdown format for your VFX studio's compositing department wiki.
