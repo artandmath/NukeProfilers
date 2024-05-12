@@ -1,0 +1,903 @@
+#! /usr/local/Nuke13.2v9/libnuke-13.2.9.so -nx
+version 13.2 v9
+define_window_layout_xml {<?xml version="1.0" encoding="UTF-8"?>
+<layout version="1.0">
+    <window x="0" y="27" w="2127" h="1148" maximized="1" screen="0">
+        <splitter orientation="1">
+            <split size="40"/>
+            <dock id="" hideTitles="1" activePageId="Toolbar.1">
+                <page id="Toolbar.1"/>
+            </dock>
+            <split size="1464" stretch="1"/>
+            <splitter orientation="2">
+                <split size="649"/>
+                <dock id="" activePageId="Viewer.1">
+                    <page id="Viewer.1"/>
+                </dock>
+                <split size="456"/>
+                <dock id="" activePageId="DAG.1" focus="true">
+                    <page id="DAG.1"/>
+                    <page id="Curve Editor.1"/>
+                    <page id="DopeSheet.1"/>
+                </dock>
+            </splitter>
+            <split size="615"/>
+            <dock id="" activePageId="Properties.1">
+                <page id="Properties.1"/>
+                <page id="uk.co.thefoundry.backgroundrenderview.1"/>
+            </dock>
+        </splitter>
+    </window>
+</layout>
+}
+Root {
+ inputs 0
+ name /mnt/render/nukescripts/GenerateElements.nk
+ project_directory "\[python \{nuke.script_directory()\}]"
+ frame 2351
+ first_frame 1001
+ last_frame 2537
+ lock_range true
+ format "2048 1556 0 0 2048 1556 1 2K_Super_35(full-ap)"
+ proxy_type scale
+ proxy_format "1024 778 0 0 1024 778 1 1K_Super_35(full-ap)"
+ colorManagement OCIO
+ OCIO_config aces_1.2
+ defaultViewerLUT "OCIO LUTs"
+ workingSpaceLUT scene_linear
+ monitorLut ACES/sRGB
+ monitorOutLUT "sRGB (ACES)"
+ int8Lut matte_paint
+ int16Lut texture_paint
+ logLut compositing_log
+ floatLut scene_linear
+}
+BackdropNode {
+ inputs 0
+ name BackdropNode1
+ tile_color 0x388e8e00
+ label "autocrop, with BBox management"
+ note_font_size 42
+ xpos -1947
+ ypos 3720
+ bdwidth 2135
+ bdheight 192
+}
+BackdropNode {
+ inputs 0
+ name BackdropNode2
+ tile_color 0x388e8e00
+ label "full frame, without BBox management"
+ note_font_size 42
+ xpos -1947
+ ypos 4022
+ bdwidth 2135
+ bdheight 260
+}
+Read {
+ inputs 0
+ file_type mov
+ file "../introductions_(2015) (Original).mp4"
+ format "1280 720 0 0 1280 720 1 HD_720"
+ last 44600
+ origlast 44600
+ origset true
+ version 7
+ colorspace "Utility - Gamma 2.2 - Rec.709 - Texture"
+ raw true
+ name Read1
+ xpos -40
+ ypos -87
+}
+Dot {
+ name Dot1
+ label "introductions.mp4\nSet input color transform to Raw Data"
+ note_font_size 20
+ xpos -6
+ ypos 18
+}
+OCIOColorSpace {
+ in_colorspace "Utility - Gamma 2.2 - Rec.709 - Texture"
+ out_colorspace scene_linear
+ name OCIOColorSpace1
+ xpos -40
+ ypos 86
+}
+Retime {
+ input.first 12903
+ input.first_lock true
+ input.last 14439
+ input.last_lock true
+ output.first 1001
+ output.first_lock true
+ output.last 2537
+ time ""
+ name Retime1
+ xpos -40
+ ypos 158
+}
+FrameRange {
+ first_frame 1001
+ last_frame 2537
+ time ""
+ name FrameRange1
+ xpos -40
+ ypos 206
+}
+Write {
+ file ../LaProfiler/elements/mp01/mp01.####.exr
+ file_type exr
+ compression DWAA
+ first_part rgba
+ create_directories true
+ render_order 10
+ first 1001
+ last 2537
+ use_limit true
+ version 3
+ in_colorspace scene_linear
+ out_colorspace scene_linear
+ name Write1
+ xpos -40
+ ypos 296
+}
+Read {
+ inputs 0
+ file_type exr
+ file ../LaProfiler/elements/mp01matte/mp01matte.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ version 2
+ name Read3
+ xpos -1140
+ ypos 2001
+}
+Read {
+ inputs 0
+ file_type exr
+ file /mnt/render/LaProfiler/elements/mp01/mp01.####.exr
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 2537
+ origfirst 1001
+ origlast 2537
+ origset true
+ name Read2
+ xpos -40
+ ypos 465
+}
+Colorspace {
+ colorspace_out YPbPr
+ name Colorspace1
+ xpos -40
+ ypos 662
+}
+Blur {
+ channels {-rgba.red rgba.green rgba.blue none}
+ size 2
+ name Blur1
+ xpos -40
+ ypos 710
+}
+Colorspace {
+ colorspace_in YPbPr
+ name Colorspace2
+ xpos -40
+ ypos 758
+}
+Dot {
+ name Dot16
+ xpos -6
+ ypos 930
+}
+set Nab7f3c0 [stack 0]
+Dot {
+ name Dot17
+ xpos -886
+ ypos 930
+}
+Dot {
+ name Dot3
+ xpos -886
+ ypos 1290
+}
+set N9780dd0 [stack 0]
+IBKColourV3 {
+ name IBKColourV3_1
+ xpos -1140
+ ypos 1406
+ screen_type green
+ Size 1.5
+ off -0.18
+ mult 1
+ erode 1.22
+ multi 25
+}
+push $N9780dd0
+IBKGizmoV3 {
+ inputs 2
+ name IBKGizmoV3_1
+ selected false
+ xpos -920
+ ypos 1406
+ st pick
+ colour {0.2519783974 0.4108269215 0.2425480038}
+ red_weight 0.78
+ blue_green_weight 0.255
+ lm_enable true
+ level 0.665
+ autolevels true
+ yellow true
+ ublu true
+}
+Remove {
+ operation keep
+ channels alpha
+ name Remove1
+ xpos -920
+ ypos 1450
+}
+Dot {
+ name Dot15
+ xpos -886
+ ypos 1530
+}
+set N918fdf0 [stack 0]
+Grade {
+ channels alpha
+ blackpoint 0.26
+ whitepoint 0.56
+ white_clamp true
+ name Grade1
+ xpos -1140
+ ypos 1526
+}
+Dilate {
+ size 3
+ name Dilate2
+ xpos -1140
+ ypos 1646
+}
+push $N918fdf0
+Merge2 {
+ inputs 2
+ operation mask
+ bbox B
+ name Merge3
+ xpos -920
+ ypos 1646
+}
+Write {
+ channels alpha
+ file ../LaProfiler/elements/mp01matte/mp01matte.####.exr
+ file_type exr
+ autocrop true
+ first_part rgba
+ create_directories true
+ render_order 20
+ version 6
+ name Write2
+ xpos -920
+ ypos 1832
+}
+set Nb2baf10 [stack 0]
+Switch {
+ inputs 2
+ which 1
+ name Switch1
+ xpos -920
+ ypos 2030
+}
+set N9518c60 [stack 0]
+Dot {
+ name Dot21
+ xpos -886
+ ypos 2874
+}
+push $N9518c60
+push $Nab7f3c0
+CopyBBox {
+ inputs 2
+ name CopyBBox1
+ xpos -40
+ ypos 2030
+}
+Dot {
+ name Dot18
+ xpos -6
+ ypos 2274
+}
+set N9a7ef20 [stack 0]
+OFXuk.co.thefoundry.keylight.keylight_v201 {
+ show "Final Result"
+ unPreMultiply false
+ screenColour {0.1453998685 0.3589214087 0.1863481402}
+ screenGain 1.05
+ screenBalance 0.5
+ alphaBias {0.5 0.5 0.5}
+ despillBias {0.5 0.5 0.5}
+ gangBiases true
+ preBlur 0
+ "Screen Matte" 0
+ screenClipMin 0
+ screenClipMax 1
+ screenClipRollback 0
+ screenGrowShrink 0
+ screenSoftness 0
+ screenDespotBlack 0
+ screenDespotWhite 0
+ screenReplaceMethod "Soft Colour"
+ screenReplaceColour {0.5 0.5 0.5}
+ Tuning 0
+ midPoint 0.5
+ lowGain 1
+ midGain 1
+ highGain 1
+ "Inside Mask" 0
+ sourceAlphaHandling Ignore
+ insideReplaceMethod "Soft Colour"
+ insideReplaceColour {0.5 0.5 0.5}
+ Crops 0
+ SourceXMethod Colour
+ SourceYMethod Colour
+ SourceEdgeColour 0
+ SourceCropL 0
+ SourceCropR 1
+ SourceCropB 0
+ SourceCropT 1
+ balanceSet false
+ insideComponent None
+ outsideComponent None
+ cacheBreaker true
+ name Keylight2
+ xpos -40
+ ypos 2414
+}
+set N9790180 [stack 0]
+push $N9a7ef20
+Merge2 {
+ inputs 2
+ operation from
+ name Merge6
+ xpos -260
+ ypos 2414
+}
+Saturation {
+ saturation 0
+ name Saturation2
+ xpos -260
+ ypos 2486
+}
+Grade {
+ white 0.045
+ gamma 1.54
+ name Grade2
+ xpos -260
+ ypos 2558
+}
+Dot {
+ name Dot19
+ xpos -226
+ ypos 2658
+}
+push $N9790180
+Merge2 {
+ inputs 2
+ operation plus
+ name Merge8
+ xpos -40
+ ypos 2654
+}
+Copy {
+ inputs 2
+ from0 rgba.alpha
+ to0 rgba.alpha
+ name Copy2
+ xpos -40
+ ypos 2870
+}
+Dot {
+ name Dot22
+ xpos -6
+ ypos 3282
+}
+set N998f770 [stack 0]
+Dot {
+ name Dot23
+ xpos -226
+ ypos 3282
+}
+set N9994740 [stack 0]
+Dot {
+ name Dot24
+ xpos -446
+ ypos 3282
+}
+set N9999640 [stack 0]
+Dot {
+ name Dot25
+ xpos -666
+ ypos 3282
+}
+set N999e540 [stack 0]
+Dot {
+ name Dot26
+ xpos -886
+ ypos 3282
+}
+set N99a3440 [stack 0]
+Dot {
+ name Dot27
+ xpos -1106
+ ypos 3282
+}
+set N99a8340 [stack 0]
+Dot {
+ name Dot28
+ xpos -1326
+ ypos 3282
+}
+set N99ad240 [stack 0]
+Dot {
+ name Dot29
+ xpos -1546
+ ypos 3282
+}
+set N99b2140 [stack 0]
+Dot {
+ name Dot30
+ xpos -1766
+ ypos 3282
+}
+Saturation {
+ saturation 0
+ name Saturation3
+ xpos -1800
+ ypos 3398
+}
+Grade {
+ white 4
+ gamma 0.6
+ name Grade3
+ xpos -1800
+ ypos 3470
+}
+Premult {
+ name Premult10
+ xpos -1800
+ ypos 3590
+}
+Write {
+ channels rgba
+ file ../LaProfiler/elements/mp01spriteNoir/mp01spriteNoir.####.exr
+ file_type exr
+ autocrop true
+ first_part rgba
+ create_directories true
+ render_order 30
+ version 7
+ name Write10
+ xpos -1800
+ ypos 3824
+}
+Crop {
+ box {0 0 1280 720}
+ name Crop2
+ xpos -1800
+ ypos 4118
+}
+Write {
+ channels rgba
+ file ../LaProfiler-FullFrame/elements/mp01spriteNoir/mp01spriteNoir.####.exr
+ file_type exr
+ first_part rgba
+ create_directories true
+ render_order 30
+ version 8
+ name Write8
+ xpos -1800
+ ypos 4208
+}
+push $N99b2140
+Colorspace {
+ colorspace_out HSL
+ name Colorspace9
+ xpos -1580
+ ypos 3398
+}
+Premult {
+ name Premult9
+ xpos -1580
+ ypos 3590
+}
+Write {
+ channels rgba
+ file ../LaProfiler/elements/mp01spritePsychadelic02/mp01spritePsychadelic02.####.exr
+ file_type exr
+ autocrop true
+ first_part rgba
+ create_directories true
+ render_order 30
+ version 7
+ name Write9
+ xpos -1580
+ ypos 3824
+}
+Crop {
+ box {0 0 1280 720}
+ name Crop3
+ xpos -1580
+ ypos 4118
+}
+Write {
+ channels rgba
+ file ../LaProfiler-FullFrame/elements/mp01spritePsychadelic02/mp01spritePsychadelic02.####.exr
+ file_type exr
+ first_part rgba
+ create_directories true
+ render_order 30
+ version 8
+ name Write12
+ xpos -1580
+ ypos 4208
+}
+push $N999e540
+HueShift {
+ hue_rotation -112
+ name HueShift1
+ xpos -700
+ ypos 3398
+}
+HueCorrect {
+ hue {sat {curve 1.328358173 1.328358173 1 1 1 1 1.328358173 s0}
+   lum {}
+   red {curve 0.8741294146 1.142288566 1 1 1 1 0.8741294146 s0.1970148683 t0}
+   green {}
+   blue {curve 1.547263622 1.415920377 1 1 1 1 1.547263622 s-0.0342040062 t0}
+   r_sup {curve 0.8248755932 s0 t-0.2626866102 1 1 1 1 1 0.8248755932}
+   g_sup {}
+   b_sup {}
+   sat_thrsh {}}
+ name HueCorrect3
+ xpos -700
+ ypos 3470
+}
+Premult {
+ name Premult5
+ xpos -700
+ ypos 3590
+}
+Write {
+ channels rgba
+ file ../LaProfiler/elements/mp01spritePurple/mp01spritePurple.####.exr
+ file_type exr
+ autocrop true
+ first_part rgba
+ create_directories true
+ render_order 30
+ version 7
+ name Write5
+ xpos -700
+ ypos 3824
+}
+Crop {
+ box {0 0 1280 720}
+ name Crop7
+ xpos -700
+ ypos 4118
+}
+Write {
+ channels rgba
+ file ../LaProfiler-FullFrame/elements/mp01spritePurple/mp01spritePurple.####.exr
+ file_type exr
+ first_part rgba
+ create_directories true
+ render_order 30
+ version 8
+ name Write15
+ xpos -700
+ ypos 4208
+}
+push $N99ad240
+Colorspace {
+ colorspace_out HSL
+ name Colorspace7
+ xpos -1360
+ ypos 3398
+}
+Colorspace {
+ colorspace_in YCbCr
+ colorspace_out CIE-LCH
+ name Colorspace8
+ xpos -1360
+ ypos 3470
+}
+HueShift {
+ hue_rotation -14
+ brightness 0.52
+ name HueShift2
+ xpos -1360
+ ypos 3518
+}
+Premult {
+ name Premult8
+ xpos -1360
+ ypos 3590
+}
+Write {
+ channels rgba
+ file ../LaProfiler/elements/mp01spritePsychadelic01/mp01spritePsychadelic01.####.exr
+ file_type exr
+ autocrop true
+ first_part rgba
+ create_directories true
+ render_order 30
+ version 10
+ name Write11
+ xpos -1360
+ ypos 3824
+}
+Crop {
+ box {0 0 1280 720}
+ name Crop4
+ xpos -1360
+ ypos 4118
+}
+Write {
+ channels rgba
+ file ../LaProfiler-FullFrame/elements/mp01spritePsychadelic01/mp01spritePsychadelic01.####.exr
+ file_type exr
+ first_part rgba
+ create_directories true
+ render_order 30
+ version 11
+ name Write18
+ xpos -1360
+ ypos 4208
+}
+push $N9994740
+HueCorrect {
+ hue {sat {curve 1 1.618407965 1 1 1 1 1}
+   lum {}
+   red {curve 1 1 1.191542268 1 1 1 1}
+   green {curve 1 1.109452724 1 1 1 1 1}
+   blue {}
+   r_sup {curve 1 0.1079603434 1 1 1 1 1}
+   g_sup {}
+   b_sup {}
+   sat_thrsh {}}
+ name HueCorrect1
+ xpos -260
+ ypos 3398
+}
+Saturation {
+ saturation 4
+ name Saturation4
+ xpos -260
+ ypos 3446
+}
+Premult {
+ name Premult3
+ xpos -260
+ ypos 3590
+}
+Write {
+ channels rgba
+ file ../LaProfiler/elements/mp01spriteGreen/mp01spriteGreen.####.exr
+ file_type exr
+ autocrop true
+ first_part rgba
+ create_directories true
+ render_order 30
+ version 7
+ name Write3
+ xpos -260
+ ypos 3824
+}
+Crop {
+ box {0 0 1280 720}
+ name Crop9
+ xpos -260
+ ypos 4118
+}
+Write {
+ channels rgba
+ file ../LaProfiler-FullFrame/elements/mp01spriteGreen/mp01spriteGreen.####.exr
+ file_type exr
+ first_part rgba
+ create_directories true
+ render_order 30
+ version 8
+ name Write13
+ xpos -260
+ ypos 4208
+}
+push $N99a8340
+Colorspace {
+ colorspace_out CIE-Lab
+ name Colorspace6
+ xpos -1140
+ ypos 3398
+}
+Premult {
+ name Premult7
+ xpos -1140
+ ypos 3590
+}
+Write {
+ channels rgba
+ file ../LaProfiler/elements/mp01spriteWarhol02/mp01spriteWarhol02.####.exr
+ file_type exr
+ autocrop true
+ first_part rgba
+ create_directories true
+ render_order 30
+ version 7
+ name Write7
+ xpos -1140
+ ypos 3824
+}
+Crop {
+ box {0 0 1280 720}
+ name Crop5
+ xpos -1140
+ ypos 4118
+}
+Write {
+ channels rgba
+ file ../LaProfiler-FullFrame/elements/mp01spriteWarhol02/mp01spriteWarhol02.####.exr
+ file_type exr
+ first_part rgba
+ create_directories true
+ render_order 30
+ version 8
+ name Write17
+ xpos -1140
+ ypos 4208
+}
+push $N998f770
+Premult {
+ name Premult2
+ xpos -40
+ ypos 3590
+}
+Write {
+ channels rgba
+ file ../LaProfiler/elements/mp01sprite/mp01sprite.####.exr
+ file_type exr
+ autocrop true
+ first_part rgba
+ create_directories true
+ render_order 30
+ version 7
+ name Write19
+ xpos -40
+ ypos 3824
+}
+Crop {
+ box {0 0 1280 720}
+ name Crop1
+ xpos -40
+ ypos 4118
+}
+Write {
+ channels rgba
+ file ../LaProfiler-FullFrame/elements/mp01sprite/mp01sprite.####.exr
+ file_type exr
+ first_part rgba
+ create_directories true
+ render_order 30
+ version 8
+ name Write20
+ xpos -40
+ ypos 4208
+}
+push $N9999640
+HueCorrect {
+ hue {sat {curve 1 1.618407965 1 1 1 1 1}
+   lum {}
+   red {curve 1 1.103980064 1.191542268 1 1 1 1}
+   green {curve 1 0.7427860498 1 1 1 1 1}
+   blue {}
+   r_sup {curve 1 1.711442709 1 1 1 1 1}
+   g_sup {curve 1 0.250248909 1 1 1 1 1}
+   b_sup {}
+   sat_thrsh {}}
+ name HueCorrect2
+ xpos -480
+ ypos 3398
+}
+Premult {
+ name Premult4
+ xpos -480
+ ypos 3590
+}
+Write {
+ channels rgba
+ file ../LaProfiler/elements/mp01spriteRed/mp01spriteRed.####.exr
+ file_type exr
+ autocrop true
+ first_part rgba
+ create_directories true
+ render_order 30
+ version 7
+ name Write4
+ xpos -480
+ ypos 3824
+}
+Crop {
+ box {0 0 1280 720}
+ name Crop8
+ xpos -480
+ ypos 4118
+}
+Write {
+ channels rgba
+ file ../LaProfiler-FullFrame/elements/mp01spriteRed/mp01spriteRed.####.exr
+ file_type exr
+ first_part rgba
+ create_directories true
+ render_order 30
+ version 8
+ name Write14
+ xpos -480
+ ypos 4208
+}
+push $N99a3440
+Colorspace {
+ colorspace_out CIE-LCH
+ name Colorspace5
+ xpos -920
+ ypos 3398
+}
+Premult {
+ name Premult6
+ xpos -920
+ ypos 3590
+}
+Write {
+ channels rgba
+ file ../LaProfiler/elements/mp01spriteWarhol01/mp01spriteWarhol01.####.exr
+ file_type exr
+ autocrop true
+ first_part rgba
+ create_directories true
+ render_order 30
+ version 7
+ name Write6
+ xpos -920
+ ypos 3824
+}
+Crop {
+ box {0 0 1280 720}
+ name Crop6
+ xpos -920
+ ypos 4118
+}
+Write {
+ channels rgba
+ file ../LaProfiler-FullFrame/elements/mp01spriteWarhol01/mp01spriteWarhol01.####.exr
+ file_type exr
+ first_part rgba
+ create_directories true
+ render_order 30
+ version 8
+ name Write16
+ xpos -920
+ ypos 4208
+}
+push $Nb2baf10
+Viewer {
+ frame_range 1001-2000
+ colour_sample_bbox {-0.9781249762 -0.046875 -0.9765625 -0.04531250149}
+ samplepoints {{0.134375006 0.3390625119}
+   }
+ viewerProcess "sRGB (ACES)"
+ name Viewer1
+ xpos -40
+ ypos 5414
+}
