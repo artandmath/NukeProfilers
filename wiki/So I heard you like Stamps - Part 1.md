@@ -167,7 +167,7 @@ Taking a look at the file dialog box for our nukescripts, an item to note is the
 
 ![Screenshot of the File>Open dialog for the LaProfiler nukescripts folder](/wiki/assets/Screenshot_LaProfiler_FileDialog.png)
 
-Pasting a few Stamps and an Anchor into a text editor will show us the space they take within a nukescript when compared to a set of Dot nodes. Not really a big issue, but just something to keep in mind the next time you're building a nukescript that you feel need really must use hidden inputs.
+Pasting a few Stamps and an Anchor into a text editor will show us the space they take within a nukescript when compared to a set of Dot nodes. Not really a big issue, but just something to keep in mind the next time you're building a nukescript that you feel really must use hidden inputs.
 
 ![Screenshot of Dots and Stamps in a text editor](/wiki/assets/Screenshot_TextEditor_DotsAndStamps.gif)
 
