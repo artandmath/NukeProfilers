@@ -1,4 +1,4 @@
-![Charts_LaProfiler-FullFrame](https://github.com/artandmath/NukeProfilers/assets/5173040/31fe3951-d5f4-4d23-a771-193f4786aade)![Header](assets/Header_SoIHeardYouLikeStamps.gif)
+![Header](assets/Header_SoIHeardYouLikeStamps.gif)
 
 An investigation into the Stamps tool for Nuke, by Daniel Harkness, 10 May 2024
 
