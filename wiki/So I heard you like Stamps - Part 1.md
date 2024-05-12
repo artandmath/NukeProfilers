@@ -166,7 +166,7 @@ Taking a look at the file dialog box for our nukescripts, an item to note is the
 
 Pasting a Stamp and Anchor pair into a text editor will show us the space on disk they take within a nukescript when compared to a pair of Dot nodes.
 
-![Screenshot of Stamps in a text editor](/wiki/assets/Screenshot_StampsPairInTextEditor.png)
+![Screenshot of Dots and Stamps in a text editor](/wiki/assets/Screenshot_TextEditor_DotsAndStamps.gif)
 
 ## SpiralProfiler
 
