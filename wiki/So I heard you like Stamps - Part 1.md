@@ -153,7 +153,7 @@ Let's run the tests again, removing each sprite's managed DOD/BBox and set the D
 
 ![Screenshot of a managed DOD/BBox and an unmanaged DOD/BBox](/wiki/assets/Screenshot_ShiaBBoxToFullFrame.png)
 
-When it comes to computing resources, using Stamps to reference a single instance of a Read node asset in a script has less of an impact on CPU and RAM than telling Nuke when and where it should performing its calculations. In some instances the unmanaged DOD/BBox nukescripts caused Nuke to crash due to hitting a RAM ceiling. Where Nuke didn't crash we see a 30% to 125% increase in render times, an increase in CPU load, and a more than doubling of RAM requirements.
+When it comes to computing resources, using Stamps to reference a single Read node asset in a script has less of an impact on CPU and RAM than telling Nuke when and where it should performing its calculations. In some instances the unmanaged DOD/BBox nukescripts caused Nuke to crash due to hitting a RAM ceiling. Where Nuke didn't crash we see a 30% to 125% increase in render times, an increase in CPU load, and a more than doubling of RAM requirements.
 
 ![Results of using a managed DOD/BBox versus using unmanaged DOD/BBox and Stamps](/wiki/assets/Charts_LaProfiler-FullFrame.gif)
 
