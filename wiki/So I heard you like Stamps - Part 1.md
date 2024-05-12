@@ -182,7 +182,7 @@ The SpiralProfiler scripts contains 500 nodes of the organizational type (Dot or
 ![Screenshot of SpiralProfiler Node Graphs](/wiki/assets/Screenshot_SpiralProfiler_NodeGraph.png)
 
 The scripts are organized as follows:
-- 1024x1024px checkerboard.
+- 1024x1024 pixel checkerboard.
 - Transform operation with __rotation=time__ and filtering of type __Impluse__ (nearest neighbour, aliased pixel filtering).
 - The chain of 500 organizational nodes.
 - Transform operation with __rotation=time__ and filtering of type __Cubic__ (an anti-aliased filtering operation).
