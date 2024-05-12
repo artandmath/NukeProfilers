@@ -34,10 +34,9 @@ Root {
  inputs 0
  name /mnt/render/nukescripts/GenerateElements.nk
  project_directory "\[python \{nuke.script_directory()\}]"
- frame 2351
+ frame 1034
  first_frame 1001
  last_frame 2537
- lock_range true
  format "2048 1556 0 0 2048 1556 1 2K_Super_35(full-ap)"
  proxy_type scale
  proxy_format "1024 778 0 0 1024 778 1 1K_Super_35(full-ap)"
@@ -58,8 +57,8 @@ BackdropNode {
  tile_color 0x388e8e00
  label "autocrop, with BBox management"
  note_font_size 42
- xpos -1947
- ypos 3720
+ xpos -407
+ ypos 96
  bdwidth 2135
  bdheight 192
 }
@@ -69,8 +68,8 @@ BackdropNode {
  tile_color 0x388e8e00
  label "full frame, without BBox management"
  note_font_size 42
- xpos -1947
- ypos 4022
+ xpos -407
+ ypos 398
  bdwidth 2135
  bdheight 260
 }
@@ -86,22 +85,22 @@ Read {
  colorspace "Utility - Gamma 2.2 - Rec.709 - Texture"
  raw true
  name Read1
- xpos -40
- ypos -87
+ xpos 1500
+ ypos -3711
 }
 Dot {
  name Dot1
  label "introductions.mp4\nSet input color transform to Raw Data"
  note_font_size 20
- xpos -6
- ypos 18
+ xpos 1534
+ ypos -3606
 }
 OCIOColorSpace {
  in_colorspace "Utility - Gamma 2.2 - Rec.709 - Texture"
  out_colorspace scene_linear
  name OCIOColorSpace1
- xpos -40
- ypos 86
+ xpos 1500
+ ypos -3538
 }
 Retime {
  input.first 12903
@@ -113,16 +112,16 @@ Retime {
  output.last 2537
  time ""
  name Retime1
- xpos -40
- ypos 158
+ xpos 1500
+ ypos -3466
 }
 FrameRange {
  first_frame 1001
  last_frame 2537
  time ""
  name FrameRange1
- xpos -40
- ypos 206
+ xpos 1500
+ ypos -3418
 }
 Write {
  file ../LaProfiler/elements/mp01/mp01.####.exr
@@ -138,8 +137,8 @@ Write {
  in_colorspace scene_linear
  out_colorspace scene_linear
  name Write1
- xpos -40
- ypos 296
+ xpos 1500
+ ypos -3328
 }
 Read {
  inputs 0
@@ -153,8 +152,8 @@ Read {
  origset true
  version 2
  name Read3
- xpos -1140
- ypos 2001
+ xpos 400
+ ypos -1623
 }
 Read {
  inputs 0
@@ -166,50 +165,51 @@ Read {
  origfirst 1001
  origlast 2537
  origset true
+ version 3
  name Read2
- xpos -40
- ypos 465
+ xpos 1500
+ ypos -3159
 }
 Colorspace {
  colorspace_out YPbPr
  name Colorspace1
- xpos -40
- ypos 662
+ xpos 1500
+ ypos -2962
 }
 Blur {
  channels {-rgba.red rgba.green rgba.blue none}
  size 2
  name Blur1
- xpos -40
- ypos 710
+ xpos 1500
+ ypos -2914
 }
 Colorspace {
  colorspace_in YPbPr
  name Colorspace2
- xpos -40
- ypos 758
+ xpos 1500
+ ypos -2866
 }
 Dot {
  name Dot16
- xpos -6
- ypos 930
+ xpos 1534
+ ypos -2694
 }
-set Nab7f3c0 [stack 0]
+set Nb60c700 [stack 0]
 Dot {
  name Dot17
- xpos -886
- ypos 930
+ xpos 654
+ ypos -2694
 }
 Dot {
  name Dot3
- xpos -886
- ypos 1290
+ xpos 654
+ ypos -2358
 }
-set N9780dd0 [stack 0]
+set Nb1eb1a0 [stack 0]
 IBKColourV3 {
  name IBKColourV3_1
- xpos -1140
- ypos 1406
+ xpos 400
+ ypos -2242
  screen_type green
  Size 1.5
  off -0.18
@@ -217,13 +217,13 @@ IBKColourV3 {
  erode 1.22
  multi 25
 }
-push $N9780dd0
+push $Nb1eb1a0
 IBKGizmoV3 {
  inputs 2
  name IBKGizmoV3_1
  selected false
- xpos -920
- ypos 1406
+ xpos 620
+ ypos -2242
  st pick
  colour {0.2519783974 0.4108269215 0.2425480038}
  red_weight 0.78
@@ -238,38 +238,54 @@ Remove {
  operation keep
  channels alpha
  name Remove1
- xpos -920
- ypos 1450
+ xpos 620
+ ypos -2170
 }
 Dot {
  name Dot15
- xpos -886
- ypos 1530
+ xpos 654
+ ypos -2094
 }
-set N918fdf0 [stack 0]
+set Nbb6c110 [stack 0]
 Grade {
  channels alpha
- blackpoint 0.26
- whitepoint 0.56
+ blackpoint 0.4
+ whitepoint {{blackpoint}}
  white_clamp true
  name Grade1
- xpos -1140
- ypos 1526
+ xpos 400
+ ypos -2098
 }
 Dilate {
  size 3
  name Dilate2
- xpos -1140
- ypos 1646
+ xpos 400
+ ypos -2026
 }
-push $N918fdf0
+Blur {
+ size 2
+ name Blur2
+ xpos 400
+ ypos -1978
+}
+push $Nbb6c110
+ColorLookup {
+ lut {master {}
+   red {}
+   green {}
+   blue {}
+   alpha {curve C k 0 s1.149999976 x0.9264578223 1 s1}}
+ name ColorLookup1
+ xpos 620
+ ypos -2026
+}
 Merge2 {
  inputs 2
  operation mask
  bbox B
  name Merge3
- xpos -920
- ypos 1646
+ xpos 620
+ ypos -1978
 }
 Write {
  channels alpha
@@ -279,43 +295,42 @@ Write {
  first_part rgba
  create_directories true
  render_order 20
- version 6
+ version 8
  name Write2
- xpos -920
- ypos 1832
+ xpos 620
+ ypos -1792
 }
-set Nb2baf10 [stack 0]
 Switch {
  inputs 2
  which 1
  name Switch1
- xpos -920
- ypos 2030
+ xpos 620
+ ypos -1594
 }
-set N9518c60 [stack 0]
+set Nbbaf980 [stack 0]
 Dot {
  name Dot21
- xpos -886
- ypos 2874
+ xpos 654
+ ypos -750
 }
-push $N9518c60
-push $Nab7f3c0
+push $Nbbaf980
+push $Nb60c700
 CopyBBox {
  inputs 2
  name CopyBBox1
- xpos -40
- ypos 2030
+ xpos 1500
+ ypos -1594
 }
 Dot {
  name Dot18
- xpos -6
- ypos 2274
+ xpos 1534
+ ypos -1350
 }
-set N9a7ef20 [stack 0]
+set Nb8dc240 [stack 0]
 OFXuk.co.thefoundry.keylight.keylight_v201 {
  show "Final Result"
  unPreMultiply false
- screenColour {0.1453998685 0.3589214087 0.1863481402}
+ screenColour {0.2420872748 0.3819690943 0.231782645}
  screenGain 1.05
  screenBalance 0.5
  alphaBias {0.5 0.5 0.5}
@@ -354,123 +369,124 @@ OFXuk.co.thefoundry.keylight.keylight_v201 {
  outsideComponent None
  cacheBreaker true
  name Keylight2
- xpos -40
- ypos 2414
+ xpos 1500
+ ypos -1210
 }
-set N9790180 [stack 0]
-push $N9a7ef20
+set Na51e300 [stack 0]
+push $Nb8dc240
 Merge2 {
  inputs 2
  operation from
  name Merge6
- xpos -260
- ypos 2414
+ xpos 1280
+ ypos -1210
 }
 Saturation {
  saturation 0
  name Saturation2
- xpos -260
- ypos 2486
+ xpos 1280
+ ypos -1138
 }
 Grade {
  white 0.045
  gamma 1.54
  name Grade2
- xpos -260
- ypos 2558
+ xpos 1280
+ ypos -1066
 }
 Dot {
  name Dot19
- xpos -226
- ypos 2658
+ xpos 1314
+ ypos -966
 }
-push $N9790180
+push $Na51e300
 Merge2 {
  inputs 2
  operation plus
  name Merge8
- xpos -40
- ypos 2654
+ xpos 1500
+ ypos -970
 }
 Copy {
  inputs 2
  from0 rgba.alpha
  to0 rgba.alpha
  name Copy2
- xpos -40
- ypos 2870
+ xpos 1500
+ ypos -754
 }
 Dot {
  name Dot22
- xpos -6
- ypos 3282
+ xpos 1534
+ ypos -438
 }
-set N998f770 [stack 0]
+set Nb27d520 [stack 0]
 Dot {
  name Dot23
- xpos -226
- ypos 3282
+ xpos 1314
+ ypos -438
 }
-set N9994740 [stack 0]
+set Nb8e4d90 [stack 0]
 Dot {
  name Dot24
- xpos -446
- ypos 3282
+ xpos 1094
+ ypos -438
 }
-set N9999640 [stack 0]
+set Nb34f830 [stack 0]
 Dot {
  name Dot25
- xpos -666
- ypos 3282
+ xpos 874
+ ypos -438
 }
-set N999e540 [stack 0]
+set N938b100 [stack 0]
 Dot {
  name Dot26
- xpos -886
- ypos 3282
+ xpos 654
+ ypos -438
 }
-set N99a3440 [stack 0]
+set N96b2510 [stack 0]
 Dot {
  name Dot27
- xpos -1106
- ypos 3282
+ xpos 434
+ ypos -438
 }
-set N99a8340 [stack 0]
+set Na619b40 [stack 0]
 Dot {
  name Dot28
- xpos -1326
- ypos 3282
+ xpos 214
+ ypos -438
 }
-set N99ad240 [stack 0]
+set Nb1b6390 [stack 0]
 Dot {
  name Dot29
- xpos -1546
- ypos 3282
+ xpos -6
+ ypos -438
 }
-set N99b2140 [stack 0]
+set Nac1f1f0 [stack 0]
 Dot {
  name Dot30
- xpos -1766
- ypos 3282
+ xpos -226
+ ypos -438
 }
 Saturation {
  saturation 0
  name Saturation3
- xpos -1800
- ypos 3398
+ xpos -260
+ ypos -250
 }
 Grade {
  white 4
- gamma 0.6
+ gamma 0.71
  name Grade3
- xpos -1800
- ypos 3470
+ xpos -260
+ ypos -178
 }
 Premult {
  name Premult10
- xpos -1800
- ypos 3590
+ xpos -260
+ ypos -34
 }
+set Nb2af480 [stack 0]
 Write {
  channels rgba
  file ../LaProfiler/elements/mp01spriteNoir/mp01spriteNoir.####.exr
@@ -479,16 +495,16 @@ Write {
  first_part rgba
  create_directories true
  render_order 30
- version 7
+ version 9
  name Write10
- xpos -1800
- ypos 3824
+ xpos -260
+ ypos 200
 }
 Crop {
  box {0 0 1280 720}
  name Crop2
- xpos -1800
- ypos 4118
+ xpos -260
+ ypos 494
 }
 Write {
  channels rgba
@@ -497,22 +513,36 @@ Write {
  first_part rgba
  create_directories true
  render_order 30
- version 8
+ version 10
  name Write8
- xpos -1800
- ypos 4208
+ xpos -260
+ ypos 584
 }
-push $N99b2140
+push $Nac1f1f0
+OCIOColorSpace {
+ in_colorspace scene_linear
+ out_colorspace "Utility - Linear - sRGB"
+ name OCIOColorSpace7
+ xpos -40
+ ypos -322
+}
 Colorspace {
  colorspace_out HSL
  name Colorspace9
- xpos -1580
- ypos 3398
+ xpos -40
+ ypos -250
+}
+OCIOColorSpace {
+ in_colorspace "Utility - Linear - sRGB"
+ out_colorspace scene_linear
+ name OCIOColorSpace6
+ xpos -40
+ ypos -106
 }
 Premult {
  name Premult9
- xpos -1580
- ypos 3590
+ xpos -40
+ ypos -34
 }
 Write {
  channels rgba
@@ -522,16 +552,16 @@ Write {
  first_part rgba
  create_directories true
  render_order 30
- version 7
+ version 9
  name Write9
- xpos -1580
- ypos 3824
+ xpos -40
+ ypos 200
 }
 Crop {
  box {0 0 1280 720}
  name Crop3
- xpos -1580
- ypos 4118
+ xpos -40
+ ypos 494
 }
 Write {
  channels rgba
@@ -540,17 +570,17 @@ Write {
  first_part rgba
  create_directories true
  render_order 30
- version 8
+ version 10
  name Write12
- xpos -1580
- ypos 4208
+ xpos -40
+ ypos 584
 }
-push $N999e540
+push $N938b100
 HueShift {
  hue_rotation -112
  name HueShift1
- xpos -700
- ypos 3398
+ xpos 840
+ ypos -250
 }
 HueCorrect {
  hue {sat {curve 1.328358173 1.328358173 1 1 1 1 1.328358173 s0}
@@ -563,13 +593,13 @@ HueCorrect {
    b_sup {}
    sat_thrsh {}}
  name HueCorrect3
- xpos -700
- ypos 3470
+ xpos 840
+ ypos -178
 }
 Premult {
  name Premult5
- xpos -700
- ypos 3590
+ xpos 840
+ ypos -34
 }
 Write {
  channels rgba
@@ -579,16 +609,16 @@ Write {
  first_part rgba
  create_directories true
  render_order 30
- version 7
+ version 9
  name Write5
- xpos -700
- ypos 3824
+ xpos 840
+ ypos 200
 }
 Crop {
  box {0 0 1280 720}
  name Crop7
- xpos -700
- ypos 4118
+ xpos 840
+ ypos 494
 }
 Write {
  channels rgba
@@ -597,36 +627,50 @@ Write {
  first_part rgba
  create_directories true
  render_order 30
- version 8
+ version 10
  name Write15
- xpos -700
- ypos 4208
+ xpos 840
+ ypos 584
 }
-push $N99ad240
+push $Nb1b6390
+OCIOColorSpace {
+ in_colorspace scene_linear
+ out_colorspace "Utility - Linear - sRGB"
+ name OCIOColorSpace9
+ xpos 180
+ ypos -322
+}
 Colorspace {
  colorspace_out HSL
  name Colorspace7
- xpos -1360
- ypos 3398
+ xpos 180
+ ypos -250
 }
 Colorspace {
  colorspace_in YCbCr
  colorspace_out CIE-LCH
  name Colorspace8
- xpos -1360
- ypos 3470
+ xpos 180
+ ypos -202
 }
 HueShift {
  hue_rotation -14
  brightness 0.52
  name HueShift2
- xpos -1360
- ypos 3518
+ xpos 180
+ ypos -154
+}
+OCIOColorSpace {
+ in_colorspace "Utility - Linear - sRGB"
+ out_colorspace scene_linear
+ name OCIOColorSpace8
+ xpos 180
+ ypos -106
 }
 Premult {
  name Premult8
- xpos -1360
- ypos 3590
+ xpos 180
+ ypos -34
 }
 Write {
  channels rgba
@@ -636,16 +680,16 @@ Write {
  first_part rgba
  create_directories true
  render_order 30
- version 10
+ version 12
  name Write11
- xpos -1360
- ypos 3824
+ xpos 180
+ ypos 200
 }
 Crop {
  box {0 0 1280 720}
  name Crop4
- xpos -1360
- ypos 4118
+ xpos 180
+ ypos 494
 }
 Write {
  channels rgba
@@ -654,12 +698,12 @@ Write {
  first_part rgba
  create_directories true
  render_order 30
- version 11
+ version 13
  name Write18
- xpos -1360
- ypos 4208
+ xpos 180
+ ypos 584
 }
-push $N9994740
+push $Nb8e4d90
 HueCorrect {
  hue {sat {curve 1 1.618407965 1 1 1 1 1}
    lum {}
@@ -671,19 +715,19 @@ HueCorrect {
    b_sup {}
    sat_thrsh {}}
  name HueCorrect1
- xpos -260
- ypos 3398
+ xpos 1280
+ ypos -250
 }
 Saturation {
  saturation 4
  name Saturation4
- xpos -260
- ypos 3446
+ xpos 1280
+ ypos -202
 }
 Premult {
  name Premult3
- xpos -260
- ypos 3590
+ xpos 1280
+ ypos -34
 }
 Write {
  channels rgba
@@ -693,16 +737,16 @@ Write {
  first_part rgba
  create_directories true
  render_order 30
- version 7
+ version 9
  name Write3
- xpos -260
- ypos 3824
+ xpos 1280
+ ypos 200
 }
 Crop {
  box {0 0 1280 720}
  name Crop9
- xpos -260
- ypos 4118
+ xpos 1280
+ ypos 494
 }
 Write {
  channels rgba
@@ -711,22 +755,36 @@ Write {
  first_part rgba
  create_directories true
  render_order 30
- version 8
+ version 10
  name Write13
- xpos -260
- ypos 4208
+ xpos 1280
+ ypos 584
 }
-push $N99a8340
+push $Na619b40
+OCIOColorSpace {
+ in_colorspace scene_linear
+ out_colorspace "Utility - Linear - sRGB"
+ name OCIOColorSpace4
+ xpos 400
+ ypos -322
+}
 Colorspace {
  colorspace_out CIE-Lab
  name Colorspace6
- xpos -1140
- ypos 3398
+ xpos 400
+ ypos -250
+}
+OCIOColorSpace {
+ in_colorspace "Utility - Linear - sRGB"
+ out_colorspace scene_linear
+ name OCIOColorSpace5
+ xpos 400
+ ypos -106
 }
 Premult {
  name Premult7
- xpos -1140
- ypos 3590
+ xpos 400
+ ypos -34
 }
 Write {
  channels rgba
@@ -736,16 +794,16 @@ Write {
  first_part rgba
  create_directories true
  render_order 30
- version 7
+ version 9
  name Write7
- xpos -1140
- ypos 3824
+ xpos 400
+ ypos 200
 }
 Crop {
  box {0 0 1280 720}
  name Crop5
- xpos -1140
- ypos 4118
+ xpos 400
+ ypos 494
 }
 Write {
  channels rgba
@@ -754,16 +812,16 @@ Write {
  first_part rgba
  create_directories true
  render_order 30
- version 8
+ version 10
  name Write17
- xpos -1140
- ypos 4208
+ xpos 400
+ ypos 584
 }
-push $N998f770
+push $Nb27d520
 Premult {
  name Premult2
- xpos -40
- ypos 3590
+ xpos 1500
+ ypos -34
 }
 Write {
  channels rgba
@@ -773,16 +831,16 @@ Write {
  first_part rgba
  create_directories true
  render_order 30
- version 7
+ version 9
  name Write19
- xpos -40
- ypos 3824
+ xpos 1500
+ ypos 200
 }
 Crop {
  box {0 0 1280 720}
  name Crop1
- xpos -40
- ypos 4118
+ xpos 1500
+ ypos 494
 }
 Write {
  channels rgba
@@ -791,12 +849,12 @@ Write {
  first_part rgba
  create_directories true
  render_order 30
- version 8
+ version 10
  name Write20
- xpos -40
- ypos 4208
+ xpos 1500
+ ypos 584
 }
-push $N9999640
+push $Nb34f830
 HueCorrect {
  hue {sat {curve 1 1.618407965 1 1 1 1 1}
    lum {}
@@ -808,13 +866,13 @@ HueCorrect {
    b_sup {}
    sat_thrsh {}}
  name HueCorrect2
- xpos -480
- ypos 3398
+ xpos 1060
+ ypos -250
 }
 Premult {
  name Premult4
- xpos -480
- ypos 3590
+ xpos 1060
+ ypos -34
 }
 Write {
  channels rgba
@@ -824,16 +882,16 @@ Write {
  first_part rgba
  create_directories true
  render_order 30
- version 7
+ version 9
  name Write4
- xpos -480
- ypos 3824
+ xpos 1060
+ ypos 200
 }
 Crop {
  box {0 0 1280 720}
  name Crop8
- xpos -480
- ypos 4118
+ xpos 1060
+ ypos 494
 }
 Write {
  channels rgba
@@ -842,22 +900,36 @@ Write {
  first_part rgba
  create_directories true
  render_order 30
- version 8
+ version 10
  name Write14
- xpos -480
- ypos 4208
+ xpos 1060
+ ypos 584
 }
-push $N99a3440
+push $N96b2510
+OCIOColorSpace {
+ in_colorspace scene_linear
+ out_colorspace "Utility - Linear - sRGB"
+ name OCIOColorSpace2
+ xpos 620
+ ypos -322
+}
 Colorspace {
  colorspace_out CIE-LCH
  name Colorspace5
- xpos -920
- ypos 3398
+ xpos 620
+ ypos -250
+}
+OCIOColorSpace {
+ in_colorspace "Utility - Linear - sRGB"
+ out_colorspace scene_linear
+ name OCIOColorSpace3
+ xpos 620
+ ypos -106
 }
 Premult {
  name Premult6
- xpos -920
- ypos 3590
+ xpos 620
+ ypos -34
 }
 Write {
  channels rgba
@@ -867,16 +939,16 @@ Write {
  first_part rgba
  create_directories true
  render_order 30
- version 7
+ version 9
  name Write6
- xpos -920
- ypos 3824
+ xpos 620
+ ypos 200
 }
 Crop {
  box {0 0 1280 720}
  name Crop6
- xpos -920
- ypos 4118
+ xpos 620
+ ypos 494
 }
 Write {
  channels rgba
@@ -885,19 +957,20 @@ Write {
  first_part rgba
  create_directories true
  render_order 30
- version 8
+ version 10
  name Write16
- xpos -920
- ypos 4208
+ xpos 620
+ ypos 584
 }
-push $Nb2baf10
+push $Nb2af480
 Viewer {
- frame_range 1001-2000
- colour_sample_bbox {-0.9781249762 -0.046875 -0.9765625 -0.04531250149}
+ frame 1034
+ frame_range 100-100
+ colour_sample_bbox {0.162499994 0.3546875119 0.203125 0.420312494}
  samplepoints {{0.134375006 0.3390625119}
    }
  viewerProcess "sRGB (ACES)"
  name Viewer1
- xpos -40
- ypos 5414
+ xpos 1940
+ ypos -1786
 }
