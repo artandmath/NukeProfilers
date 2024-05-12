@@ -31,7 +31,7 @@ cd /path/to/LaProfiler/shellscripts
 ## Alternatively 
 1. Download this repository.
 2. Download the original **#INTRODUCTIONS** clip from Vimeo https://vimeo.com/125095515 [^1]
-3. Modify the nukescripts to work whith your comp pipeline.
+3. Modify the nukescripts to work with your comp pipeline.
 4. Submit the nukescripts to your renderfarm.
 5. Gather analytics from the renderfarm.
 
