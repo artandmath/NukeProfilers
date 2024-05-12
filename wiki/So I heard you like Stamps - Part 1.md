@@ -227,6 +227,8 @@ What Stamps don't do is reduce system overheads, but what they do do is give us 
 
 See you in Part 2, where we will take a look at what happens when Stamps are put into production, and why the appearance of organization is not organization. Until then, let's take another look at that Stamps spiral....
 
+<!-- Following text used in LinkedIn piece -->
+
 ## Downloads
 
 Don't believe everything you've read here just because I said it's so! The test scripts used in this piece are available for download so you can them run yourself. https://github.com/artandmath/NukeProfilers.
