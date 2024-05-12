@@ -185,7 +185,7 @@ The scripts are organised as follows:
 - Transform operation with __rotation=time__ and filtering of type __Cubic__ (an anti-aliased filtering operation).
 - The two transforms will concatenate (concatenate meaning that the two transforms are combined into one operation, inheriting the Cubic filtering).
 - Grade node to purposely break any further concatenation.
-- As this is a CPU test, the final result is scaled to 32x32 pixels to keep IO load low and the resulting frames saved over the network.
+- As this is a CPU test, the final result is scaled to 32x32 pixels to keep I/O load low and the resulting frames saved over the network.
 
 The scripts are run on 1000 frames, again iterating 5 times, with the Nuke profiler disabled, and the CPU and RAM usage logged. 
 
