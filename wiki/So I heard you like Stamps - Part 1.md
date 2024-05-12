@@ -156,7 +156,7 @@ When it comes to computing resources, using Stamps to referencing single instanc
 
 These tests are simple comps, running on old hardware in a restricted 4GB to 5GB RAM environment. We might think it's irrelevant and we can just throw more computing power at a compositing problem and not worry about something so trivial as the DOD/BBox. But the impact of the DOD is just as relevant in a modern Nuke session referencing 4K plates and multi-part EXRs on a workstation with 96 CPU cores and 256GB of RAM.
 
-Not taking the care to manage the size of the DOD/BBox on complex compositing work is going to bring even the best workstation to its knees or, at the very least, make for a slower artist.
+Not taking the care to manage the size of the DOD/BBox \[and channels] on complex compositing work is going to bring even the best workstation to its knees or, at the very least, make for a slower artist.
 
 ## Size in script
 
