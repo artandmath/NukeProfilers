@@ -1,4 +1,4 @@
-![Header](assets/Header_SoIHeardYouLikeStamps.gif)
+![Charts_LaProfiler-FullFrame](https://github.com/artandmath/NukeProfilers/assets/5173040/31fe3951-d5f4-4d23-a771-193f4786aade)![Header](assets/Header_SoIHeardYouLikeStamps.gif)
 
 An investigation into the Stamps tool for Nuke, by Daniel Harkness, 10 May 2024
 
@@ -153,6 +153,8 @@ Let's run the tests again, removing each sprite's managed DOD/BBox and set the D
 ![Screenshot of a managed DOD/BBox and an unmanaged DOD/BBox](/wiki/assets/Screenshot_ShiaBBoxToFullFrame.png)
 
 When it comes to computing resources, using Stamps to referencing single instances of a Read node asset in a script has less of an impact on CPU and RAM than telling Nuke when and where it should performing its calculations. In some instances the unmanaged DOD/BBox nukescripts caused Nuke to crash due to hitting a RAM ceiling. Where Nuke didn't crash we see a X to X increase in render times and X to X increase in memory requirements.
+
+![Results of using a managed DOD/BBox versus using unmanaged DOD/BBox and Stamps](/wiki/assets/Charts_LaProfiler-FullFrame.png)
 
 These tests are simple comps, running on old hardware in a restricted 4GB to 5GB RAM environment. We might think it's irrelevant and we can just throw more computing power at a compositing problem and not worry about something so trivial as the DOD/BBox. But the impact of the DOD is just as relevant in a modern Nuke session referencing 4K plates and multi-part EXRs on a workstation with 96 CPU cores and 256GB of RAM.
 
