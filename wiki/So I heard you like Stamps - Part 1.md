@@ -201,6 +201,10 @@ Why should it matter that Stamps break concatentation? Aren't they a tool that _
 
 Should they not exist at the asset level where concatenation won't matter? In Part 2 we'll see why it does matter, because of all the weird, wonderful and confusing things that happen when you give _"hidden inputs that reconnect themselves when needed”_ to your compositing team.
 
+Before moving on, let us take another look at that beautifully organised spiral of Stamps ...
+
+![Screenshot revealing hidden inputs](/wiki/assets/Screenshot_SpiralProfiler_HiddenInputs.gif)
+
 ## Nuke version, topdown & classic rendering
 
 The above tests were all performed using Nuke13.2v9 and the classic render mode. Nuke 13.2 introduced a new way for Nuke to render the NodeGraph called Top-down rendering. From the Foundry's newsletter:
@@ -229,7 +233,7 @@ What turns out to be more important than reducing Read node count is managing wh
 
 What Stamps don't do is reduce system overheads, but what they do do is give us hidden inputs and the appearance of organization.
 
-See you in Part 2, where we will take a look at what happens when Stamps are put into production, and why the appearance of organization is not organization. Until then, let's take another look at that Stamps spiral....
+See you in Part 2, where we will take a look at what happens when Stamps are put into production, and why the appearance of organization is not organization. 
 
 ## Downloads
 
