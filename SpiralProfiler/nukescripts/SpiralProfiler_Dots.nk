@@ -1,0 +1,2626 @@
+#! /usr/local/Nuke13.2v9/libnuke-13.2.9.so -nx
+#write_info Write2 file:"../output/SpiralProfiler.%04d.exr" format:"32 32 1" chans:":rgba.red:rgba.green:rgba.blue:" framerange:"1001 2000" fps:"0" colorspace:"default (scene_linear)" datatype:"16 bit half" transfer:"unknown" views:"main" colorManagement:"OCIO"
+version 13.2 v9
+define_window_layout_xml {<?xml version="1.0" encoding="UTF-8"?>
+<layout version="1.0">
+    <window x="0" y="27" w="2118" h="1138" maximized="1" screen="0">
+        <splitter orientation="1">
+            <split size="40"/>
+            <dock id="" hideTitles="1" activePageId="Toolbar.1">
+                <page id="Toolbar.1"/>
+            </dock>
+            <split size="1455" stretch="1"/>
+            <splitter orientation="2">
+                <split size="643"/>
+                <dock id="" activePageId="Viewer.1">
+                    <page id="Viewer.1"/>
+                </dock>
+                <split size="452"/>
+                <dock id="" activePageId="DAG.1" focus="true">
+                    <page id="DAG.1"/>
+                    <page id="Curve Editor.1"/>
+                    <page id="DopeSheet.1"/>
+                </dock>
+            </splitter>
+            <split size="615"/>
+            <dock id="" activePageId="Properties.1">
+                <page id="Properties.1"/>
+                <page id="uk.co.thefoundry.backgroundrenderview.1"/>
+            </dock>
+        </splitter>
+    </window>
+</layout>
+}
+Root {
+ inputs 0
+ name /mnt/render/SpiralProfiler/SpiralProfiler_Dots.nk
+ project_directory "\[python \{nuke.script_directory()\}]"
+ frame 1190
+ first_frame 1001
+ last_frame 2000
+ format "1024 1024 0 0 1024 1024 1 square_1K"
+ proxy_type scale
+ proxy_format "1024 778 0 0 1024 778 1 1K_Super_35(full-ap)"
+ colorManagement OCIO
+ OCIO_config aces_1.2
+ defaultViewerLUT "OCIO LUTs"
+ workingSpaceLUT scene_linear
+ monitorLut ACES/sRGB
+ monitorOutLUT "sRGB (ACES)"
+ int8Lut matte_paint
+ int16Lut texture_paint
+ logLut compositing_log
+ floatLut scene_linear
+}
+BackdropNode {
+ inputs 0
+ name BackdropNode1
+ label "import math\n\nnodes = \[]\npreviousNode = None\n\nfor x in range(500):\n    node = nuke.createNode(\"Dot\")\n    if previousNode:\n        node.setInput(0,previousNode)\n    nodes.append(node)\n    previousNode = node\n\nradius = 500\ni = 0.0\n\nfor node in nodes:\n    node.setXpos( int(math.sin(i+1)*radius) )\n    node.setYpos( int(math.cos(i+1)*radius) )\n    i += 0.1\n    radius += 5"
+ xpos -215
+ ypos -181
+ bdwidth 290
+ bdheight 306
+}
+CheckerBoard2 {
+ inputs 0
+ name CheckerBoard1
+ xpos -105
+ ypos -43
+}
+Transform {
+ rotate {{t}}
+ center {512 512}
+ filter impulse
+ name Transform1
+ label "\[value filter]"
+ xpos -105
+ ypos 260
+}
+set Nabfe200 [stack 0]
+Transform {
+ rotate {{t}}
+ center {512 512}
+ name Transform2
+ label "\[value filter]"
+ xpos -105
+ ypos 373
+}
+set Caa67ae0 [stack 0]
+push $Nabfe200
+Dot {
+ name Dot1
+ xpos 420
+ ypos 270
+}
+Dot {
+ name Dot2
+ xpos 450
+ ypos 229
+}
+Dot {
+ name Dot3
+ xpos 475
+ ypos 184
+}
+Dot {
+ name Dot4
+ xpos 496
+ ypos 137
+}
+Dot {
+ name Dot5
+ xpos 512
+ ypos 88
+}
+Dot {
+ name Dot6
+ xpos 523
+ ypos 37
+}
+Dot {
+ name Dot7
+ xpos 529
+ ypos -15
+}
+Dot {
+ name Dot8
+ xpos 530
+ ypos -68
+}
+Dot {
+ name Dot9
+ xpos 525
+ ypos -122
+}
+Dot {
+ name Dot10
+ xpos 515
+ ypos -176
+}
+Dot {
+ name Dot11
+ xpos 500
+ ypos -228
+}
+Dot {
+ name Dot12
+ xpos 479
+ ypos -280
+}
+Dot {
+ name Dot13
+ xpos 452
+ ypos -329
+}
+Dot {
+ name Dot14
+ xpos 421
+ ypos -376
+}
+Dot {
+ name Dot15
+ xpos 385
+ ypos -420
+}
+Dot {
+ name Dot16
+ xpos 344
+ ypos -460
+}
+Dot {
+ name Dot17
+ xpos 298
+ ypos -496
+}
+Dot {
+ name Dot18
+ xpos 250
+ ypos -528
+}
+Dot {
+ name Dot19
+ xpos 197
+ ypos -555
+}
+Dot {
+ name Dot20
+ xpos 142
+ ypos -577
+}
+Dot {
+ name Dot21
+ xpos 84
+ ypos -593
+}
+Dot {
+ name Dot22
+ xpos 25
+ ypos -604
+}
+Dot {
+ name Dot23
+ xpos -35
+ ypos -608
+}
+Dot {
+ name Dot24
+ xpos -97
+ ypos -607
+}
+Dot {
+ name Dot25
+ xpos -158
+ ypos -599
+}
+Dot {
+ name Dot26
+ xpos -219
+ ypos -585
+}
+Dot {
+ name Dot27
+ xpos -278
+ ypos -564
+}
+Dot {
+ name Dot28
+ xpos -336
+ ypos -538
+}
+Dot {
+ name Dot29
+ xpos -391
+ ypos -506
+}
+Dot {
+ name Dot30
+ xpos -443
+ ypos -468
+}
+Dot {
+ name Dot31
+ xpos -491
+ ypos -424
+}
+Dot {
+ name Dot32
+ xpos -535
+ ypos -376
+}
+Dot {
+ name Dot33
+ xpos -575
+ ypos -323
+}
+Dot {
+ name Dot34
+ xpos -609
+ ypos -266
+}
+Dot {
+ name Dot35
+ xpos -637
+ ypos -205
+}
+Dot {
+ name Dot36
+ xpos -659
+ ypos -142
+}
+Dot {
+ name Dot37
+ xpos -675
+ ypos -76
+}
+Dot {
+ name Dot38
+ xpos -684
+ ypos -8
+}
+Dot {
+ name Dot39
+ xpos -687
+ ypos 60
+}
+Dot {
+ name Dot40
+ xpos -682
+ ypos 129
+}
+Dot {
+ name Dot41
+ xpos -671
+ ypos 198
+}
+Dot {
+ name Dot42
+ xpos -652
+ ypos 266
+}
+Dot {
+ name Dot43
+ xpos -627
+ ypos 332
+}
+Dot {
+ name Dot44
+ xpos -595
+ ypos 396
+}
+Dot {
+ name Dot45
+ xpos -556
+ ypos 456
+}
+Dot {
+ name Dot46
+ xpos -511
+ ypos 513
+}
+Dot {
+ name Dot47
+ xpos -460
+ ypos 566
+}
+Dot {
+ name Dot48
+ xpos -404
+ ypos 613
+}
+Dot {
+ name Dot49
+ xpos -343
+ ypos 655
+}
+Dot {
+ name Dot50
+ xpos -278
+ ypos 690
+}
+Dot {
+ name Dot51
+ xpos -209
+ ypos 720
+}
+Dot {
+ name Dot52
+ xpos -137
+ ypos 742
+}
+Dot {
+ name Dot53
+ xpos -63
+ ypos 757
+}
+Dot {
+ name Dot54
+ xpos 12
+ ypos 764
+}
+Dot {
+ name Dot55
+ xpos 89
+ ypos 764
+}
+Dot {
+ name Dot56
+ xpos 166
+ ypos 756
+}
+Dot {
+ name Dot57
+ xpos 243
+ ypos 741
+}
+Dot {
+ name Dot58
+ xpos 317
+ ypos 717
+}
+Dot {
+ name Dot59
+ xpos 390
+ ypos 686
+}
+Dot {
+ name Dot60
+ xpos 459
+ ypos 648
+}
+Dot {
+ name Dot61
+ xpos 525
+ ypos 603
+}
+Dot {
+ name Dot62
+ xpos 586
+ ypos 551
+}
+Dot {
+ name Dot63
+ xpos 642
+ ypos 492
+}
+Dot {
+ name Dot64
+ xpos 693
+ ypos 428
+}
+Dot {
+ name Dot65
+ xpos 736
+ ypos 359
+}
+Dot {
+ name Dot66
+ xpos 773
+ ypos 285
+}
+Dot {
+ name Dot67
+ xpos 803
+ ypos 208
+}
+Dot {
+ name Dot68
+ xpos 825
+ ypos 128
+}
+Dot {
+ name Dot69
+ xpos 838
+ ypos 45
+}
+Dot {
+ name Dot70
+ xpos 844
+ ypos -38
+}
+Dot {
+ name Dot71
+ xpos 840
+ ypos -123
+}
+Dot {
+ name Dot72
+ xpos 829
+ ypos -208
+}
+Dot {
+ name Dot73
+ xpos 809
+ ypos -291
+}
+Dot {
+ name Dot74
+ xpos 780
+ ypos -373
+}
+Dot {
+ name Dot75
+ xpos 743
+ ypos -451
+}
+Dot {
+ name Dot76
+ xpos 698
+ ypos -526
+}
+Dot {
+ name Dot77
+ xpos 646
+ ypos -597
+}
+Dot {
+ name Dot78
+ xpos 586
+ ypos -662
+}
+Dot {
+ name Dot79
+ xpos 520
+ ypos -721
+}
+Dot {
+ name Dot80
+ xpos 448
+ ypos -774
+}
+Dot {
+ name Dot81
+ xpos 370
+ ypos -820
+}
+Dot {
+ name Dot82
+ xpos 288
+ ypos -857
+}
+Dot {
+ name Dot83
+ xpos 202
+ ypos -887
+}
+Dot {
+ name Dot84
+ xpos 113
+ ypos -907
+}
+Dot {
+ name Dot85
+ xpos 22
+ ypos -919
+}
+Dot {
+ name Dot86
+ xpos -69
+ ypos -922
+}
+Dot {
+ name Dot87
+ xpos -162
+ ypos -915
+}
+Dot {
+ name Dot88
+ xpos -254
+ ypos -899
+}
+Dot {
+ name Dot89
+ xpos -344
+ ypos -874
+}
+Dot {
+ name Dot90
+ xpos -432
+ ypos -840
+}
+Dot {
+ name Dot91
+ xpos -516
+ ypos -797
+}
+Dot {
+ name Dot92
+ xpos -596
+ ypos -745
+}
+Dot {
+ name Dot93
+ xpos -671
+ ypos -685
+}
+Dot {
+ name Dot94
+ xpos -740
+ ypos -618
+}
+Dot {
+ name Dot95
+ xpos -802
+ ypos -544
+}
+Dot {
+ name Dot96
+ xpos -857
+ ypos -463
+}
+Dot {
+ name Dot97
+ xpos -904
+ ypos -377
+}
+Dot {
+ name Dot98
+ xpos -942
+ ypos -286
+}
+Dot {
+ name Dot99
+ xpos -971
+ ypos -192
+}
+Dot {
+ name Dot100
+ xpos -990
+ ypos -94
+}
+Dot {
+ name Dot101
+ xpos -999
+ ypos 4
+}
+Dot {
+ name Dot102
+ xpos -999
+ ypos 104
+}
+Dot {
+ name Dot103
+ xpos -988
+ ypos 205
+}
+Dot {
+ name Dot104
+ xpos -968
+ ypos 304
+}
+Dot {
+ name Dot105
+ xpos -937
+ ypos 401
+}
+Dot {
+ name Dot106
+ xpos -897
+ ypos 495
+}
+Dot {
+ name Dot107
+ xpos -847
+ ypos 585
+}
+Dot {
+ name Dot108
+ xpos -788
+ ypos 670
+}
+Dot {
+ name Dot109
+ xpos -721
+ ypos 749
+}
+Dot {
+ name Dot110
+ xpos -645
+ ypos 821
+}
+Dot {
+ name Dot111
+ xpos -563
+ ypos 886
+}
+Dot {
+ name Dot112
+ xpos -474
+ ypos 942
+}
+Dot {
+ name Dot113
+ xpos -379
+ ypos 989
+}
+Dot {
+ name Dot114
+ xpos -280
+ ypos 1027
+}
+Dot {
+ name Dot115
+ xpos -177
+ ypos 1055
+}
+Dot {
+ name Dot116
+ xpos -71
+ ypos 1072
+}
+Dot {
+ name Dot117
+ xpos 36
+ ypos 1079
+}
+Dot {
+ name Dot118
+ xpos 144
+ ypos 1075
+}
+Dot {
+ name Dot119
+ xpos 252
+ ypos 1060
+}
+Dot {
+ name Dot120
+ xpos 358
+ ypos 1034
+}
+Dot {
+ name Dot121
+ xpos 462
+ ypos 998
+}
+Dot {
+ name Dot122
+ xpos 562
+ ypos 951
+}
+Dot {
+ name Dot123
+ xpos 657
+ ypos 894
+}
+Dot {
+ name Dot124
+ xpos 746
+ ypos 828
+}
+Dot {
+ name Dot125
+ xpos 829
+ ypos 752
+}
+Dot {
+ name Dot126
+ xpos 904
+ ypos 669
+}
+Dot {
+ name Dot127
+ xpos 970
+ ypos 578
+}
+Dot {
+ name Dot128
+ xpos 1028
+ ypos 480
+}
+Dot {
+ name Dot129
+ xpos 1075
+ ypos 377
+}
+Dot {
+ name Dot130
+ xpos 1112
+ ypos 269
+}
+Dot {
+ name Dot131
+ xpos 1139
+ ypos 157
+}
+Dot {
+ name Dot132
+ xpos 1154
+ ypos 42
+}
+Dot {
+ name Dot133
+ xpos 1157
+ ypos -72
+}
+Dot {
+ name Dot134
+ xpos 1149
+ ypos -188
+}
+Dot {
+ name Dot135
+ xpos 1129
+ ypos -303
+}
+Dot {
+ name Dot136
+ xpos 1098
+ ypos -417
+}
+Dot {
+ name Dot137
+ xpos 1055
+ ypos -526
+}
+Dot {
+ name Dot138
+ xpos 1002
+ ypos -632
+}
+Dot {
+ name Dot139
+ xpos 938
+ ypos -732
+}
+Dot {
+ name Dot140
+ xpos 863
+ ypos -825
+}
+Dot {
+ name Dot141
+ xpos 780
+ ypos -911
+}
+Dot {
+ name Dot142
+ xpos 688
+ ypos -989
+}
+Dot {
+ name Dot143
+ xpos 588
+ ypos -1057
+}
+Dot {
+ name Dot144
+ xpos 482
+ ypos -1115
+}
+Dot {
+ name Dot145
+ xpos 369
+ ypos -1162
+}
+Dot {
+ name Dot146
+ xpos 252
+ ypos -1198
+}
+Dot {
+ name Dot147
+ xpos 132
+ ypos -1222
+}
+Dot {
+ name Dot148
+ xpos 9
+ ypos -1234
+}
+Dot {
+ name Dot149
+ xpos -113
+ ypos -1234
+}
+Dot {
+ name Dot150
+ xpos -237
+ ypos -1222
+}
+Dot {
+ name Dot151
+ xpos -359
+ ypos -1197
+}
+Dot {
+ name Dot152
+ xpos -479
+ ypos -1159
+}
+Dot {
+ name Dot153
+ xpos -595
+ ypos -1110
+}
+Dot {
+ name Dot154
+ xpos -705
+ ypos -1049
+}
+Dot {
+ name Dot155
+ xpos -810
+ ypos -977
+}
+Dot {
+ name Dot156
+ xpos -907
+ ypos -895
+}
+Dot {
+ name Dot157
+ xpos -996
+ ypos -803
+}
+Dot {
+ name Dot158
+ xpos -1075
+ ypos -702
+}
+Dot {
+ name Dot159
+ xpos -1144
+ ypos -594
+}
+Dot {
+ name Dot160
+ xpos -1203
+ ypos -478
+}
+Dot {
+ name Dot161
+ xpos -1249
+ ypos -357
+}
+Dot {
+ name Dot162
+ xpos -1284
+ ypos -232
+}
+Dot {
+ name Dot163
+ xpos -1305
+ ypos -103
+}
+Dot {
+ name Dot164
+ xpos -1314
+ ypos 27
+}
+Dot {
+ name Dot165
+ xpos -1310
+ ypos 159
+}
+Dot {
+ name Dot166
+ xpos -1292
+ ypos 290
+}
+Dot {
+ name Dot167
+ xpos -1261
+ ypos 419
+}
+Dot {
+ name Dot168
+ xpos -1218
+ ypos 545
+}
+Dot {
+ name Dot169
+ xpos -1162
+ ypos 667
+}
+Dot {
+ name Dot170
+ xpos -1093
+ ypos 782
+}
+Dot {
+ name Dot171
+ xpos -1013
+ ypos 891
+}
+Dot {
+ name Dot172
+ xpos -923
+ ypos 991
+}
+Dot {
+ name Dot173
+ xpos -822
+ ypos 1083
+}
+Dot {
+ name Dot174
+ xpos -712
+ ypos 1164
+}
+Dot {
+ name Dot175
+ xpos -595
+ ypos 1233
+}
+Dot {
+ name Dot176
+ xpos -470
+ ypos 1291
+}
+Dot {
+ name Dot177
+ xpos -340
+ ypos 1337
+}
+Dot {
+ name Dot178
+ xpos -206
+ ypos 1369
+}
+Dot {
+ name Dot179
+ xpos -68
+ ypos 1388
+}
+Dot {
+ name Dot180
+ xpos 70
+ ypos 1393
+}
+Dot {
+ name Dot181
+ xpos 209
+ ypos 1384
+}
+Dot {
+ name Dot182
+ xpos 348
+ ypos 1361
+}
+Dot {
+ name Dot183
+ xpos 484
+ ypos 1324
+}
+Dot {
+ name Dot184
+ xpos 616
+ ypos 1273
+}
+Dot {
+ name Dot185
+ xpos 742
+ ypos 1210
+}
+Dot {
+ name Dot186
+ xpos 862
+ ypos 1134
+}
+Dot {
+ name Dot187
+ xpos 975
+ ypos 1045
+}
+Dot {
+ name Dot188
+ xpos 1078
+ ypos 946
+}
+Dot {
+ name Dot189
+ xpos 1171
+ ypos 837
+}
+Dot {
+ name Dot190
+ xpos 1253
+ ypos 718
+}
+Dot {
+ name Dot191
+ xpos 1323
+ ypos 591
+}
+Dot {
+ name Dot192
+ xpos 1380
+ ypos 458
+}
+Dot {
+ name Dot193
+ xpos 1424
+ ypos 319
+}
+Dot {
+ name Dot194
+ xpos 1454
+ ypos 175
+}
+Dot {
+ name Dot195
+ xpos 1469
+ ypos 29
+}
+Dot {
+ name Dot196
+ xpos 1470
+ ypos -117
+}
+Dot {
+ name Dot197
+ xpos 1456
+ ypos -264
+}
+Dot {
+ name Dot198
+ xpos 1427
+ ypos -409
+}
+Dot {
+ name Dot199
+ xpos 1383
+ ypos -552
+}
+Dot {
+ name Dot200
+ xpos 1326
+ ypos -689
+}
+Dot {
+ name Dot201
+ xpos 1254
+ ypos -821
+}
+Dot {
+ name Dot202
+ xpos 1170
+ ypos -945
+}
+Dot {
+ name Dot203
+ xpos 1073
+ ypos -1061
+}
+Dot {
+ name Dot204
+ xpos 965
+ ypos -1167
+}
+Dot {
+ name Dot205
+ xpos 847
+ ypos -1262
+}
+Dot {
+ name Dot206
+ xpos 719
+ ypos -1344
+}
+Dot {
+ name Dot207
+ xpos 583
+ ypos -1414
+}
+Dot {
+ name Dot208
+ xpos 440
+ ypos -1470
+}
+Dot {
+ name Dot209
+ xpos 292
+ ypos -1511
+}
+Dot {
+ name Dot210
+ xpos 140
+ ypos -1538
+}
+Dot {
+ name Dot211
+ xpos -13
+ ypos -1549
+}
+Dot {
+ name Dot212
+ xpos -168
+ ypos -1545
+}
+Dot {
+ name Dot213
+ xpos -323
+ ypos -1526
+}
+Dot {
+ name Dot214
+ xpos -475
+ ypos -1490
+}
+Dot {
+ name Dot215
+ xpos -624
+ ypos -1440
+}
+Dot {
+ name Dot216
+ xpos -767
+ ypos -1375
+}
+Dot {
+ name Dot217
+ xpos -903
+ ypos -1296
+}
+Dot {
+ name Dot218
+ xpos -1031
+ ypos -1203
+}
+Dot {
+ name Dot219
+ xpos -1150
+ ypos -1097
+}
+Dot {
+ name Dot220
+ xpos -1258
+ ypos -980
+}
+Dot {
+ name Dot221
+ xpos -1353
+ ypos -852
+}
+Dot {
+ name Dot222
+ xpos -1436
+ ypos -715
+}
+Dot {
+ name Dot223
+ xpos -1505
+ ypos -570
+}
+Dot {
+ name Dot224
+ xpos -1559
+ ypos -418
+}
+Dot {
+ name Dot225
+ xpos -1598
+ ypos -261
+}
+Dot {
+ name Dot226
+ xpos -1621
+ ypos -100
+}
+Dot {
+ name Dot227
+ xpos -1628
+ ypos 62
+}
+Dot {
+ name Dot228
+ xpos -1619
+ ypos 225
+}
+Dot {
+ name Dot229
+ xpos -1593
+ ypos 386
+}
+Dot {
+ name Dot230
+ xpos -1551
+ ypos 545
+}
+Dot {
+ name Dot231
+ xpos -1494
+ ypos 699
+}
+Dot {
+ name Dot232
+ xpos -1421
+ ypos 848
+}
+Dot {
+ name Dot233
+ xpos -1333
+ ypos 988
+}
+Dot {
+ name Dot234
+ xpos -1231
+ ypos 1120
+}
+Dot {
+ name Dot235
+ xpos -1117
+ ypos 1241
+}
+Dot {
+ name Dot236
+ xpos -990
+ ypos 1350
+}
+Dot {
+ name Dot237
+ xpos -853
+ ypos 1447
+}
+Dot {
+ name Dot238
+ xpos -706
+ ypos 1529
+}
+Dot {
+ name Dot239
+ xpos -552
+ ypos 1597
+}
+Dot {
+ name Dot240
+ xpos -390
+ ypos 1649
+}
+Dot {
+ name Dot241
+ xpos -224
+ ypos 1685
+}
+Dot {
+ name Dot242
+ xpos -55
+ ypos 1704
+}
+Dot {
+ name Dot243
+ xpos 114
+ ypos 1706
+}
+Dot {
+ name Dot244
+ xpos 285
+ ypos 1691
+}
+Dot {
+ name Dot245
+ xpos 454
+ ypos 1658
+}
+Dot {
+ name Dot246
+ xpos 619
+ ypos 1609
+}
+Dot {
+ name Dot247
+ xpos 779
+ ypos 1544
+}
+Dot {
+ name Dot248
+ xpos 932
+ ypos 1463
+}
+Dot {
+ name Dot249
+ xpos 1076
+ ypos 1366
+}
+Dot {
+ name Dot250
+ xpos 1211
+ ypos 1256
+}
+Dot {
+ name Dot251
+ xpos 1334
+ ypos 1132
+}
+Dot {
+ name Dot252
+ xpos 1444
+ ypos 996
+}
+Dot {
+ name Dot253
+ xpos 1541
+ ypos 849
+}
+Dot {
+ name Dot254
+ xpos 1623
+ ypos 693
+}
+Dot {
+ name Dot255
+ xpos 1689
+ ypos 529
+}
+Dot {
+ name Dot256
+ xpos 1738
+ ypos 358
+}
+Dot {
+ name Dot257
+ xpos 1770
+ ypos 183
+}
+Dot {
+ name Dot258
+ xpos 1784
+ ypos 6
+}
+Dot {
+ name Dot259
+ xpos 1781
+ ypos -172
+}
+Dot {
+ name Dot260
+ xpos 1760
+ ypos -350
+}
+Dot {
+ name Dot261
+ xpos 1721
+ ypos -525
+}
+Dot {
+ name Dot262
+ xpos 1664
+ ypos -697
+}
+Dot {
+ name Dot263
+ xpos 1591
+ ypos -862
+}
+Dot {
+ name Dot264
+ xpos 1501
+ ypos -1019
+}
+Dot {
+ name Dot265
+ xpos 1396
+ ypos -1167
+}
+Dot {
+ name Dot266
+ xpos 1276
+ ypos -1304
+}
+Dot {
+ name Dot267
+ xpos 1142
+ ypos -1429
+}
+Dot {
+ name Dot268
+ xpos 996
+ ypos -1540
+}
+Dot {
+ name Dot269
+ xpos 840
+ ypos -1636
+}
+Dot {
+ name Dot270
+ xpos 674
+ ypos -1717
+}
+Dot {
+ name Dot271
+ xpos 501
+ ypos -1780
+}
+Dot {
+ name Dot272
+ xpos 321
+ ypos -1826
+}
+Dot {
+ name Dot273
+ xpos 138
+ ypos -1854
+}
+Dot {
+ name Dot274
+ xpos -47
+ ypos -1864
+}
+Dot {
+ name Dot275
+ xpos -234
+ ypos -1855
+}
+Dot {
+ name Dot276
+ xpos -419
+ ypos -1827
+}
+Dot {
+ name Dot277
+ xpos -601
+ ypos -1781
+}
+Dot {
+ name Dot278
+ xpos -778
+ ypos -1716
+}
+Dot {
+ name Dot279
+ xpos -948
+ ypos -1634
+}
+Dot {
+ name Dot280
+ xpos -1109
+ ypos -1536
+}
+Dot {
+ name Dot281
+ xpos -1260
+ ypos -1421
+}
+Dot {
+ name Dot282
+ xpos -1400
+ ypos -1291
+}
+Dot {
+ name Dot283
+ xpos -1526
+ ypos -1148
+}
+Dot {
+ name Dot284
+ xpos -1637
+ ypos -992
+}
+Dot {
+ name Dot285
+ xpos -1732
+ ypos -826
+}
+Dot {
+ name Dot286
+ xpos -1811
+ ypos -651
+}
+Dot {
+ name Dot287
+ xpos -1872
+ ypos -468
+}
+Dot {
+ name Dot288
+ xpos -1914
+ ypos -279
+}
+Dot {
+ name Dot289
+ xpos -1938
+ ypos -87
+}
+Dot {
+ name Dot290
+ xpos -1942
+ ypos 106
+}
+Dot {
+ name Dot291
+ xpos -1926
+ ypos 300
+}
+Dot {
+ name Dot292
+ xpos -1891
+ ypos 492
+}
+Dot {
+ name Dot293
+ xpos -1837
+ ypos 681
+}
+Dot {
+ name Dot294
+ xpos -1765
+ ypos 863
+}
+Dot {
+ name Dot295
+ xpos -1674
+ ypos 1037
+}
+Dot {
+ name Dot296
+ xpos -1566
+ ypos 1202
+}
+Dot {
+ name Dot297
+ xpos -1442
+ ypos 1356
+}
+Dot {
+ name Dot298
+ xpos -1302
+ ypos 1497
+}
+Dot {
+ name Dot299
+ xpos -1149
+ ypos 1624
+}
+Dot {
+ name Dot300
+ xpos -984
+ ypos 1735
+}
+Dot {
+ name Dot301
+ xpos -808
+ ypos 1829
+}
+Dot {
+ name Dot302
+ xpos -622
+ ypos 1905
+}
+Dot {
+ name Dot303
+ xpos -430
+ ypos 1963
+}
+Dot {
+ name Dot304
+ xpos -233
+ ypos 2001
+}
+Dot {
+ name Dot305
+ xpos -32
+ ypos 2019
+}
+Dot {
+ name Dot306
+ xpos 170
+ ypos 2017
+}
+Dot {
+ name Dot307
+ xpos 371
+ ypos 1995
+}
+Dot {
+ name Dot308
+ xpos 570
+ ypos 1953
+}
+Dot {
+ name Dot309
+ xpos 764
+ ypos 1891
+}
+Dot {
+ name Dot310
+ xpos 951
+ ypos 1810
+}
+Dot {
+ name Dot311
+ xpos 1130
+ ypos 1710
+}
+Dot {
+ name Dot312
+ xpos 1298
+ ypos 1592
+}
+Dot {
+ name Dot313
+ xpos 1454
+ ypos 1458
+}
+Dot {
+ name Dot314
+ xpos 1596
+ ypos 1309
+}
+Dot {
+ name Dot315
+ xpos 1723
+ ypos 1146
+}
+Dot {
+ name Dot316
+ xpos 1834
+ ypos 970
+}
+Dot {
+ name Dot317
+ xpos 1926
+ ypos 784
+}
+Dot {
+ name Dot318
+ xpos 1999
+ ypos 589
+}
+Dot {
+ name Dot319
+ xpos 2053
+ ypos 387
+}
+Dot {
+ name Dot320
+ xpos 2087
+ ypos 181
+}
+Dot {
+ name Dot321
+ xpos 2099
+ ypos -27
+}
+Dot {
+ name Dot322
+ xpos 2091
+ ypos -237
+}
+Dot {
+ name Dot323
+ xpos 2062
+ ypos -446
+}
+Dot {
+ name Dot324
+ xpos 2012
+ ypos -651
+}
+Dot {
+ name Dot325
+ xpos 1941
+ ypos -851
+}
+Dot {
+ name Dot326
+ xpos 1851
+ ypos -1043
+}
+Dot {
+ name Dot327
+ xpos 1741
+ ypos -1225
+}
+Dot {
+ name Dot328
+ xpos 1614
+ ypos -1396
+}
+Dot {
+ name Dot329
+ xpos 1470
+ ypos -1554
+}
+Dot {
+ name Dot330
+ xpos 1310
+ ypos -1697
+}
+Dot {
+ name Dot331
+ xpos 1137
+ ypos -1824
+}
+Dot {
+ name Dot332
+ xpos 951
+ ypos -1933
+}
+Dot {
+ name Dot333
+ xpos 755
+ ypos -2023
+}
+Dot {
+ name Dot334
+ xpos 551
+ ypos -2093
+}
+Dot {
+ name Dot335
+ xpos 340
+ ypos -2143
+}
+Dot {
+ name Dot336
+ xpos 125
+ ypos -2171
+}
+Dot {
+ name Dot337
+ xpos -92
+ ypos -2178
+}
+Dot {
+ name Dot338
+ xpos -310
+ ypos -2162
+}
+Dot {
+ name Dot339
+ xpos -525
+ ypos -2125
+}
+Dot {
+ name Dot340
+ xpos -737
+ ypos -2067
+}
+Dot {
+ name Dot341
+ xpos -942
+ ypos -1988
+}
+Dot {
+ name Dot342
+ xpos -1138
+ ypos -1888
+}
+Dot {
+ name Dot343
+ xpos -1324
+ ypos -1769
+}
+Dot {
+ name Dot344
+ xpos -1497
+ ypos -1631
+}
+Dot {
+ name Dot345
+ xpos -1656
+ ypos -1477
+}
+Dot {
+ name Dot346
+ xpos -1800
+ ypos -1307
+}
+Dot {
+ name Dot347
+ xpos -1925
+ ypos -1124
+}
+Dot {
+ name Dot348
+ xpos -2033
+ ypos -928
+}
+Dot {
+ name Dot349
+ xpos -2120
+ ypos -722
+}
+Dot {
+ name Dot350
+ xpos -2186
+ ypos -508
+}
+Dot {
+ name Dot351
+ xpos -2231
+ ypos -287
+}
+Dot {
+ name Dot352
+ xpos -2254
+ ypos -63
+}
+Dot {
+ name Dot353
+ xpos -2254
+ ypos 161
+}
+Dot {
+ name Dot354
+ xpos -2231
+ ypos 386
+}
+Dot {
+ name Dot355
+ xpos -2186
+ ypos 609
+}
+Dot {
+ name Dot356
+ xpos -2119
+ ypos 826
+}
+Dot {
+ name Dot357
+ xpos -2031
+ ypos 1036
+}
+Dot {
+ name Dot358
+ xpos -1921
+ ypos 1236
+}
+Dot {
+ name Dot359
+ xpos -1792
+ ypos 1425
+}
+Dot {
+ name Dot360
+ xpos -1644
+ ypos 1600
+}
+Dot {
+ name Dot361
+ xpos -1480
+ ypos 1760
+}
+Dot {
+ name Dot362
+ xpos -1299
+ ypos 1903
+}
+Dot {
+ name Dot363
+ xpos -1105
+ ypos 2028
+}
+Dot {
+ name Dot364
+ xpos -899
+ ypos 2133
+}
+Dot {
+ name Dot365
+ xpos -683
+ ypos 2216
+}
+Dot {
+ name Dot366
+ xpos -459
+ ypos 2279
+}
+Dot {
+ name Dot367
+ xpos -230
+ ypos 2318
+}
+Dot {
+ name Dot368
+ xpos 2
+ ypos 2334
+}
+Dot {
+ name Dot369
+ xpos 235
+ ypos 2328
+}
+Dot {
+ name Dot370
+ xpos 467
+ ypos 2297
+}
+Dot {
+ name Dot371
+ xpos 696
+ ypos 2244
+}
+Dot {
+ name Dot372
+ xpos 919
+ ypos 2168
+}
+Dot {
+ name Dot373
+ xpos 1133
+ ypos 2070
+}
+Dot {
+ name Dot374
+ xpos 1337
+ ypos 1950
+}
+Dot {
+ name Dot375
+ xpos 1528
+ ypos 1811
+}
+Dot {
+ name Dot376
+ xpos 1705
+ ypos 1653
+}
+Dot {
+ name Dot377
+ xpos 1865
+ ypos 1477
+}
+Dot {
+ name Dot378
+ xpos 2008
+ ypos 1286
+}
+Dot {
+ name Dot379
+ xpos 2130
+ ypos 1082
+}
+Dot {
+ name Dot380
+ xpos 2233
+ ypos 865
+}
+Dot {
+ name Dot381
+ xpos 2313
+ ypos 639
+}
+Dot {
+ name Dot382
+ xpos 2370
+ ypos 406
+}
+Dot {
+ name Dot383
+ xpos 2404
+ ypos 168
+}
+Dot {
+ name Dot384
+ xpos 2413
+ ypos -72
+}
+Dot {
+ name Dot385
+ xpos 2399
+ ypos -313
+}
+Dot {
+ name Dot386
+ xpos 2361
+ ypos -553
+}
+Dot {
+ name Dot387
+ xpos 2298
+ ypos -787
+}
+Dot {
+ name Dot388
+ xpos 2213
+ ypos -1015
+}
+Dot {
+ name Dot389
+ xpos 2105
+ ypos -1233
+}
+Dot {
+ name Dot390
+ xpos 1975
+ ypos -1440
+}
+Dot {
+ name Dot391
+ xpos 1825
+ ypos -1633
+}
+Dot {
+ name Dot392
+ xpos 1656
+ ypos -1811
+}
+Dot {
+ name Dot393
+ xpos 1470
+ ypos -1972
+}
+Dot {
+ name Dot394
+ xpos 1268
+ ypos -2113
+}
+Dot {
+ name Dot395
+ xpos 1053
+ ypos -2233
+}
+Dot {
+ name Dot396
+ xpos 827
+ ypos -2332
+}
+Dot {
+ name Dot397
+ xpos 591
+ ypos -2408
+}
+Dot {
+ name Dot398
+ xpos 348
+ ypos -2460
+}
+Dot {
+ name Dot399
+ xpos 101
+ ypos -2487
+}
+Dot {
+ name Dot400
+ xpos -147
+ ypos -2490
+}
+Dot {
+ name Dot401
+ xpos -396
+ ypos -2468
+}
+Dot {
+ name Dot402
+ xpos -642
+ ypos -2421
+}
+Dot {
+ name Dot403
+ xpos -882
+ ypos -2349
+}
+Dot {
+ name Dot404
+ xpos -1114
+ ypos -2254
+}
+Dot {
+ name Dot405
+ xpos -1337
+ ypos -2136
+}
+Dot {
+ name Dot406
+ xpos -1546
+ ypos -1995
+}
+Dot {
+ name Dot407
+ xpos -1741
+ ypos -1835
+}
+Dot {
+ name Dot408
+ xpos -1919
+ ypos -1655
+}
+Dot {
+ name Dot409
+ xpos -2079
+ ypos -1458
+}
+Dot {
+ name Dot410
+ xpos -2219
+ ypos -1245
+}
+Dot {
+ name Dot411
+ xpos -2337
+ ypos -1019
+}
+Dot {
+ name Dot412
+ xpos -2432
+ ypos -783
+}
+Dot {
+ name Dot413
+ xpos -2502
+ ypos -537
+}
+Dot {
+ name Dot414
+ xpos -2549
+ ypos -285
+}
+Dot {
+ name Dot415
+ xpos -2569
+ ypos -29
+}
+Dot {
+ name Dot416
+ xpos -2564
+ ypos 227
+}
+Dot {
+ name Dot417
+ xpos -2534
+ ypos 483
+}
+Dot {
+ name Dot418
+ xpos -2478
+ ypos 735
+}
+Dot {
+ name Dot419
+ xpos -2396
+ ypos 981
+}
+Dot {
+ name Dot420
+ xpos -2291
+ ypos 1217
+}
+Dot {
+ name Dot421
+ xpos -2162
+ ypos 1443
+}
+Dot {
+ name Dot422
+ xpos -2011
+ ypos 1655
+}
+Dot {
+ name Dot423
+ xpos -1839
+ ypos 1851
+}
+Dot {
+ name Dot424
+ xpos -1648
+ ypos 2029
+}
+Dot {
+ name Dot425
+ xpos -1440
+ ypos 2188
+}
+Dot {
+ name Dot426
+ xpos -1217
+ ypos 2325
+}
+Dot {
+ name Dot427
+ xpos -981
+ ypos 2440
+}
+Dot {
+ name Dot428
+ xpos -734
+ ypos 2530
+}
+Dot {
+ name Dot429
+ xpos -478
+ ypos 2596
+}
+Dot {
+ name Dot430
+ xpos -217
+ ypos 2636
+}
+Dot {
+ name Dot431
+ xpos 46
+ ypos 2649
+}
+Dot {
+ name Dot432
+ xpos 311
+ ypos 2636
+}
+Dot {
+ name Dot433
+ xpos 574
+ ypos 2597
+}
+Dot {
+ name Dot434
+ xpos 832
+ ypos 2531
+}
+Dot {
+ name Dot435
+ xpos 1083
+ ypos 2440
+}
+Dot {
+ name Dot436
+ xpos 1323
+ ypos 2324
+}
+Dot {
+ name Dot437
+ xpos 1552
+ ypos 2184
+}
+Dot {
+ name Dot438
+ xpos 1765
+ ypos 2022
+}
+Dot {
+ name Dot439
+ xpos 1962
+ ypos 1839
+}
+Dot {
+ name Dot440
+ xpos 2140
+ ypos 1637
+}
+Dot {
+ name Dot441
+ xpos 2297
+ ypos 1418
+}
+Dot {
+ name Dot442
+ xpos 2432
+ ypos 1184
+}
+Dot {
+ name Dot443
+ xpos 2542
+ ypos 937
+}
+Dot {
+ name Dot444
+ xpos 2628
+ ypos 679
+}
+Dot {
+ name Dot445
+ xpos 2688
+ ypos 414
+}
+Dot {
+ name Dot446
+ xpos 2721
+ ypos 144
+}
+Dot {
+ name Dot447
+ xpos 2726
+ ypos -128
+}
+Dot {
+ name Dot448
+ xpos 2705
+ ypos -400
+}
+Dot {
+ name Dot449
+ xpos 2656
+ ypos -669
+}
+Dot {
+ name Dot450
+ xpos 2581
+ ypos -933
+}
+Dot {
+ name Dot451
+ xpos 2479
+ ypos -1188
+}
+Dot {
+ name Dot452
+ xpos 2353
+ ypos -1432
+}
+Dot {
+ name Dot453
+ xpos 2202
+ ypos -1663
+}
+Dot {
+ name Dot454
+ xpos 2028
+ ypos -1878
+}
+Dot {
+ name Dot455
+ xpos 1834
+ ypos -2075
+}
+Dot {
+ name Dot456
+ xpos 1621
+ ypos -2252
+}
+Dot {
+ name Dot457
+ xpos 1390
+ ypos -2407
+}
+Dot {
+ name Dot458
+ xpos 1145
+ ypos -2538
+}
+Dot {
+ name Dot459
+ xpos 887
+ ypos -2644
+}
+Dot {
+ name Dot460
+ xpos 620
+ ypos -2725
+}
+Dot {
+ name Dot461
+ xpos 346
+ ypos -2778
+}
+Dot {
+ name Dot462
+ xpos 67
+ ypos -2804
+}
+Dot {
+ name Dot463
+ xpos -213
+ ypos -2801
+}
+Dot {
+ name Dot464
+ xpos -493
+ ypos -2771
+}
+Dot {
+ name Dot465
+ xpos -768
+ ypos -2713
+}
+Dot {
+ name Dot466
+ xpos -1037
+ ypos -2627
+}
+Dot {
+ name Dot467
+ xpos -1297
+ ypos -2515
+}
+Dot {
+ name Dot468
+ xpos -1544
+ ypos -2377
+}
+Dot {
+ name Dot469
+ xpos -1777
+ ypos -2215
+}
+Dot {
+ name Dot470
+ xpos -1992
+ ypos -2030
+}
+Dot {
+ name Dot471
+ xpos -2189
+ ypos -1824
+}
+Dot {
+ name Dot472
+ xpos -2364
+ ypos -1599
+}
+Dot {
+ name Dot473
+ xpos -2517
+ ypos -1357
+}
+Dot {
+ name Dot474
+ xpos -2644
+ ypos -1101
+}
+Dot {
+ name Dot475
+ xpos -2746
+ ypos -833
+}
+Dot {
+ name Dot476
+ xpos -2820
+ ypos -556
+}
+Dot {
+ name Dot477
+ xpos -2867
+ ypos -272
+}
+Dot {
+ name Dot478
+ xpos -2884
+ ypos 15
+}
+Dot {
+ name Dot479
+ xpos -2873
+ ypos 303
+}
+Dot {
+ name Dot480
+ xpos -2834
+ ypos 590
+}
+Dot {
+ name Dot481
+ xpos -2765
+ ypos 871
+}
+Dot {
+ name Dot482
+ xpos -2669
+ ypos 1145
+}
+Dot {
+ name Dot483
+ xpos -2546
+ ypos 1408
+}
+Dot {
+ name Dot484
+ xpos -2397
+ ypos 1658
+}
+Dot {
+ name Dot485
+ xpos -2223
+ ypos 1892
+}
+Dot {
+ name Dot486
+ xpos -2026
+ ypos 2109
+}
+Dot {
+ name Dot487
+ xpos -1809
+ ypos 2304
+}
+Dot {
+ name Dot488
+ xpos -1572
+ ypos 2478
+}
+Dot {
+ name Dot489
+ xpos -1319
+ ypos 2627
+}
+Dot {
+ name Dot490
+ xpos -1052
+ ypos 2750
+}
+Dot {
+ name Dot491
+ xpos -774
+ ypos 2846
+}
+Dot {
+ name Dot492
+ xpos -486
+ ypos 2914
+}
+Dot {
+ name Dot493
+ xpos -193
+ ypos 2953
+}
+Dot {
+ name Dot494
+ xpos 102
+ ypos 2963
+}
+Dot {
+ name Dot495
+ xpos 398
+ ypos 2943
+}
+Dot {
+ name Dot496
+ xpos 691
+ ypos 2893
+}
+Dot {
+ name Dot497
+ xpos 978
+ ypos 2814
+}
+Dot {
+ name Dot498
+ xpos 1256
+ ypos 2707
+}
+Dot {
+ name Dot499
+ xpos 1523
+ ypos 2572
+}
+Dot {
+ name Dot500
+ xpos 1775
+ ypos 2412
+}
+clone $Caa67ae0 {
+ xpos 2055
+ ypos 2402
+ selected false
+}
+Grade {
+ name Grade1
+ xpos 2055
+ ypos 2510
+}
+Reformat {
+ type "to box"
+ box_width 32
+ name Reformat1
+ xpos 2055
+ ypos 2604
+}
+Write {
+ file ../output/SpiralProfiler.####.exr
+ file_type exr
+ first_part rgba
+ version 1
+ beforeRender "file = open(nuke.script_directory()+'/../output/CurrentNukescript.txt','w+')\nfile.write(nuke.root().name())\nfile.close()"
+ name Write2
+ label "\nAll versions of SpiralProfiler render to the same location on disk.\nbeforeRender callback outputs the currently rendering nukscript."
+ selected true
+ xpos 2055
+ ypos 2719
+}
+Viewer {
+ inputs 2
+ frame_range 1001-2000
+ viewerProcess "sRGB (ACES)"
+ name Viewer1
+ xpos -105
+ ypos 3416
+}

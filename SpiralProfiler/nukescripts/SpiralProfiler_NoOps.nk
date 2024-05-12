@@ -1,0 +1,2627 @@
+#! /usr/local/Nuke13.2v9/libnuke-13.2.9.so -nx
+#write_info Write2 file:"../output/SpiralProfiler.%04d.exr" format:"32 32 1" chans:":rgba.red:rgba.green:rgba.blue:" framerange:"1001 2000" fps:"0" colorspace:"default (scene_linear)" datatype:"16 bit half" transfer:"unknown" views:"main" colorManagement:"OCIO"
+version 13.2 v9
+define_window_layout_xml {<?xml version="1.0" encoding="UTF-8"?>
+<layout version="1.0">
+    <window x="0" y="27" w="2118" h="1138" maximized="1" screen="0">
+        <splitter orientation="1">
+            <split size="40"/>
+            <dock id="" hideTitles="1" activePageId="Toolbar.1">
+                <page id="Toolbar.1"/>
+            </dock>
+            <split size="1455" stretch="1"/>
+            <splitter orientation="2">
+                <split size="643"/>
+                <dock id="" activePageId="Viewer.1">
+                    <page id="Viewer.1"/>
+                </dock>
+                <split size="452"/>
+                <dock id="" activePageId="DAG.1" focus="true">
+                    <page id="DAG.1"/>
+                    <page id="Curve Editor.1"/>
+                    <page id="DopeSheet.1"/>
+                </dock>
+            </splitter>
+            <split size="615"/>
+            <dock id="" activePageId="Properties.1">
+                <page id="Properties.1"/>
+                <page id="uk.co.thefoundry.backgroundrenderview.1"/>
+            </dock>
+        </splitter>
+    </window>
+</layout>
+}
+Root {
+ inputs 0
+ name /mnt/render/SpiralProfiler/nukescripts/SpiralProfiler_NoOps.nk
+ project_directory "\[python \{nuke.script_directory()\}]"
+ frame 1473
+ first_frame 1001
+ last_frame 2000
+ format "1024 1024 0 0 1024 1024 1 square_1K"
+ proxy_type scale
+ proxy_format "1024 778 0 0 1024 778 1 1K_Super_35(full-ap)"
+ colorManagement OCIO
+ OCIO_config aces_1.2
+ defaultViewerLUT "OCIO LUTs"
+ workingSpaceLUT scene_linear
+ monitorLut ACES/sRGB
+ monitorOutLUT "sRGB (ACES)"
+ int8Lut matte_paint
+ int16Lut texture_paint
+ logLut compositing_log
+ floatLut scene_linear
+}
+BackdropNode {
+ inputs 0
+ name BackdropNode1
+ label "import math\n\nnodes = \[]\npreviousNode = None\n\nfor x in range(500):\n    node = nuke.createNode(\"NoOp\")\n    if previousNode:\n        node.setInput(0,previousNode)\n    nodes.append(node)\n    previousNode = node\n\nradius = 500\ni = 0.0\n\nfor node in nodes:\n    node.setXpos( int(math.sin(i+1)*radius) )\n    node.setYpos( int(math.cos(i+1)*radius) )\n    i += 0.1\n    radius += 5"
+ xpos -140
+ ypos -147
+ bdwidth 290
+ bdheight 306
+}
+CheckerBoard2 {
+ inputs 0
+ name CheckerBoard1
+ xpos -30
+ ypos -9
+}
+Transform {
+ rotate {{t}}
+ center {512 512}
+ filter impulse
+ name Transform1
+ label "\[value filter]"
+ xpos -30
+ ypos 264
+}
+set Ncab1450 [stack 0]
+Transform {
+ rotate {{t}}
+ center {512 512}
+ name Transform2
+ label "\[value filter]"
+ xpos -30
+ ypos 406
+}
+set Ce7e5aa0 [stack 0]
+push $Ncab1450
+NoOp {
+ name NoOp1
+ xpos 420
+ ypos 270
+}
+NoOp {
+ name NoOp2
+ xpos 450
+ ypos 229
+}
+NoOp {
+ name NoOp3
+ xpos 475
+ ypos 184
+}
+NoOp {
+ name NoOp4
+ xpos 496
+ ypos 137
+}
+NoOp {
+ name NoOp5
+ xpos 512
+ ypos 88
+}
+NoOp {
+ name NoOp6
+ xpos 523
+ ypos 37
+}
+NoOp {
+ name NoOp7
+ xpos 529
+ ypos -15
+}
+NoOp {
+ name NoOp8
+ xpos 530
+ ypos -68
+}
+NoOp {
+ name NoOp9
+ xpos 525
+ ypos -122
+}
+NoOp {
+ name NoOp10
+ xpos 515
+ ypos -176
+}
+NoOp {
+ name NoOp11
+ xpos 500
+ ypos -228
+}
+NoOp {
+ name NoOp12
+ xpos 479
+ ypos -280
+}
+NoOp {
+ name NoOp13
+ xpos 452
+ ypos -329
+}
+NoOp {
+ name NoOp14
+ xpos 421
+ ypos -376
+}
+NoOp {
+ name NoOp15
+ xpos 385
+ ypos -420
+}
+NoOp {
+ name NoOp16
+ xpos 344
+ ypos -460
+}
+NoOp {
+ name NoOp17
+ xpos 298
+ ypos -496
+}
+NoOp {
+ name NoOp18
+ xpos 250
+ ypos -528
+}
+NoOp {
+ name NoOp19
+ xpos 197
+ ypos -555
+}
+NoOp {
+ name NoOp20
+ xpos 142
+ ypos -577
+}
+NoOp {
+ name NoOp21
+ xpos 84
+ ypos -593
+}
+NoOp {
+ name NoOp22
+ xpos 25
+ ypos -604
+}
+NoOp {
+ name NoOp23
+ xpos -35
+ ypos -608
+}
+NoOp {
+ name NoOp24
+ xpos -97
+ ypos -607
+}
+NoOp {
+ name NoOp25
+ xpos -158
+ ypos -599
+}
+NoOp {
+ name NoOp26
+ xpos -219
+ ypos -585
+}
+NoOp {
+ name NoOp27
+ xpos -278
+ ypos -564
+}
+NoOp {
+ name NoOp28
+ xpos -336
+ ypos -538
+}
+NoOp {
+ name NoOp29
+ xpos -391
+ ypos -506
+}
+NoOp {
+ name NoOp30
+ xpos -443
+ ypos -468
+}
+NoOp {
+ name NoOp31
+ xpos -491
+ ypos -424
+}
+NoOp {
+ name NoOp32
+ xpos -535
+ ypos -376
+}
+NoOp {
+ name NoOp33
+ xpos -575
+ ypos -323
+}
+NoOp {
+ name NoOp34
+ xpos -609
+ ypos -266
+}
+NoOp {
+ name NoOp35
+ xpos -637
+ ypos -205
+}
+NoOp {
+ name NoOp36
+ xpos -659
+ ypos -142
+}
+NoOp {
+ name NoOp37
+ xpos -675
+ ypos -76
+}
+NoOp {
+ name NoOp38
+ xpos -684
+ ypos -8
+}
+NoOp {
+ name NoOp39
+ xpos -687
+ ypos 60
+}
+NoOp {
+ name NoOp40
+ xpos -682
+ ypos 129
+}
+NoOp {
+ name NoOp41
+ xpos -671
+ ypos 198
+}
+NoOp {
+ name NoOp42
+ xpos -652
+ ypos 266
+}
+NoOp {
+ name NoOp43
+ xpos -627
+ ypos 332
+}
+NoOp {
+ name NoOp44
+ xpos -595
+ ypos 396
+}
+NoOp {
+ name NoOp45
+ xpos -556
+ ypos 456
+}
+NoOp {
+ name NoOp46
+ xpos -511
+ ypos 513
+}
+NoOp {
+ name NoOp47
+ xpos -460
+ ypos 566
+}
+NoOp {
+ name NoOp48
+ xpos -404
+ ypos 613
+}
+NoOp {
+ name NoOp49
+ xpos -343
+ ypos 655
+}
+NoOp {
+ name NoOp50
+ xpos -278
+ ypos 690
+}
+NoOp {
+ name NoOp51
+ xpos -209
+ ypos 720
+}
+NoOp {
+ name NoOp52
+ xpos -137
+ ypos 742
+}
+NoOp {
+ name NoOp53
+ xpos -63
+ ypos 757
+}
+NoOp {
+ name NoOp54
+ xpos 12
+ ypos 764
+}
+NoOp {
+ name NoOp55
+ xpos 89
+ ypos 764
+}
+NoOp {
+ name NoOp56
+ xpos 166
+ ypos 756
+}
+NoOp {
+ name NoOp57
+ xpos 243
+ ypos 741
+}
+NoOp {
+ name NoOp58
+ xpos 317
+ ypos 717
+}
+NoOp {
+ name NoOp59
+ xpos 390
+ ypos 686
+}
+NoOp {
+ name NoOp60
+ xpos 459
+ ypos 648
+}
+NoOp {
+ name NoOp61
+ xpos 525
+ ypos 603
+}
+NoOp {
+ name NoOp62
+ xpos 586
+ ypos 551
+}
+NoOp {
+ name NoOp63
+ xpos 642
+ ypos 492
+}
+NoOp {
+ name NoOp64
+ xpos 693
+ ypos 428
+}
+NoOp {
+ name NoOp65
+ xpos 736
+ ypos 359
+}
+NoOp {
+ name NoOp66
+ xpos 773
+ ypos 285
+}
+NoOp {
+ name NoOp67
+ xpos 803
+ ypos 208
+}
+NoOp {
+ name NoOp68
+ xpos 825
+ ypos 128
+}
+NoOp {
+ name NoOp69
+ xpos 838
+ ypos 45
+}
+NoOp {
+ name NoOp70
+ xpos 844
+ ypos -38
+}
+NoOp {
+ name NoOp71
+ xpos 840
+ ypos -123
+}
+NoOp {
+ name NoOp72
+ xpos 829
+ ypos -208
+}
+NoOp {
+ name NoOp73
+ xpos 809
+ ypos -291
+}
+NoOp {
+ name NoOp74
+ xpos 780
+ ypos -373
+}
+NoOp {
+ name NoOp75
+ xpos 743
+ ypos -451
+}
+NoOp {
+ name NoOp76
+ xpos 698
+ ypos -526
+}
+NoOp {
+ name NoOp77
+ xpos 646
+ ypos -597
+}
+NoOp {
+ name NoOp78
+ xpos 586
+ ypos -662
+}
+NoOp {
+ name NoOp79
+ xpos 520
+ ypos -721
+}
+NoOp {
+ name NoOp80
+ xpos 448
+ ypos -774
+}
+NoOp {
+ name NoOp81
+ xpos 370
+ ypos -820
+}
+NoOp {
+ name NoOp82
+ xpos 288
+ ypos -857
+}
+NoOp {
+ name NoOp83
+ xpos 202
+ ypos -887
+}
+NoOp {
+ name NoOp84
+ xpos 113
+ ypos -907
+}
+NoOp {
+ name NoOp85
+ xpos 22
+ ypos -919
+}
+NoOp {
+ name NoOp86
+ xpos -69
+ ypos -922
+}
+NoOp {
+ name NoOp87
+ xpos -162
+ ypos -915
+}
+NoOp {
+ name NoOp88
+ xpos -254
+ ypos -899
+}
+NoOp {
+ name NoOp89
+ xpos -344
+ ypos -874
+}
+NoOp {
+ name NoOp90
+ xpos -432
+ ypos -840
+}
+NoOp {
+ name NoOp91
+ xpos -516
+ ypos -797
+}
+NoOp {
+ name NoOp92
+ xpos -596
+ ypos -745
+}
+NoOp {
+ name NoOp93
+ xpos -671
+ ypos -685
+}
+NoOp {
+ name NoOp94
+ xpos -740
+ ypos -618
+}
+NoOp {
+ name NoOp95
+ xpos -802
+ ypos -544
+}
+NoOp {
+ name NoOp96
+ xpos -857
+ ypos -463
+}
+NoOp {
+ name NoOp97
+ xpos -904
+ ypos -377
+}
+NoOp {
+ name NoOp98
+ xpos -942
+ ypos -286
+}
+NoOp {
+ name NoOp99
+ xpos -971
+ ypos -192
+}
+NoOp {
+ name NoOp100
+ xpos -990
+ ypos -94
+}
+NoOp {
+ name NoOp101
+ xpos -999
+ ypos 4
+}
+NoOp {
+ name NoOp102
+ xpos -999
+ ypos 104
+}
+NoOp {
+ name NoOp103
+ xpos -988
+ ypos 205
+}
+NoOp {
+ name NoOp104
+ xpos -968
+ ypos 304
+}
+NoOp {
+ name NoOp105
+ xpos -937
+ ypos 401
+}
+NoOp {
+ name NoOp106
+ xpos -897
+ ypos 495
+}
+NoOp {
+ name NoOp107
+ xpos -847
+ ypos 585
+}
+NoOp {
+ name NoOp108
+ xpos -788
+ ypos 670
+}
+NoOp {
+ name NoOp109
+ xpos -721
+ ypos 749
+}
+NoOp {
+ name NoOp110
+ xpos -645
+ ypos 821
+}
+NoOp {
+ name NoOp111
+ xpos -563
+ ypos 886
+}
+NoOp {
+ name NoOp112
+ xpos -474
+ ypos 942
+}
+NoOp {
+ name NoOp113
+ xpos -379
+ ypos 989
+}
+NoOp {
+ name NoOp114
+ xpos -280
+ ypos 1027
+}
+NoOp {
+ name NoOp115
+ xpos -177
+ ypos 1055
+}
+NoOp {
+ name NoOp116
+ xpos -71
+ ypos 1072
+}
+NoOp {
+ name NoOp117
+ xpos 36
+ ypos 1079
+}
+NoOp {
+ name NoOp118
+ xpos 144
+ ypos 1075
+}
+NoOp {
+ name NoOp119
+ xpos 252
+ ypos 1060
+}
+NoOp {
+ name NoOp120
+ xpos 358
+ ypos 1034
+}
+NoOp {
+ name NoOp121
+ xpos 462
+ ypos 998
+}
+NoOp {
+ name NoOp122
+ xpos 562
+ ypos 951
+}
+NoOp {
+ name NoOp123
+ xpos 657
+ ypos 894
+}
+NoOp {
+ name NoOp124
+ xpos 746
+ ypos 828
+}
+NoOp {
+ name NoOp125
+ xpos 829
+ ypos 752
+}
+NoOp {
+ name NoOp126
+ xpos 904
+ ypos 669
+}
+NoOp {
+ name NoOp127
+ xpos 970
+ ypos 578
+}
+NoOp {
+ name NoOp128
+ xpos 1028
+ ypos 480
+}
+NoOp {
+ name NoOp129
+ xpos 1075
+ ypos 377
+}
+NoOp {
+ name NoOp130
+ xpos 1112
+ ypos 269
+}
+NoOp {
+ name NoOp131
+ xpos 1139
+ ypos 157
+}
+NoOp {
+ name NoOp132
+ xpos 1154
+ ypos 42
+}
+NoOp {
+ name NoOp133
+ xpos 1157
+ ypos -72
+}
+NoOp {
+ name NoOp134
+ xpos 1149
+ ypos -188
+}
+NoOp {
+ name NoOp135
+ xpos 1129
+ ypos -303
+}
+NoOp {
+ name NoOp136
+ xpos 1098
+ ypos -417
+}
+NoOp {
+ name NoOp137
+ xpos 1055
+ ypos -526
+}
+NoOp {
+ name NoOp138
+ xpos 1002
+ ypos -632
+}
+NoOp {
+ name NoOp139
+ xpos 938
+ ypos -732
+}
+NoOp {
+ name NoOp140
+ xpos 863
+ ypos -825
+}
+NoOp {
+ name NoOp141
+ xpos 780
+ ypos -911
+}
+NoOp {
+ name NoOp142
+ xpos 688
+ ypos -989
+}
+NoOp {
+ name NoOp143
+ xpos 588
+ ypos -1057
+}
+NoOp {
+ name NoOp144
+ xpos 482
+ ypos -1115
+}
+NoOp {
+ name NoOp145
+ xpos 369
+ ypos -1162
+}
+NoOp {
+ name NoOp146
+ xpos 252
+ ypos -1198
+}
+NoOp {
+ name NoOp147
+ xpos 132
+ ypos -1222
+}
+NoOp {
+ name NoOp148
+ xpos 9
+ ypos -1234
+}
+NoOp {
+ name NoOp149
+ xpos -113
+ ypos -1234
+}
+NoOp {
+ name NoOp150
+ xpos -237
+ ypos -1222
+}
+NoOp {
+ name NoOp151
+ xpos -359
+ ypos -1197
+}
+NoOp {
+ name NoOp152
+ xpos -479
+ ypos -1159
+}
+NoOp {
+ name NoOp153
+ xpos -595
+ ypos -1110
+}
+NoOp {
+ name NoOp154
+ xpos -705
+ ypos -1049
+}
+NoOp {
+ name NoOp155
+ xpos -810
+ ypos -977
+}
+NoOp {
+ name NoOp156
+ xpos -907
+ ypos -895
+}
+NoOp {
+ name NoOp157
+ xpos -996
+ ypos -803
+}
+NoOp {
+ name NoOp158
+ xpos -1075
+ ypos -702
+}
+NoOp {
+ name NoOp159
+ xpos -1144
+ ypos -594
+}
+NoOp {
+ name NoOp160
+ xpos -1203
+ ypos -478
+}
+NoOp {
+ name NoOp161
+ xpos -1249
+ ypos -357
+}
+NoOp {
+ name NoOp162
+ xpos -1284
+ ypos -232
+}
+NoOp {
+ name NoOp163
+ xpos -1305
+ ypos -103
+}
+NoOp {
+ name NoOp164
+ xpos -1314
+ ypos 27
+}
+NoOp {
+ name NoOp165
+ xpos -1310
+ ypos 159
+}
+NoOp {
+ name NoOp166
+ xpos -1292
+ ypos 290
+}
+NoOp {
+ name NoOp167
+ xpos -1261
+ ypos 419
+}
+NoOp {
+ name NoOp168
+ xpos -1218
+ ypos 545
+}
+NoOp {
+ name NoOp169
+ xpos -1162
+ ypos 667
+}
+NoOp {
+ name NoOp170
+ xpos -1093
+ ypos 782
+}
+NoOp {
+ name NoOp171
+ xpos -1013
+ ypos 891
+}
+NoOp {
+ name NoOp172
+ xpos -923
+ ypos 991
+}
+NoOp {
+ name NoOp173
+ xpos -822
+ ypos 1083
+}
+NoOp {
+ name NoOp174
+ xpos -712
+ ypos 1164
+}
+NoOp {
+ name NoOp175
+ xpos -595
+ ypos 1233
+}
+NoOp {
+ name NoOp176
+ xpos -470
+ ypos 1291
+}
+NoOp {
+ name NoOp177
+ xpos -340
+ ypos 1337
+}
+NoOp {
+ name NoOp178
+ xpos -206
+ ypos 1369
+}
+NoOp {
+ name NoOp179
+ xpos -68
+ ypos 1388
+}
+NoOp {
+ name NoOp180
+ xpos 70
+ ypos 1393
+}
+NoOp {
+ name NoOp181
+ xpos 209
+ ypos 1384
+}
+NoOp {
+ name NoOp182
+ xpos 348
+ ypos 1361
+}
+NoOp {
+ name NoOp183
+ xpos 484
+ ypos 1324
+}
+NoOp {
+ name NoOp184
+ xpos 616
+ ypos 1273
+}
+NoOp {
+ name NoOp185
+ xpos 742
+ ypos 1210
+}
+NoOp {
+ name NoOp186
+ xpos 862
+ ypos 1134
+}
+NoOp {
+ name NoOp187
+ xpos 975
+ ypos 1045
+}
+NoOp {
+ name NoOp188
+ xpos 1078
+ ypos 946
+}
+NoOp {
+ name NoOp189
+ xpos 1171
+ ypos 837
+}
+NoOp {
+ name NoOp190
+ xpos 1253
+ ypos 718
+}
+NoOp {
+ name NoOp191
+ xpos 1323
+ ypos 591
+}
+NoOp {
+ name NoOp192
+ xpos 1380
+ ypos 458
+}
+NoOp {
+ name NoOp193
+ xpos 1424
+ ypos 319
+}
+NoOp {
+ name NoOp194
+ xpos 1454
+ ypos 175
+}
+NoOp {
+ name NoOp195
+ xpos 1469
+ ypos 29
+}
+NoOp {
+ name NoOp196
+ xpos 1470
+ ypos -117
+}
+NoOp {
+ name NoOp197
+ xpos 1456
+ ypos -264
+}
+NoOp {
+ name NoOp198
+ xpos 1427
+ ypos -409
+}
+NoOp {
+ name NoOp199
+ xpos 1383
+ ypos -552
+}
+NoOp {
+ name NoOp200
+ xpos 1326
+ ypos -689
+}
+NoOp {
+ name NoOp201
+ xpos 1254
+ ypos -821
+}
+NoOp {
+ name NoOp202
+ xpos 1170
+ ypos -945
+}
+NoOp {
+ name NoOp203
+ xpos 1073
+ ypos -1061
+}
+NoOp {
+ name NoOp204
+ xpos 965
+ ypos -1167
+}
+NoOp {
+ name NoOp205
+ xpos 847
+ ypos -1262
+}
+NoOp {
+ name NoOp206
+ xpos 719
+ ypos -1344
+}
+NoOp {
+ name NoOp207
+ xpos 583
+ ypos -1414
+}
+NoOp {
+ name NoOp208
+ xpos 440
+ ypos -1470
+}
+NoOp {
+ name NoOp209
+ xpos 292
+ ypos -1511
+}
+NoOp {
+ name NoOp210
+ xpos 140
+ ypos -1538
+}
+NoOp {
+ name NoOp211
+ xpos -13
+ ypos -1549
+}
+NoOp {
+ name NoOp212
+ xpos -168
+ ypos -1545
+}
+NoOp {
+ name NoOp213
+ xpos -323
+ ypos -1526
+}
+NoOp {
+ name NoOp214
+ xpos -475
+ ypos -1490
+}
+NoOp {
+ name NoOp215
+ xpos -624
+ ypos -1440
+}
+NoOp {
+ name NoOp216
+ xpos -767
+ ypos -1375
+}
+NoOp {
+ name NoOp217
+ xpos -903
+ ypos -1296
+}
+NoOp {
+ name NoOp218
+ xpos -1031
+ ypos -1203
+}
+NoOp {
+ name NoOp219
+ xpos -1150
+ ypos -1097
+}
+NoOp {
+ name NoOp220
+ xpos -1258
+ ypos -980
+}
+NoOp {
+ name NoOp221
+ xpos -1353
+ ypos -852
+}
+NoOp {
+ name NoOp222
+ xpos -1436
+ ypos -715
+}
+NoOp {
+ name NoOp223
+ xpos -1505
+ ypos -570
+}
+NoOp {
+ name NoOp224
+ xpos -1559
+ ypos -418
+}
+NoOp {
+ name NoOp225
+ xpos -1598
+ ypos -261
+}
+NoOp {
+ name NoOp226
+ xpos -1621
+ ypos -100
+}
+NoOp {
+ name NoOp227
+ xpos -1628
+ ypos 62
+}
+NoOp {
+ name NoOp228
+ xpos -1619
+ ypos 225
+}
+NoOp {
+ name NoOp229
+ xpos -1593
+ ypos 386
+}
+NoOp {
+ name NoOp230
+ xpos -1551
+ ypos 545
+}
+NoOp {
+ name NoOp231
+ xpos -1494
+ ypos 699
+}
+NoOp {
+ name NoOp232
+ xpos -1421
+ ypos 848
+}
+NoOp {
+ name NoOp233
+ xpos -1333
+ ypos 988
+}
+NoOp {
+ name NoOp234
+ xpos -1231
+ ypos 1120
+}
+NoOp {
+ name NoOp235
+ xpos -1117
+ ypos 1241
+}
+NoOp {
+ name NoOp236
+ xpos -990
+ ypos 1350
+}
+NoOp {
+ name NoOp237
+ xpos -853
+ ypos 1447
+}
+NoOp {
+ name NoOp238
+ xpos -706
+ ypos 1529
+}
+NoOp {
+ name NoOp239
+ xpos -552
+ ypos 1597
+}
+NoOp {
+ name NoOp240
+ xpos -390
+ ypos 1649
+}
+NoOp {
+ name NoOp241
+ xpos -224
+ ypos 1685
+}
+NoOp {
+ name NoOp242
+ xpos -55
+ ypos 1704
+}
+NoOp {
+ name NoOp243
+ xpos 114
+ ypos 1706
+}
+NoOp {
+ name NoOp244
+ xpos 285
+ ypos 1691
+}
+NoOp {
+ name NoOp245
+ xpos 454
+ ypos 1658
+}
+NoOp {
+ name NoOp246
+ xpos 619
+ ypos 1609
+}
+NoOp {
+ name NoOp247
+ xpos 779
+ ypos 1544
+}
+NoOp {
+ name NoOp248
+ xpos 932
+ ypos 1463
+}
+NoOp {
+ name NoOp249
+ xpos 1076
+ ypos 1366
+}
+NoOp {
+ name NoOp250
+ xpos 1211
+ ypos 1256
+}
+NoOp {
+ name NoOp251
+ xpos 1334
+ ypos 1132
+}
+NoOp {
+ name NoOp252
+ xpos 1444
+ ypos 996
+}
+NoOp {
+ name NoOp253
+ xpos 1541
+ ypos 849
+}
+NoOp {
+ name NoOp254
+ xpos 1623
+ ypos 693
+}
+NoOp {
+ name NoOp255
+ xpos 1689
+ ypos 529
+}
+NoOp {
+ name NoOp256
+ xpos 1738
+ ypos 358
+}
+NoOp {
+ name NoOp257
+ xpos 1770
+ ypos 183
+}
+NoOp {
+ name NoOp258
+ xpos 1784
+ ypos 6
+}
+NoOp {
+ name NoOp259
+ xpos 1781
+ ypos -172
+}
+NoOp {
+ name NoOp260
+ xpos 1760
+ ypos -350
+}
+NoOp {
+ name NoOp261
+ xpos 1721
+ ypos -525
+}
+NoOp {
+ name NoOp262
+ xpos 1664
+ ypos -697
+}
+NoOp {
+ name NoOp263
+ xpos 1591
+ ypos -862
+}
+NoOp {
+ name NoOp264
+ xpos 1501
+ ypos -1019
+}
+NoOp {
+ name NoOp265
+ xpos 1396
+ ypos -1167
+}
+NoOp {
+ name NoOp266
+ xpos 1276
+ ypos -1304
+}
+NoOp {
+ name NoOp267
+ xpos 1142
+ ypos -1429
+}
+NoOp {
+ name NoOp268
+ xpos 996
+ ypos -1540
+}
+NoOp {
+ name NoOp269
+ xpos 840
+ ypos -1636
+}
+NoOp {
+ name NoOp270
+ xpos 674
+ ypos -1717
+}
+NoOp {
+ name NoOp271
+ xpos 501
+ ypos -1780
+}
+NoOp {
+ name NoOp272
+ xpos 321
+ ypos -1826
+}
+NoOp {
+ name NoOp273
+ xpos 138
+ ypos -1854
+}
+NoOp {
+ name NoOp274
+ xpos -47
+ ypos -1864
+}
+NoOp {
+ name NoOp275
+ xpos -234
+ ypos -1855
+}
+NoOp {
+ name NoOp276
+ xpos -419
+ ypos -1827
+}
+NoOp {
+ name NoOp277
+ xpos -601
+ ypos -1781
+}
+NoOp {
+ name NoOp278
+ xpos -778
+ ypos -1716
+}
+NoOp {
+ name NoOp279
+ xpos -948
+ ypos -1634
+}
+NoOp {
+ name NoOp280
+ xpos -1109
+ ypos -1536
+}
+NoOp {
+ name NoOp281
+ xpos -1260
+ ypos -1421
+}
+NoOp {
+ name NoOp282
+ xpos -1400
+ ypos -1291
+}
+NoOp {
+ name NoOp283
+ xpos -1526
+ ypos -1148
+}
+NoOp {
+ name NoOp284
+ xpos -1637
+ ypos -992
+}
+NoOp {
+ name NoOp285
+ xpos -1732
+ ypos -826
+}
+NoOp {
+ name NoOp286
+ xpos -1811
+ ypos -651
+}
+NoOp {
+ name NoOp287
+ xpos -1872
+ ypos -468
+}
+NoOp {
+ name NoOp288
+ xpos -1914
+ ypos -279
+}
+NoOp {
+ name NoOp289
+ xpos -1938
+ ypos -87
+}
+NoOp {
+ name NoOp290
+ xpos -1942
+ ypos 106
+}
+NoOp {
+ name NoOp291
+ xpos -1926
+ ypos 300
+}
+NoOp {
+ name NoOp292
+ xpos -1891
+ ypos 492
+}
+NoOp {
+ name NoOp293
+ xpos -1837
+ ypos 681
+}
+NoOp {
+ name NoOp294
+ xpos -1765
+ ypos 863
+}
+NoOp {
+ name NoOp295
+ xpos -1674
+ ypos 1037
+}
+NoOp {
+ name NoOp296
+ xpos -1566
+ ypos 1202
+}
+NoOp {
+ name NoOp297
+ xpos -1442
+ ypos 1356
+}
+NoOp {
+ name NoOp298
+ xpos -1302
+ ypos 1497
+}
+NoOp {
+ name NoOp299
+ xpos -1149
+ ypos 1624
+}
+NoOp {
+ name NoOp300
+ xpos -984
+ ypos 1735
+}
+NoOp {
+ name NoOp301
+ xpos -808
+ ypos 1829
+}
+NoOp {
+ name NoOp302
+ xpos -622
+ ypos 1905
+}
+NoOp {
+ name NoOp303
+ xpos -430
+ ypos 1963
+}
+NoOp {
+ name NoOp304
+ xpos -233
+ ypos 2001
+}
+NoOp {
+ name NoOp305
+ xpos -32
+ ypos 2019
+}
+NoOp {
+ name NoOp306
+ xpos 170
+ ypos 2017
+}
+NoOp {
+ name NoOp307
+ xpos 371
+ ypos 1995
+}
+NoOp {
+ name NoOp308
+ xpos 570
+ ypos 1953
+}
+NoOp {
+ name NoOp309
+ xpos 764
+ ypos 1891
+}
+NoOp {
+ name NoOp310
+ xpos 951
+ ypos 1810
+}
+NoOp {
+ name NoOp311
+ xpos 1130
+ ypos 1710
+}
+NoOp {
+ name NoOp312
+ xpos 1298
+ ypos 1592
+}
+NoOp {
+ name NoOp313
+ xpos 1454
+ ypos 1458
+}
+NoOp {
+ name NoOp314
+ xpos 1596
+ ypos 1309
+}
+NoOp {
+ name NoOp315
+ xpos 1723
+ ypos 1146
+}
+NoOp {
+ name NoOp316
+ xpos 1834
+ ypos 970
+}
+NoOp {
+ name NoOp317
+ xpos 1926
+ ypos 784
+}
+NoOp {
+ name NoOp318
+ xpos 1999
+ ypos 589
+}
+NoOp {
+ name NoOp319
+ xpos 2053
+ ypos 387
+}
+NoOp {
+ name NoOp320
+ xpos 2087
+ ypos 181
+}
+NoOp {
+ name NoOp321
+ xpos 2099
+ ypos -27
+}
+NoOp {
+ name NoOp322
+ xpos 2091
+ ypos -237
+}
+NoOp {
+ name NoOp323
+ xpos 2062
+ ypos -446
+}
+NoOp {
+ name NoOp324
+ xpos 2012
+ ypos -651
+}
+NoOp {
+ name NoOp325
+ xpos 1941
+ ypos -851
+}
+NoOp {
+ name NoOp326
+ xpos 1851
+ ypos -1043
+}
+NoOp {
+ name NoOp327
+ xpos 1741
+ ypos -1225
+}
+NoOp {
+ name NoOp328
+ xpos 1614
+ ypos -1396
+}
+NoOp {
+ name NoOp329
+ xpos 1470
+ ypos -1554
+}
+NoOp {
+ name NoOp330
+ xpos 1310
+ ypos -1697
+}
+NoOp {
+ name NoOp331
+ xpos 1137
+ ypos -1824
+}
+NoOp {
+ name NoOp332
+ xpos 951
+ ypos -1933
+}
+NoOp {
+ name NoOp333
+ xpos 755
+ ypos -2023
+}
+NoOp {
+ name NoOp334
+ xpos 551
+ ypos -2093
+}
+NoOp {
+ name NoOp335
+ xpos 340
+ ypos -2143
+}
+NoOp {
+ name NoOp336
+ xpos 125
+ ypos -2171
+}
+NoOp {
+ name NoOp337
+ xpos -92
+ ypos -2178
+}
+NoOp {
+ name NoOp338
+ xpos -310
+ ypos -2162
+}
+NoOp {
+ name NoOp339
+ xpos -525
+ ypos -2125
+}
+NoOp {
+ name NoOp340
+ xpos -737
+ ypos -2067
+}
+NoOp {
+ name NoOp341
+ xpos -942
+ ypos -1988
+}
+NoOp {
+ name NoOp342
+ xpos -1138
+ ypos -1888
+}
+NoOp {
+ name NoOp343
+ xpos -1324
+ ypos -1769
+}
+NoOp {
+ name NoOp344
+ xpos -1497
+ ypos -1631
+}
+NoOp {
+ name NoOp345
+ xpos -1656
+ ypos -1477
+}
+NoOp {
+ name NoOp346
+ xpos -1800
+ ypos -1307
+}
+NoOp {
+ name NoOp347
+ xpos -1925
+ ypos -1124
+}
+NoOp {
+ name NoOp348
+ xpos -2033
+ ypos -928
+}
+NoOp {
+ name NoOp349
+ xpos -2120
+ ypos -722
+}
+NoOp {
+ name NoOp350
+ xpos -2186
+ ypos -508
+}
+NoOp {
+ name NoOp351
+ xpos -2231
+ ypos -287
+}
+NoOp {
+ name NoOp352
+ xpos -2254
+ ypos -63
+}
+NoOp {
+ name NoOp353
+ xpos -2254
+ ypos 161
+}
+NoOp {
+ name NoOp354
+ xpos -2231
+ ypos 386
+}
+NoOp {
+ name NoOp355
+ xpos -2186
+ ypos 609
+}
+NoOp {
+ name NoOp356
+ xpos -2119
+ ypos 826
+}
+NoOp {
+ name NoOp357
+ xpos -2031
+ ypos 1036
+}
+NoOp {
+ name NoOp358
+ xpos -1921
+ ypos 1236
+}
+NoOp {
+ name NoOp359
+ xpos -1792
+ ypos 1425
+}
+NoOp {
+ name NoOp360
+ xpos -1644
+ ypos 1600
+}
+NoOp {
+ name NoOp361
+ xpos -1480
+ ypos 1760
+}
+NoOp {
+ name NoOp362
+ xpos -1299
+ ypos 1903
+}
+NoOp {
+ name NoOp363
+ xpos -1105
+ ypos 2028
+}
+NoOp {
+ name NoOp364
+ xpos -899
+ ypos 2133
+}
+NoOp {
+ name NoOp365
+ xpos -683
+ ypos 2216
+}
+NoOp {
+ name NoOp366
+ xpos -459
+ ypos 2279
+}
+NoOp {
+ name NoOp367
+ xpos -230
+ ypos 2318
+}
+NoOp {
+ name NoOp368
+ xpos 2
+ ypos 2334
+}
+NoOp {
+ name NoOp369
+ xpos 235
+ ypos 2328
+}
+NoOp {
+ name NoOp370
+ xpos 467
+ ypos 2297
+}
+NoOp {
+ name NoOp371
+ xpos 696
+ ypos 2244
+}
+NoOp {
+ name NoOp372
+ xpos 919
+ ypos 2168
+}
+NoOp {
+ name NoOp373
+ xpos 1133
+ ypos 2070
+}
+NoOp {
+ name NoOp374
+ xpos 1337
+ ypos 1950
+}
+NoOp {
+ name NoOp375
+ xpos 1528
+ ypos 1811
+}
+NoOp {
+ name NoOp376
+ xpos 1705
+ ypos 1653
+}
+NoOp {
+ name NoOp377
+ xpos 1865
+ ypos 1477
+}
+NoOp {
+ name NoOp378
+ xpos 2008
+ ypos 1286
+}
+NoOp {
+ name NoOp379
+ xpos 2130
+ ypos 1082
+}
+NoOp {
+ name NoOp380
+ xpos 2233
+ ypos 865
+}
+NoOp {
+ name NoOp381
+ xpos 2313
+ ypos 639
+}
+NoOp {
+ name NoOp382
+ xpos 2370
+ ypos 406
+}
+NoOp {
+ name NoOp383
+ xpos 2404
+ ypos 168
+}
+NoOp {
+ name NoOp384
+ xpos 2413
+ ypos -72
+}
+NoOp {
+ name NoOp385
+ xpos 2399
+ ypos -313
+}
+NoOp {
+ name NoOp386
+ xpos 2361
+ ypos -553
+}
+NoOp {
+ name NoOp387
+ xpos 2298
+ ypos -787
+}
+NoOp {
+ name NoOp388
+ xpos 2213
+ ypos -1015
+}
+NoOp {
+ name NoOp389
+ xpos 2105
+ ypos -1233
+}
+NoOp {
+ name NoOp390
+ xpos 1975
+ ypos -1440
+}
+NoOp {
+ name NoOp391
+ xpos 1825
+ ypos -1633
+}
+NoOp {
+ name NoOp392
+ xpos 1656
+ ypos -1811
+}
+NoOp {
+ name NoOp393
+ xpos 1470
+ ypos -1972
+}
+NoOp {
+ name NoOp394
+ xpos 1268
+ ypos -2113
+}
+NoOp {
+ name NoOp395
+ xpos 1053
+ ypos -2233
+}
+NoOp {
+ name NoOp396
+ xpos 827
+ ypos -2332
+}
+NoOp {
+ name NoOp397
+ xpos 591
+ ypos -2408
+}
+NoOp {
+ name NoOp398
+ xpos 348
+ ypos -2460
+}
+NoOp {
+ name NoOp399
+ xpos 101
+ ypos -2487
+}
+NoOp {
+ name NoOp400
+ xpos -147
+ ypos -2490
+}
+NoOp {
+ name NoOp401
+ xpos -396
+ ypos -2468
+}
+NoOp {
+ name NoOp402
+ xpos -642
+ ypos -2421
+}
+NoOp {
+ name NoOp403
+ xpos -882
+ ypos -2349
+}
+NoOp {
+ name NoOp404
+ xpos -1114
+ ypos -2254
+}
+NoOp {
+ name NoOp405
+ xpos -1337
+ ypos -2136
+}
+NoOp {
+ name NoOp406
+ xpos -1546
+ ypos -1995
+}
+NoOp {
+ name NoOp407
+ xpos -1741
+ ypos -1835
+}
+NoOp {
+ name NoOp408
+ xpos -1919
+ ypos -1655
+}
+NoOp {
+ name NoOp409
+ xpos -2079
+ ypos -1458
+}
+NoOp {
+ name NoOp410
+ xpos -2219
+ ypos -1245
+}
+NoOp {
+ name NoOp411
+ xpos -2337
+ ypos -1019
+}
+NoOp {
+ name NoOp412
+ xpos -2432
+ ypos -783
+}
+NoOp {
+ name NoOp413
+ xpos -2502
+ ypos -537
+}
+NoOp {
+ name NoOp414
+ xpos -2549
+ ypos -285
+}
+NoOp {
+ name NoOp415
+ xpos -2569
+ ypos -29
+}
+NoOp {
+ name NoOp416
+ xpos -2564
+ ypos 227
+}
+NoOp {
+ name NoOp417
+ xpos -2534
+ ypos 483
+}
+NoOp {
+ name NoOp418
+ xpos -2478
+ ypos 735
+}
+NoOp {
+ name NoOp419
+ xpos -2396
+ ypos 981
+}
+NoOp {
+ name NoOp420
+ xpos -2291
+ ypos 1217
+}
+NoOp {
+ name NoOp421
+ xpos -2162
+ ypos 1443
+}
+NoOp {
+ name NoOp422
+ xpos -2011
+ ypos 1655
+}
+NoOp {
+ name NoOp423
+ xpos -1839
+ ypos 1851
+}
+NoOp {
+ name NoOp424
+ xpos -1648
+ ypos 2029
+}
+NoOp {
+ name NoOp425
+ xpos -1440
+ ypos 2188
+}
+NoOp {
+ name NoOp426
+ xpos -1217
+ ypos 2325
+}
+NoOp {
+ name NoOp427
+ xpos -981
+ ypos 2440
+}
+NoOp {
+ name NoOp428
+ xpos -734
+ ypos 2530
+}
+NoOp {
+ name NoOp429
+ xpos -478
+ ypos 2596
+}
+NoOp {
+ name NoOp430
+ xpos -217
+ ypos 2636
+}
+NoOp {
+ name NoOp431
+ xpos 46
+ ypos 2649
+}
+NoOp {
+ name NoOp432
+ xpos 311
+ ypos 2636
+}
+NoOp {
+ name NoOp433
+ xpos 574
+ ypos 2597
+}
+NoOp {
+ name NoOp434
+ xpos 832
+ ypos 2531
+}
+NoOp {
+ name NoOp435
+ xpos 1083
+ ypos 2440
+}
+NoOp {
+ name NoOp436
+ xpos 1323
+ ypos 2324
+}
+NoOp {
+ name NoOp437
+ xpos 1552
+ ypos 2184
+}
+NoOp {
+ name NoOp438
+ xpos 1765
+ ypos 2022
+}
+NoOp {
+ name NoOp439
+ xpos 1962
+ ypos 1839
+}
+NoOp {
+ name NoOp440
+ xpos 2140
+ ypos 1637
+}
+NoOp {
+ name NoOp441
+ xpos 2297
+ ypos 1418
+}
+NoOp {
+ name NoOp442
+ xpos 2432
+ ypos 1184
+}
+NoOp {
+ name NoOp443
+ xpos 2542
+ ypos 937
+}
+NoOp {
+ name NoOp444
+ xpos 2628
+ ypos 679
+}
+NoOp {
+ name NoOp445
+ xpos 2688
+ ypos 414
+}
+NoOp {
+ name NoOp446
+ xpos 2721
+ ypos 144
+}
+NoOp {
+ name NoOp447
+ xpos 2726
+ ypos -128
+}
+NoOp {
+ name NoOp448
+ xpos 2705
+ ypos -400
+}
+NoOp {
+ name NoOp449
+ xpos 2656
+ ypos -669
+}
+NoOp {
+ name NoOp450
+ xpos 2581
+ ypos -933
+}
+NoOp {
+ name NoOp451
+ xpos 2479
+ ypos -1188
+}
+NoOp {
+ name NoOp452
+ xpos 2353
+ ypos -1432
+}
+NoOp {
+ name NoOp453
+ xpos 2202
+ ypos -1663
+}
+NoOp {
+ name NoOp454
+ xpos 2028
+ ypos -1878
+}
+NoOp {
+ name NoOp455
+ xpos 1834
+ ypos -2075
+}
+NoOp {
+ name NoOp456
+ xpos 1621
+ ypos -2252
+}
+NoOp {
+ name NoOp457
+ xpos 1390
+ ypos -2407
+}
+NoOp {
+ name NoOp458
+ xpos 1145
+ ypos -2538
+}
+NoOp {
+ name NoOp459
+ xpos 887
+ ypos -2644
+}
+NoOp {
+ name NoOp460
+ xpos 620
+ ypos -2725
+}
+NoOp {
+ name NoOp461
+ xpos 346
+ ypos -2778
+}
+NoOp {
+ name NoOp462
+ xpos 67
+ ypos -2804
+}
+NoOp {
+ name NoOp463
+ xpos -213
+ ypos -2801
+}
+NoOp {
+ name NoOp464
+ xpos -493
+ ypos -2771
+}
+NoOp {
+ name NoOp465
+ xpos -768
+ ypos -2713
+}
+NoOp {
+ name NoOp466
+ xpos -1037
+ ypos -2627
+}
+NoOp {
+ name NoOp467
+ xpos -1297
+ ypos -2515
+}
+NoOp {
+ name NoOp468
+ xpos -1544
+ ypos -2377
+}
+NoOp {
+ name NoOp469
+ xpos -1777
+ ypos -2215
+}
+NoOp {
+ name NoOp470
+ xpos -1992
+ ypos -2030
+}
+NoOp {
+ name NoOp471
+ xpos -2189
+ ypos -1824
+}
+NoOp {
+ name NoOp472
+ xpos -2364
+ ypos -1599
+}
+NoOp {
+ name NoOp473
+ xpos -2517
+ ypos -1357
+}
+NoOp {
+ name NoOp474
+ xpos -2644
+ ypos -1101
+}
+NoOp {
+ name NoOp475
+ xpos -2746
+ ypos -833
+}
+NoOp {
+ name NoOp476
+ xpos -2820
+ ypos -556
+}
+NoOp {
+ name NoOp477
+ xpos -2867
+ ypos -272
+}
+NoOp {
+ name NoOp478
+ xpos -2884
+ ypos 15
+}
+NoOp {
+ name NoOp479
+ xpos -2873
+ ypos 303
+}
+NoOp {
+ name NoOp480
+ xpos -2834
+ ypos 590
+}
+NoOp {
+ name NoOp481
+ xpos -2765
+ ypos 871
+}
+NoOp {
+ name NoOp482
+ xpos -2669
+ ypos 1145
+}
+NoOp {
+ name NoOp483
+ xpos -2546
+ ypos 1408
+}
+NoOp {
+ name NoOp484
+ xpos -2397
+ ypos 1658
+}
+NoOp {
+ name NoOp485
+ xpos -2223
+ ypos 1892
+}
+NoOp {
+ name NoOp486
+ xpos -2026
+ ypos 2109
+}
+NoOp {
+ name NoOp487
+ xpos -1809
+ ypos 2304
+}
+NoOp {
+ name NoOp488
+ xpos -1572
+ ypos 2478
+}
+NoOp {
+ name NoOp489
+ xpos -1319
+ ypos 2627
+}
+NoOp {
+ name NoOp490
+ xpos -1052
+ ypos 2750
+}
+NoOp {
+ name NoOp491
+ xpos -774
+ ypos 2846
+}
+NoOp {
+ name NoOp492
+ xpos -486
+ ypos 2914
+}
+NoOp {
+ name NoOp493
+ xpos -193
+ ypos 2953
+}
+NoOp {
+ name NoOp494
+ xpos 102
+ ypos 2963
+}
+NoOp {
+ name NoOp495
+ xpos 398
+ ypos 2943
+}
+NoOp {
+ name NoOp496
+ xpos 691
+ ypos 2893
+}
+NoOp {
+ name NoOp497
+ xpos 978
+ ypos 2814
+}
+NoOp {
+ name NoOp498
+ xpos 1256
+ ypos 2707
+}
+NoOp {
+ name NoOp499
+ xpos 1523
+ ypos 2572
+}
+NoOp {
+ name NoOp500
+ xpos 1775
+ ypos 2412
+}
+clone $Ce7e5aa0 {
+ xpos 1973
+ ypos 2406
+ selected false
+}
+Grade {
+ name Grade1
+ xpos 1973
+ ypos 2525
+}
+Reformat {
+ type "to box"
+ box_width 32
+ name Reformat1
+ xpos 1973
+ ypos 2619
+}
+Write {
+ file ../output/SpiralProfiler.####.exr
+ file_type exr
+ first_part rgba
+ version 1
+ beforeRender "file = open(nuke.script_directory()+'/../output/CurrentNukescript.txt','w+')\nfile.write(nuke.root().name())\nfile.close()"
+ name Write2
+ label "\nAll versions of SpiralProfiler render to the same location on disk.\nbeforeRender callback outputs the currently rendering nukscript."
+ xpos 1973
+ ypos 2736
+}
+set Nc831a00 [stack 0]
+push $Nc831a00
+Viewer {
+ inputs 2
+ frame_range 1001-2000
+ viewerProcess "sRGB (ACES)"
+ name Viewer1
+ xpos -30
+ ypos 3448
+}
