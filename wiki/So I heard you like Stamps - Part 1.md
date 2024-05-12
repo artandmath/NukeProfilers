@@ -10,7 +10,7 @@ It’s for anyone who may have an interest in how and where compositing teams ar
 
 ### What are Stamps?
 
-Stamps are a third-party tool for Foundry’s Nuke that have become somewhat prolific in their use at vendor-side VFX studios over the past 4 years. A trip to the website describes them best:
+Stamps is a third-party tool for Foundry’s Nuke that has become somewhat prolific in its use at vendor-side VFX studios over the past 4 years. A trip to the website describes them best:
 
 > Stamps v1.1 -- Smart node connection system for Nuke
 > 
@@ -22,7 +22,7 @@ They look pretty slick! They come with a well written manual, video tutorials, a
 
 If you were to ask some compositors, Stamps are the greatest thing since sliced bread. 
 
-And isn’t sliced bread just fabulous? A loaf of Wonder White™ touts itself as “Full of Goodness” and boasts a 4.5 health star rating. There is of course also the added convenience of not ever needing to own, or know how to use, a bread knife.
+And isn’t sliced bread just fabulous? A loaf of Wonder White™ touts itself as “Full of Goodness” and boasts a 4.5 health star rating. There is also of course the added convenience of not ever needing to own, or know how to use, a bread knife.
 
 But is sliced white bread really that good for you? Or has the marketing department twisted the numbers to make it appear so?
 
@@ -72,11 +72,11 @@ The DOD/BBox is an instruction to the compositing software to look only within t
 
 To put it another way, whilst the black pixels may compress down to near zero when they are stored on disk, when they’re read back from disk, the CPU and RAM requirements of the black pixels are no different to those of the coloured pixels. Hence why we define a DOD/BBox— to help reduce the load on the computing resources.
 
-In this case, each sprite has a DOD/BBox that encompasses Shia’s person only and tells the compositing software to ignore all other pixel data within each sprite’s original 1280x720 pixel frame.
+In this case, each sprite has a DOD/BBox that encompasses Shias person and tells the compositing software to ignore all other pixel data within each sprite’s original 1280x720 pixel frame.
 
 ## LaProfiler
 
-The tests will run across 3 Nuke scripts. Each script produces the same result. There are 24 Shia’s for each of the 9 types of sprite: LaBeouf, LaRed, LaNoir, etc. A total of 216 Shias are composited on each frame.
+The tests will run across 3 Nuke scripts. Each script produces the same result. There are 24 Shias for each of the 9 types of sprite: LaBeouf, LaRed, LaNoir, etc. A total of 216 Shias are composited on each frame.
 
 There are a few transforms to position Shia into various X-axis offsets in screen space. Everything is merged together (Shake-style, like a tree, over a colorwheel). The composite is designed to be I/O bound and light on CPU operations.
 
@@ -131,7 +131,7 @@ Finally, let us combine the Filters and TimeOffsets.
 
 What is interesting to note is that what was the most RAM performant script in all previous cases (Instances) is now the most RAM heavy script and takes slightly longer to render than the other two tests. The Duplicates and Stamps scripts are pretty much on par with each other in terms of render time and CPU requirements, with the Duplicates script requiring 1% more memory than Stamps (or 4% relative to each other).
 
-By the time we've created a script of even moderate complexity, it appears there is no major difference as to whether we use Stamps or not, or whether or not we create duplicates of the Read node assets.
+By the time we've created a script of even minor complexity, it appears there is no major difference as to whether we use Stamps or not, or whether or not we create duplicates of the Read node assets.
 
 ## LaProfiler-TimeOffset-Filtered
 
@@ -141,7 +141,7 @@ And just for safe measure, and because nothing in VFX is actually ever final, le
 
 ![Results for LaProfiler-TimeOffset-Filtered - Nuke 13.2v9 - classic render mode](/wiki/assets/charts-72dpi/LaProfiler-TimeOffset-Filtered_Nuke13-2.png)
 
-Again, by the time we've created a script of even moderate complexity, it appears there is no major difference as to whether we use Stamps or not, or whether or not we create duplicates of the Read node assets.
+Again, by the time we've created a script of minor complexity, it appears there is no major difference as to whether we use Stamps or not, or whether or not we create duplicates of the Read node assets.
 
 And by changing the order of operations it appears we can shave a full 40 seconds off a 5 minute render for a 15% improvement in render time.
 
@@ -153,11 +153,11 @@ Let's run the tests again, removing each sprite's managed DOD/BBox and set the D
 
 ![Screenshot of a managed DOD/BBox and an unmanaged DOD/BBox](/wiki/assets/Screenshot_ShiaBBoxToFullFrame.png)
 
-When it comes to computing resources, using Stamps to referencing single instances of a Read node asset in a script has less of an impact on CPU and RAM than telling Nuke when and where it should performing its calculations. In some instances the unmanaged DOD/BBox nukescripts caused Nuke to crash due to hitting a RAM ceiling. Where Nuke didn't crash we can a 30% to 125% increase in render times, and increase in CPU load, and a more than doubling of RAM requirements.
+When it comes to computing resources, using Stamps to referencing single instances of a Read node asset in a script has less of an impact on CPU and RAM than telling Nuke when and where it should performing its calculations. In some instances the unmanaged DOD/BBox nukescripts caused Nuke to crash due to hitting a RAM ceiling. Where Nuke didn't crash we see a 30% to 125% increase in render times, an increase in CPU load, and a more than doubling of RAM requirements.
 
 ![Results of using a managed DOD/BBox versus using unmanaged DOD/BBox and Stamps](/wiki/assets/Charts_LaProfiler-FullFrame.gif)
 
-These tests are simple comps, running on old hardware in a restricted 4GB to 5GB RAM environment. We might think it's irrelevant and we can just throw more computing power at a compositing problem and not worry about something so trivial as the DOD/BBox. But the impact of the DOD is just as relevant in a modern Nuke session referencing 4K plates and multi-part EXRs on a workstation with 96 CPU cores and 256GB of RAM.
+These tests are simple comps, running on old hardware in a restricted 4GB to 5GB RAM environment. We might think that these tests are irrelevant and we can just throw more computing power at a compositing problem and not worry about something so trivial as the DOD/BBox. But the impact of the DOD is just as relevant in a modern Nuke session referencing 4K plates and multi-part EXRs on a workstation with 96 CPU cores and 256GB of RAM.
 
 Not taking the care to manage the size of the DOD/BBox (and channels) on complex compositing work is going to bring even the best workstation to its knees or, at the very least, make for a slower artist.
 
@@ -167,7 +167,7 @@ Taking a look at the file dialog box for our nukescripts, an item to note is the
 
 ![Screenshot of the File>Open dialog for the LaProfiler nukescripts folder](/wiki/assets/Screenshot_LaProfiler_FileDialog.png)
 
-Pasting a few Stamps and an Anchor into a text editor will show us the space they take within a nukescript when compared to a set of Dot nodes. Not really a big issue, but just something to keep in mind the next time you're building a nukescript that you feel needs to use hidden inputs.
+Pasting a few Stamps and an Anchor into a text editor will show us the space they take within a nukescript when compared to a set of Dot nodes. Not really a big issue, but just something to keep in mind the next time you're building a nukescript that you feel need really must use hidden inputs.
 
 ![Screenshot of Dots and Stamps in a text editor](/wiki/assets/Screenshot_TextEditor_DotsAndStamps.gif)
 
@@ -177,7 +177,7 @@ The following three scripts take a look at nodes used for script organisation. D
 
 Stamps falls into the category of script organisation and I’m told they have the same overhead as a Dot or NoOp.
 
-The SpiralProfiler scripts contains 500 nodes of the organizational type (Dot or NoOp), and in the case of Stamps, 250 Anchor nodes and 250 Stamps. The scripts follow the mythical “spiral” compositing nukescript pattern— also known as a “toilet bowl” script.
+The SpiralProfiler scripts contains 500 nodes of the organizational type (Dot or NoOp), and in the case of Stamps, 250 Anchor nodes and 250 Stamps. The scripts follow the mythical “spiral” compositing script pattern— also known as a “toilet bowl” script.
 
 ![Screenshot of SpiralProfiler Node Graphs](/wiki/assets/Screenshot_SpiralProfiler_NodeGraph.png)
 
@@ -208,7 +208,7 @@ Before moving on, let us take another look at that beautifully organized spiral 
 
 ## Nuke version, topdown & classic rendering
 
-The above tests were all performed using Nuke13.2v9 and the classic render mode. Nuke 13.2 introduced a new way for Nuke to render the NodeGraph called Top-down rendering. From the Foundry's newsletter:
+The above tests were all performed using Nuke13.2v9 and the classic render mode. Nuke 13.2 introduced a new way for Nuke to render the node graph called Top-down rendering. From the Foundry's newsletter:
 
 > In Nuke 13.2, we introduced a new way for Nuke to render its node graph called Top-down rendering. This new rendering method allows Nuke to render its node graph from the top of the graph down, rather than scanline-by-scanline on-demand, allowing Nuke to cache its data more efficiently, reducing thread synchronization issues and results in overall faster rendering.
 
