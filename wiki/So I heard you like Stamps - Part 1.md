@@ -225,7 +225,7 @@ The full set of results are available here: https://github.com/artandmath/NukePr
 
 ## Conclusions
 
-Initial tests show that using Stamps in nukescripts could be a good way to organise Read node assets, because of the potential efficiency gains to be had from not having duplicate Read nodes.
+Initial tests show that using Stamps in nukescripts could be a good way to organise Read node assets, because of potential efficiency gains to be had from not duplicating Read nodes.
 
 However, as script complexity grew, those advantages were reduced to the point of not being relevant. Stamps added to script bloat and broke concatenation.
 
