@@ -2,20 +2,20 @@
 version 13.2 v9
 define_window_layout_xml {<?xml version="1.0" encoding="UTF-8"?>
 <layout version="1.0">
-    <window x="0" y="27" w="2127" h="1148" maximized="1" screen="0">
+    <window x="0" y="27" w="1768" h="926" maximized="1" screen="0">
         <splitter orientation="1">
             <split size="40"/>
             <dock id="" hideTitles="1" activePageId="Toolbar.1">
                 <page id="Toolbar.1"/>
             </dock>
-            <split size="1464" stretch="1"/>
+            <split size="1105" stretch="1"/>
             <splitter orientation="2">
-                <split size="649"/>
-                <dock id="" activePageId="Viewer.1">
+                <split size="518"/>
+                <dock id="" activePageId="Viewer.1" focus="true">
                     <page id="Viewer.1"/>
                 </dock>
-                <split size="456"/>
-                <dock id="" activePageId="DAG.1" focus="true">
+                <split size="365"/>
+                <dock id="" activePageId="DAG.1">
                     <page id="DAG.1"/>
                     <page id="Curve Editor.1"/>
                     <page id="DopeSheet.1"/>
@@ -34,7 +34,7 @@ Root {
  inputs 0
  name /mnt/render/nukescripts/GenerateElements.nk
  project_directory "\[python \{nuke.script_directory()\}]"
- frame 1034
+ frame 1067
  first_frame 1001
  last_frame 2537
  format "2048 1556 0 0 2048 1556 1 2K_Super_35(full-ap)"
@@ -55,7 +55,7 @@ BackdropNode {
  inputs 0
  name BackdropNode1
  tile_color 0x388e8e00
- label "autocrop, with BBox management"
+ label "with BBox management"
  note_font_size 42
  xpos -407
  ypos 96
@@ -75,18 +75,11 @@ BackdropNode {
 }
 Read {
  inputs 0
- file_type mov
- file "../introductions_(2015) (Original).mp4"
- format "1280 720 0 0 1280 720 1 HD_720"
- last 44600
- origlast 44600
+ file "/path/to/introductions_(2015) (Original)"
  origset true
- version 7
- colorspace "Utility - Gamma 2.2 - Rec.709 - Texture"
- raw true
- name Read1
+ name Read4
  xpos 1500
- ypos -3711
+ ypos -3749
 }
 Dot {
  name Dot1
@@ -194,7 +187,7 @@ Dot {
  xpos 1534
  ypos -2694
 }
-set Nb60c700 [stack 0]
+set Na01a690 [stack 0]
 Dot {
  name Dot17
  xpos 654
@@ -205,7 +198,7 @@ Dot {
  xpos 654
  ypos -2358
 }
-set Nb1eb1a0 [stack 0]
+set N8384630 [stack 0]
 IBKColourV3 {
  name IBKColourV3_1
  xpos 400
@@ -217,7 +210,7 @@ IBKColourV3 {
  erode 1.22
  multi 25
 }
-push $Nb1eb1a0
+push $N8384630
 IBKGizmoV3 {
  inputs 2
  name IBKGizmoV3_1
@@ -246,7 +239,7 @@ Dot {
  xpos 654
  ypos -2094
 }
-set Nbb6c110 [stack 0]
+set N9fce4c0 [stack 0]
 Grade {
  channels alpha
  blackpoint 0.4
@@ -268,7 +261,7 @@ Blur {
  xpos 400
  ypos -1978
 }
-push $Nbb6c110
+push $N9fce4c0
 ColorLookup {
  lut {master {}
    red {}
@@ -296,6 +289,8 @@ Write {
  create_directories true
  render_order 20
  version 8
+ in_colorspace scene_linear
+ out_colorspace scene_linear
  name Write2
  xpos 620
  ypos -1792
@@ -307,14 +302,14 @@ Switch {
  xpos 620
  ypos -1594
 }
-set Nbbaf980 [stack 0]
+set N81aba60 [stack 0]
 Dot {
  name Dot21
  xpos 654
  ypos -750
 }
-push $Nbbaf980
-push $Nb60c700
+push $N81aba60
+push $Na01a690
 CopyBBox {
  inputs 2
  name CopyBBox1
@@ -326,7 +321,7 @@ Dot {
  xpos 1534
  ypos -1350
 }
-set Nb8dc240 [stack 0]
+set N860ddb0 [stack 0]
 OFXuk.co.thefoundry.keylight.keylight_v201 {
  show "Final Result"
  unPreMultiply false
@@ -372,8 +367,8 @@ OFXuk.co.thefoundry.keylight.keylight_v201 {
  xpos 1500
  ypos -1210
 }
-set Na51e300 [stack 0]
-push $Nb8dc240
+set N9b0bef0 [stack 0]
+push $N860ddb0
 Merge2 {
  inputs 2
  operation from
@@ -399,7 +394,7 @@ Dot {
  xpos 1314
  ypos -966
 }
-push $Na51e300
+push $N9b0bef0
 Merge2 {
  inputs 2
  operation plus
@@ -415,54 +410,55 @@ Copy {
  xpos 1500
  ypos -754
 }
+set N9ea1090 [stack 0]
 Dot {
  name Dot22
  xpos 1534
  ypos -438
 }
-set Nb27d520 [stack 0]
+set N9eaf020 [stack 0]
 Dot {
  name Dot23
  xpos 1314
  ypos -438
 }
-set Nb8e4d90 [stack 0]
+set N9eb3ff0 [stack 0]
 Dot {
  name Dot24
  xpos 1094
  ypos -438
 }
-set Nb34f830 [stack 0]
+set N9eb8ef0 [stack 0]
 Dot {
  name Dot25
  xpos 874
  ypos -438
 }
-set N938b100 [stack 0]
+set N9ebddf0 [stack 0]
 Dot {
  name Dot26
  xpos 654
  ypos -438
 }
-set N96b2510 [stack 0]
+set N9ec2cf0 [stack 0]
 Dot {
  name Dot27
  xpos 434
  ypos -438
 }
-set Na619b40 [stack 0]
+set N9ec7bf0 [stack 0]
 Dot {
  name Dot28
  xpos 214
  ypos -438
 }
-set Nb1b6390 [stack 0]
+set N9eccaf0 [stack 0]
 Dot {
  name Dot29
  xpos -6
  ypos -438
 }
-set Nac1f1f0 [stack 0]
+set N9ed19f0 [stack 0]
 Dot {
  name Dot30
  xpos -226
@@ -486,12 +482,10 @@ Premult {
  xpos -260
  ypos -34
 }
-set Nb2af480 [stack 0]
 Write {
  channels rgba
  file ../LaProfiler/elements/mp01spriteNoir/mp01spriteNoir.####.exr
  file_type exr
- autocrop true
  first_part rgba
  create_directories true
  render_order 30
@@ -514,11 +508,13 @@ Write {
  create_directories true
  render_order 30
  version 10
+ in_colorspace scene_linear
+ out_colorspace scene_linear
  name Write8
  xpos -260
  ypos 584
 }
-push $Nac1f1f0
+push $N9ed19f0
 OCIOColorSpace {
  in_colorspace scene_linear
  out_colorspace "Utility - Linear - sRGB"
@@ -548,7 +544,6 @@ Write {
  channels rgba
  file ../LaProfiler/elements/mp01spritePsychadelic02/mp01spritePsychadelic02.####.exr
  file_type exr
- autocrop true
  first_part rgba
  create_directories true
  render_order 30
@@ -571,11 +566,13 @@ Write {
  create_directories true
  render_order 30
  version 10
+ in_colorspace scene_linear
+ out_colorspace scene_linear
  name Write12
  xpos -40
  ypos 584
 }
-push $N938b100
+push $N9ebddf0
 HueShift {
  hue_rotation -112
  name HueShift1
@@ -605,7 +602,6 @@ Write {
  channels rgba
  file ../LaProfiler/elements/mp01spritePurple/mp01spritePurple.####.exr
  file_type exr
- autocrop true
  first_part rgba
  create_directories true
  render_order 30
@@ -628,11 +624,13 @@ Write {
  create_directories true
  render_order 30
  version 10
+ in_colorspace scene_linear
+ out_colorspace scene_linear
  name Write15
  xpos 840
  ypos 584
 }
-push $Nb1b6390
+push $N9eccaf0
 OCIOColorSpace {
  in_colorspace scene_linear
  out_colorspace "Utility - Linear - sRGB"
@@ -676,7 +674,6 @@ Write {
  channels rgba
  file ../LaProfiler/elements/mp01spritePsychadelic01/mp01spritePsychadelic01.####.exr
  file_type exr
- autocrop true
  first_part rgba
  create_directories true
  render_order 30
@@ -699,11 +696,13 @@ Write {
  create_directories true
  render_order 30
  version 13
+ in_colorspace scene_linear
+ out_colorspace scene_linear
  name Write18
  xpos 180
  ypos 584
 }
-push $Nb8e4d90
+push $N9eb3ff0
 HueCorrect {
  hue {sat {curve 1 1.618407965 1 1 1 1 1}
    lum {}
@@ -733,7 +732,6 @@ Write {
  channels rgba
  file ../LaProfiler/elements/mp01spriteGreen/mp01spriteGreen.####.exr
  file_type exr
- autocrop true
  first_part rgba
  create_directories true
  render_order 30
@@ -756,11 +754,13 @@ Write {
  create_directories true
  render_order 30
  version 10
+ in_colorspace scene_linear
+ out_colorspace scene_linear
  name Write13
  xpos 1280
  ypos 584
 }
-push $Na619b40
+push $N9ec7bf0
 OCIOColorSpace {
  in_colorspace scene_linear
  out_colorspace "Utility - Linear - sRGB"
@@ -790,7 +790,6 @@ Write {
  channels rgba
  file ../LaProfiler/elements/mp01spriteWarhol02/mp01spriteWarhol02.####.exr
  file_type exr
- autocrop true
  first_part rgba
  create_directories true
  render_order 30
@@ -813,11 +812,13 @@ Write {
  create_directories true
  render_order 30
  version 10
+ in_colorspace scene_linear
+ out_colorspace scene_linear
  name Write17
  xpos 400
  ypos 584
 }
-push $Nb27d520
+push $N9eaf020
 Premult {
  name Premult2
  xpos 1500
@@ -827,7 +828,6 @@ Write {
  channels rgba
  file ../LaProfiler/elements/mp01sprite/mp01sprite.####.exr
  file_type exr
- autocrop true
  first_part rgba
  create_directories true
  render_order 30
@@ -850,11 +850,13 @@ Write {
  create_directories true
  render_order 30
  version 10
+ in_colorspace scene_linear
+ out_colorspace scene_linear
  name Write20
  xpos 1500
  ypos 584
 }
-push $Nb34f830
+push $N9eb8ef0
 HueCorrect {
  hue {sat {curve 1 1.618407965 1 1 1 1 1}
    lum {}
@@ -878,7 +880,6 @@ Write {
  channels rgba
  file ../LaProfiler/elements/mp01spriteRed/mp01spriteRed.####.exr
  file_type exr
- autocrop true
  first_part rgba
  create_directories true
  render_order 30
@@ -901,11 +902,13 @@ Write {
  create_directories true
  render_order 30
  version 10
+ in_colorspace scene_linear
+ out_colorspace scene_linear
  name Write14
  xpos 1060
  ypos 584
 }
-push $N96b2510
+push $N9ec2cf0
 OCIOColorSpace {
  in_colorspace scene_linear
  out_colorspace "Utility - Linear - sRGB"
@@ -935,7 +938,6 @@ Write {
  channels rgba
  file ../LaProfiler/elements/mp01spriteWarhol01/mp01spriteWarhol01.####.exr
  file_type exr
- autocrop true
  first_part rgba
  create_directories true
  render_order 30
@@ -958,19 +960,22 @@ Write {
  create_directories true
  render_order 30
  version 10
+ in_colorspace scene_linear
+ out_colorspace scene_linear
  name Write16
  xpos 620
  ypos 584
 }
-push $Nb2af480
+push $N9ea1090
 Viewer {
- frame 1034
- frame_range 100-100
+ frame 1067
+ frame_range 1001-1001
  colour_sample_bbox {0.162499994 0.3546875119 0.203125 0.420312494}
  samplepoints {{0.134375006 0.3390625119}
    }
  viewerProcess "sRGB (ACES)"
  name Viewer1
+ selected true
  xpos 1940
  ypos -1786
 }
