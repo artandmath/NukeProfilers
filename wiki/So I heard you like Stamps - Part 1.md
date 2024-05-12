@@ -201,7 +201,7 @@ Why should it matter that Stamps break concatentation? Aren't they a tool that _
 
 Should they not exist at the asset level where concatenation won't matter? In Part 2 we'll see why it does matter, because of all the weird, wonderful and confusing things that happen when you give _"hidden inputs that reconnect themselves when needed”_ to your compositing team.
 
-Before moving on, let us take another look at that beautifully organised spiral of Stamps ...
+Before moving on, let us take another look at that beautifully organized spiral of Stamps ...
 
 ![Screenshot revealing hidden inputs](/wiki/assets/Screenshot_SpiralProfiler_HiddenTreasures.gif)
 
