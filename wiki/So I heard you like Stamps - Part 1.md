@@ -1,4 +1,4 @@
-![Header](assets/Header_SoIHeardYouLikeStamps.gif)
+![Header](assets/Header_SoIHeardYouLikeStampsPart1.gif)
 
 An investigation into the Stamps tool for Nuke, by Daniel Harkness, 10 May 2024
 
