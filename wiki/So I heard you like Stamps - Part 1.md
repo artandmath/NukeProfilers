@@ -166,7 +166,7 @@ Not taking the care to manage the size of the DOD/BBox (and channels) on complex
 
 Running the first test, LaProfiler, with no TimeOffsets or Filters, there is no chnage in network load. 216 read nodes appears to have no affect on network performance compared to 9 read nodes. In fact it may have less network load given it takes longer to process each frames, likely due to the EXR reader spinnning up 216 times and Nuke taking more time to get to the next frame rather than slower reads over the network.
 
-[Screenshot of network load](/wiki/assetsScreenshot_NetworkLoad.png)
+![Screenshot of network load](/wiki/assetsScreenshot_NetworkLoad.png)
 
 ## Size in script
 
