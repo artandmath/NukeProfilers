@@ -164,7 +164,7 @@ Not taking the care to manage the size of the DOD/BBox (and channels) on complex
 
 ## But what about network load?
 
-For LaProfiler, the first test with no TimeOffsets or Filters, there is no change in network load between the 3 variations of the script. 216 read nodes appears to have no affect on network performance compared to 9 read nodes. Duplicates may have less network load given it takes longer to process each frames, likely due to the EXR reader spinnning up 216 times and Nuke taking more time to get to the next frame rather than slower reads over the network.
+Running the first test, LaProfiler, there is no change in network load between the 3 variations of the script. The Duplicates script pulling in data from 216 read nodes appears to have no effect on network performance compared to 9 read nodes pulling in the same data. The 216 Read nodes is not pulling in 24x the data as might be assumed. Duplicates may have less network load given it takes longer to process each frames, likely due to the EXR reader spinning up 216 times and Nuke taking more time to get to the next frame rather than slower reads over the network.
 
 ![Screenshot of system monitors and network load](/wiki/assets/Screenshot_NetworkLoad.png)
 
