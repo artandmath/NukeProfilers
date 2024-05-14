@@ -41,6 +41,7 @@ This internet post is written to be divisive. Division not for the purpose of en
 	- LaProfiler-Filtered
 	- LaProfiler-Filtered-TimeOffset
 	- LaProfiler-TimeOffset-Filtered
+- But what about network load?
 - Back to the DOD
 - Size in script
 - SpiralProfiler
@@ -160,6 +161,12 @@ When it comes to computing resources, using Stamps to reference a single Read no
 These tests are simple comps, running on old hardware in a restricted 4GB to 5GB RAM environment. We might think that these tests are irrelevant and we can just throw more computing power at a compositing problem and not worry about something so trivial as the DOD/BBox. But the impact of the DOD is just as relevant in a modern Nuke session referencing 4K plates and multi-part EXRs on a workstation with 96 CPU cores and 256GB of RAM.
 
 Not taking the care to manage the size of the DOD/BBox (and channels) on complex compositing work is going to bring even the best workstation to its knees or, at the very least, make for a slower artist.
+
+## But what about network load?
+
+Running the first test, LaProfiler, with no TimeOffsets or Filters, there is no chnage in network load. 216 read nodes appears to have no affect on network performance compared to 9 read nodes. In fact it may have less network load given it takes longer to process each frames, likely due to the EXR reader spinnning up 216 times and Nuke taking more time to get to the next frame rather than slower reads over the network.
+
+[Screenshot of network load](/wiki/assetsScreenshot_NetworkLoad.png)
 
 ## Size in script
 
