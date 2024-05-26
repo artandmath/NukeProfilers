@@ -67,7 +67,7 @@ The "LaProfiler" series of tests will involve some sprites sourced from Shia LaB
 
 Apologies to the the Frenchies who will no doubt be appalled at my boucherie de la langue Française.
 
-What are those dotted rectangles around him? In the Shake days we used to call it a “domain of definition” or DOD for short. These days we call them “bounding boxes” or BBox for short. (In some circles they may be called Data windows, Area of Interest, or something else.)
+What are those dotted rectangles around him? In the Shake days we used to call it a “domain of definition” or DOD for short. These days we call them “bounding boxes” or BBox for short. (In some circles they may be called Data Windows, Area of Interest, or something else.)
 
 The DOD/BBox is an instruction to the compositing software to look only within the DOD/BBox for storing pixel data on disk and RAM and to indicate when and where to perform calculations on the data. Compositing software knows no difference between the black pixels surrounding Shia and the coloured pixels he is comprised of.
 
